@@ -23,6 +23,7 @@ globalStyle("*", {
 globalStyle("body", {
 	width: "100dvw",
 	height: "100dvh",
+	background: "#ffffff"
 });
 
 globalStyle("img", {
