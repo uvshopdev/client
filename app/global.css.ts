@@ -1,9 +1,9 @@
 import { createVar, globalStyle } from "@vanilla-extract/css";
 
-export const primary = createVar()
-export const background = createVar()
-export const borderDark = createVar()
-export const borderLight = createVar()
+export const primary = createVar();
+export const background = createVar();
+export const borderDark = createVar();
+export const borderLight = createVar();
 
 globalStyle(":root", {
 	vars: {
@@ -11,8 +11,8 @@ globalStyle(":root", {
 		[background]: "#3b3028",
 		[borderDark]: "1px solid #3b3028",
 		[borderLight]: "1px solid #d3d3d3",
-	}
-})
+	},
+});
 
 globalStyle("*", {
 	margin: 0,
@@ -23,7 +23,7 @@ globalStyle("*", {
 globalStyle("body", {
 	width: "100dvw",
 	height: "100dvh",
-	background: "#ffffff"
+	background: "#ffffff",
 });
 
 globalStyle("img", {

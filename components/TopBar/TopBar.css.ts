@@ -1,5 +1,6 @@
-import { background, primary } from "@/app/global.css";
 import { style } from "@vanilla-extract/css";
+
+import { background, primary } from "@/app/global.css";
 
 export const content = style({
 	width: "100%",
@@ -14,7 +15,7 @@ export const navigation = style({
 });
 export const logo = style({
 	position: "relative",
-	width: 50,
+	width: 40,
 	height: 40,
 });
 export const categories = style({
@@ -23,7 +24,7 @@ export const categories = style({
 	gap: 10,
 
 	height: "100%",
-	
+
 	background: background,
 	color: primary,
 	border: "none",
@@ -63,7 +64,8 @@ export const profile = style({
 	justifySelf: "end",
 });
 export const profileButton = style({
-	padding: "0 15px",
+	padding: "0 12px",
+	borderWidth: 1,
 	background: "none",
-	color: "unset"
-})
+	color: "unset",
+});

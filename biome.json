@@ -37,7 +37,27 @@
   "assist": {
     "actions": {
       "source": {
-        "organizeImports": "on"
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              ":NODE:",
+              "./node_modules/**",
+              ":PACKAGE:",
+              ":BLANK_LINE:",
+              [
+                "app",
+                "@components/**",
+                "@lib/**",
+                "@utils/**"
+              ],
+              ":BLANK_LINE:",
+              [
+                "./**"
+              ]
+            ]
+          }
+        }
       }
     }
   }

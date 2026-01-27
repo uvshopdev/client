@@ -10,14 +10,18 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.90.20",
     "@vanilla-extract/css": "^1.18.0",
+    "axios": "^1.13.3",
     "lucide-react": "^0.563.0",
     "next": "16.1.4",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "zustand": "^5.0.10"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
+    "@tanstack/react-query-devtools": "^5.91.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

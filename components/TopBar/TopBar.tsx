@@ -1,5 +1,6 @@
-import { Blocks, CircleUserRound, ShoppingBasket } from "lucide-react";
+import { CircleUserRound, LayoutGrid, ShoppingBasket } from "lucide-react";
 import Image from "next/image";
+
 import { button, categories, content, input, logo, navigation, profile, profileButton, search } from "./TopBar.css";
 
 const TopBar = () => {
@@ -7,10 +8,10 @@ const TopBar = () => {
 		<div className={content}>
 			<div className={navigation}>
 				<div className={logo}>
-					<Image fill src="/logo.png" alt="logo" />
+					<Image fill src="/logo.png" sizes="60px 60px, 40px 40px" alt="logo" loading="eager" />
 				</div>
 				<button type="button" className={categories}>
-					<Blocks size={20} strokeWidth={1} />
+					<LayoutGrid size={20} strokeWidth={1} absoluteStrokeWidth />
 					Каталог
 				</button>
 			</div>
@@ -22,10 +23,10 @@ const TopBar = () => {
 			</div>
 			<div className={profile}>
 				<button type="button" className={profileButton}>
-					<ShoppingBasket size={25} strokeWidth={1} />
+					<ShoppingBasket size={25} strokeWidth={1} absoluteStrokeWidth />
 				</button>
 				<button type="button" className={profileButton}>
-					<CircleUserRound size={25} strokeWidth={1} />
+					<CircleUserRound size={25} strokeWidth={1} absoluteStrokeWidth />
 				</button>
 			</div>
 		</div>
