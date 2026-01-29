@@ -6,6 +6,7 @@ import "./global.css";
 import Providers from "@/components/Providers";
 import { getCategories } from "@/lib/categories";
 import { getCountries } from "@/lib/countries";
+import { content } from "./layout.css";
 
 const montserrat = Montserrat_Alternates({
 	weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
@@ -23,8 +24,10 @@ export default async function RootLayout({
 		<html lang="en">
 			<body className={montserrat.className}>
 				<Providers categories={categories} countries={countries}>
-					<TopBar />
-					{children}
+					<main className={content}>
+						<TopBar />
+						{children}
+					</main>
 				</Providers>
 			</body>
 		</html>
