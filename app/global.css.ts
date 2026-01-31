@@ -1,54 +1,49 @@
-import { createVar, globalStyle } from "@vanilla-extract/css";
+"use client";
 
-export const primary = createVar();
-export const background = createVar();
-export const borderDark = createVar();
-export const borderLight = createVar();
+import { createGlobalStyle } from "styled-components";
 
-globalStyle(":root", {
-	vars: {
-		[primary]: "#ffffff",
-		[background]: "#3b3028",
-		[borderDark]: "1px solid #3b3028",
-		[borderLight]: "1px solid #d3d3d3",
-	},
-});
+export default createGlobalStyle`
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box
+	}
+	body {
+		width: 100dvw;
+		height: 100dvh;
+		
+		display: grid;
+		grid-template-rows: auto 1fr;
+	}
+	img: {
+		width: 100%;
+		height: 100%;
+	}
 
-globalStyle("*", {
-	margin: 0,
-	padding: 0,
-	boxSizing: "border-box",
-});
+	input,button {
+		width: 100%;
+		height: 100%;
 
-globalStyle("body", {
-	width: "100dvw",
-	height: "100dvh",
-	background: "#ffffff",
-});
+		border-radius: 10px;
+		background: none;
+		outline: none;
+		padding: 0 20px;
+		font-size: 100%;
+		font-family: inherit;
+	}
+	input {
+		border: 1px solid ${({ theme }) => theme.colors.secondary};
+	}
+	button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+		border: 1px solid ${({ theme }) => theme.colors.primary};
+		cursor: pointer;
+	}
 
-globalStyle("img", {
-	width: "100%",
-	height: "100%",
-});
-
-globalStyle("input,button", {
-	borderRadius: "10px",
-	background: "none",
-	outline: "none",
-	padding: "0 20px",
-	fontSize: "100%",
-	fontFamily: "inherit",
-});
-globalStyle("input", {
-	border: borderLight,
-	width: "100%",
-	height: "100%",
-});
-globalStyle("button", {
-	display: "flex",
-	justifyContent: "cneter",
-	alignItems: "center",
-
-	border: borderDark,
-	cursor: "pointer",
-});
+	ul,li { 
+		list-style: none;
+	}
+`;

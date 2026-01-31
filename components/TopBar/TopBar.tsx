@@ -1,35 +1,38 @@
 import { CircleUserRound, LayoutGrid, ShoppingBasket } from "lucide-react";
+import { getExtracted } from "next-intl/server";
 import Image from "next/image";
 
-import { button, categories, content, input, logo, navigation, profile, profileButton, search } from "./TopBar.css";
+import LocaleSelector from "../LocaleSelector/LocaleSelector";
+import { Catalog, Content, Logo, Navigation, Profile, Search } from "./TopBar.css";
 
-const TopBar = () => {
+const TopBar = async () => {
+	const t = await getExtracted("navigation");
+
 	return (
-		<div className={content}>
-			<div className={navigation}>
-				<div className={logo}>
+		<Content>
+			<Navigation>
+				<Logo>
 					<Image fill src="/logo.png" sizes="60px 60px, 40px 40px" alt="logo" loading="eager" />
-				</div>
-				<button type="button" className={categories}>
+				</Logo>
+				<Catalog>
 					<LayoutGrid size={20} strokeWidth={1} absoluteStrokeWidth />
-					Каталог
-				</button>
-			</div>
-			<div className={search}>
-				<input type="text" className={input} placeholder="Знайти свій скарб..." />
-				<button type="button" className={button}>
-					Пошук
-				</button>
-			</div>
-			<div className={profile}>
-				<button type="button" className={profileButton}>
+					{t("Catalog")}
+				</Catalog>
+			</Navigation>
+			<Search>
+				<input type="text" placeholder={t("Find your treasure...")} />
+				<button type="button">{t("Search")}</button>
+			</Search>
+			<Profile>
+				<button type="button">
 					<ShoppingBasket size={25} strokeWidth={1} absoluteStrokeWidth />
 				</button>
-				<button type="button" className={profileButton}>
+				<button type="button">
 					<CircleUserRound size={25} strokeWidth={1} absoluteStrokeWidth />
 				</button>
-			</div>
-		</div>
+				<LocaleSelector />
+			</Profile>
+		</Content>
 	);
 };
 

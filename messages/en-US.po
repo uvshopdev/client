@@ -1,0 +1,22 @@
+msgid ""
+msgstr ""
+"Language: en-US\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: next-intl\n"
+"X-Crowdin-SourceKey: msgstr\n"
+
+#: components/TopBar/TopBar.tsx:19
+msgctxt "navigation"
+msgid "GOdq5V"
+msgstr "Catalog"
+
+#: components/TopBar/TopBar.tsx:23
+msgctxt "navigation"
+msgid "6bSS05"
+msgstr "Find your treasure..."
+
+#: components/TopBar/TopBar.tsx:24
+msgctxt "navigation"
+msgid "xmcVZ0"
+msgstr "Search"

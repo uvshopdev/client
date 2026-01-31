@@ -1,11 +1,18 @@
-import { createVanillaExtractPlugin } from "@vanilla-extract/next-plugin";
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
-
-const vanillaExtract = createVanillaExtractPlugin()
 const nextConfig: NextConfig = {
-    // output: "export",
-    // basePath: process.env.PAGES_BASE_PATH,
+	compiler: {
+		styledComponents: true,
+	},
 };
 
-export default vanillaExtract(nextConfig);
+const withNextIntl = createNextIntlPlugin({
+	requestConfig: "./i18n/request.ts",
+	experimental: {
+		srcPath: "./",
+		extract: { sourceLocale: "en-US" },
+		messages: { format: "po", locales: ["en-US", "uk-UA"], path: "./messages", precompile: true },
+	},
+});
+export default withNextIntl(nextConfig);

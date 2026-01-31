@@ -4,7 +4,7 @@ import { devtools } from "zustand/middleware";
 export interface Category {
 	id: number;
 	name: string;
-	image_url: string;
+	image_url: string | null;
 }
 
 interface CategoriesState {
