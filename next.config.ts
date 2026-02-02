@@ -12,7 +12,7 @@ const withNextIntl = createNextIntlPlugin({
 	experimental: {
 		srcPath: "./",
 		extract: { sourceLocale: "en-US" },
-		messages: { format: "po", locales: ["en-US", "uk-UA"], path: "./messages", precompile: true },
+		messages: { format: "po", locales: "infer", path: "./messages", precompile: true },
 	},
 });
 export default withNextIntl(nextConfig);

@@ -2,9 +2,9 @@ import clsx from "clsx";
 import { getLocale } from "next-intl/server";
 import { Montserrat_Alternates } from "next/font/google";
 
+import Providers from "@/components/Providers";
 import { getCategories } from "@/lib/categories";
 import { getCountries } from "@/lib/countries";
-import Providers from "@/components/Providers";
 
 import "./global.css";
 

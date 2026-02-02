@@ -5,6 +5,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { useLocale } from "next-intl";
 import { useState } from "react";
 
+import { setLocaleCookie } from "@/app/actions";
 import { type Locale, locales, localesDisplay } from "@/i18n";
 import { Content, Menu, MenuButton } from "./LocaleSelector.css";
 
@@ -16,7 +17,7 @@ const LocaleSelector = () => {
 	const onChange = async (locale: Locale) => {
 		setActive(false);
 		setSelected(locale);
-		// setLocaleCookie(locale);
+		setLocaleCookie(locale);
 	};
 
 	return (
