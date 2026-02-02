@@ -7,7 +7,7 @@ const Category = z.object({
 });
 
 export const getCategories = async () => {
-	const data = await fetch(`${process.env.BACKEND_URL}/categories`, { next: { revalidate: 3 * 60 * 60 } });
+	const data = await fetch(`${process.env.BACKEND_URL}/categories`);
 	const json = await data.json();
 	return z.array(Category).parse(json);
 };
