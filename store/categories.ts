@@ -14,8 +14,11 @@ interface CategoriesState {
 }
 
 export const useCategories = create<CategoriesState>()(
-	devtools((set) => ({
-		categories: [],
-		setCategories: (categories) => set(() => ({ categories })),
-	})),
+	devtools(
+		(set) => ({
+			categories: [],
+			setCategories: (categories) => set(() => ({ categories })),
+		}),
+		{ name: "CategoriesStore" },
+	),
 );

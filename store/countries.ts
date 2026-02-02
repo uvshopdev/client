@@ -14,8 +14,11 @@ interface CountriesState {
 }
 
 export const useCountries = create<CountriesState>()(
-	devtools((set) => ({
-		countries: [],
-		setCountries: (countries) => set(() => ({ countries })),
-	})),
+	devtools(
+		(set) => ({
+			countries: [],
+			setCountries: (countries) => set(() => ({ countries })),
+		}),
+		{ name: "CountriesStore" },
+	),
 );
