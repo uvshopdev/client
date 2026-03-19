@@ -1,16 +1,17 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-import host from "@/lib";
-
 const page = () => {
+	const router = useRouter();
+
 	useEffect(() => {
 		localStorage.clear();
-		host.get("/users/auth/logout").then(() => {
-			window.location.replace("/");
+		fetch("/api/logout", { credentials: "include" }).then(() => {
+			router.push("/");
 		});
-	}, []);
+	}, [router]);
 	return null;
 };
 

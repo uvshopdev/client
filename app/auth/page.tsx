@@ -2,8 +2,9 @@
 
 import * as jwt from "jsonwebtoken";
 import { useExtracted } from "next-intl";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import host from "@/lib";
 import { useUser } from "@/store/user";
@@ -12,21 +13,19 @@ import { Buttons, Content, Form, FormContent, FormInfo, FormLabel } from "./page
 const page = () => {
 	const t = useExtracted("auth");
 
+	const [state, setState] = useState<"login" | "register">("login");
+
 	const { setAccessToken, setUser } = useUser();
 	const router = useRouter();
 	const searchParams = useSearchParams();
 
 	const formRef = useRef<HTMLFormElement>(null);
-	const [phone, setPhone] = useState<string>("");
-	const sendCode = async () => {
-		await host.post("/users/auth/code", { phone_number: phone });
-	};
 	const onSubmit = async (e?: React.SubmitEvent<HTMLFormElement>) => {
 		e?.preventDefault();
 
 		const formData = new FormData(e?.currentTarget || formRef.current!);
 		const json = Object.fromEntries(formData.entries());
-		const { data } = await host.post(`/users/auth/login`, json);
+		const { data } = await host.post(`/users/auth/${state.split("_")[0]}`, json);
 		if ("access_token" in data) {
 			const { userinfo } = jwt.decode(data.access_token) as any;
 			setUser({
@@ -36,74 +35,60 @@ const page = () => {
 				imageUrl: userinfo.image_url,
 			});
 			setAccessToken(data.access_token);
-			router.replace(searchParams.get("state") || "/");
+			router.push(searchParams.get("state") ?? "/");
 		}
 	};
-
-	useEffect(() => {
-		const handler = (e: MessageEvent) => {
-			if ("access_token" in e.data) {
-				const { userinfo } = jwt.decode(e.data.access_token) as any;
-				setUser({
-					email: userinfo.email,
-					fullName: userinfo.full_name,
-					phoneNumber: userinfo.phone_number,
-					imageUrl: userinfo.image_url,
-				});
-				setAccessToken(e.data.access_token);
-				router.push(searchParams.get("state") || "/");
-			}
-		};
-
-		window.addEventListener("message", handler);
-
-		return () => window.removeEventListener("message", handler);
-	}, [searchParams, router, setAccessToken, setUser]);
 
 	return (
 		<Content>
 			<Form onSubmit={onSubmit} ref={formRef}>
 				<FormInfo>
-					<h3>{t("Enter login details")}</h3>
-					<div>{t("You will be sent an SMS message with a confirmation code.")}</div>
+					<h3>{state.startsWith("login") ? t("Enter login details") : t("Enter register details")}</h3>
+					{["login_phone", "register_phone"].includes(state) && (
+						<div>{t("You will be sent an SMS message with a confirmation code.")}</div>
+					)}
 				</FormInfo>
-				<FormContent>
-					<FormLabel>
-						{t("Phone number")}
-						<input
-							type="text"
-							placeholder="+380xxxxxXXXX"
-							name="phone_number"
-							required
-							value={phone}
-							onChange={(e) => setPhone(e.target.value)}
-						/>
-						<button type="button" onClick={sendCode}>
-							send
-						</button>
-					</FormLabel>
-					<FormLabel>
-						{t("Code")}
-						<input type="text" name="code" required />
-					</FormLabel>
-				</FormContent>
+				{state === "login" ? (
+					<FormContent>
+						<FormLabel>
+							{t("Phone number")}
+							<input type="text" placeholder="+380xxxxxXXXX" name="phone_number" required />
+							<button type="button" onClick={() => onSubmit()}>
+								send
+							</button>
+						</FormLabel>
+						<FormLabel>
+							{t("Code")}
+							<input type="text" name="code" required />
+						</FormLabel>
+					</FormContent>
+				) : (
+					<FormContent>
+						<FormLabel>
+							{t("Full name")}
+							<input type="text" name="full_name" required />
+						</FormLabel>
+						<FormLabel>
+							{t("Phone number")}
+							<input type="text" placeholder="+380xxxxxXXXX" name="phone_number" required />
+							<button type="button" onClick={() => onSubmit()}>
+								{t("send")}
+							</button>
+						</FormLabel>
+						<FormLabel>
+							{t("Code")}
+							<input type="text" name="code" required />
+						</FormLabel>
+					</FormContent>
+				)}
 				<Buttons>
 					<div>
-						{t("Continue with")}
-						<button
-							type="button"
-							onClick={() =>
-								window.open(
-									`/auth/google?${searchParams.toString()}`,
-									"Auth Google",
-									"width=500,height=600,menubar=no,toolbar=no,status=no",
-								)
-							}
-						>
+						{t("Forgot your password?")}
+						<Link href="/login/reset-password">
 							<u>
-								<b>{t("Google")}</b>
+								<b>{t("Reset")}</b>
 							</u>
-						</button>
+						</Link>
 					</div>
 					<button type="submit">{t("Log in")}</button>
 				</Buttons>

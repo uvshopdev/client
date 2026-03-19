@@ -47,7 +47,7 @@ const TopBar = () => {
 					<Link href="/basket" aria-label={t("Basket")}>
 						<ShoppingBasket size={25} strokeWidth={1} absoluteStrokeWidth />
 					</Link>
-					<Link href="/profile" aria-label={t("Profile")} prefetch={false}>
+					<Link href="/profile" aria-label={t("Profile")}>
 						<CircleUserRound size={25} strokeWidth={1} absoluteStrokeWidth />
 					</Link>
 					<button

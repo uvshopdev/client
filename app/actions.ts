@@ -9,7 +9,6 @@ export async function setLocaleCookie(locale: Locale) {
 
 	cookieStore.set({
 		name: "locale",
-		maxAge: 2592000,
 		value: locale,
 		httpOnly: false,
 		path: "/",
