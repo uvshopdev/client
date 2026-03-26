@@ -61,32 +61,32 @@ msgctxt "profile"
 msgid "smWqVf"
 msgstr "Очікує першу покупку"
 
-#: app/profile/page.tsx:45
+#: app/profile/page.tsx:50
 msgctxt "profile"
 msgid "DgPFXk"
 msgstr "Паспорт мандрівника Hermes"
 
-#: app/profile/page.tsx:57
+#: app/profile/page.tsx:62
 msgctxt "profile"
 msgid "VnXp8Z"
 msgstr "Фото"
 
-#: app/profile/page.tsx:63
+#: app/profile/page.tsx:68
 msgctxt "profile"
 msgid "yk4PT9"
 msgstr "Повне ім'я"
 
-#: app/profile/page.tsx:74
+#: app/profile/page.tsx:78
 msgctxt "profile"
 msgid "hJZwTS"
 msgstr "Адреса електронної пошти"
 
-#: app/profile/page.tsx:85
+#: app/profile/page.tsx:88
 msgctxt "profile"
 msgid "jdJhOL"
 msgstr "Номер телефону"
 
-#: app/profile/page.tsx:95
+#: app/profile/page.tsx:97
 msgctxt "profile"
 msgid "jvo0vs"
 msgstr "Зберегти"
