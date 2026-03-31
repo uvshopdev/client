@@ -1,13 +1,22 @@
 import styled from "styled-components";
 
-export const ProductCard = styled.div`
-  display: flex;
-  gap: 30px;
+export const Wrapper = styled.div`
   padding: 0 40px;
 `;
 
+export const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+
+  @media (max-width: 990px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+/* LEFT */
+
 export const Left = styled.div`
-  width: 705px;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -15,33 +24,56 @@ export const Left = styled.div`
 
 export const MainImage = styled.div`
   position: relative;
-  width: 100%;
-  height: 538px;
-  border-radius: 40px;
-  border: 1px solid #E9E3D9;
+  height: 500px;
+  border: 1px solid #e9e3d9;
+  border-radius: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 export const Image = styled.img`
-  width: 400px;
-  height: 400px;
-  object-fit: contain;
+  width: 80%;
 `;
 
 export const Arrow = styled.button<{ $left?: boolean }>`
   position: absolute;
   top: 50%;
+  ${({ $left }) => ($left ? "left: 20px" : "right: 20px")};
   transform: translateY(-50%);
-  ${({ $left }) => ($left ? "left: 20px;" : "right: 20px;")}
   width: 40px;
   height: 40px;
-  border-radius: 20px;
-  background: #3B3028;
-  color: white;
-  border: none;
-  cursor: pointer;
+  border-radius: 50%;
+  background: #3b3028;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const WishButton = styled.button`
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 47px;
+  height: 40px;
+  border: 1px solid #e9e3d9;
+  border-radius: 10px;
+`;
+
+export const Dots = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+`;
+
+export const Dot = styled.div<{ $active?: boolean }>`
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: ${({ $active }) => ($active ? "#3B3028" : "#ccc")};
 `;
 
 export const Thumbs = styled.div`
@@ -50,34 +82,85 @@ export const Thumbs = styled.div`
 `;
 
 export const Thumb = styled.div<{ $active?: boolean }>`
-  width: 215px;
-  height: 160px;
-  padding: 16px;
-  border-radius: 20px;
+  flex: 1;
+  height: 120px;
   border: 1px solid ${({ $active }) => ($active ? "#3B3028" : "#E9E3D9")};
+  border-radius: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
 `;
 
+/* RIGHT */
+
 export const Right = styled.div`
-  width: 705px;
   display: flex;
   flex-direction: column;
   gap: 30px;
 `;
 
+export const Block = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+export const Breadcrumbs = styled.div`
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+`;
+
 export const Title = styled.h1`
-  font-family: 'Gabriela', serif;
   font-size: 34px;
-  color: #3B3028;
+  color: #3b3028;
+  font-family: "Gabriela", serif;
+`;
+
+export const RowBetween = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const CodeStock = styled.div`
+  display: flex;
+  gap: 40px;
+`;
+
+export const Stock = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const DotStatus = styled.div`
+  width: 8px;
+  height: 8px;
+  background: green;
+  border-radius: 50%;
+`;
+
+export const RatingRow = styled.div`
+  display: flex;
+  gap: 14px;
+  align-items: center;
+`;
+
+export const Stars = styled.div`
+  display: flex;
+  gap: 4px;
+`;
+
+export const PriceRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const PriceBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;
 
 export const Price = styled.div`
@@ -85,49 +168,31 @@ export const Price = styled.div`
   font-weight: 600;
 `;
 
-export const BuyRow = styled.div`
+export const SubPrice = styled.div`
+  font-size: 14px;
+  color: gray;
+`;
+
+export const BuyControls = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 30px;
 `;
 
 export const Quantity = styled.div`
   display: flex;
+  gap: 26px;
   align-items: center;
-  gap: 20px;
-`;
 
-export const QtyBtn = styled.button`
-  width: 48px;
-  height: 40px;
-  border-radius: 12px;
-  border: 1px solid #D3D3D3;
-  background: white;
-  cursor: pointer;
+  button {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 export const BuyButton = styled.button`
-  width: 140px;
-  height: 40px;
-  border-radius: 12px;
-  background: #3B3028;
+  background: #3b3028;
   color: white;
-  border: none;
-  cursor: pointer;
-`;
-
-export const Characteristics = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-`;
-
-export const CharItem = styled.div`
-  width: 342px;
-  height: 41px;
-  padding: 12px 20px;
-  border: 1px solid #E9E3D9;
-  border-radius: 12px;
-  display: flex;
-  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
 `;
