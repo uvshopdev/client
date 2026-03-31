@@ -7,6 +7,7 @@ import {
   Heart,
   Star,
   ChevronDown,
+  ChevronUp,
   House
 } from "lucide-react";
 
@@ -14,12 +15,17 @@ export default function ProductCard({ images }: { images: string[] }) {
   const [active, setActive] = useState(0);
   const [qty, setQty] = useState(1);
   const [wish, setWish] = useState(false);
+  const [open, setOpen] = useState<string | null>(null);
 
   const rating = 4;
 
   const next = () => setActive((prev) => (prev + 1) % images.length);
   const prev = () =>
     setActive((prev) => (prev - 1 + images.length) % images.length);
+
+  const toggle = (key: string) => {
+    setOpen(open === key ? null : key);
+  };
 
   return (
     <S.Wrapper>
@@ -120,6 +126,71 @@ export default function ProductCard({ images }: { images: string[] }) {
               </S.BuyControls>
             </S.PriceRow>
           </S.Block>
+
+          {/* ===== 2. InfoBlock (Характеристики + Аккордеон) ===== */}
+          <S.InfoBlock>
+
+            {/* 2.1 Характеристики */}
+            <S.Characteristics>
+              <S.CharacteristicsTitle>Характеристики:</S.CharacteristicsTitle>
+
+              <S.CharacteristicsGrid>
+                <S.CharItem>
+                  <S.CharLabel>вага:</S.CharLabel>
+                  <S.CharValue>120 грам</S.CharValue>
+                </S.CharItem>
+
+                <S.CharItem>
+                  <S.CharLabel>виробник:</S.CharLabel>
+                  <S.CharValue>Samyang</S.CharValue>
+                </S.CharItem>
+
+                <S.CharItem>
+                  <S.CharLabel>калорійність:</S.CharLabel>
+                  <S.CharValue>369 ккал</S.CharValue>
+                </S.CharItem>
+
+                <S.CharItem>
+                  <S.CharLabel>країна виробник:</S.CharLabel>
+                  <S.CharValue>Південна Корея</S.CharValue>
+                </S.CharItem>
+              </S.CharacteristicsGrid>
+            </S.Characteristics>
+
+            {/* 2.2 Аккордеон */}
+            <S.Accordion>
+
+              {/* Описание */}
+              <S.AccordionItem>
+                <S.AccordionHeader onClick={() => toggle("desc")}>
+                  Опис:
+                  {open === "desc" ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+                </S.AccordionHeader>
+
+                {open === "desc" && (
+                  <S.AccordionContent>
+                    Локшина Hot Chicken Ramen Stew - ще один варіант гострої, по-справжньому вогняної страви від корейського бренду Samyang! Цей суп Рамен схожий на густе рагу зі смаком тушкованої курочки та букетом пекучих спецій. Бульйон ароматний і насичений. Всередині склянки: класична локшина швидкого приготування, набір приправ. Для тих, хто любить по-справжньому гостру їжу.
+                  </S.AccordionContent>
+                )}
+              </S.AccordionItem>
+
+              {/* Склад */}
+              <S.AccordionItem>
+                <S.AccordionHeader onClick={() => toggle("comp")}>
+                  Склад:
+                  {open === "comp" ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+                </S.AccordionHeader>
+
+                {open === "comp" && (
+                  <S.AccordionContent>
+                    Макаронні вироби (67,4%): борошно пшеничне (41%), пальмова олія (9%), крохмаль тапіоки (8%), крохмаль картопляний, сіль, соєва олія, загусник (гуарова камедь), регулятори кислотності (E501, E500, E339, Е330), емульгатори (Е322, Е452), барвник (Е101). Суп 25,5%: вода, червоний перець порошок, цукор, підсилювач смаку (E621), соєвий соус, сіль, крохмаль тапіоки, підсилювач смаку (E635), часник, соєва олія, цибуля, екстракт паприки, порошок цибулі, порошок екстракту дріжджів, чорний перцевий порошок. Спеції (7,1%): цукор, курячий ароматизатор, картопляний крохмаль, часниковий порошок, сіль, смажений кунжут, цибуля сушена, водорості сушені, перець червоний сушений, загусники (ксантанова камедь), олія соєва.
+                  </S.AccordionContent>
+                )}
+              </S.AccordionItem>
+
+            </S.Accordion>
+
+          </S.InfoBlock>
 
         </S.Right>
       </S.Container>

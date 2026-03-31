@@ -208,3 +208,92 @@ export const BuyButton = styled.button`
   padding: 10px 20px;
   border-radius: 10px;
 `;
+
+// ===== BLOCK 2 WRAPPER =====
+export const InfoBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+`;
+
+// ===== 2.1 Характеристики =====
+export const Characteristics = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
+
+export const CharacteristicsTitle = styled.div`
+  font-family: "Montserrat Alternates";
+  font-weight: 600;
+  font-size: 16px;
+  color: #000;
+`;
+
+export const CharacteristicsGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+`;
+
+export const CharItem = styled.div`
+  flex: 1 1 calc(50% - 10px); // ровно 2 колонки
+
+  background: #ffffff;
+  border: 1px solid #e9e3d9;
+  border-radius: 12px;
+
+  padding: 12px 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-family: "Montserrat Alternates";
+  font-size: 14px;
+`;
+
+export const CharLabel = styled.span`
+  font-weight: 600;
+  color: #000;
+`;
+
+export const CharValue = styled.span`
+  color: #000;
+`;
+
+// ===== 2.2 Accordion =====
+export const Accordion = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+export const AccordionItem = styled.div`
+  width: 100%;
+  background: #fff;
+  border: 1px solid #e9e3d9;
+  border-radius: 16px;
+`;
+
+export const AccordionHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px;
+  cursor: pointer;
+
+  font-family: "Montserrat Alternates";
+  font-weight: 600;
+  font-size: 16px;
+  color: #000;
+`;
+
+export const AccordionContent = styled.div`
+  padding: 0 20px 20px 20px;
+  font-family: "Montserrat Alternates";
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000;
+`;
