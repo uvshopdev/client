@@ -48,6 +48,7 @@ export const Arrow = styled.button<{ $left?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 100;
 `;
 
 export const WishButton = styled.button`
@@ -56,8 +57,19 @@ export const WishButton = styled.button`
   right: 20px;
   width: 47px;
   height: 40px;
+  background: #F7F3E7;
   border: 1px solid #e9e3d9;
   border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 23px;
+    height: 21px;
+    flex-shrink: 0; /* чтобы не сжималось */
+  }
 `;
 
 export const Dots = styled.div`
