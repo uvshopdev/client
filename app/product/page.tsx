@@ -21,6 +21,11 @@ const Wrapper = styled.div`
 `;
 
 // тестовые данные
+/*const images = [
+  "/product/rectangle683.png",
+  "/product/rectangle684.png"
+];*/
+
 const images = ["/test.png", "/test.png", "/test.png"];
 
 const reviewsData = [

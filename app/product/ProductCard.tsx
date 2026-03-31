@@ -15,7 +15,7 @@ export default function ProductCard({ images }: { images: string[] }) {
   const [active, setActive] = useState(0);
   const [qty, setQty] = useState(1);
   const [wish, setWish] = useState(false);
-  const [open, setOpen] = useState<string | null>(null);
+  const [openKeys, setOpenKeys] = useState<string[]>([]); // массив открытых аккордеонов
 
   const rating = 4;
 
@@ -24,7 +24,11 @@ export default function ProductCard({ images }: { images: string[] }) {
     setActive((prev) => (prev - 1 + images.length) % images.length);
 
   const toggle = (key: string) => {
-    setOpen(open === key ? null : key);
+    if (openKeys.includes(key)) {
+      setOpenKeys(openKeys.filter(k => k !== key)); // закрываем
+    } else {
+      setOpenKeys([...openKeys, key]); // открываем
+    }
   };
 
   return (
@@ -164,10 +168,10 @@ export default function ProductCard({ images }: { images: string[] }) {
               <S.AccordionItem>
                 <S.AccordionHeader onClick={() => toggle("desc")}>
                   Опис:
-                  {open === "desc" ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+                  {openKeys.includes("desc") ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
                 </S.AccordionHeader>
 
-                {open === "desc" && (
+                {openKeys.includes("desc") && (
                   <S.AccordionContent>
                     Локшина Hot Chicken Ramen Stew - ще один варіант гострої, по-справжньому вогняної страви від корейського бренду Samyang! Цей суп Рамен схожий на густе рагу зі смаком тушкованої курочки та букетом пекучих спецій. Бульйон ароматний і насичений. Всередині склянки: класична локшина швидкого приготування, набір приправ. Для тих, хто любить по-справжньому гостру їжу.
                   </S.AccordionContent>
@@ -178,12 +182,13 @@ export default function ProductCard({ images }: { images: string[] }) {
               <S.AccordionItem>
                 <S.AccordionHeader onClick={() => toggle("comp")}>
                   Склад:
-                  {open === "comp" ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+                  {openKeys.includes("comp") ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
                 </S.AccordionHeader>
 
-                {open === "comp" && (
+                {openKeys.includes("comp") && (
                   <S.AccordionContent>
                     Макаронні вироби (67,4%): борошно пшеничне (41%), пальмова олія (9%), крохмаль тапіоки (8%), крохмаль картопляний, сіль, соєва олія, загусник (гуарова камедь), регулятори кислотності (E501, E500, E339, Е330), емульгатори (Е322, Е452), барвник (Е101). Суп 25,5%: вода, червоний перець порошок, цукор, підсилювач смаку (E621), соєвий соус, сіль, крохмаль тапіоки, підсилювач смаку (E635), часник, соєва олія, цибуля, екстракт паприки, порошок цибулі, порошок екстракту дріжджів, чорний перцевий порошок. Спеції (7,1%): цукор, курячий ароматизатор, картопляний крохмаль, часниковий порошок, сіль, смажений кунжут, цибуля сушена, водорості сушені, перець червоний сушений, загусники (ксантанова камедь), олія соєва.
+
                   </S.AccordionContent>
                 )}
               </S.AccordionItem>
