@@ -27,13 +27,18 @@ export const MainImage = styled.div`
   height: 500px;
   border: 1px solid #e9e3d9;
   border-radius: 30px;
+  overflow: hidden;
+
+
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 export const Image = styled.img`
-  width: 80%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;
 
 export const Arrow = styled.button<{ $left?: boolean }>`
@@ -68,7 +73,7 @@ export const WishButton = styled.button`
   svg {
     width: 23px;
     height: 21px;
-    flex-shrink: 0; /* чтобы не сжималось */
+    flex-shrink: 0;
   }
 `;
 
@@ -98,9 +103,17 @@ export const Thumb = styled.div<{ $active?: boolean }>`
   height: 120px;
   border: 1px solid ${({ $active }) => ($active ? "#3B3028" : "#E9E3D9")};
   border-radius: 16px;
+  overflow: hidden;
+
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const ThumbImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 /* RIGHT */

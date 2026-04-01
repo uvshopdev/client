@@ -61,7 +61,7 @@ export default function ProductCard({ images }: { images: string[] }) {
           <S.Thumbs>
             {images.map((img, i) => (
               <S.Thumb key={i} $active={i === active} onClick={() => setActive(i)}>
-                <img src={img} />
+                <S.ThumbImage src={img} />
               </S.Thumb>
             ))}
           </S.Thumbs>
@@ -86,7 +86,7 @@ export default function ProductCard({ images }: { images: string[] }) {
           <S.Block>
             <S.RowBetween>
               <S.CodeStock>
-                <span>код: 109873562</span>
+                <span>код: 7777777</span>
 
                 <S.Stock>
                   <S.DotStatus />
