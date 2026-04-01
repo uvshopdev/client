@@ -22,14 +22,14 @@ export const Left = styled.div`
   gap: 30px;
 `;
 
+/* БОЛЬШАЯ КАРТИНКА */
 export const MainImage = styled.div`
   position: relative;
   height: 500px;
   border: 1px solid #e9e3d9;
   border-radius: 30px;
   overflow: hidden;
-
-
+  padding: 80px; /* Внутренний отступ для фотографии */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,6 +93,7 @@ export const Dot = styled.div<{ $active?: boolean }>`
   background: ${({ $active }) => ($active ? "#3B3028" : "#ccc")};
 `;
 
+/* МИНИАТЮРЫ */
 export const Thumbs = styled.div`
   display: flex;
   gap: 30px;
@@ -105,6 +106,7 @@ export const Thumb = styled.div<{ $active?: boolean }>`
   border-radius: 16px;
   overflow: hidden;
 
+  padding: 16px; /* Внутренний отступ для миниатюры */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,7 +115,7 @@ export const Thumb = styled.div<{ $active?: boolean }>`
 export const ThumbImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* Сохраняем пропорции внутри отступа */
 `;
 
 /* RIGHT */
@@ -139,7 +141,9 @@ export const Breadcrumbs = styled.div`
 export const Title = styled.h1`
   font-size: 34px;
   color: #3b3028;
-  font-family: "Gabriela", serif;
+  font-family: 'Gabriela', serif;
+  font-weight: 400; /* Regular */
+  line-height: 1.2;
 `;
 
 export const RowBetween = styled.div`

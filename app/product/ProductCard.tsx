@@ -48,7 +48,7 @@ export default function ProductCard({ images }: { images: string[] }) {
             </S.Arrow>
 
             <S.WishButton onClick={() => setWish(!wish)}>
-              <Heart fill={wish ? "#3B3028" : "none"} />
+              <Heart fill={wish ? "#E93A36" : "none"} />
             </S.WishButton>
 
             <S.Dots>
@@ -101,7 +101,7 @@ export default function ProductCard({ images }: { images: string[] }) {
                   <Star
                     key={i}
                     size={16}
-                    fill={i <= rating ? "#3B3028" : "none"}
+                    fill={i <= rating ? "#ffdb0d" : "none"}
                     color="#3B3028"
                   />
                 ))}
