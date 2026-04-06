@@ -1,107 +1,107 @@
 import styled from "styled-components";
 
-export const ReviewsSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+export const Container = styled.div`
   padding: 0 40px;
-`;
-
-export const ReviewsTitle = styled.h2`
-  font-family: 'Gabriela', serif;
-  font-size: 34px;
-  color: #3B3028;
-`;
-
-export const ReviewsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-`;
-
-export const ReviewsScroll = styled.div`
   width: 100%;
-  overflow-x: auto;
 `;
 
-export const ReviewsRow = styled.div`
+export const Title = styled.h2`
+  font-size: 34px;
+  font-family: "Gabriela", serif;
+  color: #3b3028;
+  margin-bottom: 30px;
+`;
+
+export const SliderWrapper = styled.div`
+  overflow: hidden;
+`;
+
+export const Slider = styled.div`
   display: flex;
   gap: 30px;
-  width: max-content;
+  transition: 0.3s ease;
 `;
 
-export const ReviewCard = styled.div`
-  width: 460px;
+export const Card = styled.div`
+  min-width: 460px;
   height: 163px;
-  padding: 20px;
-  border: 1px solid #E9E3D9;
+  background: #fff;
+  border: 1px solid #e9e3d9;
   border-radius: 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
 `;
 
-export const ReviewTop = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+export const Top = styled.div`
+  margin-bottom: 20px;
 `;
 
-export const ReviewHeader = styled.div`
+export const Row = styled.div`
   display: flex;
   justify-content: space-between;
+  font-family: "Montserrat Alternates";
+  font-size: 16px;
 `;
 
-export const Name = styled.div`
-  font-weight: 700;
-`;
-
-export const Date = styled.div`
-  font-size: 12px;
-  color: #3B3028;
+export const RatingRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
 `;
 
 export const Stars = styled.div`
   display: flex;
-  gap: 6px;
+  gap: 4px;
 `;
 
-export const Star = styled.div<{ $active?: boolean }>`
-  width: 22px;
-  height: 22px;
-  border-radius: 4px;
-  background: ${({ $active }) => ($active ? "#FFD400" : "#D3D3D3")};
-`;
-
-export const ReviewText = styled.div`
+export const Text = styled.div`
   font-size: 14px;
+  font-family: "Montserrat Alternates";
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 `;
 
 export const Controls = styled.div`
+  margin-top: 30px;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 48px;
-`;
 
-export const ArrowBtn = styled.button`
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  background: #3B3028;
-  color: white;
-  border: none;
-  cursor: pointer;
+  button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #3b3028;
+    background: #3b3028;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+  }
 `;
 
 export const Dots = styled.div`
   display: flex;
   gap: 12px;
-`;
 
-export const Dot = styled.div<{ $active?: boolean }>`
-  width: 12px;
-  height: 12px;
-  border-radius: 6px;
-  background: ${({ $active }) => ($active ? "#3B3028" : "#E5E5E5")};
+  div {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #e5e5e5;
+  }
+
+  .active {
+    background: #3b3028;
+  }
 `;

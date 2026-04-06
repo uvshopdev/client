@@ -86,7 +86,7 @@ export default function ProductCard({ images }: { images: string[] }) {
           <S.Block>
             <S.RowBetween>
               <S.CodeStock>
-                <span>код: 7777777</span>
+                <span>код: 742344612</span>
 
                 <S.Stock>
                   <S.DotStatus />
@@ -100,7 +100,7 @@ export default function ProductCard({ images }: { images: string[] }) {
                 {[1, 2, 3, 4, 5].map((i) => (
                   <Star
                     key={i}
-                    size={16}
+                    size={18}
                     fill={i <= rating ? "#ffdb0d" : "none"}
                     color="#3B3028"
                   />

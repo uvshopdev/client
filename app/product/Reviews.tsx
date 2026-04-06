@@ -1,6 +1,7 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./Reviews.css";
+import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 
 interface Review {
   name: string;
@@ -9,48 +10,73 @@ interface Review {
   text: string;
 }
 
-interface ReviewsProps {
+interface Props {
   reviews: Review[];
 }
 
-const Reviews: React.FC<ReviewsProps> = ({ reviews }) => {
+const VISIBLE = 3;
+const CARD_WIDTH = 460;
+const GAP = 30;
+const STEP = CARD_WIDTH + GAP; // 490
+
+export default function Reviews({ reviews }: Props) {
+  const [index, setIndex] = useState(0);
+  const maxIndex = Math.max(0, reviews.length - VISIBLE);
+
+  const prev = () => setIndex((i) => Math.max(0, i - 1));
+  const next = () => setIndex((i) => Math.min(maxIndex, i + 1));
+
   return (
-    <S.ReviewsSection>
-      <S.ReviewsTitle>Відгуки</S.ReviewsTitle>
-      <S.ReviewsWrapper>
-        <S.ReviewsScroll>
-          <S.ReviewsRow>
-            {reviews.map((r, i) => (
-              <S.ReviewCard key={i}>
-                <S.ReviewTop>
-                  <S.ReviewHeader>
-                    <S.Name>{r.name}</S.Name>
-                    <S.Date>{r.date}</S.Date>
-                  </S.ReviewHeader>
+    <S.Container>
+      <S.Title>Відгуки</S.Title>
+
+      <S.SliderWrapper>
+        <S.Slider style={{ transform: `translateX(-${index * STEP}px)` }}>
+          {reviews.map((r, i) => (
+            <S.Card key={i}>
+              <S.Top>
+                <S.Row>
+                  <span>{r.name}</span>
+                  <span>{r.date}</span>
+                </S.Row>
+
+                <S.RatingRow>
                   <S.Stars>
                     {[1, 2, 3, 4, 5].map((n) => (
-                      <S.Star key={n} $active={n <= r.rating} />
+                      <Star
+                        key={n}
+                        size={18}
+                        fill={n <= r.rating ? "#ffdb0d" : "none"}
+                        color="#3B3028"
+                      />
                     ))}
                   </S.Stars>
-                </S.ReviewTop>
-                <S.ReviewText>{r.text}</S.ReviewText>
-              </S.ReviewCard>
-            ))}
-          </S.ReviewsRow>
-        </S.ReviewsScroll>
 
-        <S.Controls>
-          <S.ArrowBtn>{"<"}</S.ArrowBtn>
-          <S.Dots>
-            <S.Dot $active />
-            <S.Dot />
-            <S.Dot />
-          </S.Dots>
-          <S.ArrowBtn>{">"}</S.ArrowBtn>
-        </S.Controls>
-      </S.ReviewsWrapper>
-    </S.ReviewsSection>
+                  <span>{r.rating}/5</span>
+                </S.RatingRow>
+              </S.Top>
+
+              <S.Text>{r.text}</S.Text>
+            </S.Card>
+          ))}
+        </S.Slider>
+      </S.SliderWrapper>
+
+      <S.Controls>
+        <button onClick={prev} disabled={index === 0}>
+          <ArrowLeft size={18} />
+        </button>
+
+        <S.Dots>
+          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+            <div key={i} className={i === index ? "active" : ""} />
+          ))}
+        </S.Dots>
+
+        <button onClick={next} disabled={index === maxIndex}>
+          <ArrowRight size={18} />
+        </button>
+      </S.Controls>
+    </S.Container>
   );
-};
-
-export default Reviews;
+}

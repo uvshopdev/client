@@ -217,6 +217,12 @@ export const Quantity = styled.div`
     width: 40px;
     height: 40px;
   }
+  span {
+    min-width: 25px;
+    text-align: center;
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+  }
 `;
 
 export const BuyButton = styled.button`
