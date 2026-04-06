@@ -41,55 +41,55 @@ msgctxt "auth"
 msgid "odXlk8"
 msgstr "Log in"
 
-#: app/profile/countries/page.tsx:19
+#: app/profile/coffee/page.tsx:30
+msgctxt "profile"
+msgid "pKaBty"
+msgstr "Promotion 6 + 1"
+
+#: app/profile/coffee/page.tsx:31
+msgctxt "profile"
+msgid "3cgiew"
+msgstr "Buy 6 coffees and get the 7th one free."
+
+#: app/profile/coffee/page.tsx:58
+msgctxt "profile"
+msgid "kCPl0r"
+msgstr "Collect"
+
+#: app/profile/coffee/page.tsx:69
+msgctxt "profile"
+msgid "wUYhEQ"
+msgstr "Free coffees"
+
+#: app/profile/coffee/page.tsx:70
+msgctxt "profile"
+msgid "lKFP19"
+msgstr "Enter the code at the checkout when purchasing coffee and get it for free."
+
+#: app/profile/countries/page.tsx:20
 msgctxt "profile"
 msgid "VdXF7G"
 msgstr "Open countries map"
 
-#: app/profile/friends/page.tsx:21
+#: app/profile/friends/page.tsx:12
 msgctxt "profile"
 msgid "3s0ZWy"
 msgstr "Invite friends and get bonuses!"
 
-#: app/profile/friends/page.tsx:23
+#: app/profile/friends/page.tsx:14
 msgctxt "profile"
 msgid "CsMutJ"
 msgstr "Get +50 miles and coffee after your friend makes their first purchase for an amount of 150 UAH or more."
 
-#: app/profile/friends/page.tsx:42
-msgctxt "profile"
-msgid "smWqVf"
-msgstr "Waiting for the first purchase"
-
-#: app/profile/page.tsx:50
+#: app/profile/page.tsx:13
 msgctxt "profile"
 msgid "DgPFXk"
 msgstr "Hermes Traveler's Passport"
 
-#: app/profile/page.tsx:62
+#: components/FriendsList/FriendsList.tsx:34
 msgctxt "profile"
-msgid "VnXp8Z"
-msgstr "Avatar"
-
-#: app/profile/page.tsx:68
-msgctxt "profile"
-msgid "yk4PT9"
-msgstr "Full name"
-
-#: app/profile/page.tsx:78
-msgctxt "profile"
-msgid "hJZwTS"
-msgstr "Email address"
-
-#: app/profile/page.tsx:88
-msgctxt "profile"
-msgid "jdJhOL"
-msgstr "Phone number"
-
-#: app/profile/page.tsx:97
-msgctxt "profile"
-msgid "jvo0vs"
-msgstr "Save"
+msgid "smWqVf"
+msgstr "Waiting for the first purchase"
 
 #: components/ProfileBar/ProfileBar.tsx:15
 msgctxt "profile"
@@ -125,6 +125,31 @@ msgstr "Coffee passport"
 msgctxt "profile"
 msgid "C81/uG"
 msgstr "Logout"
+
+#: components/ProfileForm/ProfileForm.tsx:45
+msgctxt "profile"
+msgid "VnXp8Z"
+msgstr "Avatar"
+
+#: components/ProfileForm/ProfileForm.tsx:55
+msgctxt "profile"
+msgid "yk4PT9"
+msgstr "Full name"
+
+#: components/ProfileForm/ProfileForm.tsx:60
+msgctxt "profile"
+msgid "hJZwTS"
+msgstr "Email address"
+
+#: components/ProfileForm/ProfileForm.tsx:65
+msgctxt "profile"
+msgid "jdJhOL"
+msgstr "Phone number"
+
+#: components/ProfileForm/ProfileForm.tsx:69
+msgctxt "profile"
+msgid "jvo0vs"
+msgstr "Save"
 
 #: components/TopBar/TopBar.tsx:34
 msgctxt "navigation"

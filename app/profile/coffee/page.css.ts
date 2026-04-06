@@ -18,14 +18,9 @@ export const HeaderInfo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
 
   h2 {
-    font-family: 'Gabriela', serif;
-    font-size: 26px;
-    font-weight: 400; /* Gabriela обычно идет в normal */
-    color: #3B3028;
-    margin: 0 0 8px 0;
+    font-weight: 400;
   }
 
   p {
@@ -37,15 +32,10 @@ export const HeaderInfo = styled.div`
 `;
 
 export const CounterBadge = styled.div`
-  background-color: #5C3D26;
+  background-color: ${({ theme }) => theme.colors.primaryLight};
   color: white;
-  padding: 6px 20px;
+  padding: 5px 20px;
   border-radius: 20px;
-  
-  /* Точные настройки шрифта из Фигмы */
-  font-family: 'Montserrat Alternates', sans-serif;
-  font-size: 14px;
-  font-weight: 400; /* Не жирный */
 `;
 
 // === СЕКЦИЯ ЗИГЗАГА ===
@@ -65,34 +55,64 @@ export const TimelineLine = styled.svg`
   z-index: 1;
 
   polyline {
-    stroke: #5C3D26;
-    stroke-width: 6px;
+    stroke: ${({ theme }) => theme.colors.primaryLight};
+    stroke-width: 5px;
     fill: none;
     vector-effect: non-scaling-stroke; 
   }
 `;
 
-export const NodeWrapper = styled.div<{ $top: string; $left: string }>`
+export const NodeWrapper = styled.div<{ $top: string; $left: string; $closed?: boolean }>`
   position: absolute;
   top: ${({ $top }) => $top};
   left: ${({ $left }) => $left};
+  
   transform: translate(-50%, -50%);
   z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-`;
 
-/* Убрали старый NodeCircle и заменили на NodeImage для твоих SVG */
-export const NodeImage = styled.img<{ $large?: boolean }>`
-  /* Размер подгоняем под твои SVG, большой делаем чуть крупнее */
-  width: ${({ $large }) => ($large ? "90px" : "75px")};
-  height: ${({ $large }) => ($large ? "90px" : "75px")};
-  object-fit: contain;
-  /* Добавляем белую подложку-кружок, чтобы линия зигзага не просвечивала сквозь прозрачные места SVG */
-  background-color: #FFF;
   border-radius: 50%;
+
+  padding: 15px;
+  box-shadow: inset 0 0 0 3px ${({ theme }) => theme.colors.primaryLight};
+  background: #ffffff;
+
+  .mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #3b3028bd;
+    opacity: ${({ $closed }) => ($closed ? "1" : "0")};
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    transition: all .3s ease;
+
+    color: ${({ theme }) => theme.colors.secondary};
+  }
+
+  .collect {
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 10px);
+    
+    transform: translateX(-50%);
+    padding: 5px 20px;
+    background: #D3D3D3;
+    border: none;
+    color: ${({ theme }) => theme.colors.primary};
+    font-weight: 500;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 export const ClaimButton = styled.button`
@@ -103,13 +123,11 @@ export const ClaimButton = styled.button`
   border-radius: 20px;
   cursor: not-allowed;
   
-  /* Точные настройки шрифта */
   font-family: 'Montserrat Alternates', sans-serif;
   font-size: 12px;
   font-weight: 500;
 `;
 
-// === СЕКЦИЯ БЕСПЛАТНЫХ КОФЕ ===
 export const FreeCoffeeGrid = styled.div`
   display: flex;
   gap: 40px;

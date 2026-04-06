@@ -79,6 +79,8 @@ export const SubCategory = styled(Link)<{ $active?: boolean }>`
     justify-content: center;
     align-items: center;
 
+    text-align: center;
+
     color: ${(params) => (params.$active ? "#ffffff" : "unset")};
     background: ${({ $active, theme }) => ($active ? theme.colors.primary : "unset")};
 

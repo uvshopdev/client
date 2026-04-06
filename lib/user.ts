@@ -6,7 +6,7 @@ export const getProfile = async () => {
 	return User.parse(data);
 };
 
-export const updateProfile = async (body: { full_name: string; email: string }) => {
+export const updateProfile = async (body: FormData) => {
 	const { data } = await authHost.post("/users/me", body);
 	return data;
 };

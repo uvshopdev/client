@@ -46,6 +46,10 @@ const GlobalStyle = createGlobalStyle`
 	ul,li { 
 		list-style: none;
 	}
+
+	img, svg {
+		display: block;
+	}
 `;
 
 export default GlobalStyle;

@@ -25,7 +25,7 @@ const ProfileBar = () => {
 			<Items>
 				{items.map(({ href, Icon, label }) => (
 					<Item key={href} $active={pathname === href}>
-						<Link href={href}>
+						<Link href={href} prefetch>
 							<ItemIcon>
 								<Icon strokeWidth={1} absoluteStrokeWidth />
 							</ItemIcon>

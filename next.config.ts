@@ -5,6 +5,20 @@ const nextConfig: NextConfig = {
 	compiler: {
 		styledComponents: true,
 	},
+	images: {
+		imageSizes: [60, 80],
+		dangerouslyAllowSVG: true,
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "shop.garage.webshining.space",
+			},
+			{
+				protocol: "https",
+				hostname: "placehold.co",
+			},
+		],
+	},
 };
 
 const withNextIntl = createNextIntlPlugin({

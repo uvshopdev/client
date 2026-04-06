@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import theme from "@/components/theme";
+
 export const Content = styled.div`
     width: 100%;
     height: 100%;
@@ -18,7 +20,7 @@ export const MapContent = styled.div`
     height: 100%;
     
     border-radius: 30px;
-    border: 1px solid ${({ theme }) => theme.colors.secondary};
+    border: 1px solid ${theme.colors.secondary};
 
     overflow: hidden;
     
@@ -26,5 +28,4 @@ export const MapContent = styled.div`
         display: block;
         outline: none;
     }
-
 `;

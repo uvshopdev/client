@@ -26,7 +26,7 @@ const Catalog = () => {
 				<Categories>
 					{categories.map((category) => (
 						<Category key={category.id} $active={activeCategory === category.id}>
-							<Link href={`/${category.id}`} prefetch={false}>
+							<Link href={`/${category.id}`} prefetch>
 								{category.name}
 							</Link>
 						</Category>
@@ -36,7 +36,7 @@ const Catalog = () => {
 					{activeSubCategories.map((category) => (
 						<SubCategory
 							key={category.id}
-							prefetch={false}
+							prefetch
 							href={`/${category.category_id}/${category.id}`}
 							$active={pathname === `/${category.category_id}/${category.id}`}
 						>

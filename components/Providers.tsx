@@ -11,7 +11,20 @@ import { type Category, type Country, useCategories, useCountries } from "@/stor
 import GlobalStyle from "./GlobalStyle";
 import theme from "./theme";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: false,
+			refetchOnReconnect: false,
+			retry: false,
+		},
+	},
+});
+declare global {
+	interface Window {
+		__TANSTACK_QUERY_CLIENT__: import("@tanstack/react-query").QueryClient;
+	}
+}
 
 export default function Providers({
 	children,
@@ -24,6 +37,10 @@ export default function Providers({
 }) {
 	const setCategories = useCategories((s) => s.setCategories);
 	const setCountries = useCountries((s) => s.setCountries);
+
+	useEffect(() => {
+		window.__TANSTACK_QUERY_CLIENT__ = queryClient;
+	}, []);
 
 	useEffect(() => {
 		if (categories) setCategories(categories);

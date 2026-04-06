@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import theme from "@/components/theme";
+
 export const Content = styled.div`
     display: flex;
     justify-content: center;
@@ -16,7 +18,7 @@ export const Form = styled.form`
     
     padding: 60px;
     border-radius: 25px;
-    border: 1px solid ${({ theme }) => theme.colors.secondary};
+    border: 1px solid ${theme.colors.secondary};
 
     transition: all .3s ease;
 `;
@@ -72,6 +74,6 @@ export const Buttons = styled.div`
         padding: 10px 25px;
         border: none;
         color: #ffffff;
-        background: ${({ theme }) => theme.colors.primary};
+        background: ${theme.colors.primary};
     }
 `;

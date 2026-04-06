@@ -41,55 +41,55 @@ msgctxt "auth"
 msgid "odXlk8"
 msgstr "Увійти"
 
-#: app/profile/countries/page.tsx:19
+#: app/profile/coffee/page.tsx:30
+msgctxt "profile"
+msgid "pKaBty"
+msgstr ""
+
+#: app/profile/coffee/page.tsx:31
+msgctxt "profile"
+msgid "3cgiew"
+msgstr ""
+
+#: app/profile/coffee/page.tsx:58
+msgctxt "profile"
+msgid "kCPl0r"
+msgstr ""
+
+#: app/profile/coffee/page.tsx:69
+msgctxt "profile"
+msgid "wUYhEQ"
+msgstr ""
+
+#: app/profile/coffee/page.tsx:70
+msgctxt "profile"
+msgid "lKFP19"
+msgstr ""
+
+#: app/profile/countries/page.tsx:20
 msgctxt "profile"
 msgid "VdXF7G"
 msgstr "Мапа відкритих країн"
 
-#: app/profile/friends/page.tsx:21
+#: app/profile/friends/page.tsx:12
 msgctxt "profile"
 msgid "3s0ZWy"
 msgstr "Запросіть друзів та отримайте бонуси!"
 
-#: app/profile/friends/page.tsx:23
+#: app/profile/friends/page.tsx:14
 msgctxt "profile"
 msgid "CsMutJ"
 msgstr "Отримайте +50 миль і каву після того, як ваш друг зробить першу покупку на суму від 150 грн."
 
-#: app/profile/friends/page.tsx:42
-msgctxt "profile"
-msgid "smWqVf"
-msgstr "Очікує першу покупку"
-
-#: app/profile/page.tsx:50
+#: app/profile/page.tsx:13
 msgctxt "profile"
 msgid "DgPFXk"
 msgstr "Паспорт мандрівника Hermes"
 
-#: app/profile/page.tsx:62
+#: components/FriendsList/FriendsList.tsx:34
 msgctxt "profile"
-msgid "VnXp8Z"
-msgstr "Фото"
-
-#: app/profile/page.tsx:68
-msgctxt "profile"
-msgid "yk4PT9"
-msgstr "Повне ім'я"
-
-#: app/profile/page.tsx:78
-msgctxt "profile"
-msgid "hJZwTS"
-msgstr "Адреса електронної пошти"
-
-#: app/profile/page.tsx:88
-msgctxt "profile"
-msgid "jdJhOL"
-msgstr "Номер телефону"
-
-#: app/profile/page.tsx:97
-msgctxt "profile"
-msgid "jvo0vs"
-msgstr "Зберегти"
+msgid "smWqVf"
+msgstr "Очікує першу покупку"
 
 #: components/ProfileBar/ProfileBar.tsx:15
 msgctxt "profile"
@@ -125,6 +125,31 @@ msgstr "Кава паспорт"
 msgctxt "profile"
 msgid "C81/uG"
 msgstr "Вийти"
+
+#: components/ProfileForm/ProfileForm.tsx:45
+msgctxt "profile"
+msgid "VnXp8Z"
+msgstr "Фото"
+
+#: components/ProfileForm/ProfileForm.tsx:55
+msgctxt "profile"
+msgid "yk4PT9"
+msgstr "Повне ім'я"
+
+#: components/ProfileForm/ProfileForm.tsx:60
+msgctxt "profile"
+msgid "hJZwTS"
+msgstr "Адреса електронної пошти"
+
+#: components/ProfileForm/ProfileForm.tsx:65
+msgctxt "profile"
+msgid "jdJhOL"
+msgstr "Номер телефону"
+
+#: components/ProfileForm/ProfileForm.tsx:69
+msgctxt "profile"
+msgid "jvo0vs"
+msgstr "Зберегти"
 
 #: components/TopBar/TopBar.tsx:34
 msgctxt "navigation"

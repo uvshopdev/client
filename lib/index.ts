@@ -1,3 +1,4 @@
+import { QueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
 import { useUser } from "@/store/user";
@@ -45,5 +46,15 @@ authHost.interceptors.response.use(
 		return Promise.reject(error);
 	},
 );
+
+export const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: false,
+			refetchOnReconnect: false,
+			retry: false,
+		},
+	},
+});
 
 export default host;

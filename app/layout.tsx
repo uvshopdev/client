@@ -1,4 +1,3 @@
-import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 import { Montserrat_Alternates } from "next/font/google";
@@ -29,13 +28,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 	return (
 		<html lang={locale}>
-			<Analytics />
+			{/* <Analytics /> */}
 			<head>
 				<meta name="robots" content="noindex, nofollow" />
 			</head>
 			<body className={montserrat.className}>
-				<StyledComponentsRegistry>
-					<ServerProviders>
+				<ServerProviders>
+					<StyledComponentsRegistry>
 						<Providers categories={categories} countries={countries}>
 							<Main>
 								<TopBar />
@@ -43,8 +42,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 								{children}
 							</Main>
 						</Providers>
-					</ServerProviders>
-				</StyledComponentsRegistry>
+					</StyledComponentsRegistry>
+				</ServerProviders>
 			</body>
 		</html>
 	);
