@@ -17,10 +17,12 @@ interface Props {
 const VISIBLE = 3;
 const CARD_WIDTH = 460;
 const GAP = 30;
-const STEP = CARD_WIDTH + GAP; // 490
+const STEP = CARD_WIDTH + GAP;
 
 export default function Reviews({ reviews }: Props) {
   const [index, setIndex] = useState(0);
+  const [activeReview, setActiveReview] = useState<Review | null>(null);
+
   const maxIndex = Math.max(0, reviews.length - VISIBLE);
 
   const prev = () => setIndex((i) => Math.max(0, i - 1));
@@ -33,7 +35,7 @@ export default function Reviews({ reviews }: Props) {
       <S.SliderWrapper>
         <S.Slider style={{ transform: `translateX(-${index * STEP}px)` }}>
           {reviews.map((r, i) => (
-            <S.Card key={i}>
+            <S.Card key={i} onClick={() => setActiveReview(r)}>
               <S.Top>
                 <S.Row>
                   <span>{r.name}</span>
@@ -77,6 +79,35 @@ export default function Reviews({ reviews }: Props) {
           <ArrowRight size={18} />
         </button>
       </S.Controls>
+
+      {/* MODAL */}
+      {activeReview && (
+        <S.ModalOverlay onClick={() => setActiveReview(null)}>
+          <S.Modal onClick={(e) => e.stopPropagation()}>
+            <S.CloseButton onClick={() => setActiveReview(null)}>✕</S.CloseButton>
+
+            <S.ModalHeader>
+              <div>
+                <strong>{activeReview.name}</strong>
+                <span>{activeReview.date}</span>
+              </div>
+            </S.ModalHeader>
+
+            <S.Stars style={{ marginBottom: "20px" }}>
+              {[1, 2, 3, 4, 5].map((n) => (
+                <Star
+                  key={n}
+                  size={18}
+                  fill={n <= activeReview.rating ? "#ffdb0d" : "none"}
+                  color="#3B3028"
+                />
+              ))}
+            </S.Stars>
+
+            <S.ModalText>{activeReview.text}</S.ModalText>
+          </S.Modal>
+        </S.ModalOverlay>
+      )}
     </S.Container>
   );
 }

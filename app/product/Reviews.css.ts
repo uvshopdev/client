@@ -105,3 +105,67 @@ export const Dots = styled.div`
     background: #3b3028;
   }
 `;
+
+export const ModalOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  background: #00000050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
+
+export const Modal = styled.div`
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 30px #000;
+`;
+
+export const ModalHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  strong {
+    display: block;
+    font-size: 18px;
+  }
+
+  span {
+    font-size: 14px;
+    color: #777;
+  }
+`;
+
+export const ModalText = styled.div`
+  position: relative; 
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 30px #00000033;
+`;
+
+export const CloseButton = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #3b3028;
+  line-height: 1;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: rotate(90deg);
+  }
+`;
