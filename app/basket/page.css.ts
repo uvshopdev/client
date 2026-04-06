@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: 1200px;
+  width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
   font-family: inherit;
@@ -108,12 +108,6 @@ export const ItemInfo = styled.div`
   font-weight: 600;
   font-size: 15px;
   color: #222;
-
-  img {
-    width: 50px;
-    height: 70px;
-    object-fit: contain;
-  }
 `;
 
 export const ItemPrice = styled.div`
@@ -146,21 +140,15 @@ export const QuantityBox = styled.div`
   gap: 15px;
 
   button {
-    background: none;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 32px;
-    height: 32px;
+    padding: 10px 15px;
+    border-color: ${({ theme }) => theme.colors.secondary};
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    color: #555;
     transition: 0.2s;
 
     &:hover:not(:disabled) {
-      border-color: #433327;
-      color: #433327;
+      border-color: ${({ theme }) => theme.colors.primary};
     }
 
     &:disabled {
@@ -171,7 +159,7 @@ export const QuantityBox = styled.div`
 
   span {
     font-weight: 500;
-    width: 16px;
+    width: 15px;
     text-align: center;
     font-size: 14px;
     color: #222;
@@ -179,20 +167,12 @@ export const QuantityBox = styled.div`
 `;
 
 export const RemoveButton = styled.button`
-  background-color: #433327;
+  padding: 10px;
+  background-color: ${({ theme }) => theme.colors.primary};
   border: none;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: 0.2s;
 
-  &:hover {
-    background-color: #2c2119;
-  }
+  transition: all 0.3s ease;
 `;
 
 export const PromoSection = styled.div`
