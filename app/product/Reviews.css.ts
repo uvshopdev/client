@@ -84,7 +84,7 @@ export const Controls = styled.div`
     justify-content: center;
 
     &:disabled {
-      opacity: 0.4;
+      opacity: 0.7;
       cursor: default;
     }
   }
@@ -145,12 +145,9 @@ export const ModalHeader = styled.div`
 
 export const ModalText = styled.div`
   position: relative; 
-  background: #fff;
+  background: #e9e3d9;
   border-radius: 16px;
   padding: 20px;
-  max-width: 500px;
-  width: 100%;
-  box-shadow: 0 10px 30px #00000033;
 `;
 
 export const CloseButton = styled.button`

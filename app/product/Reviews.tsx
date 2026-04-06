@@ -28,6 +28,11 @@ export default function Reviews({ reviews }: Props) {
   const prev = () => setIndex((i) => Math.max(0, i - 1));
   const next = () => setIndex((i) => Math.min(maxIndex, i + 1));
 
+  const renderStars = (rating: number) =>
+    [1, 2, 3, 4, 5].map((n) => (
+      <Star key={n} size={18} fill={n <= rating ? "#ffdb0d" : "none"} color="#3B3028" />
+    ));
+
   return (
     <S.Container>
       <S.Title>Відгуки</S.Title>
@@ -43,17 +48,7 @@ export default function Reviews({ reviews }: Props) {
                 </S.Row>
 
                 <S.RatingRow>
-                  <S.Stars>
-                    {[1, 2, 3, 4, 5].map((n) => (
-                      <Star
-                        key={n}
-                        size={18}
-                        fill={n <= r.rating ? "#ffdb0d" : "none"}
-                        color="#3B3028"
-                      />
-                    ))}
-                  </S.Stars>
-
+                  <S.Stars>{renderStars(r.rating)}</S.Stars>
                   <span>{r.rating}/5</span>
                 </S.RatingRow>
               </S.Top>
@@ -70,9 +65,9 @@ export default function Reviews({ reviews }: Props) {
         </button>
 
         <S.Dots>
-          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
-            <div key={i} className={i === index ? "active" : ""} />
-          ))}
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className={i === index % 3 ? "active" : ""} />
+           ))}
         </S.Dots>
 
         <button onClick={next} disabled={index === maxIndex}>
@@ -80,7 +75,6 @@ export default function Reviews({ reviews }: Props) {
         </button>
       </S.Controls>
 
-      {/* MODAL */}
       {activeReview && (
         <S.ModalOverlay onClick={() => setActiveReview(null)}>
           <S.Modal onClick={(e) => e.stopPropagation()}>
@@ -93,17 +87,7 @@ export default function Reviews({ reviews }: Props) {
               </div>
             </S.ModalHeader>
 
-            <S.Stars style={{ marginBottom: "20px" }}>
-              {[1, 2, 3, 4, 5].map((n) => (
-                <Star
-                  key={n}
-                  size={18}
-                  fill={n <= activeReview.rating ? "#ffdb0d" : "none"}
-                  color="#3B3028"
-                />
-              ))}
-            </S.Stars>
-
+            <S.Stars style={{ marginBottom: "20px" }}>{renderStars(activeReview.rating)}</S.Stars>
             <S.ModalText>{activeReview.text}</S.ModalText>
           </S.Modal>
         </S.ModalOverlay>

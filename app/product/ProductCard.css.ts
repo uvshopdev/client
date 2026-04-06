@@ -1,5 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
+/* ===== Общие переменные ===== */
+const fontBase = css`
+  font-family: "Montserrat Alternates";
+  color: #000;
+`;
+
+const gap16 = css`gap: 16px;`;
+const gap20 = css`gap: 20px;`;
+const gap30 = css`gap: 30px;`;
+
+/* ===== WRAPPER ===== */
 export const Wrapper = styled.div`
   padding: 0 40px;
 `;
@@ -14,22 +25,20 @@ export const Container = styled.div`
   }
 `;
 
-/* LEFT */
-
+/* ===== LEFT ===== */
 export const Left = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  ${gap30}
 `;
 
-/* БОЛЬШАЯ КАРТИНКА */
 export const MainImage = styled.div`
   position: relative;
   height: 500px;
   border: 1px solid #e9e3d9;
   border-radius: 30px;
   overflow: hidden;
-  padding: 80px; /* Внутренний отступ для фотографии */
+  padding: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,6 +63,7 @@ export const Arrow = styled.button<{ $left?: boolean }>`
   align-items: center;
   justify-content: center;
   z-index: 100;
+  cursor: pointer;
 `;
 
 export const WishButton = styled.button`
@@ -62,13 +72,13 @@ export const WishButton = styled.button`
   right: 20px;
   width: 47px;
   height: 40px;
-  background: #F7F3E7;
+  background: #f7f3e7;
   border: 1px solid #e9e3d9;
   border-radius: 10px;
-
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 
   svg {
     width: 23px;
@@ -93,7 +103,6 @@ export const Dot = styled.div<{ $active?: boolean }>`
   background: ${({ $active }) => ($active ? "#3B3028" : "#ccc")};
 `;
 
-/* МИНИАТЮРЫ */
 export const Thumbs = styled.div`
   display: flex;
   gap: 30px;
@@ -105,8 +114,7 @@ export const Thumb = styled.div<{ $active?: boolean }>`
   border: 1px solid ${({ $active }) => ($active ? "#3B3028" : "#E9E3D9")};
   border-radius: 16px;
   overflow: hidden;
-
-  padding: 16px; /* Внутренний отступ для миниатюры */
+  padding: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -115,21 +123,20 @@ export const Thumb = styled.div<{ $active?: boolean }>`
 export const ThumbImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Сохраняем пропорции внутри отступа */
+  object-fit: contain;
 `;
 
-/* RIGHT */
-
+/* ===== RIGHT ===== */
 export const Right = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  ${gap30}
 `;
 
 export const Block = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  ${gap16}
 `;
 
 export const Breadcrumbs = styled.div`
@@ -142,7 +149,7 @@ export const Title = styled.h1`
   font-size: 34px;
   color: #3b3028;
   font-family: 'Gabriela', serif;
-  font-weight: 400; /* Regular */
+  font-weight: 400;
   line-height: 1.2;
 `;
 
@@ -171,8 +178,8 @@ export const DotStatus = styled.div`
 
 export const RatingRow = styled.div`
   display: flex;
-  gap: 14px;
   align-items: center;
+  gap: 14px;
 `;
 
 export const Stars = styled.div`
@@ -216,7 +223,9 @@ export const Quantity = styled.div`
   button {
     width: 40px;
     height: 40px;
+    cursor: pointer;
   }
+
   span {
     min-width: 25px;
     text-align: center;
@@ -230,16 +239,16 @@ export const BuyButton = styled.button`
   color: white;
   padding: 10px 20px;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
-// ===== BLOCK 2 WRAPPER =====
+/* ===== INFO BLOCK ===== */
 export const InfoBlock = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  ${gap30}
 `;
 
-// ===== 2.1 Характеристики =====
 export const Characteristics = styled.div`
   display: flex;
   flex-direction: column;
@@ -247,10 +256,9 @@ export const Characteristics = styled.div`
 `;
 
 export const CharacteristicsTitle = styled.div`
-  font-family: "Montserrat Alternates";
+  ${fontBase}
   font-weight: 600;
   font-size: 16px;
-  color: #000;
 `;
 
 export const CharacteristicsGrid = styled.div`
@@ -260,32 +268,25 @@ export const CharacteristicsGrid = styled.div`
 `;
 
 export const CharItem = styled.div`
-  flex: 1 1 calc(50% - 10px); // ровно 2 колонки
-
-  background: #ffffff;
+  flex: 1 1 calc(50% - 10px);
+  background: #fff;
   border: 1px solid #e9e3d9;
   border-radius: 12px;
-
   padding: 12px 20px;
-
   display: flex;
   align-items: center;
   gap: 8px;
-
-  font-family: "Montserrat Alternates";
+  ${fontBase}
   font-size: 14px;
 `;
 
 export const CharLabel = styled.span`
   font-weight: 600;
-  color: #000;
 `;
 
-export const CharValue = styled.span`
-  color: #000;
-`;
+export const CharValue = styled.span``;
 
-// ===== 2.2 Accordion =====
+/* ===== ACCORDION ===== */
 export const Accordion = styled.div`
   display: flex;
   flex-direction: column;
@@ -303,20 +304,16 @@ export const AccordionHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 20px;
   cursor: pointer;
-
-  font-family: "Montserrat Alternates";
+  ${fontBase}
   font-weight: 600;
   font-size: 16px;
-  color: #000;
 `;
 
 export const AccordionContent = styled.div`
   padding: 0 20px 20px 20px;
-  font-family: "Montserrat Alternates";
+  ${fontBase}
   font-size: 14px;
   line-height: 1.5;
-  color: #000;
 `;
