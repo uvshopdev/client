@@ -3,6 +3,7 @@ import { getLocale } from "next-intl/server";
 import { Montserrat_Alternates } from "next/font/google";
 
 import Catalog from "@/components/Catalog/Catalogs";
+import Footer from "@/components/Footer/Footer";
 import Providers from "@/components/Providers";
 import ServerProviders from "@/components/ServerProviders";
 import StyledComponentsRegistry from "@/components/StyledComponentsRegistry";
@@ -40,6 +41,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 								<TopBar />
 								<Catalog />
 								{children}
+								<Footer />
 							</Main>
 						</Providers>
 					</StyledComponentsRegistry>

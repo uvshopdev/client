@@ -10,6 +10,10 @@ export const Content = styled.div`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   will-change: height;
+
+  @media (max-width: 768px) {
+    padding: 12px 20px;
+  }
 `;
 
 export const Bar = styled.div`
@@ -26,6 +30,15 @@ export const Bar = styled.div`
   button {
     width: max-content;
   }
+
+  @media (max-width: 768px) {
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: auto 1fr auto;
+  }
 `;
 
 export const Left = styled.div`
@@ -37,6 +50,14 @@ export const Left = styled.div`
     color: #ffffff;
     border: none;
     gap: 10px;
+  }
+
+  @media (max-width: 640px) {
+    gap: 12px;
+
+    & button span {
+      display: none;
+    }
   }
 `;
 
@@ -64,6 +85,16 @@ export const Center = styled.div`
     color: #ffffff;
     border: none;
   }
+
+  @media (max-width: 640px) {
+    min-width: unset;
+
+    & button {
+      font-size: 0;
+      width: 40px;
+      padding: 0;
+    }
+  }
 `;
 
 export const Right = styled.div`
@@ -75,15 +106,23 @@ export const Right = styled.div`
 
   & button, a {
     width: 100%;
-    
+
     border-radius: 10px;
-    border: 1px solid ${({ theme }) => theme.colors.primary};  
-    
+    border: 1px solid ${({ theme }) => theme.colors.primary};
+
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    
+
     padding: 0 15px;
+  }
+
+  @media (max-width: 640px) {
+    gap: 12px;
+
+    & button, a {
+      padding: 0 10px;
+    }
   }
 `;

@@ -71,11 +71,6 @@ msgctxt "profile"
 msgid "VdXF7G"
 msgstr "Open countries map"
 
-#: app/profile/favorites/page.tsx:45
-msgctxt "profile"
-msgid "avWTtY"
-msgstr "No favorites yet"
-
 #: app/profile/friends/page.tsx:39
 msgctxt "profile"
 msgid "3s0ZWy"
@@ -261,32 +256,32 @@ msgctxt "profile"
 msgid "C81/uG"
 msgstr "Logout"
 
-#: components/ProfileForm/ProfileForm.tsx:49
+#: components/ProfileForm/ProfileForm.tsx:54
 msgctxt "profile"
 msgid "VnXp8Z"
 msgstr "Avatar"
 
-#: components/ProfileForm/ProfileForm.tsx:61
+#: components/ProfileForm/ProfileForm.tsx:62
 msgctxt "profile"
 msgid "BY343C"
 msgstr "Change"
 
-#: components/ProfileForm/ProfileForm.tsx:68
+#: components/ProfileForm/ProfileForm.tsx:70
 msgctxt "profile"
 msgid "yk4PT9"
 msgstr "Full name"
 
-#: components/ProfileForm/ProfileForm.tsx:73
+#: components/ProfileForm/ProfileForm.tsx:75
 msgctxt "profile"
 msgid "hJZwTS"
 msgstr "Email address"
 
-#: components/ProfileForm/ProfileForm.tsx:78
+#: components/ProfileForm/ProfileForm.tsx:80
 msgctxt "profile"
 msgid "jdJhOL"
 msgstr "Phone number"
 
-#: components/ProfileForm/ProfileForm.tsx:82
+#: components/ProfileForm/ProfileForm.tsx:84
 msgctxt "profile"
 msgid "jvo0vs"
 msgstr "Save"

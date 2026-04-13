@@ -1,49 +1,133 @@
 "use client";
 
-import { Heart } from "lucide-react";
-import { useExtracted } from "next-intl";
+import { Heart, ShoppingBasket } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 import {
-	EmptyState,
+	Actions,
+	Badge,
+	Bottom,
+	CartButton,
+	FavoriteButton,
 	FavoritesContainer,
 	FavoritesGrid,
+	ImageWrap,
+	Info,
 	ProductCard,
 	ProductImage,
-	ProductInfo,
+	ProductName,
 	ProductPrice,
-	ProductTitle,
+	Rating,
+	Stock,
+	Sub,
 } from "./page.css";
 
 const FavoritesPage = () => {
-	const t = useExtracted("profile");
 	const favorites = [];
 	const placeholderProducts = [
-		{ id: 1, title: "Товар 1", price: "99.99" },
-		{ id: 2, title: "Товар 2", price: "149.99" },
-		{ id: 3, title: "Товар 3", price: "199.99" },
+		{
+			product: {
+				id: 1,
+				name: "Чіпси Lay's Max рифлені зі смаком сметани та цибулі",
+				category: { id: 2, name: "Веган", picture: null, category_id: 1 },
+				picture: "/images/slide1.png",
+				country: null,
+				article: "chipsy_lays_max",
+				caloric: 321,
+				price: "63.99",
+				weight: "125",
+				inStock: true,
+				rating: "5/5",
+				hasDiscount: true,
+			},
+		},
+		{
+			product: {
+				id: 2,
+				name: "Напій Coca-Cola без сильногазований",
+				category: { id: 2, name: "Веган", picture: null, category_id: 1 },
+				picture: "/images/slide2.png",
+				country: null,
+				article: "napiy_coca_cola",
+				caloric: 45,
+				price: "56.49",
+				weight: "1750",
+				inStock: true,
+				rating: "4.5",
+				hasDiscount: false,
+			},
+		},
+		{
+			product: {
+				id: 3,
+				name: "Кільце кальмара копчені",
+				category: { id: 2, name: "Веган", picture: null, category_id: 1 },
+				picture: "/images/slide3.png",
+				country: null,
+				article: "kilce_kalmara_kopceni",
+				caloric: 140,
+				price: "189.90",
+				weight: "100",
+				inStock: true,
+				rating: "4.5",
+				hasDiscount: false,
+			},
+		},
 	];
 
 	return (
 		<FavoritesContainer>
 			{favorites.length > 0 ? (
-				<FavoritesGrid></FavoritesGrid>
+				<FavoritesGrid />
 			) : (
-				<>
-					<FavoritesGrid>
-						{placeholderProducts.map((product) => (
-							<ProductCard key={product.id}>
+				<FavoritesGrid>
+					{placeholderProducts.map(({ product }) => (
+						<ProductCard key={product.id}>
+							{product.hasDiscount && <Badge>- 15%</Badge>}
+
+							<ImageWrap>
 								<ProductImage>
-									<Heart size={48} />
+									<Image
+										src={product.picture}
+										alt={product.name}
+										fill
+										sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+									/>
 								</ProductImage>
-								<ProductInfo>
-									<ProductTitle>{product.title}</ProductTitle>
+							</ImageWrap>
+
+							<ProductName>{product.name}</ProductName>
+
+							<Stock>
+								<span />
+								{product.inStock ? "є в наявності" : "немає в наявності"}
+							</Stock>
+
+							<Rating>
+								<u>★★★★★</u>
+								<span>{product.rating}</span>
+							</Rating>
+
+							<Bottom>
+								<Info>
 									<ProductPrice>{product.price} грн</ProductPrice>
-								</ProductInfo>
-							</ProductCard>
-						))}
-					</FavoritesGrid>
-					<EmptyState>{t("No favorites yet")}</EmptyState>
-				</>
+									<Sub>{product.weight} мл / 100 г</Sub>
+								</Info>
+
+								<Actions>
+									<FavoriteButton type="button" aria-label="Видалити з вибраного">
+										<Heart size={20} strokeWidth={1.5} />
+									</FavoriteButton>
+
+									<CartButton as={Link} href="/basket" aria-label="Додати у кошик">
+										<ShoppingBasket size={20} strokeWidth={1.5} />
+									</CartButton>
+								</Actions>
+							</Bottom>
+						</ProductCard>
+					))}
+				</FavoritesGrid>
 			)}
 		</FavoritesContainer>
 	);

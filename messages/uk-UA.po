@@ -71,11 +71,6 @@ msgctxt "profile"
 msgid "VdXF7G"
 msgstr "Мапа відкритих країн"
 
-#: app/profile/favorites/page.tsx:45
-msgctxt "profile"
-msgid "avWTtY"
-msgstr "Поки що немає улюблених"
-
 #: app/profile/friends/page.tsx:39
 msgctxt "profile"
 msgid "3s0ZWy"
@@ -261,32 +256,32 @@ msgctxt "profile"
 msgid "C81/uG"
 msgstr "Вийти"
 
-#: components/ProfileForm/ProfileForm.tsx:49
+#: components/ProfileForm/ProfileForm.tsx:54
 msgctxt "profile"
 msgid "VnXp8Z"
 msgstr "Фото"
 
-#: components/ProfileForm/ProfileForm.tsx:61
+#: components/ProfileForm/ProfileForm.tsx:62
 msgctxt "profile"
 msgid "BY343C"
 msgstr "Змінити"
 
-#: components/ProfileForm/ProfileForm.tsx:68
+#: components/ProfileForm/ProfileForm.tsx:70
 msgctxt "profile"
 msgid "yk4PT9"
 msgstr "Повне ім'я"
 
-#: components/ProfileForm/ProfileForm.tsx:73
+#: components/ProfileForm/ProfileForm.tsx:75
 msgctxt "profile"
 msgid "hJZwTS"
 msgstr "Адреса електронної пошти"
 
-#: components/ProfileForm/ProfileForm.tsx:78
+#: components/ProfileForm/ProfileForm.tsx:80
 msgctxt "profile"
 msgid "jdJhOL"
 msgstr "Номер телефону"
 
-#: components/ProfileForm/ProfileForm.tsx:82
+#: components/ProfileForm/ProfileForm.tsx:84
 msgctxt "profile"
 msgid "jvo0vs"
 msgstr "Зберегти"

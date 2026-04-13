@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import theme from "@/components/theme";
+
 export const FavoritesContainer = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -7,127 +9,203 @@ export const FavoritesContainer = styled.div`
 	width: 100%;
 `;
 
-export const FavoritesSection = styled.div`
-	display: flex;
-	flex-direction: column;
+export const FavoritesGrid = styled.div`
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
 	gap: 20px;
 
-	padding: 30px;
-	border: 1px solid ${({ theme }) => theme.colors.secondary};
-	border-radius: 15px;
+	@media (max-width: 1200px) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
 
-	h2 {
-		font-weight: 400;
-		margin: 0;
+	@media (max-width: 640px) {
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+		gap: 14px;
 	}
 `;
 
-export const FavoritesGrid = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start; // Выравнивание сетки по левому краю
-	gap: 16px; // Сохранение уменьшенного расстояния между карточками
-	width: 100%;
-`;
+export const ProductCard = styled.article`
+	position: relative;
 
-export const ProductCard = styled.div`
-	flex: 1 1 calc(25% - 20px);
-	max-width: calc(25% - 20px);
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	border-radius: 12px;
-	padding: 20px;
-	background: white;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	transition:
-		transform 0.2s ease,
-		box-shadow 0.2s ease;
-	height: calc(130%);
+	gap: 14px;
 
-	&:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+	padding: 20px;
+	border: 1px solid ${theme.colors.secondary};
+	border-radius: 24px;
+	background: #ffffff;
+
+	transition: all 0.3s ease;
+
+	@media (max-width: 640px) {
+		padding: 14px;
+		gap: 10px;
+		border-radius: 18px;
 	}
+`;
+
+export const Badge = styled.div`
+	position: absolute;
+	top: 14px;
+	left: 14px;
+	z-index: 2;
+
+	padding: 4px 8px;
+	border-radius: 6px;
+	background: #cd2323;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: 500;
+`;
+
+export const ImageWrap = styled.div`
+	position: relative;
+	overflow: hidden;
+
+	border-radius: 16px;
+	background: #f3eee9;
 `;
 
 export const ProductImage = styled.div`
+	position: relative;
 	width: 100%;
-	height: 250px;
-	background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: ${({ theme }) => theme.colors.secondary};
-	margin-bottom: 16px;
+	height: 220px;
 
 	img {
-		max-width: 100%;
-		max-height: 100%;
-		object-fit: contain;
+		object-fit: cover;
+	}
+
+	@media (max-width: 640px) {
+		height: 180px;
 	}
 `;
 
-export const ProductInfo = styled.div`
-	padding: 12px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 8px;
+export const ProductName = styled.p`
+	margin: 0;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.3;
+
+	@media (max-width: 640px) {
+		font-size: 14px;
+	}
 `;
 
-export const ProductTitle = styled.h3`
-	font-size: 18px;
-	font-weight: 500;
-	margin: 0;
-	text-align: center;
+export const Stock = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 8px;
+
+	font-size: 14px;
+	color: #3b3028;
+
+	span {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: #23a329;
+		flex-shrink: 0;
+	}
+`;
+
+export const Rating = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 10px;
+
+	font-size: 14px;
+
+	u {
+		text-decoration: none;
+		letter-spacing: 2px;
+		color: #f5b301;
+	}
+`;
+
+export const Bottom = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 12px;
+	margin-top: 10px;
+
+	@media (max-width: 640px) {
+		margin-top: 4px;
+	}
+`;
+
+export const Info = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
 `;
 
 export const ProductPrice = styled.div`
 	font-size: 20px;
-	font-weight: bold;
-	color: ${({ theme }) => theme.colors.primary};
-`;
+	font-weight: 700;
 
-export const ProductActions = styled.div`
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-	margin-top: 16px;
-
-	button {
-		background: none;
-		border: none;
-		cursor: pointer;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 10px;
-		border-radius: 50%;
-		transition: background 0.2s ease;
-
-		&:hover {
-			background: ${({ theme }) => theme.colors.secondary}20;
-		}
-
-		svg {
-			color: ${({ theme }) => theme.colors.secondary};
-			height: 28px;
-			width: 28px;
-		}
+	@media (max-width: 640px) {
+		font-size: 17px;
 	}
 `;
 
-export const DiscountBadge = styled.div`
-	position: absolute;
-	top: 8px;
-	left: 8px;
-	color: white;
-	padding: 4px 8px;
-	border-radius: 4px;
+export const Sub = styled.div`
 	font-size: 12px;
-	font-weight: bold;
+	color: #888888;
+`;
+
+export const Actions = styled.div`
+	display: flex;
+	gap: 10px;
+`;
+
+export const FavoriteButton = styled.button`
+	width: 44px;
+	height: 44px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	border: none;
+	border-radius: 12px;
+	background: #f3eee9;
+	color: #3b3028;
+	cursor: pointer;
+
+	text-decoration: none;
+	transition: all 0.3s ease;
+
+	@media (max-width: 640px) {
+		width: 38px;
+		height: 38px;
+		border-radius: 10px;
+	}
+`;
+
+export const CartButton = styled.button`
+	width: 44px;
+	height: 44px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	border: none;
+	border-radius: 12px;
+	background: ${theme.colors.primary};
+	color: #ffffff;
+	cursor: pointer;
+
+	text-decoration: none;
+	transition: all 0.3s ease;
+
+	@media (max-width: 640px) {
+		width: 38px;
+		height: 38px;
+		border-radius: 10px;
+	}
 `;
 
 export const EmptyState = styled.div`
@@ -136,7 +214,7 @@ export const EmptyState = styled.div`
 	justify-content: center;
 
 	padding: 60px 20px;
-	color: ${({ theme }) => theme.colors.secondary};
+	color: ${theme.colors.secondary};
 	font-size: 18px;
 	text-align: center;
 `;
