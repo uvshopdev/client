@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styled from "styled-components";
 
 import theme from "@/components/theme";
@@ -161,8 +162,9 @@ export const Actions = styled.div`
 `;
 
 export const FavoriteButton = styled.button`
-	width: 44px;
-	height: 44px;
+	width: 52px;
+	height: 52px;
+	padding: 0;
 
 	display: flex;
 	justify-content: center;
@@ -170,12 +172,16 @@ export const FavoriteButton = styled.button`
 
 	border: none;
 	border-radius: 12px;
-	background: #f3eee9;
-	color: #3b3028;
+	background: #fdecea;
+	color: #e53935;
 	cursor: pointer;
 
 	text-decoration: none;
 	transition: all 0.3s ease;
+
+	&:hover {
+		background: #fbd4d1;
+	}
 
 	@media (max-width: 640px) {
 		width: 38px;
@@ -185,8 +191,8 @@ export const FavoriteButton = styled.button`
 `;
 
 export const CartButton = styled.button`
-	width: 44px;
-	height: 44px;
+	width: 52px;
+	height: 52px;
 
 	display: flex;
 	justify-content: center;
@@ -210,11 +216,48 @@ export const CartButton = styled.button`
 
 export const EmptyState = styled.div`
 	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+
+	padding: 80px 20px;
+	text-align: center;
+`;
+
+export const EmptyIcon = styled.div`
+	color: ${theme.colors.secondary};
+	margin-bottom: 8px;
+`;
+
+export const EmptyTitle = styled.h3`
+	margin: 0;
+	font-size: 22px;
+	font-weight: 500;
+	color: ${theme.colors.primary};
+`;
+
+export const EmptyText = styled.p`
+	margin: 0;
+	font-size: 15px;
+	color: #888888;
+`;
+
+export const GoShopButton = styled(Link)`
+	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 
-	padding: 60px 20px;
-	color: ${theme.colors.secondary};
-	font-size: 18px;
-	text-align: center;
+	margin-top: 8px;
+	padding: 14px 32px;
+	border-radius: 14px;
+	background: ${theme.colors.primary};
+	color: #ffffff;
+	font-size: 15px;
+	text-decoration: none;
+	transition: opacity 0.2s;
+
+	&:hover {
+		opacity: 0.85;
+	}
 `;

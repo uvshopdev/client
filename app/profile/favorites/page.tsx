@@ -3,134 +3,144 @@
 import { Heart, ShoppingBasket } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 import {
-	Actions,
-	Badge,
-	Bottom,
-	CartButton,
-	FavoriteButton,
-	FavoritesContainer,
-	FavoritesGrid,
-	ImageWrap,
-	Info,
-	ProductCard,
-	ProductImage,
-	ProductName,
-	ProductPrice,
-	Rating,
-	Stock,
-	Sub,
+  Actions,
+  Badge,
+  Bottom,
+  CartButton,
+  EmptyIcon,
+  EmptyState,
+  EmptyText,
+  EmptyTitle,
+  FavoriteButton,
+  FavoritesContainer,
+  FavoritesGrid,
+  GoShopButton,
+  ImageWrap,
+  Info,
+  ProductCard,
+  ProductImage,
+  ProductName,
+  ProductPrice,
+  Rating,
+  Stock,
+  Sub,
 } from "./page.css";
 
+const initialProducts = [
+  {
+    id: 1,
+    name: "Чіпси Lay's Max рифлені зі смаком сметани та цибулі",
+    picture: "/images/slide1.png",
+    price: "63.99",
+    weight: "125",
+    inStock: true,
+    rating: "5/5",
+    hasDiscount: true,
+  },
+  {
+    id: 2,
+    name: "Напій Coca-Cola без сильногазований",
+    picture: "/images/slide2.png",
+    price: "56.49",
+    weight: "1750",
+    inStock: true,
+    rating: "4.5",
+    hasDiscount: false,
+  },
+  {
+    id: 3,
+    name: "Кільце кальмара копчені",
+    picture: "/images/slide3.png",
+    price: "189.90",
+    weight: "100",
+    inStock: true,
+    rating: "4.5",
+    hasDiscount: false,
+  },
+];
+
 const FavoritesPage = () => {
-	const favorites = [];
-	const placeholderProducts = [
-		{
-			product: {
-				id: 1,
-				name: "Чіпси Lay's Max рифлені зі смаком сметани та цибулі",
-				category: { id: 2, name: "Веган", picture: null, category_id: 1 },
-				picture: "/images/slide1.png",
-				country: null,
-				article: "chipsy_lays_max",
-				caloric: 321,
-				price: "63.99",
-				weight: "125",
-				inStock: true,
-				rating: "5/5",
-				hasDiscount: true,
-			},
-		},
-		{
-			product: {
-				id: 2,
-				name: "Напій Coca-Cola без сильногазований",
-				category: { id: 2, name: "Веган", picture: null, category_id: 1 },
-				picture: "/images/slide2.png",
-				country: null,
-				article: "napiy_coca_cola",
-				caloric: 45,
-				price: "56.49",
-				weight: "1750",
-				inStock: true,
-				rating: "4.5",
-				hasDiscount: false,
-			},
-		},
-		{
-			product: {
-				id: 3,
-				name: "Кільце кальмара копчені",
-				category: { id: 2, name: "Веган", picture: null, category_id: 1 },
-				picture: "/images/slide3.png",
-				country: null,
-				article: "kilce_kalmara_kopceni",
-				caloric: 140,
-				price: "189.90",
-				weight: "100",
-				inStock: true,
-				rating: "4.5",
-				hasDiscount: false,
-			},
-		},
-	];
+  const [favorites, setFavorites] = useState(initialProducts);
 
-	return (
-		<FavoritesContainer>
-			{favorites.length > 0 ? (
-				<FavoritesGrid />
-			) : (
-				<FavoritesGrid>
-					{placeholderProducts.map(({ product }) => (
-						<ProductCard key={product.id}>
-							{product.hasDiscount && <Badge>- 15%</Badge>}
+  const removeFromFavorites = (id: number) => {
+    setFavorites((prev) => prev.filter((p) => p.id !== id));
+  };
 
-							<ImageWrap>
-								<ProductImage>
-									<Image
-										src={product.picture}
-										alt={product.name}
-										fill
-										sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-									/>
-								</ProductImage>
-							</ImageWrap>
+  if (favorites.length === 0) {
+    return (
+      <EmptyState>
+        <EmptyIcon>
+          <Heart size={64} strokeWidth={1} />
+        </EmptyIcon>
+        <EmptyTitle>Список вибраного порожній</EmptyTitle>
+        <EmptyText>Додавайте товари до вибраного, щоб не загубити їх</EmptyText>
+        <GoShopButton href="/">Перейти до каталогу</GoShopButton>
+      </EmptyState>
+    );
+  }
 
-							<ProductName>{product.name}</ProductName>
+  return (
+    <FavoritesContainer>
+      <FavoritesGrid>
+        {favorites.map((product) => (
+          <ProductCard key={product.id}>
+            {product.hasDiscount && <Badge>- 15%</Badge>}
 
-							<Stock>
-								<span />
-								{product.inStock ? "є в наявності" : "немає в наявності"}
-							</Stock>
+            <ImageWrap>
+              <ProductImage>
+                <Image
+                  src={product.picture}
+                  alt={product.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </ProductImage>
+            </ImageWrap>
 
-							<Rating>
-								<u>★★★★★</u>
-								<span>{product.rating}</span>
-							</Rating>
+            <ProductName>{product.name}</ProductName>
 
-							<Bottom>
-								<Info>
-									<ProductPrice>{product.price} грн</ProductPrice>
-									<Sub>{product.weight} мл / 100 г</Sub>
-								</Info>
+            <Stock>
+              <span />
+              {product.inStock ? "є в наявності" : "немає в наявності"}
+            </Stock>
 
-								<Actions>
-									<FavoriteButton type="button" aria-label="Видалити з вибраного">
-										<Heart size={20} strokeWidth={1.5} />
-									</FavoriteButton>
+            <Rating>
+              <u>★★★★★</u>
+              <span>{product.rating}</span>
+            </Rating>
 
-									<CartButton as={Link} href="/basket" aria-label="Додати у кошик">
-										<ShoppingBasket size={20} strokeWidth={1.5} />
-									</CartButton>
-								</Actions>
-							</Bottom>
-						</ProductCard>
-					))}
-				</FavoritesGrid>
-			)}
-		</FavoritesContainer>
-	);
+            <Bottom>
+              <Info>
+                <ProductPrice>{product.price} грн</ProductPrice>
+                <Sub>{product.weight} мл / 100 г</Sub>
+              </Info>
+
+              <Actions>
+                <FavoriteButton
+                  type="button"
+                  aria-label="Видалити з вибраного"
+                  onClick={() => removeFromFavorites(product.id)}
+                >
+                  <Heart size={26} strokeWidth={1.5} fill="#e53935" />
+                </FavoriteButton>
+
+                <CartButton
+                  as={Link}
+                  href="/basket"
+                  aria-label="Додати у кошик"
+                >
+                  <ShoppingBasket size={20} strokeWidth={1.5} />
+                </CartButton>
+              </Actions>
+            </Bottom>
+          </ProductCard>
+        ))}
+      </FavoritesGrid>
+    </FavoritesContainer>
+  );
 };
 
 export default FavoritesPage;
