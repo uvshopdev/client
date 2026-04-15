@@ -56,7 +56,7 @@ export default function BasketPage() {
 	const maxMilesToRedeem = Math.floor(subtotalAfterPromo);
 	const redeemedMilesValue = Math.min(milesToRedeem, maxMilesToRedeem);
 	const total = Math.max(0, subtotalAfterPromo - redeemedMilesValue);
-	const orderMilesReward = Math.floor(total / 10);
+	const orderMilesReward = Math.floor(total / 100);
 
 	const handleMilesChange = (delta: number) => {
 		setMilesToRedeem((prev) => {

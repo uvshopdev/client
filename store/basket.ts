@@ -21,7 +21,7 @@ interface BasketStore {
 		message: string;
 	};
 
-	addPosition: (product: ProductType, amount: number) => void;
+	addPosition: (product: ProductType, amount: number) => boolean;
 	removePosition: (id: number) => void;
 	setPositionAmount: (id: number, amount: number) => void;
 	setInfo: <K extends keyof BasketStore["info"]>(key: K, value: BasketStore["info"][K]) => void;
@@ -33,7 +33,7 @@ const calculateSubtotal = (positions: Record<number, Position>) =>
 export const useBasket = create<BasketStore>()(
 	devtools(
 		persist(
-			(set) => ({
+			(set, get) => ({
 				positions: {},
 				subtotal: 0,
 				info: {
@@ -46,7 +46,8 @@ export const useBasket = create<BasketStore>()(
 					message: "",
 				},
 
-				addPosition: (product, amount) =>
+				addPosition: (product, amount) => {
+					const alreadyIn = Boolean(get().positions[product.id]);
 					set((state) => {
 						const currentAmount = state.positions[product.id]?.amount ?? 0;
 						const positions = {
@@ -55,7 +56,9 @@ export const useBasket = create<BasketStore>()(
 						};
 						const subtotal = calculateSubtotal(positions);
 						return { positions, subtotal };
-					}),
+					});
+					return alreadyIn;
+				},
 				removePosition: (id) =>
 					set((state) => {
 						const positions = Object.fromEntries(Object.entries(state.positions).filter(([key]) => key !== String(id)));

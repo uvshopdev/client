@@ -3,6 +3,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Heart, ShoppingBasket } from "lucide-react";
 import Image from "next/image";
+import { toast } from "sonner";
 
 import { addFavorite, removeFavorite } from "@/lib/favorites";
 import { useBasket } from "@/store/basket";
@@ -37,6 +38,10 @@ const ProductCard = (product: ProductProps) => {
 		onSuccess: async () => {
 			await query.invalidateQueries({ queryKey: ["favorites"] });
 			await query.invalidateQueries({ queryKey: ["favorites_ids"] });
+			toast.success("Товар додано в обране");
+		},
+		onError: () => {
+			toast.error("Не вдалося додати товар в обране");
 		},
 	});
 	const { mutate: removeFromFavorite } = useMutation({
@@ -45,6 +50,10 @@ const ProductCard = (product: ProductProps) => {
 		onSuccess: async () => {
 			await query.invalidateQueries({ queryKey: ["favorites"] });
 			await query.invalidateQueries({ queryKey: ["favorites_ids"] });
+			toast.success("Товар видалено з обраного");
+		},
+		onError: () => {
+			toast.error("Не вдалося видалити товар з обраного");
 		},
 	});
 
@@ -77,7 +86,7 @@ const ProductCard = (product: ProductProps) => {
 			<Bottom>
 				<Stock>
 					<div className="indicator"></div>
-					<div>немає в наявності</div>
+					<div>в наявності</div>
 				</Stock>
 
 				<Rating>★★★★★</Rating>
@@ -97,7 +106,15 @@ const ProductCard = (product: ProductProps) => {
 							<Heart size={26} strokeWidth={1.5} />
 						</FavoriteButton>
 
-						<CartButton aria-label="Додати у кошик" onClick={() => addPosition(product, 1)}>
+						<CartButton
+							aria-label="Додати у кошик"
+							onClick={() => {
+								if (!addPosition(product, 1)) {
+									console.log("A");
+									toast.success("Товар додано у кошик");
+								}
+							}}
+						>
 							<ShoppingBasket size={26} strokeWidth={1.5} />
 						</CartButton>
 					</Actions>

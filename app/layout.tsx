@@ -1,6 +1,8 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 import { Montserrat_Alternates } from "next/font/google";
+import { Toaster } from "sonner";
 
 import Catalog from "@/components/Catalog/Catalogs";
 import Providers from "@/components/Providers";
@@ -10,7 +12,6 @@ import TopBar from "@/components/TopBar/TopBar";
 import { getCategories } from "@/lib/categories";
 import { getCountries } from "@/lib/countries";
 import { Main } from "./layout.css";
-
 export const metadata: Metadata = {
 	title: "Shop",
 };
@@ -28,7 +29,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 	return (
 		<html lang={locale}>
-			{/* <Analytics /> */}
+			<Analytics />
 			<head>
 				<meta name="robots" content="noindex, nofollow" />
 			</head>
@@ -36,6 +37,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 				<ServerProviders>
 					<StyledComponentsRegistry>
 						<Providers categories={categories} countries={countries}>
+							<Toaster />
 							<Main>
 								<TopBar />
 								<Catalog />
