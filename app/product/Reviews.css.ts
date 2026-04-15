@@ -6,9 +6,12 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 34px;
   font-family: "Gabriela", serif;
-  color: #3b3028;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 44px;
+  color: #3B3028;
   margin-bottom: 30px;
 `;
 
@@ -31,34 +34,66 @@ export const Card = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+  cursor: pointer;
 `;
 
 export const Top = styled.div`
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 export const Row = styled.div`
   display: flex;
   justify-content: space-between;
-  font-family: "Montserrat Alternates";
+  align-items: center;
+  font-family: "Montserrat Alternates", sans-serif;
+`;
+
+export const ReviewName = styled.span`
+  /* Сделали ЖИРНЫМ (Bold 700) как на скриншоте */
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 700;
   font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+`;
+
+export const ReviewDate = styled.span`
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #3B3028;
 `;
 
 export const RatingRow = styled.div`
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-top: 10px;
+
+  span {
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+  }
 `;
 
 export const Stars = styled.div`
   display: flex;
-  gap: 4px;
+  gap: 6px;
 `;
 
 export const Text = styled.div`
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
   font-size: 14px;
-  font-family: "Montserrat Alternates";
+  line-height: 17px;
+  color: #000000;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -76,15 +111,15 @@ export const Controls = styled.div`
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 1px solid #3b3028;
+    border: none;
     background: #3b3028;
-    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 
     &:disabled {
-      opacity: 0.7;
+      opacity: 0.5;
       cursor: default;
     }
   }
@@ -124,6 +159,7 @@ export const Modal = styled.div`
   max-width: 500px;
   width: 100%;
   box-shadow: 0 10px 30px #000;
+  font-family: "Montserrat Alternates", sans-serif;
 `;
 
 export const ModalHeader = styled.div`
@@ -160,9 +196,4 @@ export const CloseButton = styled.button`
   cursor: pointer;
   color: #3b3028;
   line-height: 1;
-  transition: transform 0.2s;
-
-  &:hover {
-    transform: rotate(90deg);
-  }
 `;

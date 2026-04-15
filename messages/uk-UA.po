@@ -6,6 +6,184 @@ msgstr ""
 "X-Generator: next-intl\n"
 "X-Crowdin-SourceKey: msgstr\n"
 
+#: app/[category_id]/page.tsx:43
+#: app/[category_id]/page.tsx:135
+#: app/[category_id]/page.tsx:136
+msgctxt "category"
+msgid "ED7X19"
+msgstr "Є в наявності"
+
+#: app/[category_id]/page.tsx:44
+#: app/[category_id]/page.tsx:151
+#: app/[category_id]/page.tsx:156
+msgctxt "category"
+msgid "+uNrI1"
+msgstr "Обрати виробника"
+
+#: app/[category_id]/page.tsx:45
+#: app/[category_id]/page.tsx:175
+#: app/[category_id]/page.tsx:180
+msgctxt "category"
+msgid "jM8W7d"
+msgstr "Виберіть країну"
+
+#: app/[category_id]/page.tsx:77
+msgctxt "category"
+msgid "MeKajs"
+msgstr "Спочатку найновіші"
+
+#: app/[category_id]/page.tsx:78
+msgctxt "category"
+msgid "h+T3T7"
+msgstr "Спочатку найстаріші"
+
+#: app/[category_id]/page.tsx:79
+msgctxt "category"
+msgid "nrQy8m"
+msgstr "Спочатку найдешевші"
+
+#: app/[category_id]/page.tsx:80
+msgctxt "category"
+msgid "v8lup3"
+msgstr "Спочатку найдорожчі"
+
+#: app/[category_id]/page.tsx:81
+msgctxt "category"
+msgid "TgnUST"
+msgstr "А до Я"
+
+#: app/[category_id]/page.tsx:82
+msgctxt "category"
+msgid "8ZCpOJ"
+msgstr "Я до А"
+
+#: app/[category_id]/page.tsx:89
+msgctxt "category"
+msgid "Uwg9pO"
+msgstr "Категорію не знайдено"
+
+#: app/[category_id]/page.tsx:95
+msgctxt "category"
+msgid "9Obw6C"
+msgstr "Фільтр"
+
+#: app/[category_id]/page.tsx:99
+msgctxt "category"
+msgid "25oM9Q"
+msgstr "Сортування"
+
+#: app/[category_id]/page.tsx:113
+msgctxt "category"
+msgid "Xd4bTS"
+msgstr "Сортування"
+
+#: app/[category_id]/page.tsx:113
+msgctxt "category"
+msgid "YWyEpK"
+msgstr "Відсортувати товари"
+
+#: app/[category_id]/page.tsx:124
+msgctxt "category"
+msgid "hOxIeP"
+msgstr "Наявність"
+
+#: app/[category_id]/page.tsx:127
+#: app/[category_id]/page.tsx:132
+msgctxt "category"
+msgid "UnVVu3"
+msgstr "Обрати доступність"
+
+#: app/[category_id]/page.tsx:133
+#: app/[category_id]/page.tsx:157
+#: app/[category_id]/page.tsx:181
+msgctxt "category"
+msgid "Iuupx9"
+msgstr "Скасувати вибір"
+
+#: app/[category_id]/page.tsx:138
+#: app/[category_id]/page.tsx:139
+msgctxt "category"
+msgid "WHgdsk"
+msgstr "Немає в наявності"
+
+#: app/[category_id]/page.tsx:148
+msgctxt "category"
+msgid "SmAakw"
+msgstr "Виробник"
+
+#: app/[category_id]/page.tsx:159
+#: app/[category_id]/page.tsx:160
+msgctxt "category"
+msgid "9tEN2U"
+msgstr "Виробник 1"
+
+#: app/[category_id]/page.tsx:162
+#: app/[category_id]/page.tsx:163
+msgctxt "category"
+msgid "K0KKoW"
+msgstr "Виробник 2"
+
+#: app/[category_id]/page.tsx:172
+msgctxt "category"
+msgid "A5pfXd"
+msgstr "Країна виробник"
+
+#: app/[category_id]/page.tsx:183
+#: app/[category_id]/page.tsx:183
+msgctxt "category"
+msgid "3T2iOg"
+msgstr "Україна"
+
+#: app/[category_id]/page.tsx:184
+#: app/[category_id]/page.tsx:184
+msgctxt "category"
+msgid "VzQxqn"
+msgstr "Італія"
+
+#: app/[category_id]/page.tsx:185
+#: app/[category_id]/page.tsx:185
+msgctxt "category"
+msgid "tnrxhT"
+msgstr "Південна Корея"
+
+#: app/[category_id]/page.tsx:186
+#: app/[category_id]/page.tsx:186
+msgctxt "category"
+msgid "9KADbj"
+msgstr "Франція"
+
+#: app/[category_id]/page.tsx:187
+#: app/[category_id]/page.tsx:187
+msgctxt "category"
+msgid "3Rh+pv"
+msgstr "Японія"
+
+#: app/[category_id]/page.tsx:188
+#: app/[category_id]/page.tsx:188
+msgctxt "category"
+msgid "1q/ois"
+msgstr "Китай"
+
+#: app/[category_id]/page.tsx:196
+msgctxt "category"
+msgid "+kMQfn"
+msgstr "Діапазон цін"
+
+#: app/[category_id]/page.tsx:198
+msgctxt "category"
+msgid "G9uF7o"
+msgstr "від"
+
+#: app/[category_id]/page.tsx:205
+msgctxt "category"
+msgid "NLeFGn"
+msgstr "до"
+
+#: app/[category_id]/page.tsx:232
+msgctxt "category"
+msgid "EWw/tK"
+msgstr "Застосувати"
+
 #: app/auth/page.tsx:52
 msgctxt "auth"
 msgid "i/AQd8"
@@ -41,6 +219,84 @@ msgctxt "auth"
 msgid "odXlk8"
 msgstr "Увійти"
 
+#: app/page.tsx:18
+msgctxt "home"
+msgid "3T2iOg"
+msgstr "Україна"
+
+#: app/page.tsx:19
+msgctxt "home"
+msgid "VzQxqn"
+msgstr "Італія"
+
+#: app/page.tsx:20
+msgctxt "home"
+msgid "tnrxhT"
+msgstr "Південна Корея"
+
+#: app/page.tsx:21
+msgctxt "home"
+msgid "9KADbj"
+msgstr "Франція"
+
+#: app/page.tsx:22
+msgctxt "home"
+msgid "3Rh+pv"
+msgstr "Японія"
+
+#: app/page.tsx:23
+msgctxt "home"
+msgid "1q/ois"
+msgstr "Китай"
+
+#: app/page.tsx:27
+msgctxt "home"
+msgid "2zg50f"
+msgstr "Новинки"
+
+#: app/page.tsx:28
+msgctxt "home"
+msgid "AMDs+N"
+msgstr "Знижки місяця"
+
+#: app/page.tsx:29
+msgctxt "home"
+msgid "57PnQn"
+msgstr "Товари з найвищим рейтингом"
+
+#: app/page.tsx:30
+msgctxt "home"
+msgid "FC/kO5"
+msgstr "Хіт продажів"
+
+#: app/page.tsx:79
+msgctxt "home"
+msgid "pq2lMA"
+msgstr "Популярні категорії"
+
+#: app/page.tsx:81
+#: app/page.tsx:114
+#: app/page.tsx:136
+msgctxt "home"
+msgid "pFK6bJ"
+msgstr "Переглянути все"
+
+#: app/page.tsx:90
+msgctxt "home"
+msgid "ccXLVi"
+msgstr "Категорія"
+
+#: app/page.tsx:100
+#: app/page.tsx:105
+msgctxt "home"
+msgid "4sRhVV"
+msgstr "Країна місяця"
+
+#: app/page.tsx:112
+msgctxt "home"
+msgid "8vURyh"
+msgstr "Спробувати кулінарію світу"
+
 #: app/profile/coffee/page.tsx:30
 msgctxt "profile"
 msgid "pKaBty"
@@ -71,37 +327,37 @@ msgctxt "profile"
 msgid "VdXF7G"
 msgstr "Мапа відкритих країн"
 
-#: app/profile/friends/page.tsx:46
+#: app/profile/friends/page.tsx:56
 msgctxt "profile"
 msgid "3s0ZWy"
 msgstr "Запросіть друзів та отримайте бонуси!"
 
-#: app/profile/friends/page.tsx:48
+#: app/profile/friends/page.tsx:58
 msgctxt "profile"
 msgid "CsMutJ"
 msgstr "Отримайте +50 миль і каву після того, як ваш друг зробить першу покупку на суму від 150 грн."
 
-#: app/profile/friends/page.tsx:56
+#: app/profile/friends/page.tsx:66
 msgctxt "profile"
 msgid "hYOE+U"
 msgstr "Запросити"
 
-#: app/profile/friends/page.tsx:74
+#: app/profile/friends/page.tsx:84
 msgctxt "profile"
 msgid "smWqVf"
 msgstr "Очікує першу покупку"
 
-#: app/profile/friends/page.tsx:87
+#: app/profile/friends/page.tsx:97
 msgctxt "profile"
 msgid "G8P44K"
 msgstr "Запрошувальне посилання"
 
-#: app/profile/friends/page.tsx:93
+#: app/profile/friends/page.tsx:103
 msgctxt "profile"
 msgid "p556q3"
 msgstr "Скопійовано"
 
-#: app/profile/friends/page.tsx:93
+#: app/profile/friends/page.tsx:103
 msgctxt "profile"
 msgid "4l6vz1"
 msgstr "Копіювати"
@@ -163,8 +419,8 @@ msgstr "Безкоштовна тижнева кава"
 
 #: app/profile/page.tsx:64
 msgctxt "profile"
-msgid "qu568M"
-msgstr "Посол\nГермеса"
+msgid "9WJrZu"
+msgstr "Посол мандрів"
 
 #: app/profile/page.tsx:67
 msgctxt "profile"
@@ -183,8 +439,8 @@ msgstr "Участь у закритих подіях"
 
 #: app/profile/page.tsx:84
 msgctxt "profile"
-msgid "DgPFXk"
-msgstr "Паспорт мандрівника Hermes"
+msgid "jTtejl"
+msgstr "Паспорт Мандрівника"
 
 #: app/profile/page.tsx:108
 msgctxt "profile"
@@ -243,8 +499,8 @@ msgstr "Відкриті країни"
 
 #: components/ProfileBar/ProfileBar.tsx:19
 msgctxt "profile"
-msgid "L9J8qe"
-msgstr "Hermes Friends"
+msgid "u/D2Ux"
+msgstr "Коло друзів"
 
 #: components/ProfileBar/ProfileBar.tsx:20
 msgctxt "profile"

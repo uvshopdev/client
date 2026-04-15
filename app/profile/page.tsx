@@ -61,7 +61,7 @@ const ProfilePage = () => {
 			] 
 		},
 		{ 
-			label: t("Hermes\nAmbassador"), 
+			label: t("Travel\nAmbassador"), 
 			miles: "300+",
 			bonuses: [
 				t("Miles rate: 4 miles = 100 UAH from the order receipt"),
@@ -81,7 +81,7 @@ const ProfilePage = () => {
 	return (
 		<Content>
 			<PassportHeader>
-				<h2>{t("Hermes Traveler's Passport")}</h2>
+				<h2>{t("Traveler's Passport")}</h2>
 				<div className="badges">
 					<button type="button" onClick={() => setIsStatusModalOpen(true)}>
 						{statuses[userAchievedStatusIdx].label.replace('\n', ' ')}

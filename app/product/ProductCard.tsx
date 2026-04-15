@@ -1,7 +1,7 @@
 "use client";
-import { ArrowLeft, ArrowRight, ChevronDown, ChevronUp, Heart, House, Star } from "lucide-react";
+import { ChevronDown, ChevronUp, Heart, House, Star } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
-
 import * as S from "./ProductCard.css";
 
 interface ProductCardProps {
@@ -28,18 +28,18 @@ export default function ProductCard({ images }: ProductCardProps) {
 				{/* LEFT */}
 				<S.Left>
 					<S.MainImage>
-						<S.Image src={images[active]} />
+						<S.Image src={images[active]} alt="Product image" />
 
 						<S.Arrow onClick={prev} $left>
-							<ArrowLeft size={18} color="#fff" />
+							<span style={{ color: "white", fontSize: "18px", lineHeight: 1, paddingRight: "2px" }}>&#10094;</span>
 						</S.Arrow>
 
 						<S.Arrow onClick={next}>
-							<ArrowRight size={18} color="#fff" />
+							<span style={{ color: "white", fontSize: "18px", lineHeight: 1, paddingLeft: "2px" }}>&#10095;</span>
 						</S.Arrow>
 
 						<S.WishButton onClick={() => setWish(!wish)}>
-							<Heart fill={wish ? "#E93A36" : "none"} />
+							<Heart size={24} strokeWidth={1.5} fill={wish ? "#E93A36" : "none"} color={wish ? "#E93A36" : "#3B3028"} />
 						</S.WishButton>
 
 						<S.Dots>
@@ -52,7 +52,7 @@ export default function ProductCard({ images }: ProductCardProps) {
 					<S.Thumbs>
 						{images.map((img, i) => (
 							<S.Thumb key={crypto.randomUUID()} $active={i === active} onClick={() => setActive(i)}>
-								<S.ThumbImage src={img} />
+								<S.ThumbImage src={img} alt={`Thumb ${i}`} />
 							</S.Thumb>
 						))}
 					</S.Thumbs>
@@ -60,13 +60,11 @@ export default function ProductCard({ images }: ProductCardProps) {
 
 				{/* RIGHT */}
 				<S.Right>
-					{/* Info */}
 					<S.Block>
 						<S.Breadcrumbs>
-							<House size={14} />
+							<House size={14} color="#888" />
 							<span>/ Бакалія / Їжа швидкого приготування</span>
 						</S.Breadcrumbs>
-
 						<S.Title>Гостра локшина Samyang Hot Chicken Ramen Stew</S.Title>
 					</S.Block>
 
@@ -83,7 +81,7 @@ export default function ProductCard({ images }: ProductCardProps) {
 						<S.RatingRow>
 							<S.Stars>
 								{[1, 2, 3, 4, 5].map((i) => (
-									<Star key={i} size={18} fill={i <= rating ? "#ffdb0d" : "none"} color="#3B3028" />
+									<Star key={i} size={18} fill={i <= rating ? "#ffdb0d" : "none"} color={i <= rating ? "#ffdb0d" : "#3B3028"} />
 								))}
 							</S.Stars>
 							<span>{rating}/5</span>
@@ -99,20 +97,16 @@ export default function ProductCard({ images }: ProductCardProps) {
 
 							<S.BuyControls>
 								<S.Quantity>
-									<button type="button" onClick={() => setQty(Math.max(1, qty - 1))}>
-										-
-									</button>
+									<button type="button" onClick={() => setQty(Math.max(1, qty - 1))}>-</button>
 									<span>{qty}</span>
-									<button type="button" onClick={() => setQty(qty + 1)}>
-										+
-									</button>
+									<button type="button" onClick={() => setQty(qty + 1)}>+</button>
 								</S.Quantity>
-								<S.BuyButton>Купити</S.BuyButton>
+								{/* Кнопка с переадресацией */}
+								<S.BuyButton as={Link} href="/basket">Купити</S.BuyButton>
 							</S.BuyControls>
 						</S.PriceRow>
 					</S.Block>
 
-					{/* Характеристики + Аккордеон */}
 					<S.InfoBlock>
 						<S.Characteristics>
 							<S.CharacteristicsTitle>Характеристики:</S.CharacteristicsTitle>
@@ -141,20 +135,18 @@ export default function ProductCard({ images }: ProductCardProps) {
 								{
 									key: "desc",
 									title: "Опис",
-									content:
-										"Локшина Hot Chicken Ramen Stew - ще один варіант гострої, по-справжньому вогняної страви від корейського бренду Samyang!...",
+									content: "Локшина Hot Chicken Ramen Stew - ще один варіант гострої, по-справжньому вогняної страви від корейського бренду Samyang!...",
 								},
 								{
 									key: "comp",
 									title: "Склад",
-									content:
-										"Макаронні вироби (67,4%): борошно пшеничне (41%), пальмова олія (9%), крохмаль тапіоки...",
+									content: "Макаронні вироби (67,4%): борошно пшеничне (41%), пальмова олія (9%), крохмаль тапіоки...",
 								},
 							].map(({ key, title, content }) => (
 								<S.AccordionItem key={key}>
 									<S.AccordionHeader onClick={() => toggle(key)}>
 										{title}:
-										{openKeys.includes(key) ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+										{openKeys.includes(key) ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
 									</S.AccordionHeader>
 									{openKeys.includes(key) && <S.AccordionContent>{content}</S.AccordionContent>}
 								</S.AccordionItem>

@@ -1,13 +1,11 @@
 import styled from "styled-components";
-
 import theme from "@/components/theme";
 
 export const Content = styled.main`
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
-
-	padding: 20px 40px;
+	padding: 50px 40px 40px;
 `;
 
 export const CatalogHeader = styled.div`
@@ -24,8 +22,11 @@ export const CatalogHeader = styled.div`
 
 export const CatalogTitle = styled.h1`
 	margin: 0;
-	font-size: 28px;
-	font-weight: 500;
+	font-family: "Gabriela", serif;
+	font-size: 34px;
+	font-weight: 400;
+	color: #3B3028;
+	line-height: 1.2;
 `;
 
 export const CatalogActions = styled.div`
@@ -40,14 +41,24 @@ export const CatalogActions = styled.div`
 export const FilterButton = styled.button`
 	display: inline-flex;
 	align-items: center;
-	gap: 6px;
-
+	gap: 8px;
 	padding: 10px 16px;
 	border-radius: 10px;
 	border: 1px solid ${theme.colors.secondary};
 	background: #ffffff;
+	
+	font-family: "Montserrat Alternates", sans-serif;
+	font-weight: 500;
+	font-size: 14px;
+	color: #000000;
 
+	cursor: pointer;
 	transition: all 0.3s ease;
+
+	&:hover {
+		border-color: #3B3028;
+		background-color: #fcfcfc;
+	}
 
 	@media (max-width: 900px) {
 		flex: 1;
@@ -57,8 +68,12 @@ export const FilterButton = styled.button`
 
 export const Products = styled.div`
 	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
+	grid-template-columns: repeat(5, minmax(0, 1fr));
 	gap: 20px;
+
+	@media (max-width: 1440px) {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
 
 	@media (max-width: 1200px) {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -73,149 +88,218 @@ export const Products = styled.div`
 	}
 `;
 
-export const Card = styled.article`
-	position: relative;
+/* === СТИЛИ БОКОВЫХ ПАНЕЛЕЙ (ФИЛЬТРЫ И СОРТИРОВКА) === */
 
+export const SidebarOverlay = styled.div`
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.4);
+	backdrop-filter: blur(3px);
+	z-index: 2000;
+	display: flex;
+	justify-content: flex-end;
+`;
+
+export const SidebarContainer = styled.div`
+	width: 480px;
+	height: 100%;
+	background: #ffffff;
+	padding: 40px 50px;
 	display: flex;
 	flex-direction: column;
-	gap: 14px;
+	box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+	animation: slideIn 0.3s ease-out;
 
-	padding: 20px;
-	border: 1px solid ${theme.colors.secondary};
-	border-radius: 24px;
-	background: #ffffff;
-
-	transition: all 0.3s ease;
-`;
-
-export const Badge = styled.div`
-	position: absolute;
-	top: 14px;
-	left: 14px;
-	z-index: 2;
-
-	padding: 4px 8px;
-	border-radius: 6px;
-	background: #cd2323;
-	color: #ffffff;
-	font-size: 14px;
-	font-weight: 500;
-`;
-
-export const ImageWrap = styled.div`
-	position: relative;
-	overflow: hidden;
-
-	border-radius: 16px;
-	background: #f3eee9;
-`;
-
-export const ProductImage = styled.div`
-	position: relative;
-	width: 100%;
-	height: 220px;
-
-	img {
-		object-fit: cover;
+	@keyframes slideIn {
+		from { transform: translateX(100%); }
+		to { transform: translateX(0); }
 	}
 `;
 
-export const Name = styled.p`
-	margin: 0;
-	font-size: 16px;
-	font-weight: 500;
-	line-height: 1.3;
-`;
-
-export const Stock = styled.div`
-	display: flex;
-	align-items: center;
-	gap: 8px;
-
-	font-size: 14px;
-	color: #3b3028;
-
-	span {
-		width: 8px;
-		height: 8px;
-		border-radius: 50%;
-		background: #23a329;
-	}
-`;
-
-export const Rating = styled.div`
-	display: flex;
-	align-items: center;
-	gap: 10px;
-
-	font-size: 14px;
-
-	u {
-		text-decoration: none;
-		letter-spacing: 2px;
-		color: #f5b301;
-	}
-`;
-
-export const Bottom = styled.div`
+export const SidebarHeader = styled.div`
 	display: flex;
 	justify-content: space-between;
-	align-items: flex-end;
-	gap: 12px;
-	margin-top: 10px;
+	align-items: center;
+	margin-bottom: 40px;
+
+	h2 {
+		font-family: "Gabriela", serif;
+		font-size: 28px;
+		font-weight: 400; 
+		color: #000;
+		margin: 0;
+	}
 `;
 
-export const Info = styled.div`
+export const SidebarClose = styled.button`
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	color: #3B3028;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px;
+	border-radius: 50%;
+	transition: all 0.2s ease;
+
+	&:hover {
+		background-color: #524339;
+		color: #ffffff;
+	}
+`;
+
+export const SidebarContent = styled.div`
+	flex: 1;
+	overflow-y: auto;
 	display: flex;
 	flex-direction: column;
-	gap: 2px;
+	gap: 32px;
+	padding-right: 5px;
+
+	&::-webkit-scrollbar { width: 4px; }
+	&::-webkit-scrollbar-thumb { background: #E9E3D9; border-radius: 10px; }
 `;
 
-export const Price = styled.div`
-	font-size: 20px;
-	font-weight: 700;
-`;
-
-export const Sub = styled.div`
-	font-size: 12px;
-	color: #888888;
-`;
-
-export const Actions = styled.div`
+export const FilterSection = styled.div`
 	display: flex;
-	gap: 10px;
+	flex-direction: column;
+	gap: 12px;
+
+	p {
+		font-family: "Montserrat Alternates", sans-serif;
+		font-size: 16px;
+		font-weight: 400;
+		color: #000;
+		margin: 0;
+	}
 `;
 
-export const FavoriteButton = styled.button`
-	width: 44px;
-	height: 44px;
-
+export const DropdownHeader = styled.div`
+	width: 100%;
+	padding: 14px 18px;
+	border: 1px solid #E9E3D9;
+	border-radius: 14px;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
+	font-family: "Montserrat Alternates", sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: #000;
+	cursor: pointer;
 
-	border: none;
-	border-radius: 12px;
-	background: #f3eee9;
-	color: #3b3028;
-
-	text-decoration: none;
-	transition: all 0.3s ease;
+	&:hover { border-color: #3B3028; }
 `;
 
-export const CartButton = styled.button`
-	width: 44px;
-	height: 44px;
-
+export const DropdownList = styled.div`
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	background: #fff;
+	border: 1px solid #E9E3D9;
+	border-radius: 14px;
+	margin-top: 8px;
+	overflow: hidden;
+`;
 
-	border: none;
-	border-radius: 12px;
-	background: ${theme.colors.primary};
+export const DropdownItem = styled.div<{ $cancel?: boolean }>`
+	padding: 14px 18px;
+	font-family: "Montserrat Alternates", sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	cursor: pointer;
+	color: ${({ $cancel }) => ($cancel ? "#A4A4A4" : "#000000")};
+	transition: background 0.2s;
+
+	&:hover {
+		background: #f9f9f9;
+	}
+`;
+
+export const PriceRange = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-family: "Montserrat Alternates", sans-serif;
+
+	label { font-size: 14px; color: #888; font-weight: 400; }
+
+	input {
+		width: 100%;
+		height: 48px;
+		border: 1px solid #E9E3D9;
+		border-radius: 14px;
+		padding: 0 16px;
+		outline: none;
+		font-family: inherit;
+		font-size: 14px;
+		font-weight: 400;
+		transition: border-color 0.2s;
+
+		&:focus { border-color: #3B3028; }
+		&::-webkit-inner-spin-button { display: none; }
+	}
+`;
+
+export const SortGrid = styled.div`
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+`;
+
+export const SortOption = styled.div<{ $active?: boolean }>`
+	border: 1px solid ${({ $active }) => ($active ? "#3B3028" : "#E9E3D9")};
+	border-radius: 14px;
+	padding: 16px 14px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	cursor: pointer;
+	font-family: "Montserrat Alternates", sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: #000;
+	transition: all 0.2s ease;
+	line-height: 1.3;
+
+	.radio-circle {
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		border: 1.5px solid ${({ $active }) => ($active ? "#3B3028" : "#E9E3D9")};
+		background: transparent;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		
+		&::after {
+			content: '';
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background: #3B3028;
+			display: ${({ $active }) => ($active ? "block" : "none")};
+		}
+	}
+
+	&:hover { border-color: #3B3028; }
+`;
+
+export const ApplyButton = styled.button`
+	width: 100%;
+	height: 56px;
+	background: #3B3028;
 	color: #ffffff;
+	border: none;
+	border-radius: 16px;
+	font-family: "Montserrat Alternates", sans-serif;
+	font-weight: 600;
+	font-size: 16px;
+	cursor: pointer;
+	margin-top: 24px;
+	transition: opacity 0.2s;
 
-	text-decoration: none;
-	transition: all 0.3s ease;
+	&:hover { opacity: 0.9; }
 `;

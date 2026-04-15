@@ -1,331 +1,206 @@
-const styles = {
-	main: {
-		padding: "20px 40px",
-	},
+import styled from "styled-components";
 
-	h2: {
-		fontFamily: "Gabriela, serif",
-		fontSize: "34px",
-		fontWeight: 400,
-	},
+export const Main = styled.main`
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 40px 60px;
+  font-family: "Montserrat Alternates", sans-serif;
 
-	link: {
-		cursor: "pointer",
-	},
+  @media (max-width: 768px) {
+    padding: 20px 20px;
+  }
+`;
 
-	hero: {
-		marginTop: "40px",
-		width: "100%",
-	},
+export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 30px;
 
-	sliderWrapper: {
-		position: "relative" as const,
-		width: "100%",
-		height: "80vh",
-		borderRadius: "20px",
-		overflow: "hidden",
-	},
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+`;
 
-	slide: {
-		position: "absolute" as const,
-		top: 0,
-		left: 0,
-		width: "100%",
-		height: "100%",
-		transition: "opacity 0.6s ease-in-out",
-	},
+export const SectionTitle = styled.h2`
+  font-family: "Gabriela", serif;
+  font-size: 34px;
+  font-weight: 400;
+  color: #3B3028;
+  margin: 0;
 
-	arrowBtn: {
-		width: "40px",
-		height: "40px",
-		borderRadius: "50%",
-		background: "rgba(59, 48, 40, 1)",
-		color: "#fff",
-		border: "none",
-		display: "flex",
-		alignItems: "center",
-		justifyContent: "center",
-		cursor: "pointer",
-		fontSize: "16px",
-	},
+  @media (max-width: 768px) {
+    font-size: 26px;
+  }
+`;
 
-	overlay: {
-		position: "absolute" as const,
-		bottom: "20px",
-		left: "20px",
-		background: "brown",
-		color: "white",
-		padding: "10px 20px",
-		borderRadius: "50px",
-		fontWeight: "bold",
-	},
+export const LinkText = styled.a`
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3B3028;
+  text-decoration: none;
+  transition: opacity 0.2s;
 
-	controls: {
-		display: "flex",
-		justifyContent: "center",
-		alignItems: "center",
-		gap: "20px",
-		marginTop: "10px",
-	},
+  &:hover {
+    opacity: 0.7;
+  }
+`;
 
-	dots: {
-		display: "flex",
-		gap: "6px",
-	},
+export const HeroSection = styled.section`
+  width: 100%;
+`;
 
-	dot: {
-		width: "8px",
-		height: "8px",
-		background: "#ccc",
-		borderRadius: "50%",
-	},
+export const SliderWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 6;
+  min-height: 250px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #f3eee9;
+`;
 
-	dotActive: {
-		width: "8px",
-		height: "8px",
-		background: "#000",
-		borderRadius: "50%",
-	},
+export const Slide = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.6s ease-in-out;
+`;
 
-	section: {
-		marginTop: "50px",
-	},
+export const Controls = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 20px;
+`;
 
-	sectionTight: {
-		marginTop: "10px",
-	},
+export const ArrowBtn = styled.button`
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #3B3028;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: opacity 0.2s;
 
-	header: {
-		display: "flex",
-		justifyContent: "space-between",
-		alignItems: "center",
-	},
+  &:hover {
+    opacity: 0.9;
+  }
+`;
 
-	/* ОНОВЛЕНО: Тепер використовуємо сітку для жорсткого контролю відступів */
-	categories: {
-		display: "grid",
-		gridTemplateColumns: "repeat(6, 1fr)", /* 6 колонок */
-		width: "100%",
-		gap: "16px", /* Той самий маленький фіксований відступ між картками */
-		marginTop: "20px",
-	},
+export const Dots = styled.div`
+  display: flex;
+  gap: 8px;
+`;
 
-	category: {
-		width: "100%", /* Прибрали фіксовані 215px, тепер картка заповнює колонку */
-		height: "242px",
+export const Dot = styled.div<{ $active?: boolean }>`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: ${({ $active }) => ($active ? "#3B3028" : "#E9E3D9")};
+  transition: background 0.3s;
+`;
 
-		display: "flex",
-		flexDirection: "column" as const,
-		alignItems: "center",
-		justifyContent: "center",
+export const Section = styled.section`
+  margin-top: 60px;
+`;
 
-		gap: "20px",
-		padding: "26px",
+export const SectionTight = styled.section`
+  margin-top: 40px;
+`;
 
-		borderRadius: "24px",
-		border: "1px solid #eee",
+export const CategoriesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
 
-		cursor: "pointer",
-		background: "#fff",
-	},
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
 
-	circle: {
-		width: "130px",
-		height: "130px",
-		borderRadius: "50%",
-		background: "#ddd",
-	},
+export const CategoryCard = styled.a`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px 20px;
+  border-radius: 24px;
+  border: 1px solid #E9E3D9;
+  cursor: pointer;
+  background: #fff;
+  text-decoration: none;
+  transition: transform 0.2s ease;
 
-	mapBlock: {
-		display: "flex",
-		justifyContent: "space-between",
-		alignItems: "center",
-		background: "#f5f5f5",
-		padding: "30px",
-		borderRadius: "20px",
-		marginTop: "20px",
-	},
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
 
-	centerCountry: {
-		textAlign: "center" as const,
-	},
+export const CategoryCircle = styled.div`
+  width: 100%;
+  max-width: 160px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: #f3eee9;
+  background-size: cover;
+  background-position: center;
+`;
 
-	sideCircle: {
-		width: "120px",
-		height: "120px",
-		borderRadius: "50%",
-		background: "#ddd",
-	},
+/* ПОЛНОСТЬЮ УБРАЛ ЖИРНОСТЬ (font-weight: 400) */
+export const CategoryName = styled.p`
+  margin: 0;
+  font-weight: 400; 
+  font-size: 16px;
+  color: #000;
+  text-align: center;
+`;
 
-	tickets: {
-		display: "flex",
-		gap: "20px",
-		marginTop: "20px",
-	},
+export const CountryBanner = styled.img`
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  display: block;
+  object-fit: contain;
+`;
 
-	ticket: {
-		flex: 1,
-		padding: "20px",
-		borderRadius: "15px",
-		border: "1px dashed #ccc",
-	},
+export const ProductsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
 
-	products: {
-		display: "grid",
-		gridTemplateColumns: "repeat(5, 1fr)",
-		gap: "20px",
-		marginTop: "20px",
-	},
-
-	card: {
-		position: "relative" as const,
-		border: "1px solid #e5ddd5",
-		borderRadius: "24px",
-		padding: "20px",
-		background: "#fff",
-		display: "flex",
-		flexDirection: "column" as const,
-		gap: "14px",
-	},
-
-	badge: {
-		position: "absolute" as const,
-		background: "red",
-		color: "white",
-		padding: "4px 8px",
-		borderRadius: "5px",
-		fontSize: "14px",
-	},
-
-	image: {
-		height: "220px",
-		background: "#eee",
-		borderRadius: "16px",
-	},
-
-	name: {
-		fontSize: "16px",
-		fontWeight: 500,
-		lineHeight: "1.3",
-	},
-
-	stock: {
-		display: "flex",
-		alignItems: "center",
-		gap: "8px",
-		fontSize: "14px",
-		color: "#3b3028",
-	},
-
-	dotGreen: {
-		width: "8px",
-		height: "8px",
-		borderRadius: "50%",
-		background: "green",
-	},
-
-	ratingRow: {
-		display: "flex",
-		alignItems: "center",
-		gap: "10px",
-		fontSize: "14px",
-	},
-
-	stars: {
-		color: "#f5b301",
-		letterSpacing: "2px",
-	},
-
-	bottom: {
-		display: "flex",
-		justifyContent: "space-between",
-		alignItems: "flex-end",
-		marginTop: "10px",
-	},
-
-	price: {
-		fontSize: "20px",
-		fontWeight: 700,
-	},
-
-	sub: {
-		fontSize: "12px",
-		color: "#888",
-	},
-
-	actions: {
-		display: "flex",
-		gap: "10px",
-	},
-
-	favBtn: {
-		width: "44px",
-		height: "44px",
-		borderRadius: "12px",
-		border: "none",
-		background: "#f3eee9",
-		cursor: "pointer",
-		fontSize: "18px",
-		display: "flex",
-		alignItems: "center",
-		justifyContent: "center",
-		textDecoration: "none",
-	},
-
-	cartBtn: {
-		width: "44px",
-		height: "44px",
-		borderRadius: "12px",
-		background: "#3b3028",
-		color: "#fff",
-		display: "flex",
-		alignItems: "center",
-		justifyContent: "center",
-		textDecoration: "none",
-	},
-
-	icon: {
-		width: "20px",
-		height: "20px",
-	},
-
-	countryImage: {
-		width: "100%",
-		height: "400px",
-		borderRadius: "24px",
-		marginTop: "20px",
-	},
-
-	catalogHeader: {
-		display: "flex",
-		justifyContent: "space-between",
-		alignItems: "center",
-		marginBottom: "30px",
-	},
-
-	catalogTitle: {
-		fontSize: "28px",
-		fontWeight: 500,
-	},
-
-	breadcrumbs: {
-		fontSize: "14px",
-		color: "#888",
-		marginTop: "5px",
-	},
-
-	catalogActions: {
-		display: "flex",
-		gap: "10px",
-	},
-
-	filterBtn: {
-		padding: "10px 16px",
-		borderRadius: "10px",
-		border: "1px solid #ddd",
-		background: "#fff",
-		cursor: "pointer",
-	},
-};
-
-export default styles;
+  @media (max-width: 1440px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+`;

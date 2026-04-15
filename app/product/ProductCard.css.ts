@@ -1,16 +1,14 @@
 import styled, { css } from "styled-components";
 
-/* ===== Общие переменные ===== */
 const fontBase = css`
-  font-family: "Montserrat Alternates";
+  font-family: "Montserrat Alternates", sans-serif;
+  font-style: normal;
   color: #000;
 `;
 
 const gap16 = css`gap: 16px;`;
-const gap20 = css`gap: 20px;`;
 const gap30 = css`gap: 30px;`;
 
-/* ===== WRAPPER ===== */
 export const Wrapper = styled.div`
   padding: 0 40px;
 `;
@@ -25,7 +23,6 @@ export const Container = styled.div`
   }
 `;
 
-/* ===== LEFT ===== */
 export const Left = styled.div`
   display: flex;
   flex-direction: column;
@@ -34,11 +31,10 @@ export const Left = styled.div`
 
 export const MainImage = styled.div`
   position: relative;
-  height: 500px;
+  height: 538px;
   border: 1px solid #e9e3d9;
-  border-radius: 30px;
-  overflow: hidden;
-  padding: 80px;
+  border-radius: 40px;
+  padding: 0 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,28 +49,34 @@ export const Image = styled.img`
 export const Arrow = styled.button<{ $left?: boolean }>`
   position: absolute;
   top: 50%;
-  ${({ $left }) => ($left ? "left: 20px" : "right: 20px")};
+  ${({ $left }) => ($left ? "left: 20px;" : "right: 20px;")};
   transform: translateY(-50%);
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 20px;
   background: #3b3028;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 100;
   cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
 export const WishButton = styled.button`
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px;
+  right: 30px;
   width: 47px;
   height: 40px;
   background: #f7f3e7;
-  border: 1px solid #e9e3d9;
-  border-radius: 10px;
+  border-radius: 6px;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,31 +95,33 @@ export const Dots = styled.div`
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 8px;
+  gap: 12px;
 `;
 
 export const Dot = styled.div<{ $active?: boolean }>`
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: ${({ $active }) => ($active ? "#3B3028" : "#ccc")};
+  background: ${({ $active }) => ($active ? "#3B3028" : "#E5E5E5")};
+  cursor: pointer;
 `;
 
 export const Thumbs = styled.div`
   display: flex;
   gap: 30px;
+  height: 160px;
 `;
 
 export const Thumb = styled.div<{ $active?: boolean }>`
   flex: 1;
-  height: 120px;
+  height: 100%;
   border: 1px solid ${({ $active }) => ($active ? "#3B3028" : "#E9E3D9")};
-  border-radius: 16px;
-  overflow: hidden;
+  border-radius: 20px;
   padding: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const ThumbImage = styled.img`
@@ -126,7 +130,6 @@ export const ThumbImage = styled.img`
   object-fit: contain;
 `;
 
-/* ===== RIGHT ===== */
 export const Right = styled.div`
   display: flex;
   flex-direction: column;
@@ -141,38 +144,65 @@ export const Block = styled.div`
 
 export const Breadcrumbs = styled.div`
   display: flex;
-  gap: 8px;
-  font-size: 14px;
+  align-items: center;
+  gap: 6px;
+  
+  /* Сделали ЖИРНЫМ (Bold 700) как на скриншоте */
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #A4A4A4;
+
+  span.current {
+    color: #3B3028;
+  }
 `;
 
 export const Title = styled.h1`
-  font-size: 34px;
-  color: #3b3028;
-  font-family: 'Gabriela', serif;
+  font-family: "Gabriela", serif;
+  font-style: normal;
   font-weight: 400;
-  line-height: 1.2;
+  font-size: 34px;
+  line-height: 44px;
+  color: #3B3028;
+  margin: 0;
 `;
 
 export const RowBetween = styled.div`
   display: flex;
   justify-content: space-between;
+  ${fontBase}
 `;
 
 export const CodeStock = styled.div`
   display: flex;
+  align-items: center;
   gap: 40px;
+  
+  span {
+    /* Сделали ЖИРНЫМ (Bold 700) как на скриншоте */
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+  }
 `;
 
 export const Stock = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
 `;
 
 export const DotStatus = styled.div`
-  width: 8px;
-  height: 8px;
-  background: green;
+  width: 14px;
+  height: 14px;
+  background: #00B221;
   border-radius: 50%;
 `;
 
@@ -180,17 +210,25 @@ export const RatingRow = styled.div`
   display: flex;
   align-items: center;
   gap: 14px;
+  ${fontBase}
+  
+  span {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+  }
 `;
 
 export const Stars = styled.div`
   display: flex;
-  gap: 4px;
+  gap: 6px;
 `;
 
 export const PriceRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  ${fontBase}
 `;
 
 export const PriceBlock = styled.div`
@@ -200,13 +238,15 @@ export const PriceBlock = styled.div`
 `;
 
 export const Price = styled.div`
-  font-size: 28px;
   font-weight: 600;
+  font-size: 28px;
+  line-height: 34px;
 `;
 
 export const SubPrice = styled.div`
+  font-weight: 400;
   font-size: 14px;
-  color: gray;
+  line-height: 17px;
 `;
 
 export const BuyControls = styled.div`
@@ -221,28 +261,43 @@ export const Quantity = styled.div`
   align-items: center;
 
   button {
-    width: 40px;
+    width: 48px;
     height: 40px;
+    border-radius: 12px;
+    border: 1px solid #D3D3D3;
+    background: transparent;
     cursor: pointer;
+    font-size: 18px;
   }
 
   span {
     min-width: 25px;
     text-align: center;
-    display: inline-block;
     font-variant-numeric: tabular-nums;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
   }
 `;
 
 export const BuyButton = styled.button`
-  background: #3b3028;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
+  background: #3B3028;
+  border-radius: 12px;
   cursor: pointer;
+  border: 1px solid #3B3028;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 40px;
 `;
 
-/* ===== INFO BLOCK ===== */
 export const InfoBlock = styled.div`
   display: flex;
   flex-direction: column;
@@ -259,6 +314,7 @@ export const CharacteristicsTitle = styled.div`
   ${fontBase}
   font-weight: 600;
   font-size: 16px;
+  line-height: 20px;
 `;
 
 export const CharacteristicsGrid = styled.div`
@@ -277,16 +333,20 @@ export const CharItem = styled.div`
   align-items: center;
   gap: 8px;
   ${fontBase}
-  font-size: 14px;
 `;
 
 export const CharLabel = styled.span`
   font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
 `;
 
-export const CharValue = styled.span``;
+export const CharValue = styled.span`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+`;
 
-/* ===== ACCORDION ===== */
 export const Accordion = styled.div`
   display: flex;
   flex-direction: column;
@@ -307,13 +367,15 @@ export const AccordionHeader = styled.div`
   padding: 20px;
   cursor: pointer;
   ${fontBase}
-  font-weight: 600;
+  font-weight: 700;
   font-size: 16px;
+  line-height: 20px;
 `;
 
 export const AccordionContent = styled.div`
   padding: 0 20px 20px 20px;
   ${fontBase}
+  font-weight: 400;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 17px;
 `;

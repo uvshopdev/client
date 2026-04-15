@@ -1,15 +1,33 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./page.css";
 import Link from "next/link";
-import { ShoppingBasket, Heart } from "lucide-react";
+import { useExtracted } from "next-intl";
+import * as S from "./page.css";
 
 export default function Home() {
+	const t = useExtracted("home");
+
 	const slides = [
 		"/images/slide1.png",
 		"/images/slide2.png",
 		"/images/slide3.png",
+	];
+
+	const cuisines = [
+		{ name: t("Ukraine"), img: "/images/ukraine.png" },
+		{ name: t("Italy"), img: "/images/italy.png" },
+		{ name: t("South Korea"), img: "/images/korea.png" },
+		{ name: t("France"), img: "/images/france.png" },
+		{ name: t("Japan"), img: "/images/japan.png" },
+		{ name: t("China"), img: "/images/china.png" }
+	];
+
+	const productSections = [
+		t("New arrivals"),
+		t("Monthly discounts"),
+		t("Top rated products"),
+		t("Best sellers"),
 	];
 
 	const [current, setCurrent] = useState(0);
@@ -23,149 +41,106 @@ export default function Home() {
 	};
 
 	return (
-		<main style={styles.main}>
-			{/* HERO */}
-			<section style={styles.hero}>
-				<div style={styles.sliderWrapper}>
+		<S.Main>
+			{/* HERO SLIDER */}
+			<S.HeroSection>
+				<S.SliderWrapper>
 					{slides.map((slide, index) => (
-						<div
+						<S.Slide
 							key={index}
 							style={{
-								...styles.slide,
 								backgroundImage: `url(${slide})`,
-								backgroundSize: "cover",
-								backgroundPosition: "center",
 								opacity: index === current ? 1 : 0,
 							}}
 						/>
 					))}
-				</div>
+				</S.SliderWrapper>
 
-				<div style={styles.controls}>
-					<button style={styles.arrowBtn} onClick={prevSlide}>
-						{"<"}
-					</button>
+				<S.Controls>
+					<S.ArrowBtn type="button" onClick={prevSlide}>
+						&#10094;
+					</S.ArrowBtn>
 
-					<div style={styles.dots}>
+					<S.Dots>
 						{slides.map((_, i) => (
-							<span
-								key={i}
-								style={i === current ? styles.dotActive : styles.dot}
-							/>
+							<S.Dot key={i} $active={i === current} />
 						))}
-					</div>
+					</S.Dots>
 
-					<button style={styles.arrowBtn} onClick={nextSlide}>
-						{">"}
-					</button>
-				</div>
-			</section>
+					<S.ArrowBtn type="button" onClick={nextSlide}>
+						&#10095;
+					</S.ArrowBtn>
+				</S.Controls>
+			</S.HeroSection>
 
-			{/* ПОПУЛЯРНІ КАТЕГОРІЇ */}
-			<section style={styles.section}>
-				<div style={styles.header}>
-					<h2>Популярні категорії</h2>
-					<a style={styles.link}>Переглянути всі →</a>
-				</div>
-
-				<div style={styles.categories}>
-				{Array.from({ length: 6 }).map((_, i) => (
-					<Link key={i} href="/catalog" style={{ textDecoration: "none" }}>
-						<div style={styles.category}>
-							<div style={styles.circle}></div>
-							<p>Категорія</p>
-						</div>
+			{/* POPULAR CATEGORIES */}
+			<S.Section>
+				<S.Header>
+					<S.SectionTitle>{t("Popular categories")}</S.SectionTitle>
+					<Link href="/catalog" passHref legacyBehavior>
+						<S.LinkText>{t("View all")} →</S.LinkText>
 					</Link>
-				))}
-				</div>
-			</section>
+				</S.Header>
 
-			{/* КРАЇНИ (Зменшений відступ) */}
-			<section style={styles.sectionTight}>
-				<h2>Країни місяця</h2>
+				<S.CategoriesGrid>
+					{Array.from({ length: 6 }).map((_, i) => (
+						<Link key={i} href="/catalog" passHref legacyBehavior>
+							<S.CategoryCard>
+								<S.CategoryCircle />
+								<S.CategoryName>{t("Category")}</S.CategoryName>
+							</S.CategoryCard>
+						</Link>
+					))}
+				</S.CategoriesGrid>
+			</S.Section>
 
-				<div
-					style={{
-						...styles.countryImage,
-						backgroundImage: "url(/images/slide1.png)",
-						backgroundSize: "cover",
-						backgroundPosition: "center",
-					}}
+			{/* COUNTRIES OF THE MONTH */}
+			<S.SectionTight>
+				<S.Header>
+					<S.SectionTitle>{t("Countries of the month")}</S.SectionTitle>
+				</S.Header>
+
+				<S.CountryBanner 
+					src="/images/countryMonth.png" 
+					alt={t("Countries of the month")} 
 				/>
-			</section>
+			</S.SectionTight>
 
-			{/* КУЛІНАРІЯ (Зменшений відступ) */}
-			<section style={styles.sectionTight}>
-			<div style={styles.header}>
-				<h2>Спробувати кулінарію світу</h2>
-				<a style={styles.link}>Переглянути всі →</a>
-			</div>
-
-			<div style={styles.categories}>
-				{["Італія", "Франція", "Японія", "Корея", "Китай", "Іспанія"].map(
-				(name, i) => (
-					<Link key={i} href="/catalog" style={styles.category}>
-					<div style={styles.circle}></div>
-					<p>{name}</p>
+			{/* WORLD CUISINE */}
+			<S.SectionTight>
+				<S.Header>
+					<S.SectionTitle>{t("Try world cuisine")}</S.SectionTitle>
+					<Link href="/catalog" passHref legacyBehavior>
+						<S.LinkText>{t("View all")} →</S.LinkText>
 					</Link>
-				)
-				)}
-			</div>
-			</section>
+				</S.Header>
 
-			{/* ТОВАРНІ БЛОКИ */}
-			{[
-				"Новинки",
-				"Знижки місяця",
-				"Товари з найвищим рейтингом",
-				"Хіт продажів",
-			].map((title, sectionIndex) => (
-				<section key={sectionIndex} style={styles.section}>
-					<div style={styles.header}>
-						<h2>{title}</h2>
-						<a style={styles.link}>Переглянути всі →</a>
-					</div>
+				<S.CategoriesGrid>
+					{cuisines.map((item, i) => (
+						<Link key={i} href="/catalog" passHref legacyBehavior>
+							<S.CategoryCard>
+								<S.CategoryCircle style={{ backgroundImage: `url(${item.img})` }} />
+								<S.CategoryName>{item.name}</S.CategoryName>
+							</S.CategoryCard>
+						</Link>
+					))}
+				</S.CategoriesGrid>
+			</S.SectionTight>
 
-					<div style={styles.products}>
-						{/* Змінили length з 4 на 5 */}
-						{Array.from({ length: 5 }).map((_, i) => (
-							<div key={i} style={styles.card}>
-								<div style={styles.image}></div>
+			{/* PRODUCT SECTIONS */}
+			{productSections.map((title, sectionIndex) => (
+				<S.Section key={sectionIndex}>
+					<S.Header>
+						<S.SectionTitle>{title}</S.SectionTitle>
+						<Link href="/catalog" passHref legacyBehavior>
+							<S.LinkText>{t("View all")} →</S.LinkText>
+						</Link>
+					</S.Header>
 
-								<p style={styles.name}>
-									Назва товару
-								</p>
-
-								<div style={styles.stock}>
-									<span style={styles.dotGreen}></span>
-									є в наявності
-								</div>
-
-								<div style={styles.ratingRow}>
-									<span style={styles.stars}>★★★★★</span>
-									<span>5/5</span>
-								</div>
-
-								<div style={styles.bottom}>
-									<div>
-										<div style={styles.price}>219 грн</div>
-										<div style={styles.sub}>395 ккал / 100 г</div>
-									</div>
-
-									<div style={styles.actions}>
-										<Link href="/profile/favorites" style={styles.favBtn}>
-											<Heart size={20} strokeWidth={1.5} />
-										</Link>
-										<Link href="/basket" style={styles.cartBtn}>
-											<ShoppingBasket size={20} strokeWidth={1.5} />
-										</Link>
-									</div>
-								</div>
-							</div>
-						))}
-					</div>
-				</section>
+					{/* Пустая сетка товаров, как ты и просил */}
+					<S.ProductsGrid></S.ProductsGrid>
+				</S.Section>
 			))}
-		</main>
+		</S.Main>
 	);
 }

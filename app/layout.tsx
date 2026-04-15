@@ -9,7 +9,7 @@ import StyledComponentsRegistry from "@/components/StyledComponentsRegistry";
 import TopBar from "@/components/TopBar/TopBar";
 import { getCategories } from "@/lib/categories";
 import { getCountries } from "@/lib/countries";
-import { Main } from "./layout.css";
+import { Main, HeaderWrapper } from "./layout.css";
 
 export const metadata: Metadata = {
 	title: "Shop",
@@ -37,8 +37,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 					<StyledComponentsRegistry>
 						<Providers categories={categories} countries={countries}>
 							<Main>
-								<TopBar />
-								<Catalog />
+								{/* Обгорнули хедер і каталог у липкий контейнер */}
+								<HeaderWrapper>
+									<TopBar />
+									<Catalog />
+								</HeaderWrapper>
+								
 								{children}
 							</Main>
 						</Providers>

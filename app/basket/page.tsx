@@ -1,9 +1,8 @@
 "use client";
 
-import { Check, Eye, Minus, Plus, X } from "lucide-react";
 import Image from "next/image";
 import { useMemo, useRef, useState } from "react";
-import { useRouter } from "next/navigation"; // Додано імпорт роутера
+import { useRouter } from "next/navigation";
 
 import {
 	AlertIcon,
@@ -25,6 +24,7 @@ import {
 	LeftColumn,
 	ModalContent,
 	ModalOverlay,
+	ModalClose,
 	PromoRow,
 	PromoSection,
 	QuantityBox,
@@ -40,30 +40,14 @@ import {
 	TotalRow,
 } from "./page.css";
 
-const PROMO_DISCOUNT_PERCENT = 0.15;
-const NEW_COUNTRY_MILES_REWARD = 40;
-const ORDER_BASE_MILES_REWARD = 1;
-const TOAST_DURATION_MS = 3000;
-
-interface ICartItem {
-	id: number;
-	name: string;
-	price: number;
-	priceNote: string;
-	quantity: number;
-	image: string;
-}
-
-type CountryCode = "UA" | "TR";
-
-const MOCK_ITEMS: ICartItem[] = [
+const MOCK_ITEMS = [
 	{
 		id: 1,
 		name: "Шоколадна фігурка Roshen Святий Миколай",
 		price: 40,
 		priceNote: "за 1 шт. 40 грам",
 		quantity: 3,
-		image: "https://placehold.co/50x70/eeeeee/999999?text=Choco",
+		image: "https://placehold.co/50x70/f3eee9/999999?text=Choco",
 	},
 	{
 		id: 2,
@@ -71,57 +55,69 @@ const MOCK_ITEMS: ICartItem[] = [
 		price: 19.9,
 		priceNote: "за 100 грам",
 		quantity: 5,
-		image: "https://placehold.co/50x70/eeeeee/999999?text=Mandarin",
+		image: "https://placehold.co/50x70/f3eee9/999999?text=Mandarin",
 	},
 ];
 
-const formatPrice = (price: number): string => {
-	return price % 1 === 0 ? price.toString() : price.toFixed(2);
-};
+// --- 100% НАДЕЖНЫЕ ВШИТЫЕ SVG ИКОНКИ ---
+const PlusIcon = () => (
+	<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: "block" }}>
+		<line x1="12" y1="5" x2="12" y2="19"></line>
+		<line x1="5" y1="12" x2="19" y2="12"></line>
+	</svg>
+);
+
+const MinusIcon = () => (
+	<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: "block" }}>
+		<line x1="5" y1="12" x2="19" y2="12"></line>
+	</svg>
+);
+
+const CloseIcon = ({ size = 18, color = "currentColor" }) => (
+	<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: "block" }}>
+		<line x1="18" y1="6" x2="6" y2="18"></line>
+		<line x1="6" y1="6" x2="18" y2="18"></line>
+	</svg>
+);
+
+const CheckIcon = () => (
+	<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ display: "block" }}>
+		<polyline points="20 6 9 17 4 12"></polyline>
+	</svg>
+);
+
+const EyeIcon = () => (
+	<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A4A4A4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: "block" }}>
+		<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+		<circle cx="12" cy="12" r="3"></circle>
+	</svg>
+);
+// ----------------------------------------
 
 export default function BasketPage() {
-	const router = useRouter(); // Ініціалізація роутера
-	const [items, setItems] = useState<ICartItem[]>(MOCK_ITEMS);
-	const [miles, setMiles] = useState<number>(5);
-	const [promoApplied, setPromoApplied] = useState<boolean>(false);
-	const [promoInput, setPromoInput] = useState<string>("");
-	const [toastVisible, setToastVisible] = useState<boolean>(false);
-	const [previewCountry, setPreviewCountry] = useState<CountryCode | null>(null);
+	const router = useRouter();
+	const [items, setItems] = useState(MOCK_ITEMS);
+	const [miles, setMiles] = useState(5);
+	const [promoApplied, setPromoApplied] = useState(false);
+	const [promoInput, setPromoInput] = useState("");
+	const [toastVisible, setToastVisible] = useState(false);
+	const [previewCountry, setPreviewCountry] = useState<string | null>(null);
 
 	const toastTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-	const subtotal = useMemo(() => {
-		return items.reduce((acc, item) => acc + item.price * item.quantity, 0);
-	}, [items]);
-
-	const promoDiscount = promoApplied ? subtotal * PROMO_DISCOUNT_PERCENT : 0;
+	const subtotal = useMemo(() => items.reduce((acc, item) => acc + item.price * item.quantity, 0), [items]);
+	const promoDiscount = promoApplied ? subtotal * 0.15 : 0;
 	const finalTotal = Math.max(0, subtotal - promoDiscount - miles);
 
 	const handleQuantityChange = (id: number, delta: number) => {
-		setItems((prevItems) =>
-			prevItems.map((item) =>
-				item.id === id ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item,
-			),
-		);
+		setItems(prev => prev.map(item => item.id === id ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item));
 	};
 
 	const handleRemoveItem = (id: number) => {
-		setItems((prevItems) => prevItems.filter((item) => item.id !== id));
-
+		setItems(prev => prev.filter(item => item.id !== id));
 		setToastVisible(true);
 		if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-		toastTimerRef.current = setTimeout(() => setToastVisible(false), TOAST_DURATION_MS);
-	};
-
-	const handleMilesChange = (delta: number) => {
-		setMiles((prev) => {
-			const newMiles = prev + delta;
-			return newMiles < 0 ? 0 : newMiles;
-		});
-	};
-
-	const handleApplyPromo = () => {
-		if (promoInput.trim().length > 0) setPromoApplied(true);
+		toastTimerRef.current = setTimeout(() => setToastVisible(false), 3000);
 	};
 
 	if (items.length === 0) {
@@ -129,200 +125,132 @@ export default function BasketPage() {
 			<Container>
 				<Title>Ваш кошик</Title>
 				<EmptyState>
-					<EmptyText>Упс, тут пусто...</EmptyText>
-					<EmptyButton onClick={() => window.location.reload()}>Вирушити за покупками</EmptyButton>
+					<EmptyText>Упс, тут поки що пусто...</EmptyText>
+					<EmptyButton onClick={() => router.push("/")}>Вирушити за покупками</EmptyButton>
 				</EmptyState>
 			</Container>
 		);
 	}
 
-	const renderLeftColumn = () => (
-		<LeftColumn>
-			<LeftBox>
-				<TableHeader>
-					<span>Товар</span>
-					<span>Ціна</span>
-					<span>Кількість</span>
-				</TableHeader>
-
-				<ItemsList>
-					{items.map((item) => (
-						<CartItem key={item.id}>
-							<ItemInfo>
-								<Image src={item.image} alt={item.name} width={50} height={70} />
-								<p>{item.name}</p>
-							</ItemInfo>
-
-							<ItemPrice>
-								<strong>{formatPrice(item.price)} грн</strong>
-								<span>{item.priceNote}</span>
-							</ItemPrice>
-
-							<ItemActions>
-								<QuantityBox>
-									<button
-										type="button"
-										onClick={() => handleQuantityChange(item.id, -1)}
-										disabled={item.quantity <= 1}
-										aria-label="Зменшити кількість"
-									>
-										<Minus size={16} />
-									</button>
-									<span>{item.quantity}</span>
-									<button
-										type="button"
-										onClick={() => handleQuantityChange(item.id, 1)}
-										aria-label="Збільшити кількість"
-									>
-										<Plus size={16} />
-									</button>
-								</QuantityBox>
-								<RemoveButton onClick={() => handleRemoveItem(item.id)} aria-label="Видалити товар">
-									<X size={16} color="white" />
-								</RemoveButton>
-							</ItemActions>
-						</CartItem>
-					))}
-				</ItemsList>
-
-				<PromoSection>
-					<PromoRow>
-						<p>Скористатись промокодом</p>
-						<InputGroup>
-							<input
-								type="text"
-								placeholder="Введіть код"
-								value={promoInput}
-								onChange={(e) => setPromoInput(e.target.value)}
-								disabled={promoApplied}
-							/>
-							<button type="button" onClick={handleApplyPromo} disabled={promoApplied}>
-								{promoApplied ? "Застосовано" : "Додати"}
-							</button>
-						</InputGroup>
-					</PromoRow>
-
-					<PromoRow style={{ borderTop: "1px solid #eaeaea", paddingTop: "25px" }}>
-						<p>Списати милі</p>
-						<ItemActions style={{ gap: "15px" }}>
-							<QuantityBox>
-								<button
-									type="button"
-									onClick={() => handleMilesChange(-1)}
-									disabled={miles <= 0}
-									aria-label="Зменшити милі"
-								>
-									<Minus size={16} />
-								</button>
-								<span>{miles}</span>
-								<button type="button" onClick={() => handleMilesChange(1)} aria-label="Збільшити милі">
-									<Plus size={16} />
-								</button>
-							</QuantityBox>
-							<RemoveButton onClick={() => setMiles(0)} aria-label="Скинути милі">
-								<X size={16} color="white" />
-							</RemoveButton>
-						</ItemActions>
-					</PromoRow>
-				</PromoSection>
-			</LeftBox>
-
-			<InfoText>
-				<AlertIcon>!</AlertIcon>
-				<span>Загальна сума замовлення вказана без урахування доставки</span>
-			</InfoText>
-		</LeftColumn>
-	);
-
-	const renderRightColumn = () => (
-		<RightColumn>
-			<SummaryBlock>
-				<h3>Чек замовлення</h3>
-				<SummaryRow>
-					<span>Сума замовлення:</span>
-					<span>{formatPrice(subtotal)} грн</span>
-				</SummaryRow>
-				<SummaryRow>
-					<span>Промокод:</span>
-					<span>{promoApplied ? `-${formatPrice(promoDiscount)} грн` : "-15%"}</span>
-				</SummaryRow>
-				<SummaryRow>
-					<span>Списання миль:</span>
-					<span>-{miles}</span>
-				</SummaryRow>
-				<TotalRow>
-					<span>Загалом:</span>
-					<span>{formatPrice(finalTotal)} грн</span>
-				</TotalRow>
-				{/* Додано onClick для переходу на /order */}
-				<CheckoutButton onClick={() => router.push("/basket/placeorder")}>Оформити замовлення</CheckoutButton>
-			</SummaryBlock>
-
-			<SummaryBlock>
-				<h3>Нарахування миль</h3>
-				<SummaryRow>
-					<span>З чеку замовлення:</span>
-					<span>+{ORDER_BASE_MILES_REWARD}</span>
-				</SummaryRow>
-				<SummaryRow>
-					<span>Відкриття нових країн:</span>
-					<span>+{NEW_COUNTRY_MILES_REWARD}</span>
-				</SummaryRow>
-				<TotalRow>
-					<span>Загалом:</span>
-					<span>+{ORDER_BASE_MILES_REWARD + NEW_COUNTRY_MILES_REWARD} миля</span>
-				</TotalRow>
-			</SummaryBlock>
-
-			<SummaryBlock>
-				<h3>Нові країни</h3>
-				<CountryRow>
-					<span>Україна</span>
-					<button
-						type="button"
-						onClick={() => setPreviewCountry("UA")}
-						aria-label="Попередній перегляд Україна"
-					>
-						<Eye size={18} strokeWidth={1.5} />
-					</button>
-				</CountryRow>
-				<CountryRow>
-					<span>Туреччина</span>
-					<button
-						type="button"
-						onClick={() => setPreviewCountry("TR")}
-						aria-label="Попередній перегляд Туреччина"
-					>
-						<Eye size={18} strokeWidth={1.5} />
-					</button>
-				</CountryRow>
-				<SmallText>Доступний попередній перегляд віртуальних печаток</SmallText>
-			</SummaryBlock>
-
-			<InfoText style={{ marginTop: "5px" }}>
-				<AlertIcon>!</AlertIcon>
-				<span>Печатки та милі нараховуються лише після фактичного отримання замовлення</span>
-			</InfoText>
-		</RightColumn>
-	);
-
 	return (
 		<Container>
 			<Title>Ваш кошик</Title>
-
 			<ContentGrid>
-				{renderLeftColumn()}
-				{renderRightColumn()}
+				<LeftColumn>
+					<LeftBox>
+						<TableHeader>
+							<span>Товар</span>
+							<span>Ціна</span>
+							<span>Кількість</span>
+							<span />
+						</TableHeader>
+						<ItemsList>
+							{items.map((item) => (
+								<CartItem key={item.id}>
+									<ItemInfo>
+										<div className="image-wrap">
+											<Image src={item.image} alt={item.name} fill style={{ objectFit: "contain" }} />
+										</div>
+										<p>{item.name}</p>
+									</ItemInfo>
+									<ItemPrice>
+										<strong>{item.price % 1 === 0 ? item.price : item.price.toFixed(2)} грн</strong>
+										<span>{item.priceNote}</span>
+									</ItemPrice>
+									<ItemActions>
+										<QuantityBox>
+											<button type="button" onClick={() => handleQuantityChange(item.id, -1)} disabled={item.quantity <= 1}>
+												<MinusIcon />
+											</button>
+											<span className="qty-value">{item.quantity}</span>
+											<button type="button" onClick={() => handleQuantityChange(item.id, 1)}>
+												<PlusIcon />
+											</button>
+										</QuantityBox>
+									</ItemActions>
+									<div style={{ display: "flex", justifyContent: "flex-end" }}>
+										<RemoveButton onClick={() => handleRemoveItem(item.id)}>
+											<CloseIcon color="white" />
+										</RemoveButton>
+									</div>
+								</CartItem>
+							))}
+						</ItemsList>
+						<PromoSection>
+							<PromoRow>
+								<p>Скористатись промокодом</p>
+								<InputGroup>
+									<input type="text" placeholder="Введіть код" value={promoInput} onChange={e => setPromoInput(e.target.value)} disabled={promoApplied} />
+									<button type="button" onClick={() => promoInput.trim() && setPromoApplied(true)} disabled={promoApplied}>
+										{promoApplied ? "Застосовано" : "Додати"}
+									</button>
+								</InputGroup>
+							</PromoRow>
+							<PromoRow className="bordered">
+								<p>Списати милі</p>
+								<div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+									<QuantityBox>
+										<button type="button" onClick={() => setMiles(m => Math.max(0, m - 1))} disabled={miles <= 0}>
+											<MinusIcon />
+										</button>
+										<span className="qty-value">{miles}</span>
+										<button type="button" onClick={() => setMiles(m => m + 1)}>
+											<PlusIcon />
+										</button>
+									</QuantityBox>
+									<RemoveButton onClick={() => setMiles(0)}>
+										<CloseIcon color="white" />
+									</RemoveButton>
+								</div>
+							</PromoRow>
+						</PromoSection>
+					</LeftBox>
+					<InfoText><AlertIcon>!</AlertIcon><span>Загальна сума замовлення вказана без урахування доставки</span></InfoText>
+				</LeftColumn>
+
+				<RightColumn>
+					<SummaryBlock>
+						<h3>Чек замовлення</h3>
+						<SummaryRow><span>Сума замовлення:</span><span>{subtotal.toFixed(2)} грн</span></SummaryRow>
+						<SummaryRow><span>Промокод:</span><span>{promoApplied ? `-${promoDiscount.toFixed(2)} грн` : "-15%"}</span></SummaryRow>
+						<SummaryRow><span>Списання миль:</span><span>-{miles}</span></SummaryRow>
+						<TotalRow><span>Загалом:</span><span className="total-price">{finalTotal.toFixed(2)} грн</span></TotalRow>
+						<CheckoutButton onClick={() => router.push("/basket/placeorder")}>Оформити замовлення</CheckoutButton>
+					</SummaryBlock>
+
+					<SummaryBlock>
+						<h3>Нарахування миль</h3>
+						<SummaryRow><span>З чеку замовлення:</span><span>+1</span></SummaryRow>
+						<SummaryRow><span>Відкриття нових країн:</span><span>+40</span></SummaryRow>
+						<TotalRow><span>Загалом:</span><span className="total-miles">+41 миля</span></TotalRow>
+					</SummaryBlock>
+
+					<SummaryBlock>
+						<h3>Нові країни</h3>
+						<CountryRow>
+							<span>Україна</span>
+							<button type="button" onClick={() => setPreviewCountry("UA")}>
+								<EyeIcon />
+							</button>
+						</CountryRow>
+						<CountryRow className="last">
+							<span>Туреччина</span>
+							<button type="button" onClick={() => setPreviewCountry("TR")}>
+								<EyeIcon />
+							</button>
+						</CountryRow>
+						<SmallText>Доступний попередній перегляд віртуальних печаток</SmallText>
+					</SummaryBlock>
+					<InfoText><AlertIcon>!</AlertIcon><span>Печатки та милі нараховуються лише після фактичного отримання замовлення</span></InfoText>
+				</RightColumn>
 			</ContentGrid>
 
 			{toastVisible && (
 				<ToastNotification>
-					<ToastIconWrapper>
-						<Check size={14} color="white" strokeWidth={3} />
-					</ToastIconWrapper>
+					<ToastIconWrapper><CheckIcon /></ToastIconWrapper>
 					<span>Товар видалено з кошика</span>
-					<button type="button" onClick={() => setToastVisible(false)} aria-label="Закрити сповіщення">
-						<X size={14} />
+					<button type="button" onClick={() => setToastVisible(false)}>
+						<CloseIcon color="#A4A4A4" size={14} />
 					</button>
 				</ToastNotification>
 			)}
@@ -330,28 +258,11 @@ export default function BasketPage() {
 			{previewCountry && (
 				<ModalOverlay onClick={() => setPreviewCountry(null)}>
 					<ModalContent onClick={(e) => e.stopPropagation()}>
-						<button
-							type="button"
-							className="close-btn"
-							onClick={() => setPreviewCountry(null)}
-							aria-label="Закрити модальне вікно"
-						>
-							<X size={20} />
-						</button>
-						<h4>
-							Попередній перегляд віртуальної
-							<br />
-							печатки: {previewCountry === "UA" ? "Україна" : "Туреччина"}
-						</h4>
-						<img
-							src={
-								previewCountry === "UA"
-									? "https://placehold.co/120x120/0057B7/FFDD00?text=UA"
-									: "https://placehold.co/120x120/E30A17/FFFFFF?text=TR"
-							}
-							alt="Stamp"
-							className="stamp-img"
-						/>
+						<ModalClose type="button" onClick={() => setPreviewCountry(null)}>
+							<CloseIcon color="currentColor" size={24} />
+						</ModalClose>
+						<h4>Попередній перегляд віртуальної<br />печатки: {previewCountry === "UA" ? "Україна" : "Туреччина"}</h4>
+						<img src={previewCountry === "UA" ? "https://placehold.co/120x120/0057B7/FFDD00?text=UA" : "https://placehold.co/120x120/E30A17/FFFFFF?text=TR"} alt="Stamp" className="stamp-img" />
 					</ModalContent>
 				</ModalOverlay>
 			)}

@@ -1,120 +1,241 @@
 "use client";
 
-import { ArrowDownWideNarrow, Heart, Settings2, ShoppingBasket } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { ArrowDownWideNarrow, Settings2, X, ChevronDown, ChevronUp } from "lucide-react";
 import { use, useEffect, useState } from "react";
+import { useExtracted } from "next-intl"; // ДОДАНО ХУК ПЕРЕКЛАДУ
 
 import { useCategories } from "@/store";
+
 import {
-	Actions,
-	Badge,
-	Bottom,
-	Card,
-	CartButton,
 	CatalogActions,
 	CatalogHeader,
 	CatalogTitle,
 	Content,
-	FavoriteButton,
 	FilterButton,
-	ImageWrap,
-	Info,
-	Name,
-	Price,
-	ProductImage,
 	Products,
-	Rating,
-	Stock,
-	Sub,
-} from "./page.css";
+	SidebarOverlay,
+	SidebarContainer,
+	SidebarHeader,
+	SidebarClose,
+	SidebarContent,
+	FilterSection,
+	DropdownHeader,
+	DropdownList,
+	DropdownItem,
+	PriceRange,
+	SortGrid,
+	SortOption,
+	ApplyButton
+} from "./page.css"; // Переконайся, що шлях до твого css правильний
 
-const products = Array.from({ length: 16 }).map((_, i) => ({
-	id: i + 1,
-	name: "Назва товару",
-	price: "49.30 грн",
-	calories: "175 ккал / 100 г",
-	inStock: true,
-	rating: "5/5",
-	image: i % 3 === 0 ? "/images/slide1.png" : i % 3 === 1 ? "/images/slide2.png" : "/images/slide3.png",
-	hasDiscount: i % 2 === 0,
-}));
+const Page = ({ params }: { params: Promise<{ category_id: number }> }) => {
+	const t = useExtracted("category"); // ІНІЦІАЛІЗАЦІЯ ПЕРЕКЛАДУ
 
-const page = ({ params }: { params: Promise<{ category_id: number }> }) => {
 	const { category_id } = use(params);
 	const { categoriesSet } = useCategories();
 
 	const [mounted, setMounted] = useState(false);
+	
+	const [activeSidebar, setActiveSidebar] = useState<"filter" | "sort" | null>(null);
+	const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+	
+	const [filters, setFilters] = useState({
+		availability: t("In stock"),
+		producer: t("Select producer"),
+		country: t("Select country")
+	});
+
+	const [priceMin, setPriceMin] = useState("");
+	const [priceMax, setPriceMax] = useState("");
+
+	const [activeSort, setActiveSort] = useState("newest");
+
 	useEffect(() => {
 		setMounted(true);
 	}, []);
 
+	const closeSidebar = () => {
+		setActiveSidebar(null);
+		setOpenDropdown(null);
+	};
+
+	const toggleDropdown = (name: string) => {
+		setOpenDropdown(prev => prev === name ? null : name);
+	};
+
+	const handleSelect = (name: string, value: string | null, placeholder: string) => {
+		if (value === null) {
+			setFilters(prev => ({ ...prev, [name]: placeholder }));
+		} else {
+			setFilters(prev => ({ ...prev, [name]: value }));
+		}
+		setOpenDropdown(null);
+	};
+
+	// Відсортовані та перекладені опції
+	const sortOptions = [
+		{ id: "newest", label: t("Newest first") },
+		{ id: "oldest", label: t("Oldest first") },
+		{ id: "cheapest", label: t("Cheapest first") },
+		{ id: "expensive", label: t("Most expensive first") },
+		{ id: "az", label: t("A to Z") },
+		{ id: "za", label: t("Z to A") },
+	];
+
 	return (
 		<Content>
 			<CatalogHeader>
-				<CatalogTitle>{mounted && (categoriesSet[category_id]?.name || "Категорія не знайдена")}</CatalogTitle>
+				<CatalogTitle>
+					{mounted && (categoriesSet[category_id]?.name || t("Category not found"))}
+				</CatalogTitle>
 
 				<CatalogActions>
-					<FilterButton type="button">
+					<FilterButton type="button" onClick={() => setActiveSidebar("filter")}>
 						<Settings2 size={16} strokeWidth={2} />
-						Фільтр
+						{t("Filter")}
 					</FilterButton>
-					<FilterButton type="button">
+					<FilterButton type="button" onClick={() => setActiveSidebar("sort")}>
 						<ArrowDownWideNarrow size={16} strokeWidth={2} />
-						Сортування
+						{t("Sort")}
 					</FilterButton>
 				</CatalogActions>
 			</CatalogHeader>
 
 			<Products>
-				{products.map((product) => (
-					<Card key={product.id}>
-						{product.hasDiscount && <Badge>- 15%</Badge>}
-
-						<ImageWrap>
-							<ProductImage>
-								<Image
-									src={product.image}
-									alt={product.name}
-									fill
-									sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-								/>
-							</ProductImage>
-						</ImageWrap>
-
-						<Name>{product.name}</Name>
-
-						<Stock>
-							<span />
-							{product.inStock ? "є в наявності" : "немає в наявності"}
-						</Stock>
-
-						<Rating>
-							<u>★★★★★</u>
-							<span>{product.rating}</span>
-						</Rating>
-
-						<Bottom>
-							<Info>
-								<Price>{product.price}</Price>
-								<Sub>{product.calories}</Sub>
-							</Info>
-
-							<Actions>
-								<FavoriteButton as={Link} href="/heart" aria-label="Додати у вибране">
-									<Heart size={20} strokeWidth={1.5} />
-								</FavoriteButton>
-
-								<CartButton as={Link} href="/basket" aria-label="Додати у кошик">
-									<ShoppingBasket size={20} strokeWidth={1.5} />
-								</CartButton>
-							</Actions>
-						</Bottom>
-					</Card>
-				))}
+				{/* ТОВАРИ ПОКИ ЩО ПУСТІ */}
 			</Products>
+
+			{/* БІЧНІ ПАНЕЛІ */}
+			{activeSidebar && (
+				<SidebarOverlay onClick={closeSidebar}>
+					<SidebarContainer onClick={(e) => e.stopPropagation()}>
+						<SidebarHeader>
+							<h2>{activeSidebar === "filter" ? t("Filter products") : t("Sort products")}</h2>
+							<SidebarClose onClick={closeSidebar} type="button">
+								<X size={24} />
+							</SidebarClose>
+						</SidebarHeader>
+
+						<SidebarContent>
+							{activeSidebar === "filter" ? (
+								<>
+									{/* НАЯВНІСТЬ */}
+									<FilterSection>
+										<p>{t("Availability")}</p>
+										<div>
+											<DropdownHeader onClick={() => toggleDropdown("availability")}>
+												<span>{filters.availability === t("Select availability") ? "" : filters.availability}</span>
+												{openDropdown === "availability" ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+											</DropdownHeader>
+											{openDropdown === "availability" && (
+												<DropdownList>
+													<DropdownItem $cancel onClick={() => handleSelect("availability", null, t("Select availability"))}>
+														{t("Cancel selection")}
+													</DropdownItem>
+													<DropdownItem onClick={() => handleSelect("availability", t("In stock"), "")}>
+														{t("In stock")}
+													</DropdownItem>
+													<DropdownItem onClick={() => handleSelect("availability", t("Out of stock"), "")}>
+														{t("Out of stock")}
+													</DropdownItem>
+												</DropdownList>
+											)}
+										</div>
+									</FilterSection>
+
+									{/* ВИРОБНИК */}
+									<FilterSection>
+										<p>{t("Producer")}</p>
+										<div>
+											<DropdownHeader onClick={() => toggleDropdown("producer")}>
+												<span>{filters.producer === t("Select producer") ? "" : filters.producer}</span>
+												{openDropdown === "producer" ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+											</DropdownHeader>
+											{openDropdown === "producer" && (
+												<DropdownList>
+													<DropdownItem $cancel onClick={() => handleSelect("producer", null, t("Select producer"))}>
+														{t("Cancel selection")}
+													</DropdownItem>
+													<DropdownItem onClick={() => handleSelect("producer", t("Producer 1"), "")}>
+														{t("Producer 1")}
+													</DropdownItem>
+													<DropdownItem onClick={() => handleSelect("producer", t("Producer 2"), "")}>
+														{t("Producer 2")}
+													</DropdownItem>
+												</DropdownList>
+											)}
+										</div>
+									</FilterSection>
+
+									{/* КРАЇНА */}
+									<FilterSection>
+										<p>{t("Country of origin")}</p>
+										<div>
+											<DropdownHeader onClick={() => toggleDropdown("country")}>
+												<span>{filters.country === t("Select country") ? "" : filters.country}</span>
+												{openDropdown === "country" ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+											</DropdownHeader>
+											{openDropdown === "country" && (
+												<DropdownList>
+													<DropdownItem $cancel onClick={() => handleSelect("country", null, t("Select country"))}>
+														{t("Cancel selection")}
+													</DropdownItem>
+													<DropdownItem onClick={() => handleSelect("country", t("Ukraine"), "")}>{t("Ukraine")}</DropdownItem>
+													<DropdownItem onClick={() => handleSelect("country", t("Italy"), "")}>{t("Italy")}</DropdownItem>
+													<DropdownItem onClick={() => handleSelect("country", t("South Korea"), "")}>{t("South Korea")}</DropdownItem>
+													<DropdownItem onClick={() => handleSelect("country", t("France"), "")}>{t("France")}</DropdownItem>
+													<DropdownItem onClick={() => handleSelect("country", t("Japan"), "")}>{t("Japan")}</DropdownItem>
+													<DropdownItem onClick={() => handleSelect("country", t("China"), "")}>{t("China")}</DropdownItem>
+												</DropdownList>
+											)}
+										</div>
+									</FilterSection>
+
+									{/* ЦІНА */}
+									<FilterSection>
+										<p>{t("Price range")}</p>
+										<PriceRange>
+											<label>{t("from")}</label>
+											<input 
+												type="number" 
+												placeholder="0" 
+												value={priceMin}
+												onChange={(e) => setPriceMin(e.target.value)}
+											/>
+											<label>{t("to")}</label>
+											<input 
+												type="number" 
+												placeholder="10000" 
+												value={priceMax}
+												onChange={(e) => setPriceMax(e.target.value)}
+											/>
+										</PriceRange>
+									</FilterSection>
+								</>
+							) : (
+								<SortGrid>
+									{sortOptions.map((opt) => (
+										<SortOption 
+											key={opt.id} 
+											$active={activeSort === opt.id}
+											onClick={() => setActiveSort(opt.id)}
+										>
+											<div className="radio-circle" />
+											<span style={{ whiteSpace: "pre-line" }}>{opt.label}</span>
+										</SortOption>
+									))}
+								</SortGrid>
+							)}
+						</SidebarContent>
+
+						<ApplyButton onClick={closeSidebar}>
+							{t("Apply")}
+						</ApplyButton>
+					</SidebarContainer>
+				</SidebarOverlay>
+			)}
 		</Content>
 	);
 };
 
-export default page;
+export default Page;

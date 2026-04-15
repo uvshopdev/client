@@ -1,7 +1,6 @@
 "use client";
-import { ArrowLeft, ArrowRight, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { useState } from "react";
-
 import * as S from "./Reviews.css";
 
 interface Review {
@@ -30,7 +29,7 @@ export default function Reviews({ reviews }: Props) {
 	const next = () => setIndex((i) => Math.min(maxIndex, i + 1));
 
 	const renderStars = (rating: number) =>
-		[1, 2, 3, 4, 5].map((n) => <Star key={n} size={18} fill={n <= rating ? "#ffdb0d" : "none"} color="#3B3028" />);
+		[1, 2, 3, 4, 5].map((n) => <Star key={n} size={18} fill={n <= rating ? "#ffdb0d" : "none"} color={n <= rating ? "#ffdb0d" : "#3B3028"} />);
 
 	return (
 		<S.Container>
@@ -38,7 +37,7 @@ export default function Reviews({ reviews }: Props) {
 
 			<S.SliderWrapper>
 				<S.Slider style={{ transform: `translateX(-${index * STEP}px)` }}>
-					{reviews.map((r, i) => (
+					{reviews.map((r) => (
 						<S.Card key={crypto.randomUUID()} onClick={() => setActiveReview(r)}>
 							<S.Top>
 								<S.Row>
@@ -60,7 +59,7 @@ export default function Reviews({ reviews }: Props) {
 
 			<S.Controls>
 				<button type="button" onClick={prev} disabled={index === 0}>
-					<ArrowLeft size={18} />
+					<span style={{ color: "white", fontSize: "18px", lineHeight: 1, paddingRight: "2px" }}>&#10094;</span>
 				</button>
 
 				<S.Dots>
@@ -70,7 +69,7 @@ export default function Reviews({ reviews }: Props) {
 				</S.Dots>
 
 				<button type="button" onClick={next} disabled={index === maxIndex}>
-					<ArrowRight size={18} />
+					<span style={{ color: "white", fontSize: "18px", lineHeight: 1, paddingLeft: "2px" }}>&#10095;</span>
 				</button>
 			</S.Controls>
 

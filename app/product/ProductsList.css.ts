@@ -1,52 +1,35 @@
 import styled from "styled-components";
 
-export const ProductsSection = styled.div`
-  width: 100%;
-  max-width: 1520px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  padding: 0 40px;
+export const ProductsSection = styled.section`
+	width: 100%;
+	padding: 0 40px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
 `;
 
 export const ProductsTitle = styled.h2`
-  font-family: 'Gabriela', serif;
-  font-size: 34px;
-  color: #3B3028;
+	font-family: "Gabriela", serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 34px;
+	line-height: 44px;
+	color: #3B3028;
+	margin: 0;
 `;
 
 export const ProductsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-`;
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 20px;
 
-export const ProductItem = styled.div`
-  border: 1px solid #E9E3D9;
-  border-radius: 20px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  cursor: pointer;
-  transition: 0.2s;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-`;
-
-export const ProductImg = styled.img`
-  width: 100%;
-  height: 180px;
-  object-fit: contain;
-`;
-
-export const ProductName = styled.div`
-  font-size: 16px;
-`;
-
-export const ProductPrice = styled.div`
-  font-weight: 600;
+	@media (max-width: 1200px) {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+	@media (max-width: 900px) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	@media (max-width: 640px) {
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+	}
 `;

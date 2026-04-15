@@ -1,9 +1,23 @@
 "use client";
 import styled from "styled-components";
+import { Montserrat_Alternates, Gabriela } from "next/font/google";
 
 import ProductCard from "./ProductCard";
 import ProductsList from "./ProductsList";
 import Reviews from "./Reviews";
+
+// --- Подключение шрифтов ---
+const montserrat = Montserrat_Alternates({
+	weight: ["400", "500", "600", "700"],
+	subsets: ["cyrillic", "latin"],
+	variable: "--font-montserrat",
+});
+
+const gabriela = Gabriela({
+	weight: ["400"],
+	subsets: ["cyrillic", "latin"],
+	variable: "--font-gabriela",
+});
 
 // ---------------------- Styled Components ----------------------
 const Wrapper = styled.div`
@@ -66,17 +80,18 @@ const reviewsData = [
 	{ name: "Руслан Ковтун", date: "09.12.2025", rating: 4, text: "Дуже непогано, рекомендую" },
 ];
 
+// Оновили мокові дані під новий компонент (додали id, ціна тепер число)
 const productsData = [
-	{ name: "Ramune Soda", price: "90 грн", img: "/test.png" },
-	{ name: "Pocky Chocolate", price: "120 грн", img: "/test.png" },
-	{ name: "Mochi", price: "150 грн", img: "/test.png" },
-	{ name: "KitKat Matcha", price: "110 грн", img: "/test.png" },
+	{ id: 1, name: "Ramune Soda", price: 90, img: "/test.png", inStock: true, hasDiscount: true },
+	{ id: 2, name: "Pocky Chocolate", price: 120, img: "/test.png", inStock: true, hasDiscount: false },
+	{ id: 3, name: "Mochi", price: 150, img: "/test.png", inStock: false, hasDiscount: true },
+	{ id: 4, name: "KitKat Matcha", price: 110, img: "/test.png", inStock: true, hasDiscount: false },
 ];
 
 // ---------------------- Component ----------------------
 export default function ProductPage() {
 	return (
-		<Wrapper>
+		<Wrapper className={`${montserrat.variable} ${gabriela.variable}`}>
 			<ProductCard images={images} />
 			<Reviews reviews={reviewsData} />
 			<ProductsList products={productsData} />
