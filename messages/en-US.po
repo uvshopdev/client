@@ -41,6 +41,84 @@ msgctxt "auth"
 msgid "odXlk8"
 msgstr "Log in"
 
+#: app/page.tsx:15
+msgctxt "home"
+msgid "3T2iOg"
+msgstr "Ukraine"
+
+#: app/page.tsx:16
+msgctxt "home"
+msgid "VzQxqn"
+msgstr "Italy"
+
+#: app/page.tsx:17
+msgctxt "home"
+msgid "tnrxhT"
+msgstr "South Korea"
+
+#: app/page.tsx:18
+msgctxt "home"
+msgid "9KADbj"
+msgstr "France"
+
+#: app/page.tsx:19
+msgctxt "home"
+msgid "3Rh+pv"
+msgstr "Japan"
+
+#: app/page.tsx:20
+msgctxt "home"
+msgid "1q/ois"
+msgstr "China"
+
+#: app/page.tsx:23
+msgctxt "home"
+msgid "2zg50f"
+msgstr "New arrivals"
+
+#: app/page.tsx:23
+msgctxt "home"
+msgid "AMDs+N"
+msgstr "Monthly discounts"
+
+#: app/page.tsx:23
+msgctxt "home"
+msgid "57PnQn"
+msgstr "Top rated products"
+
+#: app/page.tsx:23
+msgctxt "home"
+msgid "FC/kO5"
+msgstr "Best sellers"
+
+#: app/page.tsx:71
+msgctxt "home"
+msgid "pq2lMA"
+msgstr "Popular categories"
+
+#: app/page.tsx:73
+#: app/page.tsx:103
+#: app/page.tsx:125
+msgctxt "home"
+msgid "pFK6bJ"
+msgstr "View all"
+
+#: app/page.tsx:82
+msgctxt "home"
+msgid "ccXLVi"
+msgstr "Category"
+
+#: app/page.tsx:92
+#: app/page.tsx:95
+msgctxt "home"
+msgid "4sRhVV"
+msgstr "Countries of the month"
+
+#: app/page.tsx:101
+msgctxt "home"
+msgid "8vURyh"
+msgstr "Try world cuisine"
+
 #: app/profile/coffee/page.tsx:30
 msgctxt "profile"
 msgid "pKaBty"
@@ -71,37 +149,37 @@ msgctxt "profile"
 msgid "VdXF7G"
 msgstr "Open countries map"
 
-#: app/profile/friends/page.tsx:46
+#: app/profile/friends/page.tsx:56
 msgctxt "profile"
 msgid "3s0ZWy"
 msgstr "Invite friends and get bonuses!"
 
-#: app/profile/friends/page.tsx:48
+#: app/profile/friends/page.tsx:58
 msgctxt "profile"
 msgid "CsMutJ"
 msgstr "Get +50 miles and coffee after your friend makes their first purchase for an amount of 150 UAH or more."
 
-#: app/profile/friends/page.tsx:56
+#: app/profile/friends/page.tsx:66
 msgctxt "profile"
 msgid "hYOE+U"
 msgstr "Invite"
 
-#: app/profile/friends/page.tsx:74
+#: app/profile/friends/page.tsx:84
 msgctxt "profile"
 msgid "smWqVf"
 msgstr "Waiting for the first purchase"
 
-#: app/profile/friends/page.tsx:87
+#: app/profile/friends/page.tsx:97
 msgctxt "profile"
 msgid "G8P44K"
 msgstr "Invitation link"
 
-#: app/profile/friends/page.tsx:93
+#: app/profile/friends/page.tsx:103
 msgctxt "profile"
 msgid "p556q3"
 msgstr "Copied"
 
-#: app/profile/friends/page.tsx:93
+#: app/profile/friends/page.tsx:103
 msgctxt "profile"
 msgid "4l6vz1"
 msgstr "Copy"

@@ -92,7 +92,7 @@ export const Bottom = styled.div`
 export const Buttons = styled.div`
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: end;
 `;
 
 export const ProductPrice = styled.div`
@@ -114,7 +114,7 @@ export const Actions = styled.div`
 	gap: 10px;
 `;
 
-export const FavoriteButton = styled.button`
+export const FavoriteButton = styled.button<{ $favorite?: boolean }>`
 	width: 52px;
 	height: 52px;
 	padding: 0;
@@ -125,15 +125,18 @@ export const FavoriteButton = styled.button`
 
 	border: none;
 	border-radius: 12px;
-	background: #fdecea;
-	color: #e53935;
+	background: ${({ $favorite }) => ($favorite ? "#fdecea" : "#ececec")};
 	cursor: pointer;
 
 	text-decoration: none;
 	transition: all 0.3s ease;
+	& svg {
+		color: ${({ $favorite }) => ($favorite ? "#e53935" : "#bdbdbd")};
+		fill: ${({ $favorite }) => ($favorite ? "#e53935" : "#bdbdbd")};
+	}
 
 	&:hover {
-		background: #fbd4d1;
+		background: ${({ $favorite }) => ($favorite ? "#fbd4d1" : "#dbdbdb")};
 	}
 
 	@media (max-width: 640px) {
@@ -146,6 +149,7 @@ export const FavoriteButton = styled.button`
 export const CartButton = styled.button`
 	width: 52px;
 	height: 52px;
+	padding: 0;
 
 	display: flex;
 	justify-content: center;
@@ -156,13 +160,4 @@ export const CartButton = styled.button`
 	background: ${({ theme }) => theme.colors.primary};
 	color: #ffffff;
 	cursor: pointer;
-
-	text-decoration: none;
-	transition: all 0.3s ease;
-
-	@media (max-width: 640px) {
-		width: 38px;
-		height: 38px;
-		border-radius: 10px;
-	}
 `;

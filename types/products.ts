@@ -18,4 +18,6 @@ export const Product = z.object({
 	category: Category.nullable(),
 });
 
+export const Products = z.array(Product);
+
 export type ProductType = z.infer<typeof Product>;

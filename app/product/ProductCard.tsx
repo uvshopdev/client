@@ -1,26 +1,46 @@
 "use client";
-import { ArrowLeft, ArrowRight, ChevronDown, ChevronUp, Heart, House, Star } from "lucide-react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { ChevronDown, ChevronUp, Heart, House, Star } from "lucide-react";
 import { useState } from "react";
 
+import { addFavorite, removeFavorite } from "@/lib/favorites";
+import { useBasket } from "@/store/basket";
+import type { ProductType } from "@/types/products";
 import * as S from "./ProductCard.css";
 
 interface ProductCardProps {
-	images: string[];
+	image: string;
+	product: ProductType;
+	favorite: boolean;
 }
 
-export default function ProductCard({ images }: ProductCardProps) {
-	const [active, setActive] = useState(0);
+export default function ProductCard({ image, product, favorite }: ProductCardProps) {
 	const [qty, setQty] = useState(1);
-	const [wish, setWish] = useState(false);
 	const [openKeys, setOpenKeys] = useState<string[]>([]);
+	const query = useQueryClient();
+	const { addPosition } = useBasket();
+
+	const { mutate: addToFavorite } = useMutation({
+		mutationKey: ["favorites"],
+		mutationFn: async () => await addFavorite(product.id),
+		onSuccess: async () => {
+			await query.invalidateQueries({ queryKey: ["favorites"] });
+			await query.invalidateQueries({ queryKey: ["favorites_ids"] });
+		},
+	});
+
+	const { mutate: removeFromFavorite } = useMutation({
+		mutationKey: ["favorites"],
+		mutationFn: async () => await removeFavorite(product.id),
+		onSuccess: async () => {
+			await query.invalidateQueries({ queryKey: ["favorites"] });
+			await query.invalidateQueries({ queryKey: ["favorites_ids"] });
+		},
+	});
 
 	const rating = 4;
 
-	const next = () => setActive((prev) => (prev + 1) % images.length);
-	const prev = () => setActive((prev) => (prev - 1 + images.length) % images.length);
-
-	const toggle = (key: string) =>
-		setOpenKeys(openKeys.includes(key) ? openKeys.filter((k) => k !== key) : [...openKeys, key]);
+	const toggle = (key: string) => setOpenKeys(openKeys.includes(key) ? openKeys.filter((k) => k !== key) : [...openKeys, key]);
 
 	return (
 		<S.Wrapper>
@@ -28,34 +48,12 @@ export default function ProductCard({ images }: ProductCardProps) {
 				{/* LEFT */}
 				<S.Left>
 					<S.MainImage>
-						<S.Image src={images[active]} />
+						<S.Image src={image} />
 
-						<S.Arrow onClick={prev} $left>
-							<ArrowLeft size={18} color="#fff" />
-						</S.Arrow>
-
-						<S.Arrow onClick={next}>
-							<ArrowRight size={18} color="#fff" />
-						</S.Arrow>
-
-						<S.WishButton onClick={() => setWish(!wish)}>
-							<Heart fill={wish ? "#E93A36" : "none"} />
+						<S.WishButton onClick={() => (favorite ? removeFromFavorite() : addToFavorite())}>
+							<Heart fill={favorite ? "#E93A36" : "none"} />
 						</S.WishButton>
-
-						<S.Dots>
-							{images.map((_, i) => (
-								<S.Dot key={crypto.randomUUID()} $active={i === active} onClick={() => setActive(i)} />
-							))}
-						</S.Dots>
 					</S.MainImage>
-
-					<S.Thumbs>
-						{images.map((img, i) => (
-							<S.Thumb key={crypto.randomUUID()} $active={i === active} onClick={() => setActive(i)}>
-								<S.ThumbImage src={img} />
-							</S.Thumb>
-						))}
-					</S.Thumbs>
 				</S.Left>
 
 				{/* RIGHT */}
@@ -67,13 +65,13 @@ export default function ProductCard({ images }: ProductCardProps) {
 							<span>/ Бакалія / Їжа швидкого приготування</span>
 						</S.Breadcrumbs>
 
-						<S.Title>Гостра локшина Samyang Hot Chicken Ramen Stew</S.Title>
+						<S.Title>{product.name}</S.Title>
 					</S.Block>
 
 					<S.Block>
 						<S.RowBetween>
 							<S.CodeStock>
-								<span>код: 742344612</span>
+								<span>код: {product.article}</span>
 								<S.Stock>
 									<S.DotStatus />є в наявності
 								</S.Stock>
@@ -93,8 +91,8 @@ export default function ProductCard({ images }: ProductCardProps) {
 					<S.Block>
 						<S.PriceRow>
 							<S.PriceBlock>
-								<S.Price>190 грн</S.Price>
-								<S.SubPrice>за 1 шт • 120 г</S.SubPrice>
+								<S.Price>{product.price} грн</S.Price>
+								<S.SubPrice>за 1 шт • {product.weight} г</S.SubPrice>
 							</S.PriceBlock>
 
 							<S.BuyControls>
@@ -107,7 +105,9 @@ export default function ProductCard({ images }: ProductCardProps) {
 										+
 									</button>
 								</S.Quantity>
-								<S.BuyButton>Купити</S.BuyButton>
+								<S.BuyButton type="button" onClick={() => addPosition(product, qty)}>
+									Купити
+								</S.BuyButton>
 							</S.BuyControls>
 						</S.PriceRow>
 					</S.Block>
@@ -147,14 +147,12 @@ export default function ProductCard({ images }: ProductCardProps) {
 								{
 									key: "comp",
 									title: "Склад",
-									content:
-										"Макаронні вироби (67,4%): борошно пшеничне (41%), пальмова олія (9%), крохмаль тапіоки...",
+									content: "Макаронні вироби (67,4%): борошно пшеничне (41%), пальмова олія (9%), крохмаль тапіоки...",
 								},
 							].map(({ key, title, content }) => (
 								<S.AccordionItem key={key}>
 									<S.AccordionHeader onClick={() => toggle(key)}>
-										{title}:
-										{openKeys.includes(key) ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+										{title}:{openKeys.includes(key) ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
 									</S.AccordionHeader>
 									{openKeys.includes(key) && <S.AccordionContent>{content}</S.AccordionContent>}
 								</S.AccordionItem>

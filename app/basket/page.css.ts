@@ -74,8 +74,6 @@ export const RightColumn = styled.div`
   flex-direction: column;
   gap: 20px;
   min-width: 320px;
-  position: sticky;
-  top: 20px;
 `;
 
 export const TableHeader = styled.div`
@@ -141,14 +139,14 @@ export const QuantityBox = styled.div`
 
   button {
     padding: 10px 15px;
-    border-color: ${({ theme }) => theme.colors?.secondary || '#ddd'};
+    border-color: ${({ theme }) => theme.colors?.secondary || "#ddd"};
     display: flex;
     align-items: center;
     justify-content: center;
     transition: 0.2s;
 
     &:hover:not(:disabled) {
-      border-color: ${({ theme }) => theme.colors?.primary || '#433327'};
+      border-color: ${({ theme }) => theme.colors?.primary || "#433327"};
     }
 
     &:disabled {
@@ -168,7 +166,7 @@ export const QuantityBox = styled.div`
 
 export const RemoveButton = styled.button`
   padding: 10px;
-  background-color: ${({ theme }) => theme.colors?.primary || '#433327'};
+  background-color: ${({ theme }) => theme.colors?.primary || "#433327"};
   border: none;
   border-radius: 50%;
 

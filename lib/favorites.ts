@@ -6,6 +6,10 @@ export const getFavorites = async () => {
 	return Favorites.parse(data);
 };
 
+export const addFavorite = async (id: number) => {
+	await authHost.post(`/users/me/favorites`, { product_id: id });
+};
+
 export const removeFavorite = async (id: number) => {
 	await authHost.delete(`/users/me/favorites/${id}`);
 };

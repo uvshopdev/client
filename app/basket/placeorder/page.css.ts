@@ -1,48 +1,52 @@
-import styled, { css } from "styled-components";
-
-const fontBase = css`
-  font-family: "Montserrat Alternates", sans-serif;
-`;
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: 60px 80px; 
-  box-sizing: border-box;
-  ${fontBase}
-  
-  @media (max-width: 768px) {
-    padding: 40px 20px;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 20px 24px 36px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  font-family: "Montserrat Alternates", sans-serif;
+
+  @media (max-width: 640px) {
+    padding: 16px 14px 24px;
+    gap: 16px;
   }
 `;
 
 export const Title = styled.h1`
+  margin: 0;
   font-family: "Gabriela", serif;
-  font-size: 48px;
-  color: #3b3028;
+  font-size: clamp(30px, 4vw, 40px);
   font-weight: 400;
-  margin-top: 0;
-  margin-bottom: 80px;
-  text-align: left;
+  line-height: 1.1;
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
-/* ===== TIMELINE ===== */
 export const TimelineWrapper = styled.div`
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  max-width: 1400px; 
-  margin: 0 auto 80px;
+  padding: 8px 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
 `;
 
 export const TimelineTrack = styled.div`
   position: absolute;
-  top: 24px;
-  left: 55px;
-  right: 55px;
-  height: 6px;
-  background: #f3f0ec;
-  transform: translateY(-50%);
-  z-index: 1;
+  left: 40px;
+  right: 40px;
+  top: 30px;
+  height: 3px;
+  background: ${({ theme }) => theme.colors.secondary};
+  z-index: 0;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const TimelineProgress = styled.div<{ $progress: number }>`
@@ -50,86 +54,120 @@ export const TimelineProgress = styled.div<{ $progress: number }>`
   left: 0;
   top: 0;
   height: 100%;
-  background: #3b3028;
   width: ${({ $progress }) => $progress}%;
-  transition: width 0.3s ease;
-  z-index: 2;
+  background: ${({ theme }) => theme.colors.primary};
+  transition: width 0.25s ease;
 `;
 
 export const Step = styled.div`
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  z-index: 3;
-  width: 110px;
-  position: relative;
+  gap: 8px;
 `;
 
 export const Circle = styled.div<{ $state: "completed" | "active" | "pending" }>`
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  border-radius: 50%;
+
+  font-size: 14px;
   font-weight: 600;
-  
-  background: ${({ $state }) => ($state === "pending" ? "#fff" : "#3b3028")};
-  color: ${({ $state }) => ($state === "pending" ? "#3b3028" : "#fff")};
-  border: ${({ $state }) => ($state === "pending" ? "1px dashed #888" : "none")};
-  
-  transition: all 0.3s ease;
+
+  background: ${({ theme, $state }) => ($state === "pending" ? theme.colors.surface : theme.colors.primary)};
+  color: ${({ theme, $state }) => ($state === "pending" ? theme.colors.textSecondary : theme.colors.surface)};
+  border: 1px solid
+    ${({ theme, $state }) => ($state === "active" ? theme.colors.primary : $state === "pending" ? theme.colors.secondary : theme.colors.primary)};
+  box-shadow: ${({ $state }) => ($state === "active" ? "0 0 0 3px rgba(59, 48, 40, 0.12)" : "none")};
+
+  @media (max-width: 640px) {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
 `;
 
 export const StepLabel = styled.div`
-  font-size: 15px;
-  font-weight: 500;
-  color: #000;
   text-align: center;
-  line-height: 1.4;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  max-width: 140px;
+
+  @media (max-width: 640px) {
+    font-size: 11px;
+    max-width: 88px;
+  }
 `;
 
-/* ===== FORMS ===== */
 export const FormContainer = styled.div`
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  border-radius: 16px;
+  background: ${({ theme }) => theme.colors.surface};
+
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  max-width: 600px;
-  margin: 0 auto;
+  gap: 14px;
+
+  @media (max-width: 640px) {
+    padding: 14px;
+    border-radius: 12px;
+  }
 `;
 
 export const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 `;
 
 export const Label = styled.label`
-  font-size: 15px;
-  font-weight: 500; 
-  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.textPrimary};
+`;
+
+const fieldBase = `
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid;
+  outline: none;
+  font-size: 14px;
+  font-family: "Montserrat Alternates", sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s;
 `;
 
 export const Input = styled.input`
-  width: 100%;
-  padding: 15px 20px; 
-  border: 1px solid #e9e3d9;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 400; 
-  ${fontBase}
-  outline: none;
-  background: #fff;
-  transition: border-color 0.2s;
+  ${fieldBase}
+
+  background: ${({ theme }) => theme.colors.surface};
+  border-color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.textPrimary};
 
   &::placeholder {
-    color: #ccc;
+    color: ${({ theme }) => theme.colors.muted};
   }
 
   &:focus {
-    border-color: #3b3028;
+    border-color: ${({ theme }) => theme.colors.primary};
+    box-shadow: 0 0 0 2px rgba(59, 48, 40, 0.08);
   }
 `;
 
@@ -139,176 +177,196 @@ export const SelectWrapper = styled.div`
 `;
 
 export const Select = styled.select`
-  width: 100%;
-  padding: 15px 20px; 
-  border: 1px solid #e9e3d9;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 400;
-  ${fontBase}
-  outline: none;
-  background: #fff;
+  ${fieldBase}
   appearance: none;
+  padding-right: 44px;
   cursor: pointer;
-  color: #000;
 
-  &:invalid {
-    color: #ccc;
-  }
+  background: ${({ theme }) => theme.colors.surface};
+  border-color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.textPrimary};
 
   &:focus {
-    border-color: #3b3028;
+    border-color: ${({ theme }) => theme.colors.primary};
+    box-shadow: 0 0 0 2px rgba(59, 48, 40, 0.08);
   }
 `;
 
 export const SelectIcon = styled.div`
   position: absolute;
-  right: 20px;
+  right: 14px;
   top: 50%;
   transform: translateY(-50%);
+  color: ${({ theme }) => theme.colors.muted};
   pointer-events: none;
-  color: #ccc;
   display: flex;
 `;
 
 export const Textarea = styled.textarea`
   width: 100%;
-  padding: 15px 20px;
-  border: 1px solid #e9e3d9;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 400;
-  ${fontBase}
+  min-height: 108px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
   outline: none;
   resize: vertical;
-  min-height: 120px;
-  background: #fff;
+  font-size: 14px;
+  font-family: "Montserrat Alternates", sans-serif;
+  color: ${({ theme }) => theme.colors.textPrimary};
+  background: ${({ theme }) => theme.colors.surface};
+  transition: border-color 0.2s, box-shadow 0.2s;
 
   &::placeholder {
-    color: #ccc;
+    color: ${({ theme }) => theme.colors.muted};
   }
 
   &:focus {
-    border-color: #3b3028;
+    border-color: ${({ theme }) => theme.colors.primary};
+    box-shadow: 0 0 0 2px rgba(59, 48, 40, 0.08);
   }
 `;
 
-/* ===== CONTROLS ===== */
 export const Controls = styled.div`
+  width: 100%;
+  max-width: 680px;
+  margin: 2px auto 0;
+
   display: flex;
   justify-content: space-between;
-  max-width: 600px;
-  margin: 50px auto 0;
+  gap: 10px;
 `;
 
-export const IconButton = styled.button<{ $disabled?: boolean }>`
-  width: 60px; 
-  height: 60px;
-  border-radius: 50%;
-  background: ${({ $disabled }) => ($disabled ? "#cecece" : "#3b3028")};
-  color: #fff;
+export const IconButton = styled.button`
+  width: 44px;
+  height: 44px;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
-  cursor: ${({ $disabled }) => ($disabled ? "default" : "pointer")};
-  transition: opacity 0.2s;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s;
 
-  &:hover {
-    opacity: ${({ $disabled }) => ($disabled ? 1 : 0.9)};
+  background: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.surface};
+
+  &:hover:not(:disabled) {
+    background: ${({ theme }) => theme.colors.primaryHover};
+  }
+
+  &:disabled {
+    cursor: default;
+    background: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.textSecondary};
   }
 
   svg {
-    width: 28px !important; /* Адекватный размер иконки */
-    height: 28px !important;
-    stroke-width: 2px !important; /* Нормальная толщина линий */
+    width: 22px;
+    height: 22px;
+    stroke-width: 2.2;
+    flex-shrink: 0;
   }
 `;
 
 export const SubmitButton = styled.button`
-  background: #3b3028;
-  color: #fff;
-  padding: 0 36px;
-  height: 60px; 
-  border-radius: 12px;
-  font-weight: 500;
-  font-size: 16px;
+  height: 44px;
+  padding: 0 20px;
   border: none;
+  border-radius: 10px;
   cursor: pointer;
-  ${fontBase}
-  transition: opacity 0.2s;
+
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Montserrat Alternates", sans-serif;
+
+  background: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.surface};
+  transition: background-color 0.2s;
 
   &:hover {
-    opacity: 0.9;
+    background: ${({ theme }) => theme.colors.primaryHover};
   }
 `;
 
-/* ===== MODAL ===== */
 export const ModalOverlay = styled.div`
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background: ${({ theme }) => theme.colors.overlay};
 `;
 
 export const ModalContent = styled.div`
-  background: #fff;
-  border-radius: 20px;
-  padding: 40px;
-  max-width: 450px;
-  width: 90%;
-  text-align: center;
+  width: min(440px, 100%);
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  background: ${({ theme }) => theme.colors.surface};
+
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 16px;
+  text-align: center;
 `;
 
 export const ModalTitle = styled.h3`
-  font-family: "Gabriela", serif;
-  font-size: 24px;
-  color: #3b3028;
-  font-weight: 400;
-  line-height: 1.3;
   margin: 0;
+  font-family: "Gabriela", serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const ModalButtons = styled.div`
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 10px;
+
+  @media (max-width: 420px) {
+    flex-direction: column;
+  }
 `;
 
 export const ModalBtnOutline = styled.button`
-  padding: 12px 24px;
-  border: 1px solid #3b3028;
-  background: transparent;
-  color: #3b3028;
+  height: 40px;
+  padding: 0 16px;
   border-radius: 10px;
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  background: ${({ theme }) => theme.colors.surfaceElevated};
+  color: ${({ theme }) => theme.colors.textPrimary};
+
+  font-size: 14px;
   font-weight: 500;
-  font-size: 15px;
+  font-family: "Montserrat Alternates", sans-serif;
   cursor: pointer;
-  ${fontBase}
+  transition: border-color 0.2s;
 
   &:hover {
-    background: #f7f3e7;
+    border-color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
 export const ModalBtnSolid = styled.button`
-  padding: 12px 24px;
-  background: #3b3028;
-  color: #fff;
-  border: none;
+  height: 40px;
+  padding: 0 16px;
   border-radius: 10px;
+  border: none;
+
+  font-size: 14px;
   font-weight: 500;
-  font-size: 15px;
+  font-family: "Montserrat Alternates", sans-serif;
   cursor: pointer;
-  ${fontBase}
+
+  background: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.surface};
+  transition: background-color 0.2s;
 
   &:hover {
-    opacity: 0.9;
+    background: ${({ theme }) => theme.colors.primaryHover};
   }
 `;

@@ -72,9 +72,13 @@ export const SubCategories = styled.div`
     overflow-y: auto;
 `;
 export const SubCategory = styled(Link)<{ $active?: boolean }>`
+    position: relative;
+
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 15px;
 
     text-align: center;
 
@@ -84,6 +88,11 @@ export const SubCategory = styled(Link)<{ $active?: boolean }>`
     border-radius: 10px;
     border: 1px solid ${({ $active, theme }) => ($active ? "none" : theme.colors.secondary)};
 
+    & img {
+        object-fit: fill;
+        border-radius: 50%;
+    }
+    
     &:hover {
         background: ${(props) => props.theme.colors.primary};
         color: #ffffff;

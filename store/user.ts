@@ -1,19 +1,10 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
-interface User {
-	fullName: string;
-	email: string;
-	phoneNumber: string;
-	imageUrl: string;
-}
-
 interface UserStore {
 	accessToken: string | null;
-	user: User | null;
 
 	setAccessToken: (accessToken: string) => void;
-	setUser: (user: User) => void;
 }
 
 export const useUser = create<UserStore>()(
@@ -21,10 +12,9 @@ export const useUser = create<UserStore>()(
 		persist(
 			(set) => ({
 				accessToken: null,
-				user: null,
+				user: { favorites: [], referrals: [] },
 
 				setAccessToken: (accessToken) => set(() => ({ accessToken })),
-				setUser: (user) => set(() => ({ user })),
 			}),
 			{ name: "auth_info" },
 		),

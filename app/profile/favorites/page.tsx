@@ -13,7 +13,11 @@ const FavoritesPage = () => {
 		staleTime: 3 * 60 * 1000,
 	});
 
-	return <Content>{isSuccess && data.map(({ product }) => <ProductCard key={product.id} {...product} />)}</Content>;
+	return (
+		<Content>
+			{isSuccess && data.map(({ product }) => <ProductCard key={product.id} {...product} favorite={true} />)}
+		</Content>
+	);
 };
 
 export default FavoritesPage;

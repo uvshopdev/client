@@ -8,3 +8,4 @@ export const Favorite = z.object({
 });
 
 export const Favorites = z.array(Favorite);
+export type FavoritesType = z.infer<typeof Favorites>;

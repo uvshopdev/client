@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 
@@ -65,6 +66,7 @@ const Catalog = () => {
 							href={`/${category.id}`}
 							$active={pathname === `/${category.id}`}
 						>
+							<Image src="/map.webp" width={80} height={80} unoptimized alt="" />
 							{category.name}
 						</SubCategory>
 					))}

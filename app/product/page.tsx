@@ -1,6 +1,9 @@
 "use client";
+import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 
+import { getFavorites } from "@/lib/favorites";
+import type { ProductType } from "@/types/products";
 import ProductCard from "./ProductCard";
 import ProductsList from "./ProductsList";
 import Reviews from "./Reviews";
@@ -22,7 +25,19 @@ const Wrapper = styled.div`
 `;
 
 // ---------------------- Data ----------------------
-const images = ["/product/rectangle684.png", "/product/rectangle683.png", "/product/rectangle684.png"];
+const image = "/product/rectangle684.png";
+const productId = 742344612;
+const product: ProductType = {
+	id: productId,
+	article: "742344612",
+	name: "Гостра локшина Samyang Hot Chicken Ramen Stew",
+	picture: "rectangle684",
+	price: 190,
+	weight: 120,
+	caloric: 369,
+	country: null,
+	category: null,
+};
 
 const reviewsData = [
 	{ name: "Іван Іваненко", date: "06.11.2025", rating: 5, text: "Дуже смачно, але дуже гостро 🔥" },
@@ -75,9 +90,18 @@ const productsData = [
 
 // ---------------------- Component ----------------------
 export default function ProductPage() {
+	const { data: favorites } = useQuery({
+		queryKey: ["favorites_ids"],
+		queryFn: async () => {
+			const data = await getFavorites();
+			return data.map(({ product }) => product.id);
+		},
+		initialData: [],
+	});
+
 	return (
 		<Wrapper>
-			<ProductCard images={images} />
+			<ProductCard image={image} product={product} favorite={favorites.includes(productId)} />
 			<Reviews reviews={reviewsData} />
 			<ProductsList products={productsData} />
 		</Wrapper>
