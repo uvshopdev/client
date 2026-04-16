@@ -59,12 +59,24 @@ export default function CheckoutPage() {
 
 	const { reset } = useBasket();
 
-	const next = () => setStep((s) => Math.min(3, s + 1));
+	const next = () => {
+		if (step === 1 && (!info.delivery_method || !info.payment_method)) {
+			toast.error("Оберіть спосіб доставки та спосіб оплати");
+			return;
+		}
+
+		setStep((s) => Math.min(3, s + 1));
+	};
 	const prev = () => setStep((s) => Math.max(0, s - 1));
 
 	const progressPercentage = (step / (steps.length - 1)) * 100;
 
 	const handleSubmitOrder = () => {
+		if (!info.delivery_method || !info.payment_method) {
+			toast.error("Оберіть спосіб доставки та спосіб оплати");
+			return;
+		}
+
 		const positionsPayload = Object.values(positions).map(({ amount, product }) => ({
 			amount,
 			product_id: product.id,
@@ -122,6 +134,9 @@ export default function CheckoutPage() {
 							<Label>Спосіб доставки</Label>
 							<SelectWrapper>
 								<Select value={info.delivery_method} onChange={(e) => setInfo("delivery_method", e.target.value)}>
+									<option value="" disabled>
+										Оберіть спосіб доставки
+									</option>
 									<option value="nova">Нова Пошта</option>
 									<option value="ukr">Укрпошта</option>
 								</Select>
@@ -134,6 +149,9 @@ export default function CheckoutPage() {
 							<Label>Спосіб оплати</Label>
 							<SelectWrapper>
 								<Select value={info.payment_method} onChange={(e) => setInfo("payment_method", e.target.value)}>
+									<option value="" disabled>
+										Оберіть спосіб оплати
+									</option>
 									<option value="card">Карткою онлайн</option>
 									<option value="cash">При отриманні</option>
 								</Select>

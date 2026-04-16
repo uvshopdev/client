@@ -41,29 +41,29 @@ msgctxt "auth"
 msgid "odXlk8"
 msgstr "Увійти"
 
-#: app/page.tsx:79
+#: app/page.tsx:113
 msgctxt "home"
 msgid "pq2lMA"
 msgstr "Популярні категорії"
 
-#: app/page.tsx:81
-#: app/page.tsx:112
-#: app/page.tsx:138
+#: app/page.tsx:115
+#: app/page.tsx:146
+#: app/page.tsx:172
 msgctxt "home"
 msgid "pFK6bJ"
 msgstr "Переглянути всі"
 
-#: app/page.tsx:99
+#: app/page.tsx:133
 msgctxt "home"
 msgid "4sRhVV"
 msgstr "Країни місяця"
 
-#: app/page.tsx:110
+#: app/page.tsx:144
 msgctxt "home"
 msgid "2zg50f"
 msgstr "Новинки"
 
-#: app/page.tsx:136
+#: app/page.tsx:170
 msgctxt "home"
 msgid "FC/kO5"
 msgstr "Хіти продажів"

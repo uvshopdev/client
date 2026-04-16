@@ -22,6 +22,10 @@ export const getOrders = async () => {
 };
 
 export const createOrder = async (payload: CreateOrderPayload) => {
+	if (!payload.payment_method?.trim() || !payload.delivery_method?.trim()) {
+		throw new Error("Payment and delivery methods are required");
+	}
+
 	const { data } = await authHost.post("/users/me/orders", payload);
 	return data;
 };
