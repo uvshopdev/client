@@ -133,117 +133,117 @@ msgctxt "profile"
 msgid "4l6vz1"
 msgstr "Copy"
 
-#: app/profile/page.tsx:38
+#: app/profile/page.tsx:45
 msgctxt "profile"
 msgid "bKVEJq"
 msgstr "Tourist"
 
-#: app/profile/page.tsx:41
+#: app/profile/page.tsx:48
 msgctxt "profile"
 msgid "qpm860"
 msgstr "Miles rate: 1 mile = 100 UAH from the order receipt"
 
-#: app/profile/page.tsx:42
+#: app/profile/page.tsx:48
 msgctxt "profile"
 msgid "S7fVY2"
 msgstr "Birthday bonus"
 
-#: app/profile/page.tsx:46
+#: app/profile/page.tsx:51
 msgctxt "profile"
 msgid "mJN/zn"
 msgstr "Explorer"
 
-#: app/profile/page.tsx:49
+#: app/profile/page.tsx:55
 msgctxt "profile"
 msgid "boENcR"
 msgstr "Miles rate: 2 miles = 100 UAH from the order receipt"
 
-#: app/profile/page.tsx:50
+#: app/profile/page.tsx:56
 msgctxt "profile"
 msgid "C8OVSs"
 msgstr "Personal offers"
 
-#: app/profile/page.tsx:51
+#: app/profile/page.tsx:57
 msgctxt "profile"
 msgid "gY2nc9"
 msgstr "Double miles on \"Moon Country\" products"
 
-#: app/profile/page.tsx:55
+#: app/profile/page.tsx:61
 msgctxt "profile"
 msgid "9QAC3l"
 msgstr "Traveler"
 
-#: app/profile/page.tsx:58
+#: app/profile/page.tsx:64
 msgctxt "profile"
 msgid "s4bQeW"
 msgstr "Miles rate: 3 miles = 100 UAH from the order receipt"
 
-#: app/profile/page.tsx:59
+#: app/profile/page.tsx:64
 msgctxt "profile"
 msgid "L6IpdY"
 msgstr "Discounts on imported items"
 
-#: app/profile/page.tsx:60
+#: app/profile/page.tsx:64
 msgctxt "profile"
 msgid "7BpCMx"
 msgstr "Free weekly coffee"
 
-#: app/profile/page.tsx:64
+#: app/profile/page.tsx:67
 msgctxt "profile"
 msgid "MRoXRB"
 msgstr "Traveller’s\nAmbassador"
 
-#: app/profile/page.tsx:67
+#: app/profile/page.tsx:71
 msgctxt "profile"
 msgid "yNy2fp"
 msgstr "Miles rate: 4 miles = 100 UAH from the order receipt"
 
-#: app/profile/page.tsx:68
+#: app/profile/page.tsx:72
 msgctxt "profile"
 msgid "0qbJMF"
 msgstr "Personal discounts on selected categories"
 
-#: app/profile/page.tsx:69
+#: app/profile/page.tsx:73
 msgctxt "profile"
 msgid "0B9Rzi"
 msgstr "Participation in closed events"
 
-#: app/profile/page.tsx:84
+#: app/profile/page.tsx:105
 msgctxt "profile"
 msgid "jTtejl"
 msgstr "Traveler's Passport"
 
-#: app/profile/page.tsx:108
+#: app/profile/page.tsx:129
 msgctxt "profile"
 msgid "pFm27r"
 msgstr "Current status"
 
-#: app/profile/page.tsx:109
+#: app/profile/page.tsx:131
 msgctxt "profile"
 msgid "6vC4vS"
 msgstr "Received:"
 
-#: app/profile/page.tsx:134
+#: app/profile/page.tsx:152
 msgctxt "profile"
 msgid "ne4Y2Q"
 msgstr "Miles history"
 
-#: app/profile/page.tsx:135
+#: app/profile/page.tsx:154
 msgctxt "profile"
 msgid "mCr2NR"
 msgstr "Current number of active miles"
 
-#: app/profile/page.tsx:136
+#: app/profile/page.tsx:158
 msgctxt "profile"
 msgid "/Kajqa"
 msgstr "Total accumulated for the previous year"
 
-#: app/profile/page.tsx:137
+#: app/profile/page.tsx:162
 msgctxt "profile"
 msgid "yKHY0p"
 msgstr "Total accumulated for the current year"
 
-#: app/profile/page.tsx:142
+#: app/profile/page.tsx:169
 msgctxt "profile"
 msgid "xfP1jk"
 msgstr "List of bonuses for status"

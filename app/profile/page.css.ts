@@ -147,18 +147,18 @@ export const TimelineWrapper = styled.div`
 export const TimelineLineBase = styled.div`
   position: absolute;
   top: 25px;
-  left: 25px; 
-  right: 25px; 
+  left: 50px; 
+  right: 50px; 
   height: 4px;
   background: #F5F5F5;
   z-index: 1;
 `;
 
-export const TimelineLineActive = styled.div<{ $progress: string }>`
+export const TimelineLineActive = styled.div<{ $progress: number }>`
   position: absolute;
   top: 25px;
-  left: 25px;
-  width: ${({ $progress }) => $progress};
+  left: 50px;
+  width: ${({ $progress }) => `calc((100% - 100px) * ${$progress / 100})`};
   height: 4px;
   background: #3B3028;
   z-index: 2;
@@ -191,13 +191,15 @@ export const TimelineCircle = styled.div<{ $active?: boolean; $achieved?: boolea
 
   box-shadow: 0 0 0 6px #ffffff; 
 
-  background-color: ${({ $achieved }) => ($achieved ? '#3B3028' : '#ffffff')};
-  color: ${({ $achieved }) => ($achieved ? '#ffffff' : '#4A4A4A')};
-  border: ${({ $achieved }) => ($achieved ? 'none' : '1px dashed #A0A0A0')};
+  background-color: ${({ $achieved }) => ($achieved ? "#3B3028" : "#ffffff")};
+  color: ${({ $achieved }) => ($achieved ? "#ffffff" : "#4A4A4A")};
+  border: ${({ $achieved }) => ($achieved ? "none" : "1px dashed #A0A0A0")};
 
-  ${({ $active, $achieved }) => $active && `
-    border: 3px solid ${$achieved ? '#6F3F18' : '#3B3028'}; 
-    ${$achieved ? '' : 'color: #000000; font-weight: 600;'}
+  ${({ $active, $achieved }) =>
+		$active &&
+		`
+    border: 3px solid ${$achieved ? "#6F3F18" : "#3B3028"}; 
+    ${$achieved ? "" : "color: #000000; font-weight: 600;"}
   `}
 
   &:hover {
