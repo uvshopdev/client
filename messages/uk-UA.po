@@ -55,8 +55,8 @@ msgstr "Переглянути всі"
 
 #: app/page.tsx:133
 msgctxt "home"
-msgid "4sRhVV"
-msgstr "Країни місяця"
+msgid "WfqukA"
+msgstr "Країна місяця"
 
 #: app/page.tsx:144
 msgctxt "home"

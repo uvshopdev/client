@@ -55,8 +55,8 @@ msgstr "View all"
 
 #: app/page.tsx:133
 msgctxt "home"
-msgid "4sRhVV"
-msgstr "Countries of the month"
+msgid "WfqukA"
+msgstr "Country of the month"
 
 #: app/page.tsx:144
 msgctxt "home"

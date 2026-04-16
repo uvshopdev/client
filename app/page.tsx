@@ -9,7 +9,7 @@ import { useMemo, useState } from "react";
 import ProductCard from "@/components/ProductCard/ProductCard";
 import { getFavorites } from "@/lib/favorites";
 import { getProducts } from "@/lib/products";
-import { useCategories } from "@/store";
+import { useCategories, useModals } from "@/store";
 import type { ProductType } from "@/types/products";
 import * as S from "./page.css";
 
@@ -25,6 +25,7 @@ const shuffle = <T,>(items: T[]) => {
 export default function Home() {
 	const t = useExtracted("home");
 	const { categories } = useCategories();
+	const { setCatalog } = useModals();
 	const banners = ["/banner1.webp", "/banner2.webp", "/banner3.webp"];
 	const [activeBannerIdx, setActiveBannerIdx] = useState(0);
 
@@ -111,16 +112,18 @@ export default function Home() {
 			<S.Section>
 				<S.Header>
 					<S.SectionTitle>{t("Popular categories")}</S.SectionTitle>
-					<Link href="/" passHref>
-						<S.LinkText>{t("View all")} →</S.LinkText>
-					</Link>
+					<S.LinkText onClick={() => setCatalog(true)}>
+                        {t("View all")} →
+                    </S.LinkText>
 				</S.Header>
 
 				<S.CategoriesGrid>
 					{randomCategories.map((category) => (
 						<Link key={category.id} href={`/${category.id}`}>
 							<S.CategoryCard>
-								<S.CategoryCircle />
+								<S.CategoryCircle>
+                                    <Image src="/map.webp" alt={category.name} fill />
+                                </S.CategoryCircle>
 								<S.CategoryName>{category.name}</S.CategoryName>
 							</S.CategoryCard>
 						</Link>
@@ -130,11 +133,11 @@ export default function Home() {
 
 			<S.SectionTight>
 				<S.Header>
-					<S.SectionTitle>{t("Countries of the month")}</S.SectionTitle>
+					<S.SectionTitle>{t("Country of the month")}</S.SectionTitle>
 				</S.Header>
 
 				<S.CountryBanner>
-					<Image src="/banner2.webp" alt="Countries of the month banner" fill sizes="100vw" style={{ objectFit: "cover" }} />
+					<Image src="/country-banner.webp" alt="Countries of the month banner" fill sizes="100vw" style={{ objectFit: "cover" }} />
 				</S.CountryBanner>
 			</S.SectionTight>
 
@@ -142,9 +145,9 @@ export default function Home() {
 			<S.SectionTight>
 				<S.Header>
 					<S.SectionTitle>{t("New arrivals")}</S.SectionTitle>
-					<Link href="/">
-						<S.LinkText>{t("View all")} →</S.LinkText>
-					</Link>
+					<S.LinkText onClick={() => setCatalog(true)}>
+                        {t("View all")} →
+                    </S.LinkText>
 				</S.Header>
 
 				<S.ProductsGrid>
@@ -161,16 +164,16 @@ export default function Home() {
 
 			<S.Section>
 				<S.EmptyBanner>
-					<Image src="/banner3.webp" alt="Special offers banner" fill sizes="100vw" style={{ objectFit: "cover" }} />
+					<Image src="/banner4.webp" alt="Special offers banner" fill sizes="100vw" style={{ objectFit: "cover" }} />
 				</S.EmptyBanner>
 			</S.Section>
 
 			<S.Section>
 				<S.Header>
 					<S.SectionTitle>{t("Best sellers")}</S.SectionTitle>
-					<Link href="/">
-						<S.LinkText>{t("View all")} →</S.LinkText>
-					</Link>
+					<S.LinkText onClick={() => setCatalog(true)}>
+                        {t("View all")} →
+                    </S.LinkText>
 				</S.Header>
 				<S.ProductsGrid>
 					{secondProducts.map((product) => (
