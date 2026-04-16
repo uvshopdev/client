@@ -41,32 +41,32 @@ msgctxt "auth"
 msgid "odXlk8"
 msgstr "Увійти"
 
-#: app/page.tsx:77
+#: app/page.tsx:79
 msgctxt "home"
 msgid "pq2lMA"
-msgstr ""
+msgstr "Популярні категорії"
 
-#: app/page.tsx:79
-#: app/page.tsx:109
-#: app/page.tsx:129
+#: app/page.tsx:81
+#: app/page.tsx:112
+#: app/page.tsx:138
 msgctxt "home"
 msgid "pFK6bJ"
-msgstr ""
+msgstr "Переглянути всі"
 
-#: app/page.tsx:98
+#: app/page.tsx:99
 msgctxt "home"
 msgid "4sRhVV"
-msgstr ""
+msgstr "Країни місяця"
 
-#: app/page.tsx:107
+#: app/page.tsx:110
 msgctxt "home"
 msgid "2zg50f"
-msgstr ""
+msgstr "Новинки"
 
-#: app/page.tsx:127
+#: app/page.tsx:136
 msgctxt "home"
 msgid "FC/kO5"
-msgstr ""
+msgstr "Хіти продажів"
 
 #: app/profile/coffee/page.tsx:30
 msgctxt "profile"

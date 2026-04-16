@@ -2,8 +2,9 @@
 
 import { useQueries, useQuery } from "@tanstack/react-query";
 import { useExtracted } from "next-intl";
+import Image from "next/image";
 import Link from "next/link";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 import ProductCard from "@/components/ProductCard/ProductCard";
 import { getFavorites } from "@/lib/favorites";
@@ -24,6 +25,8 @@ const shuffle = <T,>(items: T[]) => {
 export default function Home() {
 	const t = useExtracted("home");
 	const { categories } = useCategories();
+	const banners = ["/banner1.webp", "/banner2.webp", "/banner3.webp"];
+	const [activeBannerIdx, setActiveBannerIdx] = useState(0);
 
 	const randomCategories = useMemo(() => shuffle(categories).slice(0, 6), [categories]);
 	const categoriesWithProducts = useMemo(() => categories.filter((c) => c.category_id !== null), [categories]);
@@ -64,11 +67,44 @@ export default function Home() {
 
 	const [firstProducts, secondProducts] = useMemo(() => [randomProducts.slice(0, 5), randomProducts.slice(5, 10)], [randomProducts]);
 
+	const handlePrevBanner = () => {
+		setActiveBannerIdx((prev) => (prev === 0 ? banners.length - 1 : prev - 1));
+	};
+
+	const handleNextBanner = () => {
+		setActiveBannerIdx((prev) => (prev + 1) % banners.length);
+	};
+
 	return (
 		<S.Main>
-			{/* EMPTY BANNERS */}
 			<S.HeroSection>
-				<S.EmptyBanner />
+				<S.SliderWrapper>
+					{banners.map((bannerSrc, idx) => (
+						<S.Slide key={bannerSrc} style={{ opacity: idx === activeBannerIdx ? 1 : 0 }}>
+							<Image
+								src={bannerSrc}
+								alt={`Promo banner ${idx + 1}`}
+								fill
+								priority={idx === 0}
+								sizes="100vw"
+								style={{ objectFit: "cover" }}
+							/>
+						</S.Slide>
+					))}
+				</S.SliderWrapper>
+				<S.Controls>
+					<S.ArrowBtn type="button" aria-label="Previous banner" onClick={handlePrevBanner}>
+						‹
+					</S.ArrowBtn>
+					<S.Dots>
+						{banners.map((bannerSrc, idx) => (
+							<S.Dot key={bannerSrc} $active={idx === activeBannerIdx} />
+						))}
+					</S.Dots>
+					<S.ArrowBtn type="button" aria-label="Next banner" onClick={handleNextBanner}>
+						›
+					</S.ArrowBtn>
+				</S.Controls>
 			</S.HeroSection>
 
 			{/* POPULAR CATEGORIES */}
@@ -92,13 +128,14 @@ export default function Home() {
 				</S.CategoriesGrid>
 			</S.Section>
 
-			{/* EMPTY BANNER */}
 			<S.SectionTight>
 				<S.Header>
 					<S.SectionTitle>{t("Countries of the month")}</S.SectionTitle>
 				</S.Header>
 
-				<S.CountryBanner />
+				<S.CountryBanner>
+					<Image src="/banner2.webp" alt="Countries of the month banner" fill sizes="100vw" style={{ objectFit: "cover" }} />
+				</S.CountryBanner>
 			</S.SectionTight>
 
 			{/* RANDOM PRODUCTS */}
@@ -121,6 +158,12 @@ export default function Home() {
 					))}
 				</S.ProductsGrid>
 			</S.SectionTight>
+
+			<S.Section>
+				<S.EmptyBanner>
+					<Image src="/banner3.webp" alt="Special offers banner" fill sizes="100vw" style={{ objectFit: "cover" }} />
+				</S.EmptyBanner>
+			</S.Section>
 
 			<S.Section>
 				<S.Header>

@@ -55,12 +55,12 @@ export const HeroSection = styled.section`
 `;
 
 export const EmptyBanner = styled.div`
+  position: relative;
   width: 100%;
   aspect-ratio: 21 / 6;
   min-height: 250px;
   border-radius: 24px;
-  background: #f3eee9;
-  border: 1px dashed #e4dccf;
+  overflow: hidden;
 `;
 
 export const SliderWrapper = styled.div`
@@ -188,11 +188,12 @@ export const CategoryName = styled.p`
 `;
 
 export const CountryBanner = styled.div`
+  position: relative;
   width: 100%;
+  aspect-ratio: 19 / 7;
   min-height: 220px;
   border-radius: 24px;
-  border: 1px dashed #e4dccf;
-  background: #f3eee9;
+  overflow: hidden;
 `;
 
 export const ProductsGrid = styled.div`

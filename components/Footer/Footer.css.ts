@@ -23,8 +23,8 @@ export const Container = styled.div`
 export const Top = styled.div`
 	display: grid;
 	grid-template-columns: 1.5fr 0.9fr 1.2fr;
-	gap: 24px;
-	padding: 28px 32px;
+	gap: 20px;
+	padding: 24px 32px;
 
 	@media (max-width: 1080px) {
 		grid-template-columns: 1fr;
@@ -53,9 +53,9 @@ export const BrandLogo = styled.div`
 export const BrandText = styled.p`
 	margin: 0;
 	max-width: 580px;
-	font-size: 15px;
-	line-height: 1.35;
-	color: #efe8dc;
+	font-size: 14px;
+	line-height: 1.55;
+	color: rgba(246, 242, 235, 0.9);
 `;
 
 export const Contacts = styled.div`
@@ -66,10 +66,11 @@ export const Contacts = styled.div`
 
 export const ContactsTitle = styled.h3`
 	margin: 0;
-	font-size: 30px;
-	font-family: "Gabriela", serif;
-	font-weight: 400;
-	color: #ffffff;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: rgba(246, 242, 235, 0.82);
 `;
 
 export const ContactLink = styled.a`
@@ -78,7 +79,8 @@ export const ContactLink = styled.a`
 	gap: 10px;
 	color: #f6f2eb;
 	text-decoration: none;
-	font-size: 27px;
+	font-size: 15px;
+	line-height: 1.4;
 	transition: opacity 0.2s ease;
 
 	&:hover {
@@ -101,8 +103,9 @@ export const Legal = styled.a`
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
-	font-size: 13px;
-	color: #f6f2eb;
+	font-size: 12px;
+	font-weight: 500;
+	color: rgba(246, 242, 235, 0.9);
 	text-decoration: underline;
 	text-underline-offset: 3px;
 
@@ -113,28 +116,31 @@ export const Legal = styled.a`
 
 export const ActionButton = styled.a`
 	width: min(360px, 100%);
-	height: 44px;
+	height: 42px;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	gap: 10px;
-	border-radius: 12px;
-	border: 1px solid rgba(255, 255, 255, 0.9);
-	background: #f2f0ed;
-	color: #3b3028;
+	border-radius: 11px;
+	border: 1px solid rgba(255, 255, 255, 0.72);
+	background: rgba(242, 240, 237, 0.96);
+	color: #342a23;
 	text-decoration: none;
-	font-size: 14px;
-	font-weight: 500;
-	transition: transform 0.2s ease;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 
 	&:hover {
 		transform: translateY(-1px);
+		background: #f7f5f2;
+		border-color: rgba(255, 255, 255, 0.92);
 	}
 `;
 
 export const Bottom = styled.div`
-	border-top: 1px solid rgba(255, 255, 255, 0.35);
-	padding: 14px 32px;
+	border-top: 1px solid rgba(255, 255, 255, 0.22);
+	padding: 12px 32px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -149,14 +155,15 @@ export const Bottom = styled.div`
 
 export const Copyright = styled.p`
 	margin: 0;
-	font-size: 13px;
-	color: #efe8dc;
+	font-size: 12px;
+	line-height: 1.4;
+	color: rgba(246, 242, 235, 0.84);
 `;
 
 export const Socials = styled.div`
 	display: inline-flex;
 	align-items: center;
-	gap: 14px;
+	gap: 12px;
 `;
 
 export const SocialLink = styled.a`
