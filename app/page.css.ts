@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Main = styled.main`
   width: 100%;
-  max-width: 1600px;
+  //max-width: 1600px;
   margin: 0 auto;
   padding: 40px 60px;
   font-family: "Montserrat Alternates", sans-serif;

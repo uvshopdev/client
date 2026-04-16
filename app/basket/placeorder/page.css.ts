@@ -2,19 +2,18 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-width: 920px;
   margin: 0 auto;
-  padding: 20px 24px 36px;
+  padding: 40px;
 
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
 
   font-family: "Montserrat Alternates", sans-serif;
 
   @media (max-width: 640px) {
-    padding: 16px 14px 24px;
-    gap: 16px;
+    padding: 20px;
+    gap: 20px;
   }
 `;
 
@@ -29,10 +28,14 @@ export const Title = styled.h1`
 
 export const TimelineWrapper = styled.div`
   position: relative;
-  padding: 8px 0;
+  padding: 16px 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
+
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 `;
 
 export const TimelineTrack = styled.div`
@@ -113,19 +116,19 @@ export const StepLabel = styled.div`
 
 export const FormContainer = styled.div`
   width: 100%;
-  max-width: 680px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px;
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 16px;
   background: ${({ theme }) => theme.colors.surface};
 
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 20px;
 
   @media (max-width: 640px) {
-    padding: 14px;
+    padding: 20px;
     border-radius: 12px;
   }
 `;
@@ -262,8 +265,8 @@ export const Textarea = styled.textarea`
 
 export const Controls = styled.div`
   width: 100%;
-  max-width: 680px;
-  margin: 2px auto 0;
+  max-width: 800px;
+  margin: 10px auto 0;
 
   display: flex;
   justify-content: space-between;

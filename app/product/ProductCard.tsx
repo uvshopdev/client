@@ -1,6 +1,6 @@
 "use client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { ChevronDown, ChevronUp, Heart, House, Star } from "lucide-react";
+import { ChevronDown, ChevronUp, Heart, Star } from "lucide-react";
 import { useState } from "react";
 
 import { addFavorite, removeFavorite } from "@/lib/favorites";
@@ -10,7 +10,7 @@ import * as S from "./ProductCard.css";
 
 interface ProductCardProps {
 	image: string;
-	product: ProductType;
+	product: ProductType & { rating?: number };
 	favorite: boolean;
 }
 
@@ -38,40 +38,36 @@ export default function ProductCard({ image, product, favorite }: ProductCardPro
 		},
 	});
 
-	const rating = 4;
+	const rating = product.rating ?? 5;
 
 	const toggle = (key: string) => setOpenKeys(openKeys.includes(key) ? openKeys.filter((k) => k !== key) : [...openKeys, key]);
 
 	return (
 		<S.Wrapper>
 			<S.Container>
-				{/* LEFT */}
 				<S.Left>
 					<S.MainImage>
 						<S.Image src={image} />
 
 						<S.WishButton onClick={() => (favorite ? removeFromFavorite() : addToFavorite())}>
-							<Heart fill={favorite ? "#E93A36" : "none"} />
+							<Heart 
+								fill={favorite ? "#E93A36" : "none"} 
+								color={favorite ? "#E93A36" : "#BDBDBD"} 
+								strokeWidth={1.5} 
+							/>
 						</S.WishButton>
 					</S.MainImage>
 				</S.Left>
 
-				{/* RIGHT */}
 				<S.Right>
-					{/* Info */}
 					<S.Block>
-						<S.Breadcrumbs>
-							<House size={14} />
-							<span>/ Бакалія / Їжа швидкого приготування</span>
-						</S.Breadcrumbs>
-
 						<S.Title>{product.name}</S.Title>
 					</S.Block>
 
 					<S.Block>
 						<S.RowBetween>
 							<S.CodeStock>
-								<span>код: {product.article}</span>
+								<span><S.BoldText>код:</S.BoldText> {product.article}</span>
 								<S.Stock>
 									<S.DotStatus />є в наявності
 								</S.Stock>
@@ -80,9 +76,15 @@ export default function ProductCard({ image, product, favorite }: ProductCardPro
 
 						<S.RatingRow>
 							<S.Stars>
-								{[1, 2, 3, 4, 5].map((i) => (
-									<Star key={i} size={18} fill={i <= rating ? "#ffdb0d" : "none"} color="#3B3028" />
-								))}
+							{[1, 2, 3, 4, 5].map((i) => (
+								<Star 
+									key={i} 
+									size={18} 
+									fill={i <= rating ? "#ffdb0d" : "none"} 
+									color={i <= rating ? "#ffdb0d" : "#D3D3D3"}
+									strokeWidth={1.5}
+								/>
+							))}
 							</S.Stars>
 							<span>{rating}/5</span>
 						</S.RatingRow>
@@ -112,27 +114,30 @@ export default function ProductCard({ image, product, favorite }: ProductCardPro
 						</S.PriceRow>
 					</S.Block>
 
-					{/* Характеристики + Аккордеон */}
 					<S.InfoBlock>
 						<S.Characteristics>
 							<S.CharacteristicsTitle>Характеристики:</S.CharacteristicsTitle>
 							<S.CharacteristicsGrid>
 								<S.CharItem>
 									<S.CharLabel>вага:</S.CharLabel>
-									<S.CharValue>120 грам</S.CharValue>
+									<S.CharValue>{product.weight} г</S.CharValue>
 								</S.CharItem>
-								<S.CharItem>
-									<S.CharLabel>виробник:</S.CharLabel>
-									<S.CharValue>Samyang</S.CharValue>
-								</S.CharItem>
+								{product.category && (
+                                    <S.CharItem>
+                                        <S.CharLabel>категорія:</S.CharLabel>
+                                        <S.CharValue>{product.category.name}</S.CharValue>
+                                    </S.CharItem>
+                                )}
 								<S.CharItem>
 									<S.CharLabel>калорійність:</S.CharLabel>
-									<S.CharValue>369 ккал</S.CharValue>
+									<S.CharValue>{product.caloric} ккал</S.CharValue>
 								</S.CharItem>
-								<S.CharItem>
-									<S.CharLabel>країна виробник:</S.CharLabel>
-									<S.CharValue>Південна Корея</S.CharValue>
-								</S.CharItem>
+								{product.country && (
+                                    <S.CharItem>
+                                        <S.CharLabel>країна виробник:</S.CharLabel>
+                                        <S.CharValue>{product.country.name}</S.CharValue>
+                                    </S.CharItem>
+                                )}
 							</S.CharacteristicsGrid>
 						</S.Characteristics>
 
@@ -142,12 +147,12 @@ export default function ProductCard({ image, product, favorite }: ProductCardPro
 									key: "desc",
 									title: "Опис",
 									content:
-										"Локшина Hot Chicken Ramen Stew - ще один варіант гострої, по-справжньому вогняної страви від корейського бренду Samyang!...",
+										"Детальний опис товару...",
 								},
 								{
 									key: "comp",
 									title: "Склад",
-									content: "Макаронні вироби (67,4%): борошно пшеничне (41%), пальмова олія (9%), крохмаль тапіоки...",
+									content: "Інформація про склад...",
 								},
 							].map(({ key, title, content }) => (
 								<S.AccordionItem key={key}>

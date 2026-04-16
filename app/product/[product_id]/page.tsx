@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { use } from "react";
 import styled from "styled-components";
 
-import ProductCard from "@/app/product/ProductCard";
+import MainProductCard from "@/app/product/ProductCard";
 import ProductsList from "@/app/product/ProductsList";
 import Reviews from "@/app/product/Reviews";
 import { getFavorites } from "@/lib/favorites";
@@ -13,15 +13,14 @@ import type { ProductType } from "@/types/products";
 
 const Wrapper = styled.div`
 	width: 100%;
-	max-width: 1520px;
 	margin: 0 auto;
-	padding-top: 130px;
+	padding: 60px 0 40px;
 	display: flex;
 	flex-direction: column;
 	gap: 60px;
 
 	@media (max-width: 990px) {
-		padding: 100px 20px 40px;
+		padding: 40px 0;
 		gap: 40px;
 	}
 `;
@@ -36,18 +35,11 @@ const Notice = styled.div`
 `;
 
 const reviewsData = [
-	{ name: "Іван Іваненко", date: "06.11.2025", rating: 5, text: "Дуже смачно, але дуже гостро 🔥" },
-	{ name: "Марія Коваль", date: "10.11.2025", rating: 4, text: "Смачний продукт, але хотілося б трохи дешевше" },
-	{ name: "Олег Петренко", date: "12.11.2025", rating: 3, text: "Нормально, але без вау ефекту" },
+	{ name: "Марія Коваль", date: "10.11.2025", rating: 5, text: "Смачний продукт, але хотілося б трохи дешевше" },
+	{ name: "Олег Петренко", date: "12.11.2025", rating: 4, text: "Нормально, але без вау ефекту" },
 	{ name: "Анна Шевченко", date: "15.11.2025", rating: 5, text: "Дуже сподобалось, замовлю ще!" },
 	{ name: "Дмитро Лисенко", date: "18.11.2025", rating: 2, text: "Очікував більшого, смак середній" },
-];
-
-const productsData = [
-	{ name: "Ramune Soda", price: "90 грн", img: "/test.png" },
-	{ name: "Pocky Chocolate", price: "120 грн", img: "/test.png" },
-	{ name: "Mochi", price: "150 грн", img: "/test.png" },
-	{ name: "KitKat Matcha", price: "110 грн", img: "/test.png" },
+	{ name: "Вікторія Мельник", date: "22.11.2025", rating: 5, text: "Швидка доставка та надійне пакування! Якість товару просто супер, обов'язково замовлятиму ще!" }
 ];
 
 const buildFallbackProduct = (id: number): ProductType => ({
@@ -94,7 +86,6 @@ export default function ProductDetailsPage({
 	const foundProduct = products?.find((item) => item.id === productId);
 	const product = foundProduct ?? buildFallbackProduct(productId);
 	const image = product.picture ? `${process.env.NEXT_PUBLIC_FILES_URL}/products/${product.id}/large/${product.picture}.webp` : "/logo.png";
-
 	const showNotice = !foundProduct;
 
 	return (
@@ -106,9 +97,9 @@ export default function ProductDetailsPage({
 				</Notice>
 			)}
 
-			<ProductCard image={image} product={product} favorite={favorites.includes(product.id)} />
+			<MainProductCard image={image} product={product} favorite={favorites.includes(product.id)} />
 			<Reviews reviews={reviewsData} />
-			<ProductsList products={productsData} />
+			<ProductsList currentProductId={product.id} />
 		</Wrapper>
 	);
 }

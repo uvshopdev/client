@@ -1,18 +1,23 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 40px 40px;
   font-family: inherit;
   color: #333;
+
+  @media (max-width: 640px) {
+    padding: 40px 20px;
+  }
 `;
 
 export const Title = styled.h1`
-  font-size: 32px;
-  font-weight: 500;
+  font-family: 'Gabriela', serif;
+  font-size: 34px;
+  font-weight: 400;
   margin-bottom: 35px;
-  color: #3a2e28;
+  color: #3b3028;
 `;
 
 export const EmptyState = styled.div`
@@ -78,7 +83,7 @@ export const RightColumn = styled.div`
 
 export const TableHeader = styled.div`
   display: grid;
-  grid-template-columns: 2.5fr 1fr 1.5fr;
+  grid-template-columns: 3fr 1fr 1.5fr;
   padding-bottom: 15px;
   border-bottom: 1px solid #eaeaea;
   font-weight: 500;
@@ -93,7 +98,7 @@ export const ItemsList = styled.div`
 
 export const CartItem = styled.div`
   display: grid;
-  grid-template-columns: 2.5fr 1fr 1.5fr;
+  grid-template-columns: 3fr 1fr 1.5fr;
   align-items: center;
   padding: 25px 0;
   border-bottom: 1px solid #eaeaea;
@@ -128,8 +133,8 @@ export const ItemPrice = styled.div`
 export const ItemActions = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 40px;
+  justify-content: space-between; 
+  width: 100%;
 `;
 
 export const QuantityBox = styled.div`
@@ -180,13 +185,18 @@ export const PromoSection = styled.div`
 `;
 
 export const PromoRow = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 3fr 1fr 1.5fr; 
   align-items: center;
   font-weight: 500;
   font-size: 15px;
   padding-bottom: 25px;
   color: #222;
+
+  @media (max-width: 900px) {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 export const InputGroup = styled.div`
@@ -195,7 +205,8 @@ export const InputGroup = styled.div`
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
-  width: 360px;
+  width: 100%; 
+  max-width: 400px;
 
   input {
     border: none;
@@ -231,6 +242,13 @@ export const InputGroup = styled.div`
       background-color: #888;
       cursor: default;
     }
+  }
+
+  grid-column: 3;
+  justify-self: end; /* Притискаємо до правого краю */
+
+  @media (max-width: 900px) {
+    max-width: 100%;
   }
 `;
 

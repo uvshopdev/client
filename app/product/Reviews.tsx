@@ -1,5 +1,5 @@
 "use client";
-import { ArrowLeft, ArrowRight, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { useState } from "react";
 
 import * as S from "./Reviews.css";
@@ -30,7 +30,15 @@ export default function Reviews({ reviews }: Props) {
 	const next = () => setIndex((i) => Math.min(maxIndex, i + 1));
 
 	const renderStars = (rating: number) =>
-		[1, 2, 3, 4, 5].map((n) => <Star key={n} size={18} fill={n <= rating ? "#ffdb0d" : "none"} color="#3B3028" />);
+    [1, 2, 3, 4, 5].map((n) => (
+        <Star 
+            key={n} 
+            size={18} 
+            fill={n <= rating ? "#ffdb0d" : "none"} 
+            color={n <= rating ? "#ffdb0d" : "#D3D3D3"}
+            strokeWidth={1.5}
+        />
+    ));
 
 	return (
 		<S.Container>
@@ -60,8 +68,8 @@ export default function Reviews({ reviews }: Props) {
 
 			<S.Controls>
 				<button type="button" onClick={prev} disabled={index === 0}>
-					<ArrowLeft size={18} />
-				</button>
+                    ‹
+                </button>
 
 				<S.Dots>
 					{Array.from({ length: 3 }).map((_, i) => (
@@ -70,8 +78,8 @@ export default function Reviews({ reviews }: Props) {
 				</S.Dots>
 
 				<button type="button" onClick={next} disabled={index === maxIndex}>
-					<ArrowRight size={18} />
-				</button>
+                    ›
+                </button>
 			</S.Controls>
 
 			{activeReview && (

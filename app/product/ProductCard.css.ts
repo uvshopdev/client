@@ -1,18 +1,19 @@
 import styled, { css } from "styled-components";
 
-/* ===== Общие переменные ===== */
 const fontBase = css`
   font-family: "Montserrat Alternates";
   color: #000;
 `;
 
 const gap16 = css`gap: 16px;`;
-const gap20 = css`gap: 20px;`;
 const gap30 = css`gap: 30px;`;
 
-/* ===== WRAPPER ===== */
 export const Wrapper = styled.div`
   padding: 0 40px;
+
+  @media (max-width: 640px) {
+    padding: 0 20px;
+  }
 `;
 
 export const Container = styled.div`
@@ -25,16 +26,16 @@ export const Container = styled.div`
   }
 `;
 
-/* ===== LEFT ===== */
 export const Left = styled.div`
   display: flex;
   flex-direction: column;
-  ${gap30}
+  height: 100%;
 `;
 
 export const MainImage = styled.div`
   position: relative;
-  height: 500px;
+  flex: 1;
+  min-height: 500px;
   border: 1px solid #e9e3d9;
   border-radius: 30px;
   overflow: hidden;
@@ -48,22 +49,6 @@ export const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
-`;
-
-export const Arrow = styled.button<{ $left?: boolean }>`
-  position: absolute;
-  top: 50%;
-  ${({ $left }) => ($left ? "left: 20px" : "right: 20px")};
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #3b3028;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  cursor: pointer;
 `;
 
 export const WishButton = styled.button`
@@ -87,46 +72,6 @@ export const WishButton = styled.button`
   }
 `;
 
-export const Dots = styled.div`
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-`;
-
-export const Dot = styled.div<{ $active?: boolean }>`
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: ${({ $active }) => ($active ? "#3B3028" : "#ccc")};
-`;
-
-export const Thumbs = styled.div`
-  display: flex;
-  gap: 30px;
-`;
-
-export const Thumb = styled.div<{ $active?: boolean }>`
-  flex: 1;
-  height: 120px;
-  border: 1px solid ${({ $active }) => ($active ? "#3B3028" : "#E9E3D9")};
-  border-radius: 16px;
-  overflow: hidden;
-  padding: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const ThumbImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-`;
-
-/* ===== RIGHT ===== */
 export const Right = styled.div`
   display: flex;
   flex-direction: column;
@@ -139,18 +84,17 @@ export const Block = styled.div`
   ${gap16}
 `;
 
-export const Breadcrumbs = styled.div`
-  display: flex;
-  gap: 8px;
-  font-size: 14px;
-`;
-
 export const Title = styled.h1`
   font-size: 34px;
   color: #3b3028;
   font-family: 'Gabriela', serif;
-  font-weight: 400;
+  font-weight: 545;
   line-height: 1.2;
+  margin: 0;
+`;
+
+export const BoldText = styled.span`
+  font-weight: 700;
 `;
 
 export const RowBetween = styled.div`
@@ -191,6 +135,12 @@ export const PriceRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
 `;
 
 export const PriceBlock = styled.div`
@@ -221,28 +171,58 @@ export const Quantity = styled.div`
   align-items: center;
 
   button {
-    width: 40px;
+    width: 48px;
     height: 40px;
+    border-radius: 12px;
+    border: 1px solid #000000;
+    background: #FFFFFF;
+    color: #000000;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+        background: #f3eee9;
+    }
+
+    &:disabled {
+        border: 1px solid #D3D3D3;
+        color: #BDBDBD;
+        cursor: not-allowed;
+        background: #FFFFFF;
+    }
   }
 
   span {
-    min-width: 25px;
+    min-width: 20px;
     text-align: center;
     display: inline-block;
-    font-variant-numeric: tabular-nums;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #000000;
   }
 `;
 
 export const BuyButton = styled.button`
   background: #3b3028;
   color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
   cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
-/* ===== INFO BLOCK ===== */
 export const InfoBlock = styled.div`
   display: flex;
   flex-direction: column;
@@ -278,6 +258,10 @@ export const CharItem = styled.div`
   gap: 8px;
   ${fontBase}
   font-size: 14px;
+
+  @media (max-width: 480px) {
+    flex: 1 1 100%;
+  }
 `;
 
 export const CharLabel = styled.span`
@@ -286,7 +270,6 @@ export const CharLabel = styled.span`
 
 export const CharValue = styled.span``;
 
-/* ===== ACCORDION ===== */
 export const Accordion = styled.div`
   display: flex;
   flex-direction: column;
