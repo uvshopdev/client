@@ -190,8 +190,8 @@ msgstr "Безкоштовна тижнева кава"
 
 #: app/profile/page.tsx:64
 msgctxt "profile"
-msgid "qu568M"
-msgstr "Посол\nГермеса"
+msgid "MRoXRB"
+msgstr "Посол мандрів"
 
 #: app/profile/page.tsx:67
 msgctxt "profile"
@@ -210,8 +210,8 @@ msgstr "Участь у закритих подіях"
 
 #: app/profile/page.tsx:84
 msgctxt "profile"
-msgid "DgPFXk"
-msgstr "Паспорт мандрівника Hermes"
+msgid "jTtejl"
+msgstr "Паспорт мандрівника"
 
 #: app/profile/page.tsx:108
 msgctxt "profile"
@@ -270,8 +270,8 @@ msgstr "Відкриті країни"
 
 #: components/ProfileBar/ProfileBar.tsx:19
 msgctxt "profile"
-msgid "L9J8qe"
-msgstr "Hermes Friends"
+msgid "u/D2Ux"
+msgstr "Коло своїх"
 
 #: components/ProfileBar/ProfileBar.tsx:20
 msgctxt "profile"

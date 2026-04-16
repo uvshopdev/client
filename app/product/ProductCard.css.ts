@@ -20,6 +20,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
+  align-items: start;
 
   @media (max-width: 990px) {
     grid-template-columns: 1fr;
