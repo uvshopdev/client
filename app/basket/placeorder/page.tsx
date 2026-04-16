@@ -3,7 +3,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ArrowLeft, ArrowRight, Check, ChevronDown } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { toast } from "sonner";
 
 import { createOrder } from "@/lib/orders";
@@ -22,9 +22,10 @@ import {
 	ModalContent,
 	ModalOverlay,
 	ModalTitle,
-	Select,
-	SelectIcon,
-	SelectWrapper,
+	CustomSelectWrapper,
+    CustomSelectHeader,
+    CustomSelectList,
+    CustomSelectItem,
 	Step,
 	StepLabel,
 	SubmitButton,
@@ -37,6 +38,51 @@ import {
 } from "./page.css";
 
 const steps = ["Персональна інформація", "Доставка та оплата", "Адреса доставки", "Додатково"];
+
+const CustomDropdown = ({ 
+    value, 
+    onChange, 
+    options, 
+    placeholder 
+}: { 
+    value: string; 
+    onChange: (v: string) => void; 
+    options: { value: string; label: string }[]; 
+    placeholder: string; 
+}) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (ref.current && !ref.current.contains(event.target as Node)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
+    const selected = options.find(opt => opt.value === value);
+
+    return (
+        <CustomSelectWrapper ref={ref}>
+            <CustomSelectHeader $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
+                <span>{selected ? selected.label : placeholder}</span>
+                <ChevronDown size={20} strokeWidth={1.5} />
+            </CustomSelectHeader>
+            {isOpen && (
+                <CustomSelectList>
+                    {options.map((opt) => (
+                        <CustomSelectItem key={opt.value} onClick={() => { onChange(opt.value); setIsOpen(false); }}>
+                            {opt.label}
+                        </CustomSelectItem>
+                    ))}
+                </CustomSelectList>
+            )}
+        </CustomSelectWrapper>
+    );
+};
 
 export default function CheckoutPage() {
 	const router = useRouter();
@@ -128,40 +174,34 @@ export default function CheckoutPage() {
 					</FormContainer>
 				);
 			case 1:
-				return (
-					<FormContainer>
-						<FormGroup>
-							<Label>Спосіб доставки</Label>
-							<SelectWrapper>
-								<Select value={info.delivery_method} onChange={(e) => setInfo("delivery_method", e.target.value)}>
-									<option value="" disabled>
-										Оберіть спосіб доставки
-									</option>
-									<option value="nova">Нова Пошта</option>
-									<option value="ukr">Укрпошта</option>
-								</Select>
-								<SelectIcon>
-									<ChevronDown size={24} />
-								</SelectIcon>
-							</SelectWrapper>
-						</FormGroup>
-						<FormGroup>
-							<Label>Спосіб оплати</Label>
-							<SelectWrapper>
-								<Select value={info.payment_method} onChange={(e) => setInfo("payment_method", e.target.value)}>
-									<option value="" disabled>
-										Оберіть спосіб оплати
-									</option>
-									<option value="card">Карткою онлайн</option>
-									<option value="cash">При отриманні</option>
-								</Select>
-								<SelectIcon>
-									<ChevronDown size={24} />
-								</SelectIcon>
-							</SelectWrapper>
-						</FormGroup>
-					</FormContainer>
-				);
+                return (
+                    <FormContainer>
+                        <FormGroup>
+                            <Label>Спосіб доставки</Label>
+                            <CustomDropdown
+                                value={info.delivery_method}
+                                onChange={(val) => setInfo("delivery_method", val)}
+                                placeholder="Оберіть спосіб доставки"
+                                options={[
+                                    { value: "nova", label: "Нова Пошта" },
+                                    { value: "ukr", label: "Укрпошта" }
+                                ]}
+                            />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label>Спосіб оплати</Label>
+                            <CustomDropdown
+                                value={info.payment_method}
+                                onChange={(val) => setInfo("payment_method", val)}
+                                placeholder="Оберіть спосіб оплати"
+                                options={[
+                                    { value: "card", label: "Карткою онлайн" },
+                                    { value: "cash", label: "При отриманні" }
+                                ]}
+                            />
+                        </FormGroup>
+                    </FormContainer>
+                );
 			case 2:
 				return (
 					<FormContainer>

@@ -304,7 +304,7 @@ export const CheckoutButton = styled.button`
   border-radius: 8px;
   padding: 16px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   margin-top: 25px;
   cursor: pointer;
   transition: 0.2s;

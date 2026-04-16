@@ -171,35 +171,69 @@ export const Input = styled.input`
   }
 `;
 
-export const SelectWrapper = styled.div`
+export const CustomSelectWrapper = styled.div`
   position: relative;
   width: 100%;
 `;
 
-export const Select = styled.select`
-  ${fieldBase}
-  appearance: none;
-  padding-right: 44px;
-  cursor: pointer;
-
+export const CustomSelectHeader = styled.div<{ $isOpen: boolean }>`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
   background: ${({ theme }) => theme.colors.surface};
-  border-color: ${({ theme }) => theme.colors.secondary};
+  border: 1px solid ${({ theme, $isOpen }) => ($isOpen ? theme.colors.primary : theme.colors.secondary)};
+  border-radius: 10px;
+  box-shadow: ${({ $isOpen }) => ($isOpen ? "0 0 0 2px rgba(59, 48, 40, 0.08)" : "none")};
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "Montserrat Alternates", sans-serif;
   color: ${({ theme }) => theme.colors.textPrimary};
+  transition: border-color 0.2s, box-shadow 0.2s;
+  user-select: none;
 
-  &:focus {
-    border-color: ${({ theme }) => theme.colors.primary};
-    box-shadow: 0 0 0 2px rgba(59, 48, 40, 0.08);
+  span {
+    flex: 1;
+    text-align: left;
+  }
+
+  svg {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    transform: ${({ $isOpen }) => ($isOpen ? "rotate(180deg)" : "rotate(0deg)")};
+    color: ${({ theme }) => theme.colors.muted};
   }
 `;
 
-export const SelectIcon = styled.div`
+export const CustomSelectList = styled.div`
   position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: ${({ theme }) => theme.colors.muted};
-  pointer-events: none;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  background: ${({ theme }) => theme.colors.surface};
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  border-radius: 10px;
+  z-index: 100;
+  padding: 14px 0;
   display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+`;
+
+export const CustomSelectItem = styled.div`
+  padding: 0 14px;
+  font-size: 14px;
+  font-family: "Montserrat Alternates", sans-serif;
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.textPrimary};
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.6;
+  }
 `;
 
 export const Textarea = styled.textarea`
