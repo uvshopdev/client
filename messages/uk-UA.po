@@ -41,82 +41,31 @@ msgctxt "auth"
 msgid "odXlk8"
 msgstr "Увійти"
 
-#: app/page.tsx:15
-msgctxt "home"
-msgid "3T2iOg"
-msgstr ""
-
-#: app/page.tsx:16
-msgctxt "home"
-msgid "VzQxqn"
-msgstr ""
-
-#: app/page.tsx:17
-msgctxt "home"
-msgid "tnrxhT"
-msgstr ""
-
-#: app/page.tsx:18
-msgctxt "home"
-msgid "9KADbj"
-msgstr ""
-
-#: app/page.tsx:19
-msgctxt "home"
-msgid "3Rh+pv"
-msgstr ""
-
-#: app/page.tsx:20
-msgctxt "home"
-msgid "1q/ois"
-msgstr ""
-
-#: app/page.tsx:23
-msgctxt "home"
-msgid "2zg50f"
-msgstr ""
-
-#: app/page.tsx:23
-msgctxt "home"
-msgid "AMDs+N"
-msgstr ""
-
-#: app/page.tsx:23
-msgctxt "home"
-msgid "57PnQn"
-msgstr ""
-
-#: app/page.tsx:23
-msgctxt "home"
-msgid "FC/kO5"
-msgstr ""
-
-#: app/page.tsx:71
+#: app/page.tsx:77
 msgctxt "home"
 msgid "pq2lMA"
 msgstr ""
 
-#: app/page.tsx:73
-#: app/page.tsx:103
-#: app/page.tsx:125
+#: app/page.tsx:79
+#: app/page.tsx:109
+#: app/page.tsx:129
 msgctxt "home"
 msgid "pFK6bJ"
 msgstr ""
 
-#: app/page.tsx:82
-msgctxt "home"
-msgid "ccXLVi"
-msgstr ""
-
-#: app/page.tsx:92
-#: app/page.tsx:95
+#: app/page.tsx:98
 msgctxt "home"
 msgid "4sRhVV"
 msgstr ""
 
-#: app/page.tsx:101
+#: app/page.tsx:107
 msgctxt "home"
-msgid "8vURyh"
+msgid "2zg50f"
+msgstr ""
+
+#: app/page.tsx:127
+msgctxt "home"
+msgid "FC/kO5"
 msgstr ""
 
 #: app/profile/coffee/page.tsx:30

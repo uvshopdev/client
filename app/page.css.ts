@@ -54,6 +54,15 @@ export const HeroSection = styled.section`
   width: 100%;
 `;
 
+export const EmptyBanner = styled.div`
+  width: 100%;
+  aspect-ratio: 21 / 6;
+  min-height: 250px;
+  border-radius: 24px;
+  background: #f3eee9;
+  border: 1px dashed #e4dccf;
+`;
+
 export const SliderWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -178,12 +187,12 @@ export const CategoryName = styled.p`
   text-align: center;
 `;
 
-export const CountryBanner = styled.img`
+export const CountryBanner = styled.div`
   width: 100%;
-  height: auto;
+  min-height: 220px;
   border-radius: 24px;
-  display: block;
-  object-fit: contain;
+  border: 1px dashed #e4dccf;
+  background: #f3eee9;
 `;
 
 export const ProductsGrid = styled.div`

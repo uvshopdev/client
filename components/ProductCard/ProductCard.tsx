@@ -11,7 +11,6 @@ import { useBasket } from "@/store/basket";
 import type { ProductType } from "@/types/products";
 import {
 	Actions,
-	Badge,
 	Bottom,
 	Buttons,
 	CartButton,
@@ -61,7 +60,7 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 
 	return (
 		<Content>
-			<Badge>- 15%</Badge>
+			{/* <Badge>- 15%</Badge> */}
 
 			<Top>
 				<ImageWrap as={Link} href={href} prefetch={false}>

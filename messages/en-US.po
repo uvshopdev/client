@@ -41,83 +41,32 @@ msgctxt "auth"
 msgid "odXlk8"
 msgstr "Log in"
 
-#: app/page.tsx:15
-msgctxt "home"
-msgid "3T2iOg"
-msgstr "Ukraine"
-
-#: app/page.tsx:16
-msgctxt "home"
-msgid "VzQxqn"
-msgstr "Italy"
-
-#: app/page.tsx:17
-msgctxt "home"
-msgid "tnrxhT"
-msgstr "South Korea"
-
-#: app/page.tsx:18
-msgctxt "home"
-msgid "9KADbj"
-msgstr "France"
-
-#: app/page.tsx:19
-msgctxt "home"
-msgid "3Rh+pv"
-msgstr "Japan"
-
-#: app/page.tsx:20
-msgctxt "home"
-msgid "1q/ois"
-msgstr "China"
-
-#: app/page.tsx:23
-msgctxt "home"
-msgid "2zg50f"
-msgstr "New arrivals"
-
-#: app/page.tsx:23
-msgctxt "home"
-msgid "AMDs+N"
-msgstr "Monthly discounts"
-
-#: app/page.tsx:23
-msgctxt "home"
-msgid "57PnQn"
-msgstr "Top rated products"
-
-#: app/page.tsx:23
-msgctxt "home"
-msgid "FC/kO5"
-msgstr "Best sellers"
-
-#: app/page.tsx:71
+#: app/page.tsx:77
 msgctxt "home"
 msgid "pq2lMA"
 msgstr "Popular categories"
 
-#: app/page.tsx:73
-#: app/page.tsx:103
-#: app/page.tsx:125
+#: app/page.tsx:79
+#: app/page.tsx:109
+#: app/page.tsx:129
 msgctxt "home"
 msgid "pFK6bJ"
 msgstr "View all"
 
-#: app/page.tsx:82
-msgctxt "home"
-msgid "ccXLVi"
-msgstr "Category"
-
-#: app/page.tsx:92
-#: app/page.tsx:95
+#: app/page.tsx:98
 msgctxt "home"
 msgid "4sRhVV"
 msgstr "Countries of the month"
 
-#: app/page.tsx:101
+#: app/page.tsx:107
 msgctxt "home"
-msgid "8vURyh"
-msgstr "Try world cuisine"
+msgid "2zg50f"
+msgstr "New arrivals"
+
+#: app/page.tsx:127
+msgctxt "home"
+msgid "FC/kO5"
+msgstr "Best sellers"
 
 #: app/profile/coffee/page.tsx:30
 msgctxt "profile"
