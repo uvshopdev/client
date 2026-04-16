@@ -5,13 +5,14 @@ import { Montserrat_Alternates } from "next/font/google";
 import { Toaster } from "sonner";
 
 import Catalog from "@/components/Catalog/Catalogs";
+import Footer from "@/components/Footer/Footer";
 import Providers from "@/components/Providers";
 import ServerProviders from "@/components/ServerProviders";
 import StyledComponentsRegistry from "@/components/StyledComponentsRegistry";
 import TopBar from "@/components/TopBar/TopBar";
 import { getCategories } from "@/lib/categories";
 import { getCountries } from "@/lib/countries";
-import { Main } from "./layout.css";
+import { Main, Shell } from "./layout.css";
 export const metadata: Metadata = {
 	title: "Shop",
 };
@@ -38,11 +39,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 					<StyledComponentsRegistry>
 						<Providers categories={categories} countries={countries}>
 							<Toaster />
-							<Main>
-								<TopBar />
-								<Catalog />
-								{children}
-							</Main>
+							<Shell>
+								<Main>
+									<TopBar />
+									<Catalog />
+									{children}
+								</Main>
+								<Footer />
+							</Shell>
 						</Providers>
 					</StyledComponentsRegistry>
 				</ServerProviders>

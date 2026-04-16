@@ -56,7 +56,9 @@ const page = ({ params }: { params: Promise<{ category_id: number }> }) => {
 			<Products>
 				{isSuccessProducts &&
 					isSuccessFavorites &&
-					products.map((product) => <ProductCard key={product.id} {...product} favorite={favorites.includes(product.id)} />)}
+					products.map((product) => (
+						<ProductCard key={product.id} {...product} favorite={favorites.includes(product.id)} categoryId={category_id} />
+					))}
 			</Products>
 		</Content>
 	);

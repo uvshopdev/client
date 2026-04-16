@@ -36,6 +36,7 @@ export const Top = styled.div`
 export const ImageWrap = styled.div`
 	position: relative;
 	overflow: hidden;
+	display: block;
 
 	border-radius: 16px;
 	background: ${({ theme }) => theme.colors.secondary};
@@ -60,6 +61,8 @@ export const ProductName = styled.p`
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 1.3;
+	color: inherit;
+	text-decoration: none;
 `;
 
 export const Stock = styled.div`

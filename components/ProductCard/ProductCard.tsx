@@ -3,6 +3,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Heart, ShoppingBasket } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { toast } from "sonner";
 
 import { addFavorite, removeFavorite } from "@/lib/favorites";
@@ -28,10 +29,13 @@ import {
 
 interface ProductProps extends ProductType {
 	favorite: boolean;
+	categoryId?: number;
 }
 
-const ProductCard = (product: ProductProps) => {
+const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 	const query = useQueryClient();
+	const href = categoryId ? `/product/${product.id}?category_id=${categoryId}` : `/product/${product.id}`;
+
 	const { mutate: addToFavorite } = useMutation({
 		mutationKey: ["favorites"],
 		mutationFn: async () => await addFavorite(product.id),
@@ -60,7 +64,7 @@ const ProductCard = (product: ProductProps) => {
 			<Badge>- 15%</Badge>
 
 			<Top>
-				<ImageWrap>
+				<ImageWrap as={Link} href={href} prefetch={false}>
 					<ProductImage>
 						<Image
 							src={
@@ -76,7 +80,9 @@ const ProductCard = (product: ProductProps) => {
 					</ProductImage>
 				</ImageWrap>
 
-				<ProductName>{product.name}</ProductName>
+				<ProductName as={Link} href={href} prefetch={false}>
+					{product.name}
+				</ProductName>
 			</Top>
 
 			<Bottom>
@@ -96,8 +102,8 @@ const ProductCard = (product: ProductProps) => {
 						<FavoriteButton
 							type="button"
 							aria-label="Видалити з вибраного"
-							onClick={() => (product.favorite ? removeFromFavorite() : addToFavorite())}
-							$favorite={product.favorite}
+							onClick={() => (favorite ? removeFromFavorite() : addToFavorite())}
+							$favorite={favorite}
 						>
 							<Heart size={26} strokeWidth={1.5} />
 						</FavoriteButton>

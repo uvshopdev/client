@@ -14,8 +14,8 @@ const GlobalStyle = createGlobalStyle`
 		user-select: none;
 	}
 	body {
-		width: 100dvw;
-		height: 100dvh;
+		width: 100%;
+		min-height: 100dvh;
 	}
 
 	input,button {
