@@ -25,6 +25,7 @@ const page = ({ params }: { params: Promise<{ category_id: number }> }) => {
 			const data = await getFavorites();
 			return data.map(({ product }) => product.id);
 		},
+		staleTime: 3 * 60 * 1000,
 		initialData: [],
 	});
 
@@ -54,9 +55,7 @@ const page = ({ params }: { params: Promise<{ category_id: number }> }) => {
 
 			<Products>
 				{isSuccessProducts &&
-					products.map((product) => (
-						<ProductCard key={product.id} {...product} favorite={favorites.includes(product.id)} />
-					))}
+					products.map((product) => <ProductCard key={product.id} {...product} favorite={favorites.includes(product.id)} />)}
 			</Products>
 		</Content>
 	);

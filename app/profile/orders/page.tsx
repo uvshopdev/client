@@ -1,156 +1,179 @@
 "use client";
 
+import { useQuery } from "@tanstack/react-query";
+import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
-import { ChevronDown, ChevronUp, Check } from "lucide-react";
-import * as S from "./page.css";
 
-type OrderStatus = "Обробка" | "Комплектація" | "Відправлено" | "Доставлено";
+import { getOrders } from "@/lib/orders";
+import {
+	CollapseIcon,
+	Content,
+	DetailsPanel,
+	EmptyState,
+	OrderCard,
+	OrderDate,
+	OrderHeader,
+	OrderNumber,
+	OrderTop,
+	PageTitle,
+	PageWrapper,
+	ProductImage,
+	ProductInfo,
+	ProductList,
+	ProductMeta,
+	ProductName,
+	ProductPrice,
+	ProductPriceBlock,
+	ProductQty,
+	ProductRow,
+	Step,
+	StepCircle,
+	StepLabel,
+	TimelineProgress,
+	TimelineTrack,
+	TimelineWrapper,
+} from "./page.css";
 
-interface Product {
-  id: string;
-  name: string;
-  code: string;
-  price: string;
-  image: string;
-  badge?: string;
-  qty?: string;
-}
+const statusSteps = ["Обробка", "Комплектація", "Відправлено", "Доставлено"];
 
-interface Order {
-  id: string;
-  date: string;
-  status: OrderStatus;
-  products: Product[];
-}
+const formatter = new Intl.NumberFormat("uk-UA", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 
-const statusSteps: OrderStatus[] = ["Обробка", "Комплектація", "Відправлено", "Доставлено"];
+const formatDate = (value: string) => {
+	const date = new Date(value);
+	if (Number.isNaN(date.getTime())) {
+		return "-";
+	}
 
-const orders: Order[] = [
-  {
-    id: "109283763",
-    date: "04.12.2025",
-    status: "Комплектація", 
-    products: [
-      {
-        id: "P-001",
-        name: "Печиво Konti Super Kontik з молочно-ванільним смаком",
-        code: "36732213",
-        price: "29.19 грн",
-        qty: "x2 шт.",
-        image: "/product/kontik.png", 
-      },
-      {
-        id: "P-002",
-        name: "Напій Dr.Pepper Regular безалкогольний газований",
-        code: "35930019",
-        price: "59.99 грн",
-        qty: "x2 шт.",
-        image: "/product/pepper.png", 
-        badge: "-15%",
-      },
-    ],
-  },
-  {
-    id: "109283764",
-    date: "01.12.2025",
-    status: "Доставлено",
-    products: [
-      {
-        id: "P-003",
-        name: "Набір канцелярії Hermes",
-        code: "STN-05",
-        price: "2 490 грн",
-        qty: "x1 шт.",
-        image: "https://via.placeholder.com/100x100",
-      },
-    ],
-  },
-];
+	return date.toLocaleDateString("uk-UA");
+};
+
+const getStatusIndex = (status: string) => {
+	const normalized = status.trim().toLowerCase();
+
+	if (["обробка", "processing", "pending"].includes(normalized)) return 0;
+	if (["комплектація", "packing", "preparing"].includes(normalized)) return 1;
+	if (["відправлено", "shipped", "in_transit"].includes(normalized)) return 2;
+	if (["доставлено", "delivered", "done", "completed"].includes(normalized)) return 3;
+
+	return 0;
+};
+
+const getProductImageUrl = (id: number, picture: string | null) => {
+	if (!picture) {
+		return "/logo.png";
+	}
+
+	return `${process.env.NEXT_PUBLIC_FILES_URL}/products/${id}/large/${picture}.webp`;
+};
 
 export default function OrderHistoryPage() {
-  const [openOrderIds, setOpenOrderIds] = useState<string[]>(["109283763"]);
+	const [openOrderIds, setOpenOrderIds] = useState<number[]>([]);
 
-  const toggleOrder = (id: string) => {
-    setOpenOrderIds((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
-    );
-  };
+	const {
+		data = [],
+		isLoading,
+		isError,
+	} = useQuery({
+		queryKey: ["orders"],
+		queryFn: async () => await getOrders(),
+	});
 
-  return (
-    <S.PageWrapper>
-      <S.ContentWrapper>
-        {orders.map((order) => {
-          const isOpen = openOrderIds.includes(order.id);
-          const activeStepIndex = statusSteps.indexOf(order.status);
-          
-          const progressPercentage = (activeStepIndex / (statusSteps.length - 1)) * 100;
+	const toggleOrder = (id: number) => {
+		setOpenOrderIds((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]));
+	};
 
-          return (
-            <S.OrderCard key={order.id}>
-              <S.OrderTop onClick={() => toggleOrder(order.id)}>
-                <S.OrderHeader>
-                  <S.OrderNumber>Замовлення №{order.id}</S.OrderNumber>
-                  <S.OrderDate>Дата замовлення: {order.date}</S.OrderDate>
-                </S.OrderHeader>
+	if (isLoading) {
+		return (
+			<PageWrapper>
+				<PageTitle>Мої замовлення</PageTitle>
+				<EmptyState>Завантажуємо замовлення...</EmptyState>
+			</PageWrapper>
+		);
+	}
 
-                <S.CollapseIcon>
-                  {isOpen ? <ChevronUp size={28} strokeWidth={1.5} /> : <ChevronDown size={28} strokeWidth={1.5} />}
-                </S.CollapseIcon>
-              </S.OrderTop>
+	if (isError) {
+		return (
+			<PageWrapper>
+				<PageTitle>Мої замовлення</PageTitle>
+				<EmptyState>Не вдалося завантажити замовлення. Спробуйте пізніше.</EmptyState>
+			</PageWrapper>
+		);
+	}
 
-              <S.DetailsPanel $open={isOpen}>
-                <S.Timeline>
-                  {/* Трек для прогресс-бара */}
-                  <S.TimelineTrack>
-                    <S.TimelineActiveLine $progress={progressPercentage} />
-                  </S.TimelineTrack>
-                  
-                  {statusSteps.map((step, index) => {
-                    const isCompleted = index < activeStepIndex;
-                    const isActive = index === activeStepIndex;
-                    const isPending = index > activeStepIndex;
+	return (
+		<PageWrapper>
+			<PageTitle>Мої замовлення</PageTitle>
+			<Content>
+				{data.length === 0 && <EmptyState>У вас поки немає оформлених замовлень.</EmptyState>}
 
-                    let state: "completed" | "active" | "pending" = "pending";
-                    if (isCompleted) state = "completed";
-                    if (isActive) state = "active";
+				{data.map((order) => {
+					const isOpen = openOrderIds.includes(order.id);
+					const activeStepIndex = getStatusIndex(order.status);
 
-                    const stepNumber = `0${index + 1}`;
+					const progressPercentage = (activeStepIndex / (statusSteps.length - 1)) * 100;
 
-                    return (
-                      <S.TimelineStep key={step}>
-                        <S.TimelineCircle $state={state}>
-                          {isCompleted ? <Check size={20} strokeWidth={2} /> : stepNumber}
-                        </S.TimelineCircle>
-                        <S.TimelineLabel>{step}</S.TimelineLabel>
-                      </S.TimelineStep>
-                    );
-                  })}
-                </S.Timeline>
+					return (
+						<OrderCard key={order.id}>
+							<OrderTop onClick={() => toggleOrder(order.id)}>
+								<OrderHeader>
+									<OrderNumber>Замовлення №{order.id}</OrderNumber>
+									<OrderDate>Дата замовлення: {formatDate(order.inserted_at ?? order.updated_at ?? "")}</OrderDate>
+								</OrderHeader>
 
-                <S.ProductList>
-                  {order.products.map((product) => (
-                    <S.ProductRow key={product.id}>
-                      {product.badge && <S.ProductBadge>{product.badge}</S.ProductBadge>}
-                      
-                      <S.ProductImage src={product.image} alt={product.name} />
-                      
-                      <S.ProductInfo>
-                        <S.ProductName>{product.name}</S.ProductName>
-                        <S.ProductMeta>код: {product.code}</S.ProductMeta>
-                      </S.ProductInfo>
-                      
-                      <S.ProductPriceBlock>
-                        <S.ProductPrice>{product.price}</S.ProductPrice>
-                        {product.qty && <S.ProductQty>{product.qty}</S.ProductQty>}
-                      </S.ProductPriceBlock>
-                    </S.ProductRow>
-                  ))}
-                </S.ProductList>
-              </S.DetailsPanel>
-            </S.OrderCard>
-          );
-        })}
-      </S.ContentWrapper>
-    </S.PageWrapper>
-  );
+								<CollapseIcon>
+									{isOpen ? <ChevronUp size={28} strokeWidth={1.5} /> : <ChevronDown size={28} strokeWidth={1.5} />}
+								</CollapseIcon>
+							</OrderTop>
+
+							<DetailsPanel $open={isOpen}>
+								<TimelineWrapper>
+									<TimelineTrack>
+										<TimelineProgress $progress={progressPercentage} />
+									</TimelineTrack>
+
+									{statusSteps.map((step, index) => {
+										const isCompleted = index < activeStepIndex;
+										const isActive = index === activeStepIndex;
+
+										let state: "completed" | "active" | "pending" = "pending";
+										if (isCompleted) state = "completed";
+										if (isActive) state = "active";
+
+										const stepNumber = `0${index + 1}`;
+
+										return (
+											<Step key={step}>
+												<StepCircle $state={state}>
+													{isCompleted ? <Check size={20} strokeWidth={2} /> : stepNumber}
+												</StepCircle>
+												<StepLabel>{step}</StepLabel>
+											</Step>
+										);
+									})}
+								</TimelineWrapper>
+
+								<ProductList>
+									{order.positions.map(({ amount, product }) => (
+										<ProductRow key={product.id}>
+											<ProductImage src={getProductImageUrl(product.id, product.picture)} alt={product.name} />
+
+											<ProductInfo>
+												<ProductName>{product.name}</ProductName>
+												<ProductMeta>Артикул: {product.article}</ProductMeta>
+											</ProductInfo>
+
+											<ProductPriceBlock>
+												<ProductPrice>{formatter.format(product.price)} грн</ProductPrice>
+												<ProductQty>x{amount} шт.</ProductQty>
+											</ProductPriceBlock>
+										</ProductRow>
+									))}
+								</ProductList>
+							</DetailsPanel>
+						</OrderCard>
+					);
+				})}
+			</Content>
+		</PageWrapper>
+	);
 }

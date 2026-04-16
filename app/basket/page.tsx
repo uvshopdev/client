@@ -1,10 +1,12 @@
 "use client";
 
+import { useQuery } from "@tanstack/react-query";
 import { Eye, Minus, Plus, X } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { getUserCountries } from "@/lib/countries";
 import { useBasket } from "@/store/basket";
 import {
 	AlertIcon,
@@ -36,9 +38,6 @@ import {
 	TotalRow,
 } from "./page.css";
 
-const NEW_COUNTRY_MILES_REWARD = 40;
-const PROMO_DISCOUNT_PERCENT = 0;
-
 const formatPrice = (price: number): string => {
 	return price % 1 === 0 ? price.toString() : price.toFixed(2);
 };
@@ -50,8 +49,14 @@ export default function BasketPage() {
 	const [promoInput, setPromoInput] = useState<string>("");
 	const [previewCountry, setPreviewCountry] = useState<string | null>(null);
 
+	const { data: countriesData, isSuccess } = useQuery({
+		queryKey: ["countries"],
+		queryFn: async () => await getUserCountries(),
+		staleTime: 3 * 60 * 1000,
+	});
+
 	const { positions, subtotal, setPositionAmount, removePosition } = useBasket();
-	const promoDiscount = promoApplied ? (subtotal * PROMO_DISCOUNT_PERCENT) / 100 : 0;
+	const promoDiscount = promoApplied ? (subtotal * 0) / 100 : 0;
 	const subtotalAfterPromo = Math.max(0, subtotal - promoDiscount);
 	const maxMilesToRedeem = Math.floor(subtotalAfterPromo);
 	const redeemedMilesValue = Math.min(milesToRedeem, maxMilesToRedeem);
@@ -218,28 +223,59 @@ export default function BasketPage() {
 				</SummaryRow>
 				<SummaryRow>
 					<span>Відкриття нових країн:</span>
-					<span>+{NEW_COUNTRY_MILES_REWARD}</span>
+					<span>
+						+
+						{isSuccess
+							? Object.entries(positions).filter(
+									([_, position]) =>
+										position.product.country !== null &&
+										!countriesData.countries.some((c) => c.id === position.product.country?.id),
+								).length * 20
+							: 0}
+					</span>
 				</SummaryRow>
 				<TotalRow>
 					<span>Загалом:</span>
-					<span>+{orderMilesReward + NEW_COUNTRY_MILES_REWARD} миля</span>
+					<span>
+						+
+						{orderMilesReward +
+							(isSuccess
+								? Object.entries(positions).filter(
+										([_, position]) =>
+											position.product.country !== null &&
+											!countriesData.countries.some((c) => c.id === position.product.country?.id),
+									).length * 20
+								: 0)}{" "}
+						миля
+					</span>
 				</TotalRow>
 			</SummaryBlock>
 
 			<SummaryBlock>
 				<h3>Нові країни</h3>
-				<CountryRow>
-					<span>Україна</span>
-					<button type="button" onClick={() => setPreviewCountry("UA")} aria-label="Попередній перегляд Україна">
-						<Eye size={18} strokeWidth={1.5} />
-					</button>
-				</CountryRow>
-				<CountryRow>
-					<span>Туреччина</span>
-					<button type="button" onClick={() => setPreviewCountry("TR")} aria-label="Попередній перегляд Туреччина">
-						<Eye size={18} strokeWidth={1.5} />
-					</button>
-				</CountryRow>
+				{isSuccess &&
+					Object.entries(positions)
+						.filter(
+							([_, position]) =>
+								position.product.country !== null &&
+								!countriesData.countries.some((c) => c.id === position.product.country?.id),
+						)
+						.map(([_, position]) => (
+							<CountryRow key={position.product.id}>
+								<span>{position.product.country?.name}</span>
+
+								<button
+									type="button"
+									onClick={() =>
+										setPreviewCountry(`${process.env.NEXT_PUBLIC_FILES_URL}/${position.product.country?.picture}`)
+									}
+									aria-label="Попередній перегляд країни"
+								>
+									<Eye size={18} strokeWidth={1.5} />
+								</button>
+							</CountryRow>
+						))}
+
 				<SmallText>Доступний попередній перегляд віртуальних печаток</SmallText>
 			</SummaryBlock>
 
@@ -270,17 +306,7 @@ export default function BasketPage() {
 							<br />
 							печатки: {previewCountry === "UA" ? "Україна" : "Туреччина"}
 						</h4>
-						<Image
-							src={
-								previewCountry === "UA"
-									? "https://placehold.co/120x120/0057B7/FFDD00?text=UA"
-									: "https://placehold.co/120x120/E30A17/FFFFFF?text=TR"
-							}
-							width={130}
-							height={130}
-							alt="Stamp"
-							className="stamp-img"
-						/>
+						<Image src={previewCountry} width={130} height={130} alt="Stamp" className="stamp-img" />
 					</ModalContent>
 				</ModalOverlay>
 			)}

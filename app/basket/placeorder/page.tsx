@@ -1,9 +1,12 @@
 "use client";
 
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ArrowLeft, ArrowRight, Check, ChevronDown } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "sonner";
 
+import { createOrder } from "@/lib/orders";
 import { useBasket } from "@/store/basket";
 import {
 	Circle,
@@ -37,14 +40,53 @@ const steps = ["Персональна інформація", "Доставка 
 
 export default function CheckoutPage() {
 	const router = useRouter();
+	const queryClient = useQueryClient();
 	const [step, setStep] = useState(0);
 	const [showModal, setShowModal] = useState(false);
-	const { info, setInfo } = useBasket();
+	const { info, setInfo, positions } = useBasket();
+
+	const { mutate: submitOrder, isPending } = useMutation({
+		mutationFn: createOrder,
+		onSuccess: async () => {
+			await queryClient.invalidateQueries({ queryKey: ["orders"] });
+			setShowModal(true);
+			reset();
+		},
+		onError: () => {
+			toast.error("Не вдалося оформити замовлення");
+		},
+	});
+
+	const { reset } = useBasket();
 
 	const next = () => setStep((s) => Math.min(3, s + 1));
 	const prev = () => setStep((s) => Math.max(0, s - 1));
 
 	const progressPercentage = (step / (steps.length - 1)) * 100;
+
+	const handleSubmitOrder = () => {
+		const positionsPayload = Object.values(positions).map(({ amount, product }) => ({
+			amount,
+			product_id: product.id,
+		}));
+
+		if (!positionsPayload.length) {
+			toast.error("Кошик порожній");
+			return;
+		}
+
+		submitOrder({
+			recipient: info.name,
+			address: info.address,
+			phone_number: info.phone_number,
+			email: info.email ?? "",
+			payment_method: info.payment_method,
+			delivery_method: info.delivery_method,
+			postal_code: info.postal_code,
+			message: info.message,
+			positions: positionsPayload,
+		});
+	};
 
 	const renderForm = () => {
 		switch (step) {
@@ -54,6 +96,14 @@ export default function CheckoutPage() {
 						<FormGroup>
 							<Label>Ім'я та прізвище</Label>
 							<Input placeholder="Ім'я Прізвище" value={info.name} onChange={(e) => setInfo("name", e.target.value)} />
+						</FormGroup>
+						<FormGroup>
+							<Label>Email</Label>
+							<Input
+								placeholder="example@email.com"
+								value={info.email ?? ""}
+								onChange={(e) => setInfo("email", e.target.value)}
+							/>
 						</FormGroup>
 						<FormGroup>
 							<Label>Номер телефону</Label>
@@ -160,8 +210,8 @@ export default function CheckoutPage() {
 						<ArrowRight />
 					</IconButton>
 				) : (
-					<SubmitButton onClick={() => setShowModal(true)} type="button">
-						Замовити
+					<SubmitButton onClick={handleSubmitOrder} type="button" disabled={isPending}>
+						{isPending ? "Оформлюємо..." : "Замовити"}
 					</SubmitButton>
 				)}
 			</Controls>

@@ -14,8 +14,8 @@ export const Product = z.object({
 	weight: z.coerce.number(),
 	caloric: z.coerce.number(),
 
-	country: Country.nullable(),
-	category: Category.nullable(),
+	country: Country.nullable().optional(),
+	category: Category.nullable().optional(),
 });
 
 export const Products = z.array(Product);

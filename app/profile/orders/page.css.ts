@@ -2,55 +2,85 @@ import styled from "styled-components";
 
 export const PageWrapper = styled.main`
   width: 100%;
-  max-width: 1000px;
+  max-width: 920px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 20px 24px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   font-family: "Montserrat Alternates", sans-serif;
+
+  @media (max-width: 640px) {
+    padding: 16px 14px 24px;
+    gap: 16px;
+  }
 `;
 
-export const ContentWrapper = styled.div`
+export const PageTitle = styled.h1`
+  margin: 0;
+  font-family: "Gabriela", serif;
+  font-size: clamp(30px, 4vw, 40px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: ${({ theme }) => theme.colors.primary};
+`;
+
+export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
 `;
 
 export const OrderCard = styled.article`
-  background: #ffffff;
-  border: 1px solid #e9e3d9;
-  border-radius: 24px;
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  border-radius: 16px;
+  background: ${({ theme }) => theme.colors.surface};
   overflow: hidden;
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(25, 16, 8, 0.04);
 `;
 
-export const OrderTop = styled.div`
-  padding: 30px;
+export const OrderTop = styled.button`
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 18px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  background: #fff;
+  text-align: left;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.surfaceElevated};
+  }
+
+  @media (max-width: 640px) {
+    padding: 14px;
+  }
 `;
 
 export const OrderHeader = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 `;
 
-export const OrderNumber = styled.div`
-  font-family: "Gabriela", serif;
-  font-size: 28px;
-  color: #3b3028;
+export const OrderNumber = styled.h2`
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
-export const OrderDate = styled.div`
+export const OrderDate = styled.p`
+  margin: 0;
   font-size: 14px;
-  color: #888;
+  color: ${({ theme }) => theme.colors.textSecondary};
   font-weight: 500;
 `;
 
 export const CollapseIcon = styled.div`
-  color: #3b3028;
+  color: ${({ theme }) => theme.colors.primary};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,149 +88,170 @@ export const CollapseIcon = styled.div`
 
 export const DetailsPanel = styled.div<{ $open: boolean }>`
   display: ${({ $open }) => ($open ? "block" : "none")};
-  padding: 0 30px 30px 30px;
+  padding: 0 20px 20px;
+
+  @media (max-width: 640px) {
+    padding: 0 14px 14px;
+  }
 `;
 
-/* ===== ТАЙМЛАЙН ===== */
-export const Timeline = styled.div`
+export const TimelineWrapper = styled.div`
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 40px;
-  padding: 0 10px;
+  margin: 6px 0 20px;
+  padding: 8px 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
 `;
 
-/* Контейнер для линии, чтобы она шла ровно от центра первого до центра последнего круга */
 export const TimelineTrack = styled.div`
   position: absolute;
-  top: 24px;
-  left: 60px; /* Ровно центр первого шага (10px padding + 50px половина ширины) */
-  right: 60px; /* Ровно центр последнего шага */
-  transform: translateY(-50%);
-  height: 6px;
-  background: #f3f0ec;
-  border-radius: 4px;
-  z-index: 1;
+  left: 38px;
+  right: 38px;
+  top: 29px;
+  height: 3px;
+  background: ${({ theme }) => theme.colors.secondary};
+  z-index: 0;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 `;
 
-export const TimelineActiveLine = styled.div<{ $progress: number }>`
+export const TimelineProgress = styled.div<{ $progress: number }>`
   position: absolute;
   left: 0;
   top: 0;
   height: 100%;
-  background: #3b3028;
-  border-radius: 4px;
-  z-index: 2;
-  width: ${({ $progress }) => $progress}%; /* Точно по процентам, без лишних прибавок */
-  transition: width 0.3s ease;
+  width: ${({ $progress }) => $progress}%;
+  background: ${({ theme }) => theme.colors.primary};
+  transition: width 0.25s ease;
 `;
 
-export const TimelineStep = styled.div`
+export const Step = styled.div`
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  z-index: 3;
-  width: 100px;
-  position: relative;
+  gap: 8px;
 `;
 
-export const TimelineCircle = styled.div<{ $state: "completed" | "active" | "pending" }>`
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+export const StepCircle = styled.div<{ $state: "completed" | "active" | "pending" }>`
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  border-radius: 50%;
+  font-size: 13px;
   font-weight: 600;
-  
-  /* Белый фон перекрывает спрятанную под ним линию */
-  background: ${({ $state }) => ($state === "pending" ? "#fff" : "#3b3028")};
-  color: ${({ $state }) => ($state === "pending" ? "#3b3028" : "#fff")};
-  
-  border: ${({ $state }) => ($state === "pending" ? "1px dashed #888" : "none")};
-  
-  transition: all 0.3s ease;
+  background: ${({ theme, $state }) => ($state === "pending" ? theme.colors.surface : theme.colors.primary)};
+  color: ${({ theme, $state }) => ($state === "pending" ? theme.colors.textSecondary : theme.colors.surface)};
+  border: 1px solid
+    ${({ theme, $state }) =>
+		$state === "active" ? theme.colors.primary : $state === "pending" ? theme.colors.secondary : theme.colors.primary};
+  box-shadow: ${({ $state }) => ($state === "active" ? "0 0 0 3px rgba(59, 48, 40, 0.12)" : "none")};
 `;
 
-export const TimelineLabel = styled.div`
-  font-size: 14px;
-  font-weight: 500;
-  color: #3b3028;
+export const StepLabel = styled.div`
   text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  max-width: 130px;
+
+  @media (max-width: 640px) {
+    font-size: 10px;
+    max-width: 75px;
+  }
 `;
 
-/* ===== СПИСОК ТОВАРОВ ===== */
 export const ProductList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
 `;
 
-export const ProductRow = styled.div`
-  position: relative;
+export const ProductRow = styled.article`
   display: grid;
-  grid-template-columns: 100px 1fr auto;
-  gap: 24px;
+  grid-template-columns: 84px 1fr auto;
+  gap: 14px;
   align-items: center;
-  padding: 24px;
-  border-radius: 24px;
-  border: 1px solid #e9e3d9;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  background: ${({ theme }) => theme.colors.surfaceElevated};
+
+  @media (max-width: 640px) {
+    grid-template-columns: 64px 1fr;
+  }
 `;
 
 export const ProductImage = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 84px;
+  height: 84px;
+  border-radius: 8px;
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  background: ${({ theme }) => theme.colors.surface};
   object-fit: contain;
+
+  @media (max-width: 640px) {
+    width: 64px;
+    height: 64px;
+  }
 `;
 
 export const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 `;
 
-export const ProductName = styled.div`
-  font-size: 16px;
+export const ProductName = styled.h3`
+  margin: 0;
+  font-size: 15px;
   font-weight: 600;
-  color: #3b3028;
+  color: ${({ theme }) => theme.colors.textPrimary};
   line-height: 1.4;
 `;
 
-export const ProductMeta = styled.div`
-  font-size: 14px;
-  color: #888;
+export const ProductMeta = styled.p`
+  margin: 0;
+  font-size: 13px;
+  color: ${({ theme }) => theme.colors.textSecondary};
 `;
 
 export const ProductPriceBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 6px;
+
+  @media (max-width: 640px) {
+    grid-column: 2;
+    align-items: flex-start;
+  }
 `;
 
-export const ProductPrice = styled.div`
-  font-size: 20px;
+export const ProductPrice = styled.p`
+  margin: 0;
+  font-size: 16px;
   font-weight: 700;
-  color: #3b3028;
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
-export const ProductQty = styled.div`
+export const ProductQty = styled.p`
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: ${({ theme }) => theme.colors.textSecondary};
+`;
+
+export const EmptyState = styled.div`
+  border: 1px dashed ${({ theme }) => theme.colors.secondary};
+  border-radius: 12px;
+  padding: 18px;
   font-size: 14px;
-  color: #888;
-`;
-
-/* БЕЙДЖ СКИДКИ (-15%) */
-export const ProductBadge = styled.div`
-  position: absolute;
-  top: 24px;
-  left: -1px;
-  background: #e93a36;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 0 8px 8px 0;
-  z-index: 10;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  background: ${({ theme }) => theme.colors.surface};
 `;

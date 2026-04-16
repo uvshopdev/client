@@ -1,4 +1,4 @@
-import { Countries } from "@/types/countries";
+import { Countries, CountriesData } from "@/types/countries";
 import { authHost } from ".";
 
 export const getCountries = async (locale: string) => {
@@ -12,5 +12,5 @@ export const getCountries = async (locale: string) => {
 
 export const getUserCountries = async () => {
 	const { data } = await authHost.get("/users/me/countries");
-	return data;
+	return CountriesData.parse(data);
 };

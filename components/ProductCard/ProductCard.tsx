@@ -40,9 +40,7 @@ const ProductCard = (product: ProductProps) => {
 			await query.invalidateQueries({ queryKey: ["favorites_ids"] });
 			toast.success("Товар додано в обране");
 		},
-		onError: () => {
-			toast.error("Не вдалося додати товар в обране");
-		},
+		onError: () => toast.error("Не вдалося додати товар в обране"),
 	});
 	const { mutate: removeFromFavorite } = useMutation({
 		mutationKey: ["favorites"],
@@ -52,9 +50,7 @@ const ProductCard = (product: ProductProps) => {
 			await query.invalidateQueries({ queryKey: ["favorites_ids"] });
 			toast.success("Товар видалено з обраного");
 		},
-		onError: () => {
-			toast.error("Не вдалося видалити товар з обраного");
-		},
+		onError: () => toast.error("Не вдалося видалити товар з обраного"),
 	});
 
 	const { addPosition } = useBasket();

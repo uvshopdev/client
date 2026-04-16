@@ -11,7 +11,7 @@ const page = () => {
 	const t = useExtracted("profile");
 	const { data, isSuccess } = useQuery({
 		queryKey: ["countries"],
-		queryFn: () => getUserCountries(),
+		queryFn: async () => await getUserCountries(),
 		staleTime: 60000 * 3,
 	});
 
@@ -22,7 +22,7 @@ const page = () => {
 				<Suspense>
 					{isSuccess && (
 						<MapLib
-							mapStyle={data}
+							mapStyle={data.style}
 							attributionControl={false}
 							zoom={2}
 							initialViewState={{

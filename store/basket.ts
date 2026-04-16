@@ -13,6 +13,7 @@ interface BasketStore {
 	subtotal: number;
 	info: {
 		name: string;
+		email: string;
 		phone_number: string;
 		payment_method: string;
 		delivery_method: string;
@@ -25,6 +26,7 @@ interface BasketStore {
 	removePosition: (id: number) => void;
 	setPositionAmount: (id: number, amount: number) => void;
 	setInfo: <K extends keyof BasketStore["info"]>(key: K, value: BasketStore["info"][K]) => void;
+	reset: () => void;
 }
 
 const calculateSubtotal = (positions: Record<number, Position>) =>
@@ -38,6 +40,7 @@ export const useBasket = create<BasketStore>()(
 				subtotal: 0,
 				info: {
 					name: "",
+					email: "",
 					phone_number: "",
 					payment_method: "",
 					delivery_method: "",
@@ -89,6 +92,21 @@ export const useBasket = create<BasketStore>()(
 						return { positions, subtotal: calculateSubtotal(positions) };
 					}),
 				setInfo: (key, value) => set((state) => ({ info: { ...state.info, [key]: value } })),
+				reset: () =>
+					set({
+						positions: {},
+						subtotal: 0,
+						info: {
+							name: "",
+							email: "",
+							phone_number: "",
+							payment_method: "",
+							delivery_method: "",
+							address: "",
+							postal_code: "",
+							message: "",
+						},
+					}),
 			}),
 			{ name: "basket_info" },
 		),
