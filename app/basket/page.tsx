@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Eye, Minus, Plus, X } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { getUserCountries } from "@/lib/countries";
 import { useBasket } from "@/store/basket";
@@ -62,6 +62,32 @@ export default function BasketPage() {
 	const redeemedMilesValue = Math.min(milesToRedeem, maxMilesToRedeem);
 	const total = Math.max(0, subtotalAfterPromo - redeemedMilesValue);
 	const orderMilesReward = Math.floor(total / 100);
+
+	const newCountries = useMemo(() => {
+		if (!isSuccess) {
+			return [] as Array<{ id: number; name: string; picture: string }>;
+		}
+
+		const userCountryIds = new Set(countriesData.countries.map((country) => country.id));
+		const uniqueNewCountries = new Map<number, { id: number; name: string; picture: string }>();
+
+		Object.values(positions).forEach(({ product }) => {
+			const country = product.country;
+			if (!country || userCountryIds.has(country.id) || uniqueNewCountries.has(country.id)) {
+				return;
+			}
+
+			uniqueNewCountries.set(country.id, {
+				id: country.id,
+				name: country.name,
+				picture: country.picture,
+			});
+		});
+
+		return Array.from(uniqueNewCountries.values());
+	}, [countriesData, isSuccess, positions]);
+
+	const newCountriesReward = newCountries.length * 20;
 
 	const handleMilesChange = (delta: number) => {
 		setMilesToRedeem((prev) => {
@@ -223,58 +249,29 @@ export default function BasketPage() {
 				</SummaryRow>
 				<SummaryRow>
 					<span>Відкриття нових країн:</span>
-					<span>
-						+
-						{isSuccess
-							? Object.entries(positions).filter(
-									([_, position]) =>
-										position.product.country !== null &&
-										!countriesData.countries.some((c) => c.id === position.product.country?.id),
-								).length * 20
-							: 0}
-					</span>
+					<span>+{newCountriesReward}</span>
 				</SummaryRow>
 				<TotalRow>
 					<span>Загалом:</span>
-					<span>
-						+
-						{orderMilesReward +
-							(isSuccess
-								? Object.entries(positions).filter(
-										([_, position]) =>
-											position.product.country !== null &&
-											!countriesData.countries.some((c) => c.id === position.product.country?.id),
-									).length * 20
-								: 0)}{" "}
-						миля
-					</span>
+					<span>+{orderMilesReward + newCountriesReward} миля</span>
 				</TotalRow>
 			</SummaryBlock>
 
 			<SummaryBlock>
 				<h3>Нові країни</h3>
-				{isSuccess &&
-					Object.entries(positions)
-						.filter(
-							([_, position]) =>
-								position.product.country !== null &&
-								!countriesData.countries.some((c) => c.id === position.product.country?.id),
-						)
-						.map(([_, position]) => (
-							<CountryRow key={position.product.id}>
-								<span>{position.product.country?.name}</span>
+				{newCountries.map((country) => (
+					<CountryRow key={country.id}>
+						<span>{country.name}</span>
 
-								<button
-									type="button"
-									onClick={() =>
-										setPreviewCountry(`${process.env.NEXT_PUBLIC_FILES_URL}/${position.product.country?.picture}`)
-									}
-									aria-label="Попередній перегляд країни"
-								>
-									<Eye size={18} strokeWidth={1.5} />
-								</button>
-							</CountryRow>
-						))}
+						<button
+							type="button"
+							onClick={() => setPreviewCountry(`${process.env.NEXT_PUBLIC_FILES_URL}/${country.picture}`)}
+							aria-label="Попередній перегляд країни"
+						>
+							<Eye size={18} strokeWidth={1.5} />
+						</button>
+					</CountryRow>
+				))}
 
 				<SmallText>Доступний попередній перегляд віртуальних печаток</SmallText>
 			</SummaryBlock>
