@@ -19,14 +19,14 @@ const page = ({ params }: { params: Promise<{ category_id: number }> }) => {
 		setMounted(true);
 	}, []);
 
-	const { data: favorites } = useQuery({
+	const { data: favorites, isSuccess: isSuccessFavorites } = useQuery({
 		queryKey: ["favorites_ids"],
 		queryFn: async () => {
 			const data = await getFavorites();
 			return data.map(({ product }) => product.id);
 		},
+		placeholderData: [],
 		staleTime: 3 * 60 * 1000,
-		initialData: [],
 	});
 
 	const { data: products, isSuccess: isSuccessProducts } = useQuery({
@@ -55,6 +55,7 @@ const page = ({ params }: { params: Promise<{ category_id: number }> }) => {
 
 			<Products>
 				{isSuccessProducts &&
+					isSuccessFavorites &&
 					products.map((product) => <ProductCard key={product.id} {...product} favorite={favorites.includes(product.id)} />)}
 			</Products>
 		</Content>
