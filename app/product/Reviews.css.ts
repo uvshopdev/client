@@ -8,6 +8,7 @@ export const Container = styled.div`
 export const Title = styled.h2`
   font-size: 34px;
   font-family: "Gabriela", serif;
+  font-weight: 400;
   color: #3b3028;
   margin-bottom: 30px;
 `;
@@ -73,8 +74,8 @@ export const Controls = styled.div`
   gap: 48px;
 
   button {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     border: 1px solid #3b3028;
     background: #3b3028;
@@ -82,10 +83,20 @@ export const Controls = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 26px; /* Розмір символу стрілочки */
+    font-family: sans-serif;
+    line-height: 1;
+    padding-bottom: 2px;
+    cursor: pointer;
+    transition: opacity 0.2s;
 
     &:disabled {
-      opacity: 0.7;
-      cursor: default;
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      opacity: 0.8;
     }
   }
 `;

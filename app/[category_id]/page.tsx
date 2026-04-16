@@ -1,20 +1,104 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { ArrowDownWideNarrow, Settings2 } from "lucide-react";
-import { use, useEffect, useState } from "react";
+import { ArrowDownWideNarrow, Settings2, ChevronDown } from "lucide-react";
+import { use, useEffect, useState, useRef } from "react";
 
 import ProductCard from "@/components/ProductCard/ProductCard";
 import { getFavorites } from "@/lib/favorites";
 import { getProducts } from "@/lib/products";
 import { useCategories } from "@/store";
-import { CatalogActions, CatalogHeader, CatalogTitle, Content, FilterButton, Products } from "./page.css";
+import { 
+    CatalogActions, CatalogHeader, CatalogTitle, Content, FilterButton, Products,
+    SidebarOverlay, SidebarContainer, SidebarTitleBar, SidebarTitle, SidebarCloseBtn,
+    SidebarFormContainer, SidebarInputsGroup, SidebarSelectGroup, SidebarLabel,
+    SidebarPriceGroup, SidebarPriceInputWrap, SidebarPriceInput,
+    SidebarRadioGroupRow, SidebarRadioLabel, SidebarSubmitButton,
+    VisuallyHiddenInput,
+    CustomSelectWrapper, CustomSelectHeader, CustomSelectList, CustomSelectItem
+} from "./page.css";
+
+
+const CustomDropdown = ({ value, onChange, options, placeholder }: { value: string, onChange: (v: string) => void, options: {value: string, label: string}[], placeholder: string }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (ref.current && !ref.current.contains(event.target as Node)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
+    const selected = options.find(opt => opt.value === value);
+
+    return (
+		<CustomSelectWrapper ref={ref}>
+			<CustomSelectHeader $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
+				<span>{selected ? selected.label : placeholder}</span>
+				<ChevronDown size={20} strokeWidth={1.5} color="#3B3028" />
+			</CustomSelectHeader>
+			{isOpen && (
+				<CustomSelectList>
+					<CustomSelectItem $isCancel onClick={() => { onChange(""); setIsOpen(false); }}>
+						Скасувати вибір
+					</CustomSelectItem>
+					{options.map((opt) => (
+						<CustomSelectItem key={opt.value} onClick={() => { onChange(opt.value); setIsOpen(false); }}>
+							{opt.label}
+						</CustomSelectItem>
+					))}
+				</CustomSelectList>
+			)}
+		</CustomSelectWrapper>
+	);
+};
 
 const page = ({ params }: { params: Promise<{ category_id: number }> }) => {
 	const { category_id } = use(params);
 	const { categoriesSet } = useCategories();
 
 	const [mounted, setMounted] = useState(false);
+
+	const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [isSortOpen, setIsSortOpen] = useState(false);
+    const [sortMethod, setSortMethod] = useState("price_asc");
+	
+	const [filterAvailability, setFilterAvailability] = useState("");
+    const [filterCountry, setFilterCountry] = useState("");
+
+    const availabilityOptions = [
+        { value: "in_stock", label: "Є в наявності" },
+        { value: "out_of_stock", label: "Немає в наявності" }
+    ];
+
+    const countryOptions = [
+        { value: "ua", label: "Україна" },
+        { value: "it", label: "Італія" },
+        { value: "kr", label: "Південна Корея" },
+        { value: "fr", label: "Франція" },
+        { value: "jp", label: "Японія" },
+        { value: "cn", label: "Китай" },
+        { value: "ge", label: "Грузія" },
+        { value: "de", label: "Німеччина" },
+        { value: "ch", label: "Швейцарія" },
+        { value: "tr", label: "Туреччина" },
+        { value: "ca", label: "Канада" },
+        { value: "au", label: "Австралія" }
+    ];
+
+	useEffect(() => {
+		if (isFilterOpen || isSortOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "auto";
+		}
+		return () => { document.body.style.overflow = "auto"; };
+	}, [isFilterOpen, isSortOpen]);
+
 	useEffect(() => {
 		setMounted(true);
 	}, []);
@@ -35,17 +119,18 @@ const page = ({ params }: { params: Promise<{ category_id: number }> }) => {
 	});
 
 	return (
+		<>
 		<Content>
 			{mounted && (
 				<CatalogHeader>
 					<CatalogTitle>{categoriesSet[category_id]?.name || "Категорія не знайдена"}</CatalogTitle>
 
 					<CatalogActions>
-						<FilterButton type="button">
+						<FilterButton type="button" onClick={() => setIsFilterOpen(true)}>
 							<Settings2 size={16} strokeWidth={2} />
 							Фільтр
 						</FilterButton>
-						<FilterButton type="button">
+						<FilterButton type="button" onClick={() => setIsSortOpen(true)}>
 							<ArrowDownWideNarrow size={16} strokeWidth={2} />
 							Сортування
 						</FilterButton>
@@ -61,6 +146,131 @@ const page = ({ params }: { params: Promise<{ category_id: number }> }) => {
 					))}
 			</Products>
 		</Content>
+
+		{/* --- МОДАЛКА ФІЛЬТРУ --- */}
+            <SidebarOverlay $isOpen={isFilterOpen} onClick={() => setIsFilterOpen(false)}>
+                <SidebarContainer $isOpen={isFilterOpen} onClick={(e) => e.stopPropagation()}>
+                    <SidebarTitleBar>
+                        <SidebarTitle>Відфільтрувати товари</SidebarTitle>
+                        <SidebarCloseBtn onClick={() => setIsFilterOpen(false)}>
+                            ✕
+                        </SidebarCloseBtn>
+                    </SidebarTitleBar>
+
+                    <SidebarFormContainer>
+                        <SidebarInputsGroup>
+                            <SidebarSelectGroup>
+                                <SidebarLabel>Наявність</SidebarLabel>
+                                <CustomDropdown 
+                                    value={filterAvailability} 
+                                    onChange={setFilterAvailability} 
+                                    options={availabilityOptions} 
+                                    placeholder="" 
+                                />
+                            </SidebarSelectGroup>
+
+                            <SidebarSelectGroup>
+                                <SidebarLabel>Країна виробник</SidebarLabel>
+                                <CustomDropdown 
+                                    value={filterCountry} 
+                                    onChange={setFilterCountry} 
+                                    options={countryOptions} 
+                                    placeholder="" 
+                                />
+                            </SidebarSelectGroup>
+
+                            <SidebarSelectGroup>
+                                <SidebarLabel>Діапазон цін</SidebarLabel>
+                                <SidebarPriceGroup>
+									<SidebarPriceInputWrap>
+										<SidebarLabel>Від</SidebarLabel>
+										<SidebarPriceInput 
+											type="number" 
+											placeholder="0"
+											min="0"
+											max="9999"
+											onInput={(e) => {
+												const val = parseInt(e.currentTarget.value);
+												if (val < 0) e.currentTarget.value = "0";
+												if (val > 9999) e.currentTarget.value = "9999";
+											}}
+											onKeyDown={(e) => {
+												// Забороняємо введення мінуса
+												if (e.key === '-') e.preventDefault();
+											}}
+										/>
+									</SidebarPriceInputWrap>
+									<span>—</span>
+									<SidebarPriceInputWrap>
+										<SidebarLabel>До</SidebarLabel>
+										<SidebarPriceInput 
+											type="number" 
+											placeholder="9999"
+											min="0"
+											max="9999"
+											onInput={(e) => {
+												const val = parseInt(e.currentTarget.value);
+												if (val < 0) e.currentTarget.value = "0";
+												if (val > 9999) e.currentTarget.value = "9999";
+											}}
+											onKeyDown={(e) => {
+												if (e.key === '-') e.preventDefault();
+											}}
+										/>
+									</SidebarPriceInputWrap>
+								</SidebarPriceGroup>
+                            </SidebarSelectGroup>
+                        </SidebarInputsGroup>
+
+                        <SidebarSubmitButton onClick={() => setIsFilterOpen(false)}>
+                            Застосувати
+                        </SidebarSubmitButton>
+                    </SidebarFormContainer>
+                </SidebarContainer>
+            </SidebarOverlay>
+
+            {/* --- МОДАЛКА СОРТУВАННЯ --- */}
+            <SidebarOverlay $isOpen={isSortOpen} onClick={() => setIsSortOpen(false)}>
+                <SidebarContainer $isOpen={isSortOpen} onClick={(e) => e.stopPropagation()}>
+                    <SidebarTitleBar>
+                        <SidebarTitle>Відсортувати товари</SidebarTitle>
+                        <SidebarCloseBtn onClick={() => setIsSortOpen(false)}>
+                            ✕
+                        </SidebarCloseBtn>
+                    </SidebarTitleBar>
+
+                    <SidebarFormContainer>
+                            <SidebarInputsGroup>
+                                <SidebarRadioGroupRow>
+                                    <SidebarRadioLabel $isActive={sortMethod === "price_asc"}>
+                                        <VisuallyHiddenInput type="radio" name="sort" value="price_asc" checked={sortMethod === "price_asc"} onChange={(e) => setSortMethod(e.target.value)} />
+                                        <span>Спочатку найдешевші</span>
+                                    </SidebarRadioLabel>
+                                    <SidebarRadioLabel $isActive={sortMethod === "price_desc"}>
+                                        <VisuallyHiddenInput type="radio" name="sort" value="price_desc" checked={sortMethod === "price_desc"} onChange={(e) => setSortMethod(e.target.value)} />
+                                        <span>Спочатку найдорожчі</span>
+                                    </SidebarRadioLabel>
+                                </SidebarRadioGroupRow>
+
+                                <SidebarRadioGroupRow>
+                                    <SidebarRadioLabel $isActive={sortMethod === "alpha_asc"}>
+                                        <VisuallyHiddenInput type="radio" name="sort" value="alpha_asc" checked={sortMethod === "alpha_asc"} onChange={(e) => setSortMethod(e.target.value)} />
+                                        <span>Від А до Я</span>
+                                    </SidebarRadioLabel>
+                                    <SidebarRadioLabel $isActive={sortMethod === "alpha_desc"}>
+                                        <VisuallyHiddenInput type="radio" name="sort" value="alpha_desc" checked={sortMethod === "alpha_desc"} onChange={(e) => setSortMethod(e.target.value)} />
+                                        <span>Від Я до А</span>
+                                    </SidebarRadioLabel>
+                                </SidebarRadioGroupRow>
+                            </SidebarInputsGroup>
+
+                        <SidebarSubmitButton onClick={() => setIsSortOpen(false)}>
+                            Застосувати
+                        </SidebarSubmitButton>
+                    </SidebarFormContainer>
+                </SidebarContainer>
+            </SidebarOverlay>
+		</>
 	);
 };
 

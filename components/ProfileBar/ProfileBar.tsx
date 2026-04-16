@@ -16,7 +16,7 @@ const ProfileBar = () => {
 		{ href: "/profile/favorites", Icon: Heart, label: t("Favorites") },
 		{ href: "/profile/orders", Icon: History, label: t("Order history") },
 		{ href: "/profile/countries", Icon: MapPin, label: t("Countries") },
-		{ href: "/profile/friends", Icon: Handshake, label: t("Hermes Friends") },
+		{ href: "/profile/friends", Icon: Handshake, label: t("Among friends") },
 		{ href: "/profile/coffee", Icon: Coffee, label: t("Coffee passport") },
 	];
 

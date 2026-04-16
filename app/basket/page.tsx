@@ -183,7 +183,7 @@ export default function BasketPage() {
 
 					<PromoRow style={{ borderTop: "1px solid #eaeaea", paddingTop: "25px" }}>
 						<p>Списати милі</p>
-						<ItemActions style={{ gap: "15px" }}>
+						<ItemActions style={{ gridColumn: 3, gap: "15px" }}>
 							<QuantityBox>
 								<button
 									type="button"

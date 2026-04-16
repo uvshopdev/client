@@ -6,6 +6,10 @@ export const Content = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    flex: 1;
+    padding: 60px 20px 40px;
+    width: 100%;
 `;
 
 export const Form = styled.form`

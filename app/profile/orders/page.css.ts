@@ -2,38 +2,34 @@ import styled from "styled-components";
 
 export const PageWrapper = styled.main`
   width: 100%;
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 20px 24px 36px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 30px; 
   font-family: "Montserrat Alternates", sans-serif;
+  
+  padding: 0 0 40px 0; 
 
   @media (max-width: 640px) {
-    padding: 16px 14px 24px;
-    gap: 16px;
+    gap: 20px;
   }
 `;
 
 export const PageTitle = styled.h1`
-  margin: 0;
-  font-family: "Gabriela", serif;
-  font-size: clamp(30px, 4vw, 40px);
+  font-size: 26px;
   font-weight: 400;
-  line-height: 1.1;
   color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
+  width: 100%
 `;
 
 export const OrderCard = styled.article`
   border: 1px solid ${({ theme }) => theme.colors.secondary};
-  border-radius: 16px;
+  border-radius: 20px;
   background: ${({ theme }) => theme.colors.surface};
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(25, 16, 8, 0.04);
@@ -43,7 +39,7 @@ export const OrderTop = styled.button`
   width: 100%;
   border: none;
   background: transparent;
-  padding: 18px 20px;
+  padding: 24px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -55,7 +51,7 @@ export const OrderTop = styled.button`
   }
 
   @media (max-width: 640px) {
-    padding: 14px;
+    padding: 16px;
   }
 `;
 
@@ -67,7 +63,7 @@ export const OrderHeader = styled.div`
 
 export const OrderNumber = styled.h2`
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.primary};
 `;
@@ -88,7 +84,8 @@ export const CollapseIcon = styled.div`
 
 export const DetailsPanel = styled.div<{ $open: boolean }>`
   display: ${({ $open }) => ($open ? "block" : "none")};
-  padding: 0 20px 20px;
+  padding: 0 30px 30px;
+  border-top: 1px solid ${({ theme }) => theme.colors.secondary};
 
   @media (max-width: 640px) {
     padding: 0 14px 14px;
@@ -97,11 +94,13 @@ export const DetailsPanel = styled.div<{ $open: boolean }>`
 
 export const TimelineWrapper = styled.div`
   position: relative;
-  margin: 6px 0 20px;
+  margin: 30px auto 40px;
   padding: 8px 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
+  width: 100%;
+  max-width: 1400px;
 `;
 
 export const TimelineTrack = styled.div`

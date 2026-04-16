@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Main = styled.main`
   width: 100%;
-  max-width: 1600px;
+  //max-width: 1600px;
   margin: 0 auto;
   padding: 40px 60px;
   font-family: "Montserrat Alternates", sans-serif;
@@ -57,7 +57,7 @@ export const HeroSection = styled.section`
 export const EmptyBanner = styled.div`
   position: relative;
   width: 100%;
-  aspect-ratio: 21 / 6;
+  aspect-ratio: 2.8 / 1;
   min-height: 250px;
   border-radius: 24px;
   overflow: hidden;
@@ -66,7 +66,7 @@ export const EmptyBanner = styled.div`
 export const SliderWrapper = styled.div`
   position: relative;
   width: 100%;
-  aspect-ratio: 21 / 6;
+  aspect-ratio: 2.8 / 1;
   min-height: 250px;
   border-radius: 24px;
   overflow: hidden;
@@ -174,11 +174,14 @@ export const CategoryCircle = styled.div`
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   background-color: #f3eee9;
-  background-size: cover;
-  background-position: center;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+  }
 `;
 
-/* ПОЛНОСТЬЮ УБРАЛ ЖИРНОСТЬ (font-weight: 400) */
 export const CategoryName = styled.p`
   margin: 0;
   font-weight: 400; 
@@ -190,7 +193,7 @@ export const CategoryName = styled.p`
 export const CountryBanner = styled.div`
   position: relative;
   width: 100%;
-  aspect-ratio: 19 / 7;
+  aspect-ratio: 2.8 / 1;
   min-height: 220px;
   border-radius: 24px;
   overflow: hidden;
