@@ -1,9 +1,11 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { Lock } from "lucide-react";
+import { Lock, X } from "lucide-react";
 import { useExtracted } from "next-intl";
 import Image from "next/image";
+import { QRCodeSVG } from "qrcode.react";
+import { useState } from "react";
 
 import { getCoffee } from "@/lib/coffee";
 import {
@@ -13,7 +15,13 @@ import {
 	FreeCoffeeGrid,
 	FreeCoffeeItem,
 	HeaderInfo,
+	ModalBody,
+	ModalClose,
+	ModalCode,
+	ModalOverlay,
+	ModalTitle,
 	NodeWrapper,
+	ShowQrButton,
 	TimelineContainer,
 	TimelineLine,
 } from "./page.css";
@@ -21,6 +29,7 @@ import {
 const CoffeePassportPage = () => {
 	const t = useExtracted("profile");
 	const { data } = useQuery({ queryKey: ["coffee"], queryFn: async () => await getCoffee() });
+	const [selectedCoffee, setSelectedCoffee] = useState<{ id: number; source: string } | null>(null);
 
 	return (
 		<Content>
@@ -75,10 +84,26 @@ const CoffeePassportPage = () => {
 					{(data?.unused || []).map((item) => (
 						<FreeCoffeeItem key={item.id}>
 							<Image src="/coffee/giftedcoffee.webp" alt="Free Coffee" width={80} height={80} />
+							<ShowQrButton type="button" onClick={() => setSelectedCoffee({ id: item.id, source: item.source })}>
+								Показати QR
+							</ShowQrButton>
 						</FreeCoffeeItem>
 					))}
 				</FreeCoffeeGrid>
 			</Card>
+
+			{selectedCoffee && (
+				<ModalOverlay onClick={() => setSelectedCoffee(null)}>
+					<ModalBody onClick={(e) => e.stopPropagation()}>
+						<ModalClose type="button" onClick={() => setSelectedCoffee(null)} aria-label="Закрити QR модалку">
+							<X size={20} />
+						</ModalClose>
+						<ModalTitle>QR-код для безкоштовної кави #{selectedCoffee.id}</ModalTitle>
+						<QRCodeSVG value={selectedCoffee.source || String(selectedCoffee.id)} size={220} />
+						<ModalCode>{selectedCoffee.source || `coffee-${selectedCoffee.id}`}</ModalCode>
+					</ModalBody>
+				</ModalOverlay>
+			)}
 		</Content>
 	);
 };

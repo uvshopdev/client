@@ -12,7 +12,6 @@ const page = () => {
 	const { data, isSuccess } = useQuery({
 		queryKey: ["countries"],
 		queryFn: async () => await getUserCountries(),
-		staleTime: 60000 * 3,
 	});
 
 	return (

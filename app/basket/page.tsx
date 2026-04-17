@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 import { getUserCountries } from "@/lib/countries";
+import { getMilesSummary, getUserMiles } from "@/lib/miles";
 import { useBasket } from "@/store/basket";
 import {
 	AlertIcon,
@@ -47,18 +48,23 @@ export default function BasketPage() {
 	const [milesToRedeem, setMilesToRedeem] = useState<number>(0);
 	const [promoApplied, setPromoApplied] = useState<boolean>(false);
 	const [promoInput, setPromoInput] = useState<string>("");
-	const [previewCountry, setPreviewCountry] = useState<string | null>(null);
+	const [previewCountry, setPreviewCountry] = useState<{ name: string; picture: string } | null>(null);
 
 	const { data: countriesData, isSuccess } = useQuery({
 		queryKey: ["countries"],
 		queryFn: async () => await getUserCountries(),
-		staleTime: 3 * 60 * 1000,
+	});
+
+	const { data: milesEntries } = useQuery({
+		queryKey: ["profile", "miles"],
+		queryFn: async () => await getUserMiles(),
 	});
 
 	const { positions, subtotal, setPositionAmount, removePosition } = useBasket();
 	const promoDiscount = promoApplied ? (subtotal * 0) / 100 : 0;
 	const subtotalAfterPromo = Math.max(0, subtotal - promoDiscount);
-	const maxMilesToRedeem = Math.floor(subtotalAfterPromo);
+	const availableMiles = useMemo(() => getMilesSummary(milesEntries ?? []).currentMiles, [milesEntries]);
+	const maxMilesToRedeem = Math.min(availableMiles, Math.floor(subtotalAfterPromo));
 	const redeemedMilesValue = Math.min(milesToRedeem, maxMilesToRedeem);
 	const total = Math.max(0, subtotalAfterPromo - redeemedMilesValue);
 	const orderMilesReward = Math.floor(total / 100);
@@ -208,6 +214,10 @@ export default function BasketPage() {
 							</RemoveButton>
 						</ItemActions>
 					</PromoRow>
+					<PromoRow style={{ paddingTop: 0, paddingBottom: 0 }}>
+						<p>Доступно миль</p>
+						<span style={{ gridColumn: 3, justifySelf: "end" }}>{availableMiles}</span>
+					</PromoRow>
 				</PromoSection>
 			</LeftBox>
 
@@ -238,7 +248,7 @@ export default function BasketPage() {
 					<span>Загалом:</span>
 					<span>{formatPrice(total)} грн</span>
 				</TotalRow>
-				<CheckoutButton onClick={() => router.push("/basket/placeorder")}>Оформити замовлення</CheckoutButton>
+				<CheckoutButton onClick={() => router.push(`/basket/placeorder?miles=${milesToRedeem}`)}>Оформити замовлення</CheckoutButton>
 			</SummaryBlock>
 
 			<SummaryBlock>
@@ -265,7 +275,7 @@ export default function BasketPage() {
 
 						<button
 							type="button"
-							onClick={() => setPreviewCountry(`${process.env.NEXT_PUBLIC_FILES_URL}/${country.picture}`)}
+							onClick={() => setPreviewCountry({ name: country.name, picture: country.picture })}
 							aria-label="Попередній перегляд країни"
 						>
 							<Eye size={18} strokeWidth={1.5} />
@@ -301,9 +311,15 @@ export default function BasketPage() {
 						<h4>
 							Попередній перегляд віртуальної
 							<br />
-							печатки: {previewCountry === "UA" ? "Україна" : "Туреччина"}
+							печатки: {previewCountry.name}
 						</h4>
-						<Image src={previewCountry} width={130} height={130} alt="Stamp" className="stamp-img" />
+						<Image
+							src={`${process.env.NEXT_PUBLIC_FILES_URL}/${previewCountry.picture}`}
+							width={130}
+							height={130}
+							alt="Stamp"
+							className="stamp-img"
+						/>
 					</ModalContent>
 				</ModalOverlay>
 			)}

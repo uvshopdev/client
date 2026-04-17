@@ -32,7 +32,6 @@ const ProductsList = ({ currentProductId }: ProductsListProps) => {
 			return data.map(({ product }) => product.id);
 		},
 		placeholderData: [],
-		staleTime: 3 * 60 * 1000,
 	});
 	const favoriteIds = favorites ?? [];
 
@@ -47,7 +46,6 @@ const ProductsList = ({ currentProductId }: ProductsListProps) => {
 			queryKey: ["products", category.id, "recommended-random"],
 			queryFn: async () => await getProducts(0, category.id),
 			enabled: randomProductCategories.length > 0,
-			staleTime: 3 * 60 * 1000,
 		})),
 	});
 

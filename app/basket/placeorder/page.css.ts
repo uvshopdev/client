@@ -139,6 +139,30 @@ export const FormGroup = styled.div`
   gap: 8px;
 `;
 
+export const FieldHint = styled.p`
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: ${({ theme }) => theme.colors.muted};
+`;
+
+export const MilesSummary = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px dashed ${({ theme }) => theme.colors.secondary};
+  border-radius: 10px;
+  background: ${({ theme }) => theme.colors.surfaceElevated};
+  font-size: 13px;
+  color: ${({ theme }) => theme.colors.textSecondary};
+
+  strong {
+    color: ${({ theme }) => theme.colors.textPrimary};
+    font-weight: 600;
+  }
+`;
+
 export const Label = styled.label`
   font-size: 14px;
   font-weight: 500;

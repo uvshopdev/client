@@ -43,7 +43,6 @@ export default function Home() {
 			return data.map(({ product }) => product.id);
 		},
 		placeholderData: [],
-		staleTime: 3 * 60 * 1000,
 	});
 	const favoriteIds = favorites ?? [];
 
@@ -52,7 +51,6 @@ export default function Home() {
 			queryKey: ["products", category.id, "home-random"],
 			queryFn: async () => await getProducts(0, category.id),
 			enabled: randomProductCategories.length > 0,
-			staleTime: 3 * 60 * 1000,
 		})),
 	});
 
@@ -112,9 +110,7 @@ export default function Home() {
 			<S.Section>
 				<S.Header>
 					<S.SectionTitle>{t("Popular categories")}</S.SectionTitle>
-					<S.LinkText onClick={() => setCatalog(true)}>
-                        {t("View all")} →
-                    </S.LinkText>
+					<S.LinkText onClick={() => setCatalog(true)}>{t("View all")} →</S.LinkText>
 				</S.Header>
 
 				<S.CategoriesGrid>
@@ -122,8 +118,8 @@ export default function Home() {
 						<Link key={category.id} href={`/${category.id}`}>
 							<S.CategoryCard>
 								<S.CategoryCircle>
-                                    <Image src="/map.webp" alt={category.name} fill />
-                                </S.CategoryCircle>
+									<Image src="/map.webp" alt={category.name} fill />
+								</S.CategoryCircle>
 								<S.CategoryName>{category.name}</S.CategoryName>
 							</S.CategoryCard>
 						</Link>
@@ -145,9 +141,7 @@ export default function Home() {
 			<S.SectionTight>
 				<S.Header>
 					<S.SectionTitle>{t("New arrivals")}</S.SectionTitle>
-					<S.LinkText onClick={() => setCatalog(true)}>
-                        {t("View all")} →
-                    </S.LinkText>
+					<S.LinkText onClick={() => setCatalog(true)}>{t("View all")} →</S.LinkText>
 				</S.Header>
 
 				<S.ProductsGrid>
@@ -171,9 +165,7 @@ export default function Home() {
 			<S.Section>
 				<S.Header>
 					<S.SectionTitle>{t("Best sellers")}</S.SectionTitle>
-					<S.LinkText onClick={() => setCatalog(true)}>
-                        {t("View all")} →
-                    </S.LinkText>
+					<S.LinkText onClick={() => setCatalog(true)}>{t("View all")} →</S.LinkText>
 				</S.Header>
 				<S.ProductsGrid>
 					{secondProducts.map((product) => (

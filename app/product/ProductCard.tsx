@@ -50,11 +50,7 @@ export default function ProductCard({ image, product, favorite }: ProductCardPro
 						<S.Image src={image} />
 
 						<S.WishButton onClick={() => (favorite ? removeFromFavorite() : addToFavorite())}>
-							<Heart 
-								fill={favorite ? "#E93A36" : "none"} 
-								color={favorite ? "#E93A36" : "#BDBDBD"} 
-								strokeWidth={1.5} 
-							/>
+							<Heart fill={favorite ? "#E93A36" : "none"} color={favorite ? "#E93A36" : "#BDBDBD"} strokeWidth={1.5} />
 						</S.WishButton>
 					</S.MainImage>
 				</S.Left>
@@ -67,7 +63,9 @@ export default function ProductCard({ image, product, favorite }: ProductCardPro
 					<S.Block>
 						<S.RowBetween>
 							<S.CodeStock>
-								<span><S.BoldText>код:</S.BoldText> {product.article}</span>
+								<span>
+									<S.BoldText>код:</S.BoldText> {product.article}
+								</span>
 								<S.Stock>
 									<S.DotStatus />є в наявності
 								</S.Stock>
@@ -76,15 +74,15 @@ export default function ProductCard({ image, product, favorite }: ProductCardPro
 
 						<S.RatingRow>
 							<S.Stars>
-							{[1, 2, 3, 4, 5].map((i) => (
-								<Star 
-									key={i} 
-									size={18} 
-									fill={i <= rating ? "#ffdb0d" : "none"} 
-									color={i <= rating ? "#ffdb0d" : "#D3D3D3"}
-									strokeWidth={1.5}
-								/>
-							))}
+								{[1, 2, 3, 4, 5].map((i) => (
+									<Star
+										key={i}
+										size={18}
+										fill={i <= rating ? "#ffdb0d" : "none"}
+										color={i <= rating ? "#ffdb0d" : "#D3D3D3"}
+										strokeWidth={1.5}
+									/>
+								))}
 							</S.Stars>
 							<span>{rating}/5</span>
 						</S.RatingRow>
@@ -94,7 +92,6 @@ export default function ProductCard({ image, product, favorite }: ProductCardPro
 						<S.PriceRow>
 							<S.PriceBlock>
 								<S.Price>{product.price} грн</S.Price>
-								<S.SubPrice>за 1 шт • {product.weight} г</S.SubPrice>
 							</S.PriceBlock>
 
 							<S.BuyControls>
@@ -118,26 +115,18 @@ export default function ProductCard({ image, product, favorite }: ProductCardPro
 						<S.Characteristics>
 							<S.CharacteristicsTitle>Характеристики:</S.CharacteristicsTitle>
 							<S.CharacteristicsGrid>
-								<S.CharItem>
-									<S.CharLabel>вага:</S.CharLabel>
-									<S.CharValue>{product.weight} г</S.CharValue>
-								</S.CharItem>
 								{product.category && (
-                                    <S.CharItem>
-                                        <S.CharLabel>категорія:</S.CharLabel>
-                                        <S.CharValue>{product.category.name}</S.CharValue>
-                                    </S.CharItem>
-                                )}
-								<S.CharItem>
-									<S.CharLabel>калорійність:</S.CharLabel>
-									<S.CharValue>{product.caloric} ккал</S.CharValue>
-								</S.CharItem>
+									<S.CharItem>
+										<S.CharLabel>категорія:</S.CharLabel>
+										<S.CharValue>{product.category.name}</S.CharValue>
+									</S.CharItem>
+								)}
 								{product.country && (
-                                    <S.CharItem>
-                                        <S.CharLabel>країна виробник:</S.CharLabel>
-                                        <S.CharValue>{product.country.name}</S.CharValue>
-                                    </S.CharItem>
-                                )}
+									<S.CharItem>
+										<S.CharLabel>країна виробник:</S.CharLabel>
+										<S.CharValue>{product.country.name}</S.CharValue>
+									</S.CharItem>
+								)}
 							</S.CharacteristicsGrid>
 						</S.Characteristics>
 
@@ -146,8 +135,7 @@ export default function ProductCard({ image, product, favorite }: ProductCardPro
 								{
 									key: "desc",
 									title: "Опис",
-									content:
-										"Детальний опис товару...",
+									content: "Детальний опис товару...",
 								},
 								{
 									key: "comp",

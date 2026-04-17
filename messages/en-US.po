@@ -41,29 +41,29 @@ msgctxt "auth"
 msgid "odXlk8"
 msgstr "Log in"
 
-#: app/page.tsx:114
+#: app/page.tsx:112
 msgctxt "home"
 msgid "pq2lMA"
 msgstr "Popular categories"
 
-#: app/page.tsx:116
-#: app/page.tsx:149
-#: app/page.tsx:175
+#: app/page.tsx:113
+#: app/page.tsx:144
+#: app/page.tsx:168
 msgctxt "home"
 msgid "pFK6bJ"
 msgstr "View all"
 
-#: app/page.tsx:136
+#: app/page.tsx:132
 msgctxt "home"
 msgid "WfqukA"
 msgstr "Country of the month"
 
-#: app/page.tsx:147
+#: app/page.tsx:143
 msgctxt "home"
 msgid "2zg50f"
 msgstr "New arrivals"
 
-#: app/page.tsx:173
+#: app/page.tsx:167
 msgctxt "home"
 msgid "FC/kO5"
 msgstr "Best sellers"
@@ -93,42 +93,42 @@ msgctxt "profile"
 msgid "lKFP19"
 msgstr "Enter the code at the checkout when purchasing coffee and get it for free."
 
-#: app/profile/countries/page.tsx:20
+#: app/profile/countries/page.tsx:19
 msgctxt "profile"
 msgid "VdXF7G"
 msgstr "Open countries map"
 
-#: app/profile/friends/page.tsx:56
+#: app/profile/friends/page.tsx:55
 msgctxt "profile"
 msgid "3s0ZWy"
 msgstr "Invite friends and get bonuses!"
 
-#: app/profile/friends/page.tsx:58
+#: app/profile/friends/page.tsx:56
 msgctxt "profile"
 msgid "CsMutJ"
 msgstr "Get +50 miles and coffee after your friend makes their first purchase for an amount of 150 UAH or more."
 
-#: app/profile/friends/page.tsx:66
+#: app/profile/friends/page.tsx:61
 msgctxt "profile"
 msgid "hYOE+U"
 msgstr "Invite"
 
-#: app/profile/friends/page.tsx:84
+#: app/profile/friends/page.tsx:79
 msgctxt "profile"
 msgid "smWqVf"
 msgstr "Waiting for the first purchase"
 
-#: app/profile/friends/page.tsx:97
+#: app/profile/friends/page.tsx:92
 msgctxt "profile"
 msgid "G8P44K"
 msgstr "Invitation link"
 
-#: app/profile/friends/page.tsx:103
+#: app/profile/friends/page.tsx:98
 msgctxt "profile"
 msgid "p556q3"
 msgstr "Copied"
 
-#: app/profile/friends/page.tsx:103
+#: app/profile/friends/page.tsx:98
 msgctxt "profile"
 msgid "4l6vz1"
 msgstr "Copy"
@@ -283,32 +283,32 @@ msgctxt "profile"
 msgid "C81/uG"
 msgstr "Logout"
 
-#: components/ProfileForm/ProfileForm.tsx:54
+#: components/ProfileForm/ProfileForm.tsx:53
 msgctxt "profile"
 msgid "VnXp8Z"
 msgstr "Avatar"
 
-#: components/ProfileForm/ProfileForm.tsx:62
+#: components/ProfileForm/ProfileForm.tsx:61
 msgctxt "profile"
 msgid "BY343C"
 msgstr "Change"
 
-#: components/ProfileForm/ProfileForm.tsx:70
+#: components/ProfileForm/ProfileForm.tsx:69
 msgctxt "profile"
 msgid "yk4PT9"
 msgstr "Full name"
 
-#: components/ProfileForm/ProfileForm.tsx:75
+#: components/ProfileForm/ProfileForm.tsx:74
 msgctxt "profile"
 msgid "hJZwTS"
 msgstr "Email address"
 
-#: components/ProfileForm/ProfileForm.tsx:80
+#: components/ProfileForm/ProfileForm.tsx:79
 msgctxt "profile"
 msgid "jdJhOL"
 msgstr "Phone number"
 
-#: components/ProfileForm/ProfileForm.tsx:84
+#: components/ProfileForm/ProfileForm.tsx:83
 msgctxt "profile"
 msgid "jvo0vs"
 msgstr "Save"

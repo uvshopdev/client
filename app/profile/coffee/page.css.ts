@@ -142,6 +142,76 @@ export const FreeCoffeeItem = styled.div`
   gap: 15px;
 `;
 
+export const ShowQrButton = styled.button`
+  border: none;
+  border-radius: 999px;
+  padding: 8px 18px;
+  background: ${({ theme }) => theme.colors.primaryLight};
+  color: #fff;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+`;
+
+export const ModalOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(59, 48, 40, 0.55);
+`;
+
+export const ModalBody = styled.div`
+  position: relative;
+  width: min(420px, 100%);
+  padding: 28px 24px 24px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+`;
+
+export const ModalClose = styled.button`
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  border: none;
+  background: transparent;
+  color: #3b3028;
+  cursor: pointer;
+  padding: 4px;
+`;
+
+export const ModalTitle = styled.h3`
+  margin: 0;
+  font-family: 'Gabriela', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #3b3028;
+  text-align: center;
+`;
+
+export const ModalCode = styled.p`
+  margin: 0;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 12px;
+  color: #666;
+  word-break: break-all;
+  text-align: center;
+`;
+
 export const ActionButton = styled.button`
   background-color: #4A3320;
   color: white;

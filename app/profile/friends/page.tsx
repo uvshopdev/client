@@ -29,7 +29,6 @@ const FriendsPage = () => {
 	const { data, isSuccess } = useQuery({
 		queryKey: ["friends"],
 		queryFn: async () => await getReferrals(),
-		staleTime: 3 * 60 * 1000,
 	});
 
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -54,11 +53,7 @@ const FriendsPage = () => {
 			<Header>
 				<HeaderInfo>
 					<div className="info">{t("Invite friends and get bonuses!")}</div>
-					<div>
-						{t(
-							"Get +50 miles and coffee after your friend makes their first purchase for an amount of 150 UAH or more.",
-						)}
-					</div>
+					<div>{t("Get +50 miles and coffee after your friend makes their first purchase for an amount of 150 UAH or more.")}</div>
 				</HeaderInfo>
 
 				<InviteButton onClick={() => setIsModalOpen(true)} type="button">

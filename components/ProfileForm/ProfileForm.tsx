@@ -6,8 +6,8 @@ import { useExtracted } from "next-intl";
 import Image from "next/image";
 import { useRef } from "react";
 
-import { getProfile, updateProfile } from "@/lib/user";
 // Обязательно импортируем новые стили ImageContainer и PhotoFrameOverlay
+import { getProfile, updateProfile } from "@/lib/user";
 import { AvatarOverlay, AvatarSection, Form, FormLabel, FormSection, ImageContainer, PhotoFrameOverlay } from "./ProfileForm.css";
 
 const ProfileForm = () => {
@@ -17,7 +17,6 @@ const ProfileForm = () => {
 	const { data } = useQuery({
 		queryKey: ["profile"],
 		queryFn: async () => await getProfile(),
-		staleTime: 60000 * 3,
 	});
 	const mutation = useMutation({
 		mutationFn: async (body: FormData) => await updateProfile(body),
@@ -38,13 +37,13 @@ const ProfileForm = () => {
 		}
 		mutation.mutate(formData);
 	};
-    
+
 	return (
 		<Form onSubmit={onSubmit}>
 			<AvatarSection>
 				{/* 1. Декоративная рамка на заднем плане (всю ширину 280x280) */}
 				<PhotoFrameOverlay />
-				
+
 				{/* 2. Контейнер самой фотки (меньше по размеру и идеально круглый) */}
 				<ImageContainer>
 					<Image
@@ -64,7 +63,7 @@ const ProfileForm = () => {
 					<input type="file" name="picture" accept="image/*" onChange={handleAvatarChange} />
 				</ImageContainer>
 			</AvatarSection>
-            
+
 			<FormSection>
 				<FormLabel>
 					{t("Full name")}

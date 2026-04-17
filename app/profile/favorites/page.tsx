@@ -10,7 +10,6 @@ const FavoritesPage = () => {
 	const { data, isSuccess } = useQuery({
 		queryKey: ["favorites"],
 		queryFn: async () => await getFavorites(),
-		staleTime: 3 * 60 * 1000,
 	});
 
 	return (

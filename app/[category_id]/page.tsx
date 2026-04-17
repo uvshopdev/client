@@ -140,7 +140,6 @@ const page = ({ params }: { params: Promise<{ category_id: number }> }) => {
 			return data.map(({ product }) => product.id);
 		},
 		placeholderData: [],
-		staleTime: 3 * 60 * 1000,
 	});
 
 	const { data: products, isSuccess: isSuccessProducts } = useQuery({

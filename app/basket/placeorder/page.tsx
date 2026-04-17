@@ -1,16 +1,21 @@
 "use client";
 
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ArrowLeft, ArrowRight, Check, ChevronDown } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useState, useRef, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 
+import { getMilesSummary, getUserMiles } from "@/lib/miles";
 import { createOrder } from "@/lib/orders";
 import { useBasket } from "@/store/basket";
 import {
 	Circle,
 	Controls,
+	CustomSelectHeader,
+	CustomSelectItem,
+	CustomSelectList,
+	CustomSelectWrapper,
 	FormContainer,
 	FormGroup,
 	IconButton,
@@ -22,10 +27,6 @@ import {
 	ModalContent,
 	ModalOverlay,
 	ModalTitle,
-	CustomSelectWrapper,
-    CustomSelectHeader,
-    CustomSelectList,
-    CustomSelectItem,
 	Step,
 	StepLabel,
 	SubmitButton,
@@ -39,57 +40,93 @@ import {
 
 const steps = ["Персональна інформація", "Доставка та оплата", "Адреса доставки", "Додатково"];
 
-const CustomDropdown = ({ 
-    value, 
-    onChange, 
-    options, 
-    placeholder 
-}: { 
-    value: string; 
-    onChange: (v: string) => void; 
-    options: { value: string; label: string }[]; 
-    placeholder: string; 
+const CustomDropdown = ({
+	value,
+	onChange,
+	options,
+	placeholder,
+}: {
+	value: string;
+	onChange: (v: string) => void;
+	options: { value: string; label: string }[];
+	placeholder: string;
 }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const ref = useRef<HTMLDivElement>(null);
+	const [isOpen, setIsOpen] = useState(false);
+	const ref = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (ref.current && !ref.current.contains(event.target as Node)) {
-                setIsOpen(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, []);
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (ref.current && !ref.current.contains(event.target as Node)) {
+				setIsOpen(false);
+			}
+		};
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => document.removeEventListener("mousedown", handleClickOutside);
+	}, []);
 
-    const selected = options.find(opt => opt.value === value);
+	const selected = options.find((opt) => opt.value === value);
 
-    return (
-        <CustomSelectWrapper ref={ref}>
-            <CustomSelectHeader $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
-                <span>{selected ? selected.label : placeholder}</span>
-                <ChevronDown size={20} strokeWidth={1.5} />
-            </CustomSelectHeader>
-            {isOpen && (
-                <CustomSelectList>
-                    {options.map((opt) => (
-                        <CustomSelectItem key={opt.value} onClick={() => { onChange(opt.value); setIsOpen(false); }}>
-                            {opt.label}
-                        </CustomSelectItem>
-                    ))}
-                </CustomSelectList>
-            )}
-        </CustomSelectWrapper>
-    );
+	return (
+		<CustomSelectWrapper ref={ref}>
+			<CustomSelectHeader $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
+				<span>{selected ? selected.label : placeholder}</span>
+				<ChevronDown size={20} strokeWidth={1.5} />
+			</CustomSelectHeader>
+			{isOpen && (
+				<CustomSelectList>
+					{options.map((opt) => (
+						<CustomSelectItem
+							key={opt.value}
+							onClick={() => {
+								onChange(opt.value);
+								setIsOpen(false);
+							}}
+						>
+							{opt.label}
+						</CustomSelectItem>
+					))}
+				</CustomSelectList>
+			)}
+		</CustomSelectWrapper>
+	);
 };
 
 export default function CheckoutPage() {
 	const router = useRouter();
+	const searchParams = useSearchParams();
 	const queryClient = useQueryClient();
 	const [step, setStep] = useState(0);
 	const [showModal, setShowModal] = useState(false);
+	const [milesToRedeem, setMilesToRedeem] = useState(0);
 	const { info, setInfo, positions } = useBasket();
+
+	const { data: milesEntries } = useQuery({
+		queryKey: ["profile", "miles"],
+		queryFn: async () => await getUserMiles(),
+	});
+
+	const availableMiles = useMemo(() => getMilesSummary(milesEntries ?? []).currentMiles, [milesEntries]);
+	const subtotal = useMemo(() => Object.values(positions).reduce((sum, { amount, product }) => sum + product.price * amount, 0), [positions]);
+	const maxMilesToRedeem = Math.min(availableMiles, Math.floor(subtotal));
+	const selectedMilesFromBasket = useMemo(() => {
+		const rawMiles = searchParams.get("miles");
+		if (!rawMiles) {
+			return 0;
+		}
+
+		const parsedMiles = Number(rawMiles);
+		if (!Number.isFinite(parsedMiles) || parsedMiles <= 0) {
+			return 0;
+		}
+
+		return Math.floor(parsedMiles);
+	}, [searchParams]);
+
+	const redeemedMilesValue = Math.min(milesToRedeem, maxMilesToRedeem);
+
+	useEffect(() => {
+		setMilesToRedeem(Math.min(selectedMilesFromBasket, maxMilesToRedeem));
+	}, [maxMilesToRedeem, selectedMilesFromBasket]);
 
 	const { mutate: submitOrder, isPending } = useMutation({
 		mutationFn: createOrder,
@@ -123,6 +160,11 @@ export default function CheckoutPage() {
 			return;
 		}
 
+		if (milesToRedeem > maxMilesToRedeem) {
+			toast.error(`Доступно лише ${maxMilesToRedeem} миль для списання`);
+			return;
+		}
+
 		const positionsPayload = Object.values(positions).map(({ amount, product }) => ({
 			amount,
 			product_id: product.id,
@@ -140,6 +182,7 @@ export default function CheckoutPage() {
 			email: info.email ?? "",
 			payment_method: info.payment_method,
 			delivery_method: info.delivery_method,
+			miles_to_redeem: redeemedMilesValue,
 			postal_code: info.postal_code,
 			message: info.message,
 			positions: positionsPayload,
@@ -174,34 +217,34 @@ export default function CheckoutPage() {
 					</FormContainer>
 				);
 			case 1:
-                return (
-                    <FormContainer>
-                        <FormGroup>
-                            <Label>Спосіб доставки</Label>
-                            <CustomDropdown
-                                value={info.delivery_method}
-                                onChange={(val) => setInfo("delivery_method", val)}
-                                placeholder="Оберіть спосіб доставки"
-                                options={[
-                                    { value: "nova", label: "Нова Пошта" },
-                                    { value: "ukr", label: "Укрпошта" }
-                                ]}
-                            />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label>Спосіб оплати</Label>
-                            <CustomDropdown
-                                value={info.payment_method}
-                                onChange={(val) => setInfo("payment_method", val)}
-                                placeholder="Оберіть спосіб оплати"
-                                options={[
-                                    { value: "card", label: "Карткою онлайн" },
-                                    { value: "cash", label: "При отриманні" }
-                                ]}
-                            />
-                        </FormGroup>
-                    </FormContainer>
-                );
+				return (
+					<FormContainer>
+						<FormGroup>
+							<Label>Спосіб доставки</Label>
+							<CustomDropdown
+								value={info.delivery_method}
+								onChange={(val) => setInfo("delivery_method", val)}
+								placeholder="Оберіть спосіб доставки"
+								options={[
+									{ value: "nova", label: "Нова Пошта" },
+									{ value: "ukr", label: "Укрпошта" },
+								]}
+							/>
+						</FormGroup>
+						<FormGroup>
+							<Label>Спосіб оплати</Label>
+							<CustomDropdown
+								value={info.payment_method}
+								onChange={(val) => setInfo("payment_method", val)}
+								placeholder="Оберіть спосіб оплати"
+								options={[
+									{ value: "card", label: "Карткою онлайн" },
+									{ value: "cash", label: "При отриманні" },
+								]}
+							/>
+						</FormGroup>
+					</FormContainer>
+				);
 			case 2:
 				return (
 					<FormContainer>

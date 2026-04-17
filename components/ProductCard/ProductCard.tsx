@@ -22,7 +22,6 @@ import {
 	ProductPrice,
 	Rating,
 	Stock,
-	Sub,
 	Top,
 } from "./ProductCard.css";
 
@@ -95,7 +94,6 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 				<Buttons>
 					<div>
 						<ProductPrice>{product.price} грн</ProductPrice>
-						<Sub>{product.weight} мл / 100 г</Sub>
 					</div>
 					<Actions>
 						<FavoriteButton

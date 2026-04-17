@@ -8,6 +8,7 @@ export interface CreateOrderPayload {
 	email: string;
 	payment_method: string;
 	delivery_method: string;
+	miles_to_redeem?: number;
 	postal_code?: string;
 	message?: string;
 	positions: Array<{
