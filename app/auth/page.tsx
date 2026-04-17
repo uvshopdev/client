@@ -25,6 +25,10 @@ const page = () => {
 
 		const formData = new FormData(e.currentTarget);
 		const json = Object.fromEntries(formData.entries());
+		const inviter = searchParams.get("inviter");
+		if (inviter) {
+			json.inviter = inviter;
+		}
 		const { data } = await host.post(`/users/auth/login`, json);
 		if ("access_token" in data) {
 			setAccessToken(data.access_token);

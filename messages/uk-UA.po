@@ -68,27 +68,27 @@ msgctxt "home"
 msgid "FC/kO5"
 msgstr "Хіти продажів"
 
-#: app/profile/coffee/page.tsx:30
+#: app/profile/coffee/page.tsx:39
 msgctxt "profile"
 msgid "pKaBty"
 msgstr "Акція 6 + 1"
 
-#: app/profile/coffee/page.tsx:31
+#: app/profile/coffee/page.tsx:40
 msgctxt "profile"
 msgid "3cgiew"
 msgstr "Купіть 6 кав та отримайте 7-у в подарунок."
 
-#: app/profile/coffee/page.tsx:58
+#: app/profile/coffee/page.tsx:67
 msgctxt "profile"
 msgid "kCPl0r"
 msgstr "Забрати"
 
-#: app/profile/coffee/page.tsx:69
+#: app/profile/coffee/page.tsx:78
 msgctxt "profile"
 msgid "wUYhEQ"
 msgstr "Безкоштовні кави"
 
-#: app/profile/coffee/page.tsx:70
+#: app/profile/coffee/page.tsx:79
 msgctxt "profile"
 msgid "lKFP19"
 msgstr "Вкажіть код на касі, при покупці кави та отримайте її безкоштовно."

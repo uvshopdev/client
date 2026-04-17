@@ -7,6 +7,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 import { getReferrals } from "@/lib/referrals";
+import { getProfile } from "@/lib/user";
 import {
 	Content,
 	CopyButton,
@@ -30,11 +31,20 @@ const FriendsPage = () => {
 		queryKey: ["friends"],
 		queryFn: async () => await getReferrals(),
 	});
+	const { data: profile } = useQuery({
+		queryKey: ["profile"],
+		queryFn: async () => await getProfile(),
+	});
 
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [isCopied, setIsCopied] = useState(false);
+	const [origin, setOrigin] = useState("");
 
-	const referralLink = "https://hermes-shop.com/register/HERMES9F3A21";
+	React.useEffect(() => {
+		setOrigin(window.location.origin);
+	}, []);
+
+	const referralLink = profile?.id ? `${origin}/auth?state=%2Fprofile&inviter=${profile.id}` : "";
 
 	const handleCopy = () => {
 		navigator.clipboard.writeText(referralLink);
