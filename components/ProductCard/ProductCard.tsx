@@ -2,6 +2,7 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Heart, ShoppingBasket } from "lucide-react";
+import { useExtracted } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -31,6 +32,7 @@ interface ProductProps extends ProductType {
 }
 
 const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
+	const t = useExtracted("product");
 	const query = useQueryClient();
 	const href = categoryId ? `/product/${product.id}?category_id=${categoryId}` : `/product/${product.id}`;
 
@@ -40,9 +42,9 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 		onSuccess: async () => {
 			await query.invalidateQueries({ queryKey: ["favorites"] });
 			await query.invalidateQueries({ queryKey: ["favorites_ids"] });
-			toast.success("Товар додано в обране");
+			toast.success(t("Item added to favorites"));
 		},
-		onError: () => toast.error("Не вдалося додати товар в обране"),
+		onError: () => toast.error(t("Failed to add item to favorites")),
 	});
 	const { mutate: removeFromFavorite } = useMutation({
 		mutationKey: ["favorites"],
@@ -50,9 +52,9 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 		onSuccess: async () => {
 			await query.invalidateQueries({ queryKey: ["favorites"] });
 			await query.invalidateQueries({ queryKey: ["favorites_ids"] });
-			toast.success("Товар видалено з обраного");
+			toast.success(t("Item removed from favorites"));
 		},
-		onError: () => toast.error("Не вдалося видалити товар з обраного"),
+		onError: () => toast.error(t("Failed to remove item from favorites")),
 	});
 
 	const { addPosition } = useBasket();
@@ -86,19 +88,19 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 			<Bottom>
 				<Stock>
 					<div className="indicator"></div>
-					<div>в наявності</div>
+					<div>{t("in stock")}</div>
 				</Stock>
 
 				<Rating>★★★★★</Rating>
 
 				<Buttons>
 					<div>
-						<ProductPrice>{product.price} грн</ProductPrice>
+						<ProductPrice>{product.price} {t("UAH")}</ProductPrice>
 					</div>
 					<Actions>
 						<FavoriteButton
 							type="button"
-							aria-label="Видалити з вибраного"
+							aria-label={t("Remove from favorites")}
 							onClick={() => (favorite ? removeFromFavorite() : addToFavorite())}
 							$favorite={favorite}
 						>
@@ -106,11 +108,11 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 						</FavoriteButton>
 
 						<CartButton
-							aria-label="Додати у кошик"
+							aria-label={t("Add to cart")}
 							onClick={() => {
 								if (!addPosition(product, 1)) {
 									console.log("A");
-									toast.success("Товар додано у кошик");
+									toast.success(t("Item added to cart"));
 								}
 							}}
 						>

@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const Container = styled.div`
   padding: 0 40px;
   width: 100%;
+
+  @media (max-width: 640px) {
+    padding: 0 20px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -32,6 +36,13 @@ export const Card = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 640px) {
+    min-width: 280px; 
+    width: 85vw;
+    height: auto;
+    min-height: 163px;
+  }
 `;
 
 export const Top = styled.div`
@@ -83,7 +94,7 @@ export const Controls = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 26px; /* Розмір символу стрілочки */
+    font-size: 26px;
     font-family: sans-serif;
     line-height: 1;
     padding-bottom: 2px;

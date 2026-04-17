@@ -1,9 +1,15 @@
 import styled from "styled-components";
-
 import theme from "../theme";
 
 export const Content = styled.div`
     width: 340px;
+
+    @media (max-width: 990px) {
+        width: 100%;
+        min-width: 0; 
+        margin-bottom: 0;
+        overflow: hidden;
+    }
 `;
 
 export const Items = styled.ul`
@@ -13,6 +19,35 @@ export const Items = styled.ul`
     display: grid;
     grid-auto-rows: 55px;
     gap: 8px;
+
+    @media (max-width: 990px) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: auto;
+        
+        width: 100%;
+        min-width: 0;
+        
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch; 
+        
+        gap: 10px;
+        padding-bottom: 10px;
+        
+        scrollbar-width: thin; 
+        &::-webkit-scrollbar {
+            height: 6px; 
+        }
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: ${({ theme }) => theme.colors.secondary};
+            border-radius: 10px;
+        }
+    }
 `;
 
 export const Item = styled.li<{ $active?: boolean }>`
@@ -34,10 +69,23 @@ export const Item = styled.li<{ $active?: boolean }>`
         border: 1px solid ${({ $active }) => ($active ? theme.colors.primary : theme.colors.secondary)};
 
         font-weight: ${({ $active }) => ($active ? 500 : 400)};
+        white-space: nowrap;
+        transition: 0.2s;
 
         & span {
             color: ${({ $active }) => ($active ? "#ffffff" : theme.colors.primary)};
             background: ${({ $active }) => ($active ? theme.colors.primary : "unset")};
+        }
+    }
+
+    @media (max-width: 990px) {
+        width: auto;
+        flex: 0 0 auto;
+        
+        & a {
+            padding: 10px 15px;
+            gap: 10px;
+            border-radius: 12px;
         }
     }
 `;

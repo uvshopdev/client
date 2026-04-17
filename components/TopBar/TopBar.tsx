@@ -10,7 +10,7 @@ import { setLocaleCookie } from "@/app/actions";
 import { type Locale, locales, localesDisplay } from "@/i18n";
 import { useModals } from "@/store";
 import { LocaleSelector } from "./LocaleSelector.css";
-import { Bar, Center, Content, Left, Logo, Right } from "./TopBar.css";
+import { Bar, Content, Left, Logo, Right } from "./TopBar.css";
 
 const TopBar = () => {
 	const t = useExtracted("navigation");
@@ -56,10 +56,6 @@ const TopBar = () => {
 						{t("Catalog")}
 					</button>
 				</Left>
-				<Center>
-					<input type="text" placeholder={t("Find your treasure...")} />
-					<button type="button">{t("Search")}</button>
-				</Center>
 				<Right>
 					<Link href="/basket" aria-label={t("Basket")} prefetch={false}>
 						<ShoppingBasket size={25} strokeWidth={1} absoluteStrokeWidth />

@@ -2,6 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
+import { useExtracted } from "next-intl";
 import { useState } from "react";
 
 import { getOrders } from "@/lib/orders";
@@ -34,8 +35,6 @@ import {
 	TimelineWrapper,
 } from "./page.css";
 
-const statusSteps = ["Обробка", "Комплектація", "Відправлено", "Доставлено"];
-
 const formatter = new Intl.NumberFormat("uk-UA", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 
 const formatDate = (value: string) => {
@@ -67,7 +66,10 @@ const getProductImageUrl = (id: number, picture: string | null) => {
 };
 
 export default function OrderHistoryPage() {
+	const t = useExtracted("profile");
 	const [openOrderIds, setOpenOrderIds] = useState<number[]>([]);
+
+	const statusSteps = [t("Processing"), t("Packing"), t("Shipped"), t("Delivered")];
 
 	const {
 		data = [],
@@ -83,28 +85,28 @@ export default function OrderHistoryPage() {
 	};
 
 	if (isLoading) {
-		return (
-			<PageWrapper>
-				<PageTitle>Мої замовлення</PageTitle>
-				<EmptyState>Завантажуємо замовлення...</EmptyState>
-			</PageWrapper>
-		);
-	}
+        return (
+            <PageWrapper>
+                <PageTitle>{t("My orders")}</PageTitle>
+                <EmptyState>{t("Loading orders...")}</EmptyState>
+            </PageWrapper>
+        );
+    }
 
-	if (isError) {
-		return (
-			<PageWrapper>
-				<PageTitle>Мої замовлення</PageTitle>
-				<EmptyState>Не вдалося завантажити замовлення. Спробуйте пізніше.</EmptyState>
-			</PageWrapper>
-		);
-	}
+    if (isError) {
+        return (
+            <PageWrapper>
+                <PageTitle>{t("My orders")}</PageTitle>
+                <EmptyState>{t("Failed to load orders. Please try again later.")}</EmptyState>
+            </PageWrapper>
+        );
+    }
 
 	return (
 		<PageWrapper>
-			<PageTitle>Мої замовлення</PageTitle>
+			<PageTitle>{t("My orders")}</PageTitle>
 			<Content>
-				{data.length === 0 && <EmptyState>У вас поки немає оформлених замовлень.</EmptyState>}
+				{data.length === 0 && <EmptyState>{t("You have no placed orders yet.")}</EmptyState>}
 
 				{data.map((order) => {
 					const isOpen = openOrderIds.includes(order.id);
@@ -116,8 +118,8 @@ export default function OrderHistoryPage() {
 						<OrderCard key={order.id}>
 							<OrderTop onClick={() => toggleOrder(order.id)}>
 								<OrderHeader>
-									<OrderNumber>Замовлення №{order.id}</OrderNumber>
-									<OrderDate>Дата замовлення: {formatDate(order.inserted_at ?? order.updated_at ?? "")}</OrderDate>
+									<OrderNumber>{t("Order №")}{order.id}</OrderNumber>
+									<OrderDate>{t("Order date:")} {formatDate(order.inserted_at ?? order.updated_at ?? "")}</OrderDate>
 								</OrderHeader>
 
 								<CollapseIcon>
@@ -159,12 +161,12 @@ export default function OrderHistoryPage() {
 
 											<ProductInfo>
 												<ProductName>{product.name}</ProductName>
-												<ProductMeta>Артикул: {product.article}</ProductMeta>
+												<ProductMeta>{t("Article:")} {product.article}</ProductMeta>
 											</ProductInfo>
 
 											<ProductPriceBlock>
-												<ProductPrice>{formatter.format(product.price)} грн</ProductPrice>
-												<ProductQty>x{amount} шт.</ProductQty>
+												<ProductPrice>{formatter.format(product.price)} {t("UAH")}</ProductPrice>
+												<ProductQty>x{amount} {t("pcs")}</ProductQty>
 											</ProductPriceBlock>
 										</ProductRow>
 									))}

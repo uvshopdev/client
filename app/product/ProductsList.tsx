@@ -1,5 +1,6 @@
 "use client";
 import { useQueries, useQuery } from "@tanstack/react-query";
+import { useExtracted } from "next-intl";
 import { useMemo } from "react";
 
 import ProductCard from "@/components/ProductCard/ProductCard";
@@ -23,6 +24,7 @@ interface ProductsListProps {
 }
 
 const ProductsList = ({ currentProductId }: ProductsListProps) => {
+	const t = useExtracted("product-page");
 	const { categories } = useCategories();
 
 	const { data: favorites } = useQuery({
@@ -65,7 +67,7 @@ const ProductsList = ({ currentProductId }: ProductsListProps) => {
 
 	return (
 		<S.ProductsSection>
-			<S.ProductsTitle>Вам також може сподобатись</S.ProductsTitle>
+			<S.ProductsTitle>{t("You might also like")}</S.ProductsTitle>
 			<S.ProductsGrid>
 				{randomProducts.map((product) => (
 					<ProductCard

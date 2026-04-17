@@ -9,6 +9,12 @@ export const Form = styled.form`
   padding: 30px;
   border: 1px solid ${theme.colors.secondary};
   border-radius: 15px;
+
+  @media (max-width: 990px) {
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+  }
 `;
 
 export const AvatarSection = styled.div`
@@ -19,8 +25,6 @@ export const AvatarSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* УБРАЛИ overflow: hidden и border-radius: 50%; 
-     Теперь крылья компаса и свиток не будут обрезаться! */
 `;
 
 export const PhotoFrameOverlay = styled.div`
@@ -41,22 +45,19 @@ export const PhotoFrameOverlay = styled.div`
   z-index: 10;
 `;
 
-/* НОВЫЙ КОНТЕЙНЕР ДЛЯ САМОЙ ФОТКИ */
 export const ImageContainer = styled.div`
   position: relative;
   
-  /* Размер фотки! Если она будет слишком маленькой или большой 
-     относительно пунктира, просто поменяй эти 195px */
   width: 195px; 
   height: 195px;
   
   border-radius: 50%;
-  overflow: hidden; /* Обрезаем саму фотку в круг */
+  overflow: hidden;
   background-color: #ffffff;
-  z-index: 5; /* Фотка лежит под рамочкой */
+  z-index: 5;
 
   &:hover > div {
-    opacity: 1; /* Показываем затемнение камеры при наведении */
+    opacity: 1;
   }
 
   input {
@@ -67,7 +68,7 @@ export const ImageContainer = styled.div`
     height: 100%;
     cursor: pointer;
     opacity: 0;
-    z-index: 30; /* Клик по инпуту будет работать строго внутри фотки */
+    z-index: 30;
   }
 `;
 

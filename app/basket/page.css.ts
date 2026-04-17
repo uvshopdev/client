@@ -185,9 +185,12 @@ export const PromoSection = styled.div`
 `;
 
 export const PromoRow = styled.div`
-  display: grid;
-  grid-template-columns: 3fr 1fr 1.5fr; 
+  display: flex;
+  justify-content: space-between; 
   align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+
   font-weight: 500;
   font-size: 15px;
   padding-bottom: 25px;
@@ -206,7 +209,7 @@ export const InputGroup = styled.div`
   border-radius: 8px;
   overflow: hidden;
   width: 100%; 
-  max-width: 400px;
+  max-width: 320px;
 
   input {
     border: none;
@@ -214,6 +217,7 @@ export const InputGroup = styled.div`
     outline: none;
     font-size: 14px;
     flex: 1;
+    min-width: 0;
 
     &::placeholder {
       color: #aaa;
@@ -233,6 +237,7 @@ export const InputGroup = styled.div`
     font-weight: 500;
     font-size: 14px;
     transition: 0.2s;
+    flex-shrink: 0;
 
     &:hover:not(:disabled) {
       background-color: #2c2119;
@@ -243,9 +248,6 @@ export const InputGroup = styled.div`
       cursor: default;
     }
   }
-
-  grid-column: 3;
-  justify-self: end; /* Притискаємо до правого краю */
 
   @media (max-width: 900px) {
     max-width: 100%;

@@ -1,5 +1,6 @@
 "use client";
 import { Star } from "lucide-react";
+import { useExtracted } from "next-intl";
 import { useState } from "react";
 
 import * as S from "./Reviews.css";
@@ -21,6 +22,7 @@ const GAP = 30;
 const STEP = CARD_WIDTH + GAP;
 
 export default function Reviews({ reviews }: Props) {
+	const t = useExtracted("reviews");
 	const [index, setIndex] = useState(0);
 	const [activeReview, setActiveReview] = useState<Review | null>(null);
 
@@ -42,7 +44,7 @@ export default function Reviews({ reviews }: Props) {
 
 	return (
 		<S.Container>
-			<S.Title>Відгуки</S.Title>
+			<S.Title>{t("Reviews")}</S.Title>
 
 			<S.SliderWrapper>
 				<S.Slider style={{ transform: `translateX(-${index * STEP}px)` }}>

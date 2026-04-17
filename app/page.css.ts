@@ -136,6 +136,7 @@ export const CategoriesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 20px;
+  align-items: stretch;
 
   @media (max-width: 1200px) {
     grid-template-columns: repeat(4, 1fr);
@@ -153,7 +154,7 @@ export const CategoryCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
   padding: 30px 20px;
   border-radius: 24px;
@@ -162,6 +163,7 @@ export const CategoryCard = styled.div`
   background: #fff;
   text-decoration: none;
   transition: transform 0.2s ease;
+  height: 100%;
 
   &:hover {
     transform: translateY(-5px);

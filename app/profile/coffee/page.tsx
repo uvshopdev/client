@@ -85,7 +85,7 @@ const CoffeePassportPage = () => {
 						<FreeCoffeeItem key={item.id}>
 							<Image src="/coffee/giftedcoffee.webp" alt="Free Coffee" width={80} height={80} />
 							<ShowQrButton type="button" onClick={() => setSelectedCoffee({ id: item.id, source: item.source })}>
-								Показати QR
+								{t("Show QR")}
 							</ShowQrButton>
 						</FreeCoffeeItem>
 					))}
@@ -95,10 +95,12 @@ const CoffeePassportPage = () => {
 			{selectedCoffee && (
 				<ModalOverlay onClick={() => setSelectedCoffee(null)}>
 					<ModalBody onClick={(e) => e.stopPropagation()}>
-						<ModalClose type="button" onClick={() => setSelectedCoffee(null)} aria-label="Закрити QR модалку">
+						<ModalClose type="button" onClick={() => setSelectedCoffee(null)} aria-label={t("Close QR modal")}>
 							<X size={20} />
 						</ModalClose>
-						<ModalTitle>QR-код для безкоштовної кави #{selectedCoffee.id}</ModalTitle>
+						<ModalTitle>
+                            {t("QR code for free coffee #")}{selectedCoffee.id}
+                        </ModalTitle>
 						<QRCodeSVG value={selectedCoffee.source || String(selectedCoffee.id)} size={220} />
 						<ModalCode>{selectedCoffee.source || `coffee-${selectedCoffee.id}`}</ModalCode>
 					</ModalBody>

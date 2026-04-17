@@ -20,6 +20,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
+
   align-items: start;
 
   @media (max-width: 990px) {
@@ -28,22 +29,45 @@ export const Container = styled.div`
 `;
 
 export const Left = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  position: sticky;
+  width: 100%;
+  top: 100px;
+  align-self: start;
+
+  @media (max-width: 1200px) {
+    position: relative;
+    top: 0;
+  }
 `;
 
 export const MainImage = styled.div`
   position: relative;
-  flex: 1;
-  min-height: 500px;
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+  max-height: 600px;
+
   border: 1px solid #e9e3d9;
   border-radius: 30px;
   overflow: hidden;
-  padding: 80px;
+  padding: 40px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #ffffff;
+
+  @media (max-width: 990px) {
+    max-height: 450px;
+    padding: 30px;
+  }
+
+  @media (max-width: 640px) {
+    aspect-ratio: 4 / 3;
+    max-height: none;
+    padding: 20px;
+    border-radius: 20px;
+  }
 `;
 
 export const Image = styled.img`
@@ -92,6 +116,12 @@ export const Title = styled.h1`
   font-weight: 545;
   line-height: 1.2;
   margin: 0;
+
+  word-break: break-word; 
+
+  @media (max-width: 640px) {
+    font-size: 26px;
+  }
 `;
 
 export const BoldText = styled.span`
@@ -106,6 +136,12 @@ export const RowBetween = styled.div`
 export const CodeStock = styled.div`
   display: flex;
   gap: 40px;
+
+  @media (max-width: 640px) {
+    gap: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 export const Stock = styled.div`
@@ -164,12 +200,21 @@ export const BuyControls = styled.div`
   display: flex;
   align-items: center;
   gap: 30px;
+
+  @media (max-width: 640px) {
+    gap: 15px;
+    flex-wrap: wrap; 
+  }
 `;
 
 export const Quantity = styled.div`
   display: flex;
   gap: 26px;
   align-items: center;
+
+  @media (max-width: 640px) {
+    gap: 12px;
+  }
 
   button {
     width: 48px;

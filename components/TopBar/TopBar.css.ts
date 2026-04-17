@@ -15,21 +15,19 @@ export const Content = styled.div`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   will-change: height;
+
+  @media (max-width: 768px) {
+    padding: 15px 20px;
+  }
 `;
 
 export const Bar = styled.div`
   width: 100%;
   height: 100%;
 
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  input, button {
-    width: 100%;
-    height: 100%;
-  }
-  button {
-    width: max-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   }
 `;
 
@@ -41,7 +39,25 @@ export const Left = styled.div`
     background: ${({ theme }) => theme.colors.primary};
     color: #ffffff;
     border: none;
+    
+    display: flex;
+    align-items: center;
     gap: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  @media (max-width: 640px) {
+    gap: 15px;
+    
+    & button {
+      padding: 10px 15px;
   }
 `;
 
@@ -49,44 +65,17 @@ export const Logo = styled(Link)`
   position: relative;
   width: 40px;
   height: 40px;
-`;
-
-export const Center = styled.div`
-  position: relative;
-  display: flex;
-  justify-self: center;
-
-  min-width: 220px;
-  max-width: 470px;
-  width: 100%;
-
-  button {
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    background: ${({ theme }) => theme.colors.primary};
-    color: #ffffff;
-    border: none;
-  }
-
-  @media (max-width: 990px) {
-    button {
-      display: none;
-    }
-  }
+  display: block;
 `;
 
 export const Right = styled.div`
   position: relative;
 
   display: flex;
+  align-items: center;
   gap: 25px;
-  justify-self: end;
 
   button, a {
-    width: 100%;
-    
     border-radius: 10px;
     border: 1px solid ${({ theme }) => theme.colors.primary};  
     
@@ -95,12 +84,28 @@ export const Right = styled.div`
     align-items: center;
     gap: 10px;
     
-    padding: 0 15px;
+    padding: 8px 15px;
+    cursor: pointer;
+    background: transparent;
+    color: inherit;
+    text-decoration: none;
+    transition: background 0.2s, opacity 0.2s;
+
+    &:hover {
+      background: #f3eee9;
+    }
   }
 
   @media (max-width: 990px) {
-    & .desktop {
-      display: none;
+    gap: 12px; 
+  }
+
+  @media (max-width: 640px) {
+    gap: 8px;
+    
+    button, a {
+      padding: 8px 10px;
+      gap: 5px;
     }
   }
 `;
