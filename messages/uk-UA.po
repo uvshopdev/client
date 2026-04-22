@@ -847,43 +847,37 @@ msgctxt "profile"
 msgid "VdXF7G"
 msgstr "Мапа відкритих країн"
 
-#: app/profile/friends/page.tsx:78
-#: app/profile/friends/page.tsx:119
-msgctxt "profile"
-msgid "smWqVf"
-msgstr "Очікує першу покупку"
-
-#: app/profile/friends/page.tsx:85
-msgctxt "profile"
-msgid "+r+pGM"
-msgstr "Бонус нараховано"
-
-#: app/profile/friends/page.tsx:96
+#: app/profile/friends/page.tsx:77
 msgctxt "profile"
 msgid "3s0ZWy"
 msgstr "Запросіть друзів та отримайте бонуси!"
 
-#: app/profile/friends/page.tsx:97
+#: app/profile/friends/page.tsx:78
 msgctxt "profile"
 msgid "CsMutJ"
 msgstr "Отримайте +50 миль і каву після того, як ваш друг зробить першу покупку на суму від 150 грн."
 
-#: app/profile/friends/page.tsx:101
+#: app/profile/friends/page.tsx:82
 msgctxt "profile"
 msgid "hYOE+U"
 msgstr "Запросити"
 
-#: app/profile/friends/page.tsx:131
+#: app/profile/friends/page.tsx:101
+msgctxt "profile"
+msgid "smWqVf"
+msgstr "Очікує першу покупку"
+
+#: app/profile/friends/page.tsx:114
 msgctxt "profile"
 msgid "G8P44K"
 msgstr "Запрошувальне посилання"
 
-#: app/profile/friends/page.tsx:136
+#: app/profile/friends/page.tsx:119
 msgctxt "profile"
 msgid "p556q3"
 msgstr "Скопійовано"
 
-#: app/profile/friends/page.tsx:136
+#: app/profile/friends/page.tsx:119
 msgctxt "profile"
 msgid "4l6vz1"
 msgstr "Копіювати"

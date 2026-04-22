@@ -80,13 +80,15 @@ export const ModalOverlay = styled.div`
   align-items: center;
   z-index: 1000;
   backdrop-filter: blur(2px);
+  padding: 20px;
+  box-sizing: border-box;
 `;
 
 export const ModalBox = styled.div`
   background: #ffffff;
   border-radius: 20px;
   padding: 40px 50px;
-  width: calc(100% - 40px); 
+  width: 100%; 
   max-width: 520px;
   position: relative;
   display: flex;
@@ -131,11 +133,17 @@ export const StatusModalBox = styled(ModalBox)`
   padding: 60px 50px;
   align-items: stretch; 
   text-align: left;
+  
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+
   max-height: 90vh; 
-  overflow-y: auto; 
+  overflow-y: auto;
 
   @media (max-width: 640px) {
     padding: 45px 20px 30px;
+    max-height: 85vh; 
   }
 `;
 

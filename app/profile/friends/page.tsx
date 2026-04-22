@@ -70,25 +70,6 @@ const FriendsPage = () => {
         }
     };
 
-    const staticFriends = [
-        {
-            id: "static-1",
-            full_name: "Руслан Гльоза",
-            picture: "friend1.png",
-            statusText: t("Waiting for the first purchase"),
-            isStatic: true
-        },
-        {
-            id: "static-2",
-            full_name: "Данило Усатюк",
-            picture: "friend2.png",
-            statusText: t("Bonus awarded"),
-            isStatic: true
-        }
-    ];
-
-    const allFriends = [...(isSuccess && apiReferrals ? apiReferrals : []), ...staticFriends];
-
     return (
         <Content>
             <Header>
@@ -103,20 +84,22 @@ const FriendsPage = () => {
             </Header>
 
             <Items>
-                {allFriends.map((r: any) => (
+                {isSuccess && apiReferrals?.map((r) => (
                     <Item key={r.id}>
                         <div className="image">
                             <Image
-                                src={r.isStatic ? `/${r.picture}` : (r.picture ? `${process.env.NEXT_PUBLIC_FILES_URL}/${r.picture}` : "/logo.png")}
+                                src={r.picture ? `${process.env.NEXT_PUBLIC_FILES_URL}/${r.picture}` : "/logo.png"}
                                 width={34}
                                 height={34}
-                                alt={r.full_name}
+                                alt={r.full_name || ""}
                                 unoptimized={true}
                                 style={{ objectFit: 'cover' }}
                             />
                         </div>
                         <div>{r.full_name}</div>
-                        <div className="status">{r.statusText || t("Waiting for the first purchase")}</div>
+                        <div className="status">
+                            {t("Waiting for the first purchase")}
+                        </div>
                     </Item>
                 ))}
             </Items>
