@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { X } from "lucide-react";
 import { useExtracted } from "next-intl";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { getReferrals } from "@/lib/referrals";
 import { getProfile } from "@/lib/user";
@@ -40,9 +40,21 @@ const FriendsPage = () => {
     const [isCopied, setIsCopied] = useState(false);
     const [origin, setOrigin] = useState("");
 
-    React.useEffect(() => {
+    useEffect(() => {
         setOrigin(window.location.origin);
     }, []);
+
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isModalOpen]);
 
     const referralLink = profile?.id ? `${origin}/auth?state=%2Fprofile&inviter=${profile.id}` : "";
 
@@ -58,7 +70,6 @@ const FriendsPage = () => {
         }
     };
 
-    // Захардкоджені друзі для демонстрації дизайну
     const staticFriends = [
         {
             id: "static-1",

@@ -10,6 +10,14 @@ export const Content = styled.div`
     & .info {
         font-size: 26px;
         margin-bottom: 10px;
+        line-height: 1.2;
+    }
+
+    @media (max-width: 640px) {
+        gap: 20px;
+        & .info {
+            font-size: 22px;
+        }
     }
 `;
 
@@ -19,12 +27,21 @@ export const Header = styled.div`
     align-items: flex-start;
     gap: 20px;
     width: 100%;
+
+    @media (max-width: 640px) {
+        flex-direction: column;
+        align-items: stretch;
+    }
 `;
 
 export const HeaderInfo = styled.div`
     display: flex;
     flex-direction: column;
-    max-width: 70%;
+    max-width: 75%;
+
+    @media (max-width: 640px) {
+        max-width: 100%;
+    }
 `;
 
 export const InviteButton = styled.button`
@@ -43,15 +60,18 @@ export const InviteButton = styled.button`
     &:hover {
         background-color: #524339; 
     }
+
+    @media (max-width: 640px) {
+        width: 100%;
+        margin-top: 10px;
+    }
 `;
 
 export const Items = styled.div`
     height: 100%;
-
     display: flex;
     flex-direction: column;
     gap: 20px;
-
     overflow-y: auto;
 `;
 
@@ -69,15 +89,28 @@ export const Item = styled.div`
     & .status {
         font-size: 14px;
         margin-left: auto; 
+        text-align: right;
+        flex-shrink: 0;
     }
 
     & .image {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-shrink: 0;
         
         & img {
             border-radius: 50%;
+        }
+    }
+
+    @media (max-width: 640px) {
+        padding: 10px 15px;
+        font-size: 14px;
+        
+        & .status {
+            font-size: 12px;
+            max-width: 40%;
         }
     }
 `;
@@ -109,6 +142,11 @@ export const ModalBox = styled.div`
   align-items: center;
   text-align: center;
   box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2); 
+
+  @media (max-width: 640px) {
+    padding: 40px 20px;
+    width: calc(100% - 40px);
+  }
 `;
 
 export const ModalClose = styled.button`
@@ -130,6 +168,11 @@ export const ModalClose = styled.button`
     background-color: #524339; 
     color: #ffffff;
   }
+
+  @media (max-width: 640px) {
+    top: 15px;
+    right: 15px;
+  }
 `;
 
 export const ModalTitle = styled.h3`
@@ -139,6 +182,11 @@ export const ModalTitle = styled.h3`
   color: #000000;
   margin-bottom: 35px;
   margin-top: 10px;
+
+  @media (max-width: 640px) {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
 `;
 
 export const LinkContainer = styled.div`
@@ -147,6 +195,13 @@ export const LinkContainer = styled.div`
   max-width: 490px;
   height: 37px; 
   margin: 0 auto;
+
+  @media (max-width: 640px) {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
 export const LinkInput = styled.input`
@@ -167,6 +222,11 @@ export const LinkInput = styled.input`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; 
+
+  @media (max-width: 640px) {
+    padding: 10px;
+    height: 45px;
+  }
 `;
 
 export const CopyButton = styled.button`
@@ -189,5 +249,11 @@ export const CopyButton = styled.button`
 
   &:hover {
     background-color: #524339; 
+  }
+
+  @media (max-width: 640px) {
+    position: static;
+    width: 100%;
+    height: 45px;
   }
 `;

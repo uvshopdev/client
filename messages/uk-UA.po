@@ -847,43 +847,43 @@ msgctxt "profile"
 msgid "VdXF7G"
 msgstr "Мапа відкритих країн"
 
-#: app/profile/friends/page.tsx:67
-#: app/profile/friends/page.tsx:108
+#: app/profile/friends/page.tsx:78
+#: app/profile/friends/page.tsx:119
 msgctxt "profile"
 msgid "smWqVf"
 msgstr "Очікує першу покупку"
 
-#: app/profile/friends/page.tsx:74
+#: app/profile/friends/page.tsx:85
 msgctxt "profile"
 msgid "+r+pGM"
 msgstr "Бонус нараховано"
 
-#: app/profile/friends/page.tsx:85
+#: app/profile/friends/page.tsx:96
 msgctxt "profile"
 msgid "3s0ZWy"
 msgstr "Запросіть друзів та отримайте бонуси!"
 
-#: app/profile/friends/page.tsx:86
+#: app/profile/friends/page.tsx:97
 msgctxt "profile"
 msgid "CsMutJ"
 msgstr "Отримайте +50 миль і каву після того, як ваш друг зробить першу покупку на суму від 150 грн."
 
-#: app/profile/friends/page.tsx:90
+#: app/profile/friends/page.tsx:101
 msgctxt "profile"
 msgid "hYOE+U"
 msgstr "Запросити"
 
-#: app/profile/friends/page.tsx:120
+#: app/profile/friends/page.tsx:131
 msgctxt "profile"
 msgid "G8P44K"
 msgstr "Запрошувальне посилання"
 
-#: app/profile/friends/page.tsx:125
+#: app/profile/friends/page.tsx:136
 msgctxt "profile"
 msgid "p556q3"
 msgstr "Скопійовано"
 
-#: app/profile/friends/page.tsx:125
+#: app/profile/friends/page.tsx:136
 msgctxt "profile"
 msgid "4l6vz1"
 msgstr "Копіювати"
@@ -955,117 +955,117 @@ msgctxt "profile"
 msgid "sY9sjp"
 msgstr "шт."
 
-#: app/profile/page.tsx:45
+#: app/profile/page.tsx:57
 msgctxt "profile"
 msgid "bKVEJq"
 msgstr "Турист"
 
-#: app/profile/page.tsx:48
+#: app/profile/page.tsx:60
 msgctxt "profile"
 msgid "qpm860"
 msgstr "Курс миль: 1 миля = 100 грн із чеку замовлення"
 
-#: app/profile/page.tsx:48
+#: app/profile/page.tsx:60
 msgctxt "profile"
 msgid "S7fVY2"
 msgstr "Бонус на день народження"
 
-#: app/profile/page.tsx:51
+#: app/profile/page.tsx:63
 msgctxt "profile"
 msgid "mJN/zn"
 msgstr "Дослідник"
 
-#: app/profile/page.tsx:55
+#: app/profile/page.tsx:67
 msgctxt "profile"
 msgid "boENcR"
 msgstr "Курс миль: 2 милі = 100 грн із чеку замовлення"
 
-#: app/profile/page.tsx:56
+#: app/profile/page.tsx:68
 msgctxt "profile"
 msgid "C8OVSs"
 msgstr "Персональні пропозиції"
 
-#: app/profile/page.tsx:57
+#: app/profile/page.tsx:69
 msgctxt "profile"
 msgid "gY2nc9"
 msgstr "Подвійні милі на товари “Країна Місяця”"
 
-#: app/profile/page.tsx:61
+#: app/profile/page.tsx:73
 msgctxt "profile"
 msgid "9QAC3l"
 msgstr "Мандрівник"
 
-#: app/profile/page.tsx:64
+#: app/profile/page.tsx:76
 msgctxt "profile"
 msgid "s4bQeW"
 msgstr "Курс миль: 3 милі = 100 грн із чеку замовлення"
 
-#: app/profile/page.tsx:64
+#: app/profile/page.tsx:76
 msgctxt "profile"
 msgid "L6IpdY"
 msgstr "Знижки на імпортні позиції"
 
-#: app/profile/page.tsx:64
+#: app/profile/page.tsx:76
 msgctxt "profile"
 msgid "7BpCMx"
 msgstr "Безкоштовна тижнева кава"
 
-#: app/profile/page.tsx:67
+#: app/profile/page.tsx:79
 msgctxt "profile"
 msgid "MRoXRB"
 msgstr "Посол мандрів"
 
-#: app/profile/page.tsx:71
+#: app/profile/page.tsx:83
 msgctxt "profile"
 msgid "yNy2fp"
 msgstr "Курс миль: 4 милі = 100 грн із чеку замовлення"
 
-#: app/profile/page.tsx:72
+#: app/profile/page.tsx:84
 msgctxt "profile"
 msgid "0qbJMF"
 msgstr "Персональні знижки на обрані категорії"
 
-#: app/profile/page.tsx:73
+#: app/profile/page.tsx:85
 msgctxt "profile"
 msgid "0B9Rzi"
 msgstr "Участь у закритих подіях"
 
-#: app/profile/page.tsx:105
+#: app/profile/page.tsx:117
 msgctxt "profile"
 msgid "jTtejl"
 msgstr "Паспорт мандрівника"
 
-#: app/profile/page.tsx:129
+#: app/profile/page.tsx:141
 msgctxt "profile"
 msgid "pFm27r"
 msgstr "Поточний статус"
 
-#: app/profile/page.tsx:131
+#: app/profile/page.tsx:143
 msgctxt "profile"
 msgid "6vC4vS"
 msgstr "Отримано:"
 
-#: app/profile/page.tsx:152
+#: app/profile/page.tsx:164
 msgctxt "profile"
 msgid "ne4Y2Q"
 msgstr "Історія миль"
 
-#: app/profile/page.tsx:154
+#: app/profile/page.tsx:166
 msgctxt "profile"
 msgid "mCr2NR"
 msgstr "Поточна кількість активних миль"
 
-#: app/profile/page.tsx:158
+#: app/profile/page.tsx:170
 msgctxt "profile"
 msgid "/Kajqa"
 msgstr "Всього накопичено за попередній рік"
 
-#: app/profile/page.tsx:162
+#: app/profile/page.tsx:174
 msgctxt "profile"
 msgid "yKHY0p"
 msgstr "Всього накопичено за поточний рік"
 
-#: app/profile/page.tsx:169
+#: app/profile/page.tsx:181
 msgctxt "profile"
 msgid "xfP1jk"
 msgstr "Перелік бонусів для статусу"

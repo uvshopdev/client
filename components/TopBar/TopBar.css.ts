@@ -34,6 +34,7 @@ export const Bar = styled.div`
 export const Left = styled.div`
   display: flex;
   gap: 30px;
+  align-items: center;
 
   & button {
     background: ${({ theme }) => theme.colors.primary};
@@ -42,8 +43,10 @@ export const Left = styled.div`
     
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-    padding: 10px 20px;
+    padding: 0 20px;
+    height: 44px;
     border-radius: 10px;
     cursor: pointer;
     transition: opacity 0.2s;
@@ -57,7 +60,8 @@ export const Left = styled.div`
     gap: 15px;
     
     & button {
-      padding: 10px;
+      padding: 0 10px;
+      height: 40px;
       span {
         display: none;
       }
@@ -88,7 +92,10 @@ export const Right = styled.div`
     align-items: center;
     gap: 10px;
     
-    padding: 8px 15px;
+    padding: 0 15px;
+    height: 44px;
+    box-sizing: border-box;
+    
     cursor: pointer;
     background: transparent;
     color: inherit;
@@ -108,7 +115,8 @@ export const Right = styled.div`
     gap: 8px;
     
     button, a {
-      padding: 8px 10px;
+      padding: 0 10px;
+      height: 40px;
       gap: 5px;
     }
   }

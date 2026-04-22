@@ -39,6 +39,18 @@ const ProfilePage = () => {
 	const [isStatusModalOpen, setIsStatusModalOpen] = useState(false);
 	const [selectedStatusIdx, setSelectedStatusIdx] = useState(0);
 
+	useEffect(() => {
+        if (isStatusModalOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isStatusModalOpen]);
+
 	const statuses = useMemo(
 		() => [
 			{

@@ -847,43 +847,43 @@ msgctxt "profile"
 msgid "VdXF7G"
 msgstr "Open countries map"
 
-#: app/profile/friends/page.tsx:67
-#: app/profile/friends/page.tsx:108
+#: app/profile/friends/page.tsx:78
+#: app/profile/friends/page.tsx:119
 msgctxt "profile"
 msgid "smWqVf"
 msgstr "Waiting for the first purchase"
 
-#: app/profile/friends/page.tsx:74
+#: app/profile/friends/page.tsx:85
 msgctxt "profile"
 msgid "+r+pGM"
 msgstr "Bonus awarded"
 
-#: app/profile/friends/page.tsx:85
+#: app/profile/friends/page.tsx:96
 msgctxt "profile"
 msgid "3s0ZWy"
 msgstr "Invite friends and get bonuses!"
 
-#: app/profile/friends/page.tsx:86
+#: app/profile/friends/page.tsx:97
 msgctxt "profile"
 msgid "CsMutJ"
 msgstr "Get +50 miles and coffee after your friend makes their first purchase for an amount of 150 UAH or more."
 
-#: app/profile/friends/page.tsx:90
+#: app/profile/friends/page.tsx:101
 msgctxt "profile"
 msgid "hYOE+U"
 msgstr "Invite"
 
-#: app/profile/friends/page.tsx:120
+#: app/profile/friends/page.tsx:131
 msgctxt "profile"
 msgid "G8P44K"
 msgstr "Invitation link"
 
-#: app/profile/friends/page.tsx:125
+#: app/profile/friends/page.tsx:136
 msgctxt "profile"
 msgid "p556q3"
 msgstr "Copied"
 
-#: app/profile/friends/page.tsx:125
+#: app/profile/friends/page.tsx:136
 msgctxt "profile"
 msgid "4l6vz1"
 msgstr "Copy"
@@ -955,117 +955,117 @@ msgctxt "profile"
 msgid "sY9sjp"
 msgstr "pcs"
 
-#: app/profile/page.tsx:45
+#: app/profile/page.tsx:57
 msgctxt "profile"
 msgid "bKVEJq"
 msgstr "Tourist"
 
-#: app/profile/page.tsx:48
+#: app/profile/page.tsx:60
 msgctxt "profile"
 msgid "qpm860"
 msgstr "Miles rate: 1 mile = 100 UAH from the order receipt"
 
-#: app/profile/page.tsx:48
+#: app/profile/page.tsx:60
 msgctxt "profile"
 msgid "S7fVY2"
 msgstr "Birthday bonus"
 
-#: app/profile/page.tsx:51
+#: app/profile/page.tsx:63
 msgctxt "profile"
 msgid "mJN/zn"
 msgstr "Explorer"
 
-#: app/profile/page.tsx:55
+#: app/profile/page.tsx:67
 msgctxt "profile"
 msgid "boENcR"
 msgstr "Miles rate: 2 miles = 100 UAH from the order receipt"
 
-#: app/profile/page.tsx:56
+#: app/profile/page.tsx:68
 msgctxt "profile"
 msgid "C8OVSs"
 msgstr "Personal offers"
 
-#: app/profile/page.tsx:57
+#: app/profile/page.tsx:69
 msgctxt "profile"
 msgid "gY2nc9"
 msgstr "Double miles on \"Moon Country\" products"
 
-#: app/profile/page.tsx:61
+#: app/profile/page.tsx:73
 msgctxt "profile"
 msgid "9QAC3l"
 msgstr "Traveler"
 
-#: app/profile/page.tsx:64
+#: app/profile/page.tsx:76
 msgctxt "profile"
 msgid "s4bQeW"
 msgstr "Miles rate: 3 miles = 100 UAH from the order receipt"
 
-#: app/profile/page.tsx:64
+#: app/profile/page.tsx:76
 msgctxt "profile"
 msgid "L6IpdY"
 msgstr "Discounts on imported items"
 
-#: app/profile/page.tsx:64
+#: app/profile/page.tsx:76
 msgctxt "profile"
 msgid "7BpCMx"
 msgstr "Free weekly coffee"
 
-#: app/profile/page.tsx:67
+#: app/profile/page.tsx:79
 msgctxt "profile"
 msgid "MRoXRB"
 msgstr "Traveller’s\nAmbassador"
 
-#: app/profile/page.tsx:71
+#: app/profile/page.tsx:83
 msgctxt "profile"
 msgid "yNy2fp"
 msgstr "Miles rate: 4 miles = 100 UAH from the order receipt"
 
-#: app/profile/page.tsx:72
+#: app/profile/page.tsx:84
 msgctxt "profile"
 msgid "0qbJMF"
 msgstr "Personal discounts on selected categories"
 
-#: app/profile/page.tsx:73
+#: app/profile/page.tsx:85
 msgctxt "profile"
 msgid "0B9Rzi"
 msgstr "Participation in closed events"
 
-#: app/profile/page.tsx:105
+#: app/profile/page.tsx:117
 msgctxt "profile"
 msgid "jTtejl"
 msgstr "Traveler's Passport"
 
-#: app/profile/page.tsx:129
+#: app/profile/page.tsx:141
 msgctxt "profile"
 msgid "pFm27r"
 msgstr "Current status"
 
-#: app/profile/page.tsx:131
+#: app/profile/page.tsx:143
 msgctxt "profile"
 msgid "6vC4vS"
 msgstr "Received:"
 
-#: app/profile/page.tsx:152
+#: app/profile/page.tsx:164
 msgctxt "profile"
 msgid "ne4Y2Q"
 msgstr "Miles history"
 
-#: app/profile/page.tsx:154
+#: app/profile/page.tsx:166
 msgctxt "profile"
 msgid "mCr2NR"
 msgstr "Current number of active miles"
 
-#: app/profile/page.tsx:158
+#: app/profile/page.tsx:170
 msgctxt "profile"
 msgid "/Kajqa"
 msgstr "Total accumulated for the previous year"
 
-#: app/profile/page.tsx:162
+#: app/profile/page.tsx:174
 msgctxt "profile"
 msgid "yKHY0p"
 msgstr "Total accumulated for the current year"
 
-#: app/profile/page.tsx:169
+#: app/profile/page.tsx:181
 msgctxt "profile"
 msgid "xfP1jk"
 msgstr "List of bonuses for status"

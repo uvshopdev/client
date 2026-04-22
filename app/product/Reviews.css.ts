@@ -273,7 +273,7 @@ export const SingleModalContent = styled.div`
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 
   @media (max-width: 640px) {
-    padding: 30px 20px;
+    padding: 60px 20px 30px 20px;
   }
 `;
 
@@ -309,6 +309,12 @@ export const WriteModalTitle = styled(Title)`
   font-size: 32px;
   font-weight: 500;
   margin-bottom: 16px;
+
+  @media (max-width: 640px) {
+    font-size: 26px;
+    line-height: 1.2;
+    margin-right: 30px;
+  }
 `;
 
 export const WriteModalUser = styled.div`
@@ -387,9 +393,18 @@ export const CloseButton = styled.button`
   font-size: 20px;
   font-weight: bold;
   font-family: sans-serif;
-  padding-bottom: 4px;
+  padding: 0; 
+  line-height: 1;
 
   &:hover { opacity: 0.8; }
+
+  @media (max-width: 640px) {
+    top: 15px;
+    right: 15px;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
 `;
 
 export const Form = styled.form`
