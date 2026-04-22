@@ -57,7 +57,11 @@ export const Left = styled.div`
     gap: 15px;
     
     & button {
-      padding: 10px 15px;
+      padding: 10px;
+      span {
+        display: none;
+      }
+    }
   }
 `;
 

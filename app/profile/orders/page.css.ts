@@ -24,7 +24,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  width: 100%
+  width: 100%;
 `;
 
 export const OrderCard = styled.article`
@@ -59,6 +59,7 @@ export const OrderHeader = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 0;
 `;
 
 export const OrderNumber = styled.h2`
@@ -66,6 +67,9 @@ export const OrderNumber = styled.h2`
   font-size: 22px;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.primary};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const OrderDate = styled.p`
@@ -80,6 +84,7 @@ export const CollapseIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 `;
 
 export const DetailsPanel = styled.div<{ $open: boolean }>`
@@ -145,11 +150,12 @@ export const StepCircle = styled.div<{ $state: "completed" | "active" | "pending
   border-radius: 50%;
   font-size: 13px;
   font-weight: 600;
+  flex-shrink: 0;
   background: ${({ theme, $state }) => ($state === "pending" ? theme.colors.surface : theme.colors.primary)};
   color: ${({ theme, $state }) => ($state === "pending" ? theme.colors.textSecondary : theme.colors.surface)};
   border: 1px solid
     ${({ theme, $state }) =>
-		$state === "active" ? theme.colors.primary : $state === "pending" ? theme.colors.secondary : theme.colors.primary};
+    $state === "active" ? theme.colors.primary : $state === "pending" ? theme.colors.secondary : theme.colors.primary};
   box-shadow: ${({ $state }) => ($state === "active" ? "0 0 0 3px rgba(59, 48, 40, 0.12)" : "none")};
 `;
 
@@ -159,11 +165,11 @@ export const StepLabel = styled.div`
   font-weight: 500;
   line-height: 1.3;
   color: ${({ theme }) => theme.colors.textSecondary};
-  max-width: 130px;
+  width: 100%;
 
   @media (max-width: 640px) {
     font-size: 10px;
-    max-width: 75px;
+    letter-spacing: -0.2px;
   }
 `;
 
@@ -206,6 +212,7 @@ export const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 0;
 `;
 
 export const ProductName = styled.h3`
@@ -214,18 +221,23 @@ export const ProductName = styled.h3`
   font-weight: 600;
   color: ${({ theme }) => theme.colors.textPrimary};
   line-height: 1.4;
+  word-break: break-word;
 `;
 
 export const ProductMeta = styled.p`
   margin: 0;
   font-size: 13px;
   color: ${({ theme }) => theme.colors.textSecondary};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const ProductPriceBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  flex-shrink: 0;
 
   @media (max-width: 640px) {
     grid-column: 2;

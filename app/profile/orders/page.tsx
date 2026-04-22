@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import { useExtracted } from "next-intl";
 import { useState } from "react";
+import Link from "next/link";
 
 import { getOrders } from "@/lib/orders";
 import {
@@ -155,22 +156,33 @@ export default function OrderHistoryPage() {
 								</TimelineWrapper>
 
 								<ProductList>
-									{order.positions.map(({ amount, product }) => (
-										<ProductRow key={product.id}>
-											<ProductImage src={getProductImageUrl(product.id, product.picture)} alt={product.name} />
+                                    {order.positions.map(({ amount, product }) => {
+                                        const href = product.category?.id 
+                                            ? `/product/${product.id}?category_id=${product.category.id}` 
+                                            : `/product/${product.id}`;
 
-											<ProductInfo>
-												<ProductName>{product.name}</ProductName>
-												<ProductMeta>{t("Article:")} {product.article}</ProductMeta>
-											</ProductInfo>
+                                        return (
+                                            <ProductRow 
+                                                key={product.id}
+                                                as={Link} 
+                                                href={href} 
+                                                style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
+                                            >
+                                                <ProductImage src={getProductImageUrl(product.id, product.picture)} alt={product.name} />
 
-											<ProductPriceBlock>
-												<ProductPrice>{formatter.format(product.price)} {t("UAH")}</ProductPrice>
-												<ProductQty>x{amount} {t("pcs")}</ProductQty>
-											</ProductPriceBlock>
-										</ProductRow>
-									))}
-								</ProductList>
+                                                <ProductInfo>
+                                                    <ProductName>{product.name}</ProductName>
+                                                    <ProductMeta>{t("Article:")} {product.article}</ProductMeta>
+                                                </ProductInfo>
+
+                                                <ProductPriceBlock>
+                                                    <ProductPrice>{formatter.format(product.price)} {t("UAH")}</ProductPrice>
+                                                    <ProductQty>x{amount} {t("pcs")}</ProductQty>
+                                                </ProductPriceBlock>
+                                            </ProductRow>
+                                        );
+                                    })}
+                                </ProductList>
 							</DetailsPanel>
 						</OrderCard>
 					);

@@ -44,7 +44,7 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 			await query.invalidateQueries({ queryKey: ["favorites_ids"] });
 			toast.success(t("Item added to favorites"));
 		},
-		onError: () => toast.error(t("Failed to add item to favorites")),
+		onError: () => toast.error(t("Log in to add this item to your favourites")),
 	});
 	const { mutate: removeFromFavorite } = useMutation({
 		mutationKey: ["favorites"],
@@ -61,8 +61,6 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 
 	return (
 		<Content>
-			{/* <Badge>- 15%</Badge> */}
-
 			<Top>
 				<ImageWrap as={Link} href={href} prefetch={false}>
 					<ProductImage>

@@ -21,9 +21,12 @@ export const PassportHeader = styled.div`
 
   h2 {
     font-weight: 400;
+    margin: 0;
   }
 
   button {
+    display: flex;
+    align-items: center;
     height: 100%;
     border: none;
     background: #6F3F18;
@@ -43,6 +46,24 @@ export const PassportHeader = styled.div`
     height: 100%;
     display: flex;
     gap: 15px;
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px 20px;
+
+    .badges {
+      width: 100%;
+      justify-content: flex-start;
+      gap: 10px;
+    }
+
+    button {
+      padding: 8px 12px;
+      font-size: 14px;
+    }
   }
 `;
 
@@ -65,7 +86,7 @@ export const ModalBox = styled.div`
   background: #ffffff;
   border-radius: 20px;
   padding: 40px 50px;
-  width: 100%;
+  width: calc(100% - 40px); 
   max-width: 520px;
   position: relative;
   display: flex;
@@ -73,6 +94,10 @@ export const ModalBox = styled.div`
   align-items: center;
   text-align: center;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+
+  @media (max-width: 640px) {
+    padding: 30px 20px;
+  }
 `;
 
 export const ModalClose = styled.button`
@@ -94,6 +119,11 @@ export const ModalClose = styled.button`
     background-color: #524339;
     color: #ffffff; 
   }
+
+  @media (max-width: 640px) {
+    top: 15px;
+    right: 15px;
+  }
 `;
 
 export const StatusModalBox = styled(ModalBox)`
@@ -103,6 +133,10 @@ export const StatusModalBox = styled(ModalBox)`
   text-align: left;
   max-height: 90vh; 
   overflow-y: auto; 
+
+  @media (max-width: 640px) {
+    padding: 45px 20px 30px;
+  }
 `;
 
 export const StatusHeader = styled.div`
@@ -111,6 +145,13 @@ export const StatusHeader = styled.div`
   align-items: flex-start;
   margin-top: 30px; 
   margin-bottom: 60px; 
+
+  @media (max-width: 640px) {
+    flex-direction: column; 
+    gap: 15px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+  }
 `;
 
 export const StatusTitleBlock = styled.div`
@@ -120,6 +161,10 @@ export const StatusTitleBlock = styled.div`
     font-weight: 600;
     color: #000000;
     margin: 0 0 8px 0;
+
+    @media (max-width: 640px) {
+      font-size: 22px;
+    }
   }
   span {
     font-size: 14px;
@@ -134,6 +179,11 @@ export const StatusBadge = styled.div`
   border-radius: 12px;
   font-size: 18px;
   font-weight: 500;
+
+  @media (max-width: 640px) {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
 `;
 
 export const TimelineWrapper = styled.div`
@@ -142,6 +192,10 @@ export const TimelineWrapper = styled.div`
   position: relative;
   margin-bottom: 50px;
   width: 100%;
+
+  @media (max-width: 640px) {
+    margin-bottom: 30px;
+  }
 `;
 
 export const TimelineLineBase = styled.div`
@@ -152,6 +206,12 @@ export const TimelineLineBase = styled.div`
   height: 4px;
   background: #F5F5F5;
   z-index: 1;
+
+  @media (max-width: 640px) {
+    top: 20px;
+    left: 20px;
+    right: 20px;
+  }
 `;
 
 export const TimelineLineActive = styled.div<{ $progress: number }>`
@@ -163,6 +223,12 @@ export const TimelineLineActive = styled.div<{ $progress: number }>`
   background: #3B3028;
   z-index: 2;
   transition: width 0.4s ease-in-out;
+
+  @media (max-width: 640px) {
+    top: 20px;
+    left: 20px;
+    width: ${({ $progress }) => `calc((100% - 40px) * ${$progress / 100})`};
+  }
 `;
 
 export const TimelineNode = styled.div`
@@ -175,6 +241,11 @@ export const TimelineNode = styled.div`
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+
+  @media (max-width: 640px) {
+    width: 70px;
+    gap: 8px;
+  }
 `;
 
 export const TimelineCircle = styled.div<{ $active?: boolean; $achieved?: boolean }>`
@@ -196,14 +267,21 @@ export const TimelineCircle = styled.div<{ $active?: boolean; $achieved?: boolea
   border: ${({ $achieved }) => ($achieved ? "none" : "1px dashed #A0A0A0")};
 
   ${({ $active, $achieved }) =>
-		$active &&
-		`
+    $active &&
+    `
     border: 3px solid ${$achieved ? "#6F3F18" : "#3B3028"}; 
     ${$achieved ? "" : "color: #000000; font-weight: 600;"}
   `}
 
   &:hover {
     transform: scale(1.05);
+  }
+
+  @media (max-width: 640px) {
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+    box-shadow: 0 0 0 4px #ffffff;
   }
 `;
 
@@ -214,6 +292,10 @@ export const TimelineLabel = styled.div`
   text-align: center;
   white-space: pre-line; 
   line-height: 1.3;
+
+  @media (max-width: 640px) {
+    font-size: 11px;
+  }
 `;
 
 export const InfoCard = styled.div`

@@ -9,6 +9,7 @@ import { toast } from "sonner";
 
 import { getMilesSummary, getUserMiles } from "@/lib/miles";
 import { createOrder } from "@/lib/orders";
+import { getProfile } from "@/lib/user";
 import { useBasket } from "@/store/basket";
 import {
     Circle,
@@ -107,6 +108,27 @@ export default function CheckoutPage() {
         t("Additional")
     ];
 
+    const { data: profile } = useQuery({
+        queryKey: ["profile"],
+        queryFn: async () => {
+            try {
+                return await getProfile();
+            } catch {
+                return null;
+            }
+        },
+        retry: false,
+    });
+
+    useEffect(() => {
+        if (profile) {
+            if (!info.name && profile.full_name) setInfo("name", profile.full_name);
+            if (!info.email && profile.email) setInfo("email", profile.email);
+            if (!info.phone_number && profile.phone_number) setInfo("phone_number", profile.phone_number);
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [profile?.full_name, profile?.email, profile?.phone_number]);
+
     const { data: milesEntries } = useQuery({
         queryKey: ["profile", "miles"],
         queryFn: async () => await getUserMiles(),
@@ -142,10 +164,32 @@ export default function CheckoutPage() {
     });
 
     const next = () => {
+        // Валідація 1 кроку: Особисті дані
+        if (step === 0) {
+            if (!info.name?.trim()) return toast.error(t("Please enter your full name"));
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!info.email?.trim() || !emailRegex.test(info.email)) {
+                return toast.error(t("Please enter a valid email address"));
+            }
+            
+            if (!info.phone_number?.trim() || info.phone_number.trim().length < 10) {
+                return toast.error(t("Please enter a valid phone number"));
+            }
+        }
+
+        // Валідація 2 кроку: Доставка і Оплата
         if (step === 1 && (!info.delivery_method || !info.payment_method)) {
             toast.error(t("Select delivery and payment methods"));
             return;
         }
+
+        // Валідація 3 кроку: Адреса
+        if (step === 2) {
+            if (!info.postal_code?.trim()) return toast.error(t("Please enter your postal code"));
+            if (!info.address?.trim()) return toast.error(t("Please enter your delivery address"));
+        }
+
         setStep((s) => Math.min(3, s + 1));
     };
 
@@ -154,8 +198,8 @@ export default function CheckoutPage() {
     const progressPercentage = (step / (steps.length - 1)) * 100;
 
     const handleSubmitOrder = () => {
-        if (!info.delivery_method || !info.payment_method) {
-            toast.error(t("Select delivery and payment methods"));
+        if (!info.name || !info.email || !info.phone_number || !info.address || !info.postal_code || !info.delivery_method || !info.payment_method) {
+            toast.error(t("Please fill in all required fields"));
             return;
         }
 
@@ -196,6 +240,8 @@ export default function CheckoutPage() {
                         <FormGroup>
                             <Label>{t("Full Name")}</Label>
                             <Input 
+                                name="name"
+                                autoComplete="name"
                                 placeholder={t("First Last Name")} 
                                 value={info.name} 
                                 onChange={(e) => setInfo("name", e.target.value)} 
@@ -204,6 +250,8 @@ export default function CheckoutPage() {
                         <FormGroup>
                             <Label>Email</Label>
                             <Input
+                                name="email"
+                                autoComplete="email"
                                 placeholder="example@email.com"
                                 value={info.email ?? ""}
                                 onChange={(e) => setInfo("email", e.target.value)}
@@ -212,6 +260,8 @@ export default function CheckoutPage() {
                         <FormGroup>
                             <Label>{t("Phone number")}</Label>
                             <Input
+                                name="phone" 
+                                autoComplete="tel"
                                 placeholder="+380 XXXXXXXXXX"
                                 value={info.phone_number}
                                 onChange={(e) => setInfo("phone_number", e.target.value)}
@@ -254,6 +304,8 @@ export default function CheckoutPage() {
                         <FormGroup>
                             <Label>{t("Postal code")}</Label>
                             <Input 
+                                name="postal-code"
+                                autoComplete="postal-code"
                                 placeholder="03087" 
                                 value={info.postal_code} 
                                 onChange={(e) => setInfo("postal_code", e.target.value)} 
@@ -262,6 +314,8 @@ export default function CheckoutPage() {
                         <FormGroup>
                             <Label>{t("Delivery address")}</Label>
                             <Input
+                                name="address"
+                                autoComplete="street-address"
                                 placeholder={t("Address placeholder")}
                                 value={info.address}
                                 onChange={(e) => setInfo("address", e.target.value)}

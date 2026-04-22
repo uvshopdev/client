@@ -2,13 +2,44 @@ import styled from "styled-components";
 
 export const Main = styled.main`
   width: 100%;
-  //max-width: 1600px;
   margin: 0 auto;
   padding: 40px 60px;
   font-family: "Montserrat Alternates", sans-serif;
 
   @media (max-width: 768px) {
     padding: 20px 20px;
+  }
+`;
+
+const BannerBase = styled.div`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2.8 / 1; 
+  border-radius: 24px;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    border-radius: 16px;
+    aspect-ratio: 2.8 / 1; 
+  }
+`;
+
+export const EmptyBanner = styled(BannerBase)``;
+export const CountryBanner = styled(BannerBase)``;
+export const SliderWrapper = styled(BannerBase)``;
+
+export const Slide = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.6s ease-in-out;
+  
+  img {
+    object-fit: cover !important; 
+    width: 100% !important;
+    height: 100% !important;
   }
 `;
 
@@ -45,43 +76,11 @@ export const LinkText = styled.div`
   text-decoration: none;
   transition: opacity 0.2s;
 
-  &:hover {
-    opacity: 0.7;
-  }
+  &:hover { opacity: 0.7; }
 `;
 
 export const HeroSection = styled.section`
   width: 100%;
-`;
-
-export const EmptyBanner = styled.div`
-  position: relative;
-  width: 100%;
-  aspect-ratio: 2.8 / 1;
-  min-height: 250px;
-  border-radius: 24px;
-  overflow: hidden;
-`;
-
-export const SliderWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  aspect-ratio: 2.8 / 1;
-  min-height: 250px;
-  border-radius: 24px;
-  overflow: hidden;
-  background: #f3eee9;
-`;
-
-export const Slide = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: opacity 0.6s ease-in-out;
 `;
 
 export const Controls = styled.div`
@@ -105,10 +104,7 @@ export const ArrowBtn = styled.button`
   cursor: pointer;
   font-size: 18px;
   transition: opacity 0.2s;
-
-  &:hover {
-    opacity: 0.9;
-  }
+  &:hover { opacity: 0.9; }
 `;
 
 export const Dots = styled.div`
@@ -138,14 +134,19 @@ export const CategoriesGrid = styled.div`
   gap: 20px;
   align-items: stretch;
 
-  @media (max-width: 1200px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  @media (max-width: 900px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media (max-width: 600px) {
-    grid-template-columns: repeat(2, 1fr);
+  @media (max-width: 1200px) { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 900px) { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 640px) {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    padding-bottom: 16px; 
+    scrollbar-width: thin;
+    scrollbar-color: #3B3028 #f3eee9; 
+    &::-webkit-scrollbar { height: 4px; }
+    &::-webkit-scrollbar-track { background: #f3eee9; border-radius: 10px; }
+    &::-webkit-scrollbar-thumb { background-color: #3B3028; border-radius: 10px; }
   }
 `;
 
@@ -161,12 +162,14 @@ export const CategoryCard = styled.div`
   border: 1px solid #E9E3D9;
   cursor: pointer;
   background: #fff;
-  text-decoration: none;
   transition: transform 0.2s ease;
   height: 100%;
-
-  &:hover {
-    transform: translateY(-5px);
+  &:hover { transform: translateY(-5px); }
+  @media (max-width: 640px) {
+    min-width: 130px; 
+    padding: 20px 10px;
+    scroll-snap-align: start;
+    &:hover { transform: none; }
   }
 `;
 
@@ -178,10 +181,8 @@ export const CategoryCircle = styled.div`
   background-color: #f3eee9;
   position: relative;
   overflow: hidden;
-
-  img {
-    object-fit: cover;
-  }
+  img { object-fit: cover; }
+  @media (max-width: 640px) { max-width: 80px; }
 `;
 
 export const CategoryName = styled.p`
@@ -190,32 +191,15 @@ export const CategoryName = styled.p`
   font-size: 16px;
   color: #000;
   text-align: center;
-`;
-
-export const CountryBanner = styled.div`
-  position: relative;
-  width: 100%;
-  aspect-ratio: 2.8 / 1;
-  min-height: 220px;
-  border-radius: 24px;
-  overflow: hidden;
+  @media (max-width: 640px) { font-size: 13px; }
 `;
 
 export const ProductsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 20px;
-
-  @media (max-width: 1440px) {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-  @media (max-width: 1200px) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  @media (max-width: 900px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  @media (max-width: 640px) {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
+  @media (max-width: 1440px) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  @media (max-width: 1200px) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  @media (max-width: 900px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (max-width: 640px) { grid-template-columns: repeat(1, minmax(0, 1fr)); }
 `;

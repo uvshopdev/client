@@ -44,16 +44,23 @@ const TopBar = () => {
 		return () => document.removeEventListener("click", onClickOutside);
 	}, []);
 
+	const handleLogoClick = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
+
 	return (
 		<Content>
 			<Bar>
 				<Left>
-					<Logo href="/" aria-label={t("Shop")}>
-						<Image src="/logo.png" width={40} height={40} alt="" priority />
-					</Logo>
+					<Logo href="/" aria-label={t("Shop")} onClick={handleLogoClick}>
+                        <Image src="/logo.png" width={40} height={40} alt="" priority />
+                    </Logo>
 					<button type="button" data-catalog-toggle="true" onClick={() => setCatalog(!catalog)}>
 						<LayoutGrid size={20} strokeWidth={1} absoluteStrokeWidth />
-						{t("Catalog")}
+						<span>{t("Catalog")}</span>
 					</button>
 				</Left>
 				<Right>

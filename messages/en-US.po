@@ -21,469 +21,620 @@ msgctxt "catalog"
 msgid "WHgdsk"
 msgstr "Out of stock"
 
-#: app/[category_id]/page.tsx:186
+#: app/[category_id]/page.tsx:191
 msgctxt "catalog"
 msgid "Uwg9pO"
 msgstr "Category not found"
 
-#: app/[category_id]/page.tsx:190
+#: app/[category_id]/page.tsx:195
 msgctxt "catalog"
 msgid "9Obw6C"
 msgstr "Filter"
 
-#: app/[category_id]/page.tsx:194
+#: app/[category_id]/page.tsx:199
 msgctxt "catalog"
 msgid "GbhlqN"
 msgstr "Sorting"
 
-#: app/[category_id]/page.tsx:217
+#: app/[category_id]/page.tsx:222
 msgctxt "catalog"
 msgid "Xd4bTS"
 msgstr "Filter products"
 
-#: app/[category_id]/page.tsx:224
+#: app/[category_id]/page.tsx:229
 msgctxt "catalog"
 msgid "hOxIeP"
 msgstr "Availability"
 
-#: app/[category_id]/page.tsx:234
+#: app/[category_id]/page.tsx:239
 msgctxt "catalog"
 msgid "vONi+O"
 msgstr "Country"
 
-#: app/[category_id]/page.tsx:239
+#: app/[category_id]/page.tsx:244
 msgctxt "catalog"
 msgid "+kMQfn"
 msgstr "Price range"
 
-#: app/[category_id]/page.tsx:242
+#: app/[category_id]/page.tsx:247
 msgctxt "catalog"
 msgid "dM+p3/"
 msgstr "From"
 
-#: app/[category_id]/page.tsx:257
+#: app/[category_id]/page.tsx:262
 msgctxt "catalog"
 msgid "9j3hXO"
 msgstr "To"
 
-#: app/[category_id]/page.tsx:274
-#: app/[category_id]/page.tsx:336
+#: app/[category_id]/page.tsx:279
+#: app/[category_id]/page.tsx:341
 msgctxt "catalog"
 msgid "EWw/tK"
 msgstr "Apply"
 
-#: app/[category_id]/page.tsx:283
+#: app/[category_id]/page.tsx:288
 msgctxt "catalog"
 msgid "YWyEpK"
 msgstr "Sort products"
 
-#: app/[category_id]/page.tsx:298
+#: app/[category_id]/page.tsx:303
 msgctxt "catalog"
 msgid "nrQy8m"
 msgstr "Cheapest first"
 
-#: app/[category_id]/page.tsx:308
+#: app/[category_id]/page.tsx:313
 msgctxt "catalog"
 msgid "v8lup3"
 msgstr "Most expensive first"
 
-#: app/[category_id]/page.tsx:321
+#: app/[category_id]/page.tsx:326
 msgctxt "catalog"
 msgid "TgnUST"
 msgstr "A to Z"
 
-#: app/[category_id]/page.tsx:331
+#: app/[category_id]/page.tsx:336
 msgctxt "catalog"
 msgid "8ZCpOJ"
 msgstr "Z to A"
 
+#: app/auth/page.tsx:44
+#: app/auth/page.tsx:50
+msgctxt "auth"
+msgid "oLpv29"
+msgstr "Please enter a valid email address"
+
 #: app/auth/page.tsx:56
+msgctxt "auth"
+msgid "Civehu"
+msgstr "Code sent successfully"
+
+#: app/auth/page.tsx:59
+msgctxt "auth"
+msgid "uo4I13"
+msgstr "Failed to send code"
+
+#: app/auth/page.tsx:71
+msgctxt "auth"
+msgid "gZz74a"
+msgstr "Please fill in all required fields"
+
+#: app/auth/page.tsx:85
+#: app/auth/page.tsx:97
+msgctxt "auth"
+msgid "GO+I69"
+msgstr "Successfully logged in"
+
+#: app/auth/page.tsx:89
+msgctxt "auth"
+msgid "x2R8CB"
+msgstr "Invalid code"
+
+#: app/auth/page.tsx:118
 msgctxt "auth"
 msgid "i/AQd8"
 msgstr "Enter login details"
 
-#: app/auth/page.tsx:57
+#: app/auth/page.tsx:119
 msgctxt "auth"
-msgid "3WAh8W"
-msgstr "You will be sent an SMS message with a confirmation code."
+msgid "rHuIz2"
+msgstr "Log in using your email or Google account"
 
-#: app/auth/page.tsx:61
+#: app/auth/page.tsx:124
 msgctxt "auth"
-msgid "jdJhOL"
-msgstr "Phone number"
+msgid "FJ6r9E"
+msgstr "Continue with Google"
 
-#: app/auth/page.tsx:75
+#: app/auth/page.tsx:128
+msgctxt "auth"
+msgid "Ntjkqd"
+msgstr "or"
+
+#: app/auth/page.tsx:133
+msgctxt "auth"
+msgid "sy+pv5"
+msgstr "Email"
+
+#: app/auth/page.tsx:137
+msgctxt "auth"
+msgid "9WRlF4"
+msgstr "Send"
+
+#: app/auth/page.tsx:165
 msgctxt "auth"
 msgid "h2vipu"
 msgstr "Code"
 
-#: app/auth/page.tsx:81
-msgctxt "auth"
-msgid "+5wHU3"
-msgstr "Continue with"
-
-#: app/auth/page.tsx:93
-msgctxt "auth"
-msgid "lzgH40"
-msgstr "Google"
-
-#: app/auth/page.tsx:97
+#: app/auth/page.tsx:176
 msgctxt "auth"
 msgid "odXlk8"
 msgstr "Log in"
 
-#: app/basket/page.tsx:126
+#: app/basket/page.tsx:128
 msgctxt "basket"
 msgid "x/ZVlU"
 msgstr "Product"
 
-#: app/basket/page.tsx:127
+#: app/basket/page.tsx:129
 msgctxt "basket"
 msgid "b1zuN9"
 msgstr "Price"
 
-#: app/basket/page.tsx:128
+#: app/basket/page.tsx:130
 msgctxt "basket"
 msgid "qVGRIE"
 msgstr "Quantity"
 
-#: app/basket/page.tsx:151
-#: app/basket/page.tsx:247
-#: app/basket/page.tsx:251
-#: app/basket/page.tsx:255
-#: app/basket/page.tsx:259
+#: app/basket/page.tsx:153
+#: app/basket/page.tsx:249
+#: app/basket/page.tsx:253
+#: app/basket/page.tsx:257
+#: app/basket/page.tsx:261
 msgctxt "basket"
 msgid "oPsj1A"
 msgstr "UAH"
 
-#: app/basket/page.tsx:159
+#: app/basket/page.tsx:161
 msgctxt "basket"
 msgid "iL0n4U"
 msgstr "Decrease quantity"
 
-#: app/basket/page.tsx:167
+#: app/basket/page.tsx:169
 msgctxt "basket"
 msgid "3ZPs5M"
 msgstr "Increase quantity"
 
-#: app/basket/page.tsx:172
+#: app/basket/page.tsx:174
 msgctxt "basket"
 msgid "LKD6fB"
 msgstr "Remove product"
 
-#: app/basket/page.tsx:183
+#: app/basket/page.tsx:185
 msgctxt "basket"
 msgid "Kz9Jx1"
 msgstr "Use promo code"
 
-#: app/basket/page.tsx:187
+#: app/basket/page.tsx:189
 msgctxt "basket"
 msgid "SGdcJD"
 msgstr "Enter code"
 
-#: app/basket/page.tsx:193
+#: app/basket/page.tsx:195
 msgctxt "basket"
 msgid "7TUyZ1"
 msgstr "Applied"
 
-#: app/basket/page.tsx:193
+#: app/basket/page.tsx:195
 msgctxt "basket"
 msgid "2/2yg+"
 msgstr "Add"
 
-#: app/basket/page.tsx:200
+#: app/basket/page.tsx:202
 msgctxt "basket"
 msgid "rMCKlP"
 msgstr "Redeem miles"
 
-#: app/basket/page.tsx:202
+#: app/basket/page.tsx:204
 msgctxt "basket"
 msgid "78Q9zc"
 msgstr "Available:"
 
-#: app/basket/page.tsx:212
+#: app/basket/page.tsx:214
 msgctxt "basket"
 msgid "GzO/8N"
 msgstr "Decrease miles"
 
-#: app/basket/page.tsx:221
+#: app/basket/page.tsx:223
 msgctxt "basket"
 msgid "IQER3s"
 msgstr "Increase miles"
 
-#: app/basket/page.tsx:226
+#: app/basket/page.tsx:228
 msgctxt "basket"
 msgid "7F9ktq"
 msgstr "Reset miles"
 
-#: app/basket/page.tsx:236
+#: app/basket/page.tsx:238
 msgctxt "basket"
 msgid "fiKzU5"
 msgstr "The total order amount does not include shipping"
 
-#: app/basket/page.tsx:244
+#: app/basket/page.tsx:246
 msgctxt "basket"
 msgid "SLMRDd"
 msgstr "Order receipt"
 
-#: app/basket/page.tsx:246
+#: app/basket/page.tsx:248
 msgctxt "basket"
 msgid "SRLCr6"
 msgstr "Order amount:"
 
-#: app/basket/page.tsx:250
+#: app/basket/page.tsx:252
 msgctxt "basket"
 msgid "KWRMF1"
 msgstr "Promo code:"
 
-#: app/basket/page.tsx:254
+#: app/basket/page.tsx:256
 msgctxt "basket"
 msgid "FcNH02"
 msgstr "Miles redemption:"
 
-#: app/basket/page.tsx:258
-#: app/basket/page.tsx:277
+#: app/basket/page.tsx:260
+#: app/basket/page.tsx:289
 msgctxt "basket"
 msgid "q4EmsW"
 msgstr "Total:"
 
-#: app/basket/page.tsx:262
+#: app/basket/page.tsx:268
+msgctxt "basket"
+msgid "SbbhyC"
+msgstr "Cart is empty"
+
+#: app/basket/page.tsx:274
 msgctxt "basket"
 msgid "BJ2TKX"
 msgstr "Checkout"
 
-#: app/basket/page.tsx:267
+#: app/basket/page.tsx:279
 msgctxt "basket"
 msgid "zAWRbe"
 msgstr "Miles accrual"
 
-#: app/basket/page.tsx:269
+#: app/basket/page.tsx:281
 msgctxt "basket"
 msgid "n/l1Jq"
 msgstr "From order receipt:"
 
-#: app/basket/page.tsx:273
+#: app/basket/page.tsx:285
 msgctxt "basket"
 msgid "6uJl8g"
 msgstr "Discovering new countries:"
 
-#: app/basket/page.tsx:278
+#: app/basket/page.tsx:290
 msgctxt "basket"
 msgid "VrD1rq"
 msgstr "miles"
 
-#: app/basket/page.tsx:283
+#: app/basket/page.tsx:295
 msgctxt "basket"
 msgid "Wtm55s"
 msgstr "New countries"
 
-#: app/basket/page.tsx:291
+#: app/basket/page.tsx:303
 msgctxt "basket"
 msgid "0f8tYR"
 msgstr "Preview country"
 
-#: app/basket/page.tsx:298
+#: app/basket/page.tsx:310
 msgctxt "basket"
 msgid "8Np1vL"
 msgstr "Virtual stamps preview available"
 
-#: app/basket/page.tsx:303
+#: app/basket/page.tsx:315
 msgctxt "basket"
 msgid "5O+rYU"
 msgstr "Stamps and miles are credited only after actual receipt of the order"
 
-#: app/basket/page.tsx:310
+#: app/basket/page.tsx:322
 msgctxt "basket"
 msgid "K/unOm"
 msgstr "Your cart"
 
-#: app/basket/page.tsx:320
+#: app/basket/page.tsx:332
 msgctxt "basket"
 msgid "sNwsMv"
 msgstr "Close modal"
 
-#: app/basket/page.tsx:324
+#: app/basket/page.tsx:336
 msgctxt "basket"
 msgid "OC+dc2"
 msgstr "Virtual stamp preview:"
 
-#: app/basket/placeorder/page.tsx:104
+#: app/basket/placeorder/page.tsx:105
 msgctxt "checkout"
 msgid "1umnAX"
 msgstr "Personal Information"
 
-#: app/basket/placeorder/page.tsx:105
+#: app/basket/placeorder/page.tsx:106
 msgctxt "checkout"
 msgid "hWtRS2"
 msgstr "Delivery and Payment"
 
-#: app/basket/placeorder/page.tsx:106
+#: app/basket/placeorder/page.tsx:107
 msgctxt "checkout"
 msgid "T6Y0Vc"
 msgstr "Delivery Address"
 
-#: app/basket/placeorder/page.tsx:107
+#: app/basket/placeorder/page.tsx:108
 msgctxt "checkout"
 msgid "4fUKUt"
 msgstr "Additional"
 
-#: app/basket/placeorder/page.tsx:140
+#: app/basket/placeorder/page.tsx:162
 msgctxt "checkout"
 msgid "MavFes"
 msgstr "Failed to place order"
 
-#: app/basket/placeorder/page.tsx:146
-#: app/basket/placeorder/page.tsx:158
+#: app/basket/placeorder/page.tsx:169
+msgctxt "checkout"
+msgid "+vL1KE"
+msgstr "Please enter your full name"
+
+#: app/basket/placeorder/page.tsx:173
+msgctxt "checkout"
+msgid "oLpv29"
+msgstr "Please enter a valid email address"
+
+#: app/basket/placeorder/page.tsx:177
+msgctxt "checkout"
+msgid "FPcbu0"
+msgstr "Please enter a valid phone number"
+
+#: app/basket/placeorder/page.tsx:183
 msgctxt "checkout"
 msgid "liNqP5"
 msgstr "Select delivery and payment methods"
 
-#: app/basket/placeorder/page.tsx:163
+#: app/basket/placeorder/page.tsx:189
+msgctxt "checkout"
+msgid "gI54Fe"
+msgstr "Please enter your postal code"
+
+#: app/basket/placeorder/page.tsx:190
+msgctxt "checkout"
+msgid "VqUqOr"
+msgstr "Please enter your delivery address"
+
+#: app/basket/placeorder/page.tsx:202
+msgctxt "checkout"
+msgid "gZz74a"
+msgstr "Please fill in all required fields"
+
+#: app/basket/placeorder/page.tsx:207
 msgctxt "checkout"
 msgid "Z5bf/3"
 msgstr "Only {maxMiles} miles available for redemption"
 
-#: app/basket/placeorder/page.tsx:173
+#: app/basket/placeorder/page.tsx:217
 msgctxt "checkout"
 msgid "SbbhyC"
 msgstr "Cart is empty"
 
-#: app/basket/placeorder/page.tsx:197
+#: app/basket/placeorder/page.tsx:241
 msgctxt "checkout"
 msgid "TemVby"
 msgstr "Full Name"
 
-#: app/basket/placeorder/page.tsx:199
+#: app/basket/placeorder/page.tsx:245
 msgctxt "checkout"
 msgid "rKrp2B"
 msgstr "First Last Name"
 
-#: app/basket/placeorder/page.tsx:213
+#: app/basket/placeorder/page.tsx:261
 msgctxt "checkout"
 msgid "jdJhOL"
 msgstr "Phone number"
 
-#: app/basket/placeorder/page.tsx:226
+#: app/basket/placeorder/page.tsx:276
 msgctxt "checkout"
 msgid "PS08kI"
 msgstr "Delivery method"
 
-#: app/basket/placeorder/page.tsx:230
+#: app/basket/placeorder/page.tsx:280
 msgctxt "checkout"
 msgid "wEZZ4Y"
 msgstr "Choose delivery method"
 
-#: app/basket/placeorder/page.tsx:232
+#: app/basket/placeorder/page.tsx:282
 msgctxt "checkout"
 msgid "wmjH9T"
 msgstr "Nova Poshta"
 
-#: app/basket/placeorder/page.tsx:233
+#: app/basket/placeorder/page.tsx:283
 msgctxt "checkout"
 msgid "l6jPLg"
 msgstr "Ukrposhta"
 
-#: app/basket/placeorder/page.tsx:238
+#: app/basket/placeorder/page.tsx:288
 msgctxt "checkout"
 msgid "BVTni9"
 msgstr "Payment method"
 
-#: app/basket/placeorder/page.tsx:242
+#: app/basket/placeorder/page.tsx:292
 msgctxt "checkout"
 msgid "CMqDWH"
 msgstr "Choose payment method"
 
-#: app/basket/placeorder/page.tsx:244
+#: app/basket/placeorder/page.tsx:294
 msgctxt "checkout"
 msgid "Dwg5oZ"
 msgstr "Card online"
 
-#: app/basket/placeorder/page.tsx:245
+#: app/basket/placeorder/page.tsx:295
 msgctxt "checkout"
 msgid "zHC0Ab"
 msgstr "Cash on delivery"
 
-#: app/basket/placeorder/page.tsx:255
+#: app/basket/placeorder/page.tsx:305
 msgctxt "checkout"
 msgid "3EnruA"
 msgstr "Postal code"
 
-#: app/basket/placeorder/page.tsx:263
+#: app/basket/placeorder/page.tsx:315
 msgctxt "checkout"
 msgid "v3tQCl"
 msgstr "Delivery address"
 
-#: app/basket/placeorder/page.tsx:265
+#: app/basket/placeorder/page.tsx:319
 msgctxt "checkout"
 msgid "r++Z2O"
 msgstr "Address placeholder"
 
-#: app/basket/placeorder/page.tsx:276
+#: app/basket/placeorder/page.tsx:330
 msgctxt "checkout"
 msgid "Ms9Rg6"
 msgstr "Order notes"
 
-#: app/basket/placeorder/page.tsx:278
+#: app/basket/placeorder/page.tsx:332
 msgctxt "checkout"
 msgid "nfwiHT"
 msgstr "Your notes"
 
-#: app/basket/placeorder/page.tsx:292
+#: app/basket/placeorder/page.tsx:346
 msgctxt "checkout"
 msgid "wlgbLy"
 msgstr "Checkout title"
 
-#: app/basket/placeorder/page.tsx:328
+#: app/basket/placeorder/page.tsx:382
 msgctxt "checkout"
 msgid "6OWS4p"
 msgstr "Processing..."
 
-#: app/basket/placeorder/page.tsx:328
+#: app/basket/placeorder/page.tsx:382
 msgctxt "checkout"
 msgid "XPruqs"
 msgstr "Order"
 
-#: app/basket/placeorder/page.tsx:336
+#: app/basket/placeorder/page.tsx:390
 msgctxt "checkout"
 msgid "ZtRzog"
 msgstr "Thank you for your purchase! Your order has been successfully placed!"
 
-#: app/basket/placeorder/page.tsx:338
+#: app/basket/placeorder/page.tsx:392
 msgctxt "checkout"
 msgid "47FYwb"
 msgstr "Cancel"
 
-#: app/basket/placeorder/page.tsx:339
+#: app/basket/placeorder/page.tsx:393
 msgctxt "checkout"
 msgid "BhEJib"
 msgstr "To main page"
 
-#: app/page.tsx:112
+#: app/page.tsx:145
 msgctxt "home"
 msgid "pq2lMA"
 msgstr "Popular categories"
 
-#: app/page.tsx:113
-#: app/page.tsx:144
-#: app/page.tsx:168
+#: app/page.tsx:146
+#: app/page.tsx:178
+#: app/page.tsx:204
 msgctxt "home"
 msgid "pFK6bJ"
 msgstr "View all"
 
-#: app/page.tsx:132
+#: app/page.tsx:165
 msgctxt "home"
 msgid "WfqukA"
 msgstr "Country of the month"
 
-#: app/page.tsx:143
+#: app/page.tsx:177
 msgctxt "home"
 msgid "2zg50f"
 msgstr "New arrivals"
 
-#: app/page.tsx:167
+#: app/page.tsx:203
 msgctxt "home"
 msgid "FC/kO5"
 msgstr "Best sellers"
+
+#: app/product/[product_id]/page.tsx:92
+msgctxt "reviews"
+msgid "gh7HYI"
+msgstr "Mariia Koval"
+
+#: app/product/[product_id]/page.tsx:92
+msgctxt "reviews"
+msgid "C0bKnY"
+msgstr "Tasty product, but I wish it was a bit cheaper. Overall positive impressions, will buy again when there are discounts."
+
+#: app/product/[product_id]/page.tsx:93
+msgctxt "reviews"
+msgid "uUnOz7"
+msgstr "Oleh Petrenko"
+
+#: app/product/[product_id]/page.tsx:93
+msgctxt "reviews"
+msgid "YdhmUX"
+msgstr "It's okay, but without a wow effect. Maybe just not my taste, although I have no complaints about the quality."
+
+#: app/product/[product_id]/page.tsx:94
+msgctxt "reviews"
+msgid "gKtKbw"
+msgstr "Anna Shevchenko"
+
+#: app/product/[product_id]/page.tsx:94
+msgctxt "reviews"
+msgid "okiNx1"
+msgstr "Loved it, incredible balance of flavors! The family ate it all in one evening, the texture just melts in your mouth."
+
+#: app/product/[product_id]/page.tsx:95
+msgctxt "reviews"
+msgid "F+tvEM"
+msgstr "Dmytro Lysenko"
+
+#: app/product/[product_id]/page.tsx:95
+msgctxt "reviews"
+msgid "SRtuOo"
+msgstr "Expected more, the taste seemed too neutral and indistinct."
+
+#: app/product/[product_id]/page.tsx:96
+msgctxt "reviews"
+msgid "r7KG2Y"
+msgstr "Viktoriia Melnyk"
+
+#: app/product/[product_id]/page.tsx:96
+msgctxt "reviews"
+msgid "48/KKp"
+msgstr "The quality of the product is just super! Rich aroma and deep taste, you can feel that premium ingredients are used. Will definitely order more!"
+
+#: app/product/[product_id]/page.tsx:97
+msgctxt "reviews"
+msgid "X1g/10"
+msgstr "Ihor Boiko"
+
+#: app/product/[product_id]/page.tsx:97
+msgctxt "reviews"
+msgid "wDFeNv"
+msgstr "Everything is great, the product fully matches the description. Very pleasant aftertaste and perfect consistency, exceeded my expectations."
+
+#: app/product/[product_id]/page.tsx:98
+msgctxt "reviews"
+msgid "bCBlN1"
+msgstr "Olena Tkachuk"
+
+#: app/product/[product_id]/page.tsx:98
+msgctxt "reviews"
+msgid "YAU9UA"
+msgstr "Good quality, interesting combination of flavors. Took off one star because it was a bit too sweet for me, but that's a matter of taste."
+
+#: app/product/[product_id]/page.tsx:99
+msgctxt "reviews"
+msgid "jb1Xef"
+msgstr "Maksym Pavlenko"
+
+#: app/product/[product_id]/page.tsx:99
+msgctxt "reviews"
+msgid "+MY8if"
+msgstr "Very satisfied. Bought it for a holiday, and this product became a real hit at the table. Very elegant and high quality!"
 
 #: app/product/ProductCard.tsx:33
 msgctxt "product-page"
@@ -585,15 +736,71 @@ msgctxt "product-page"
 msgid "LpFLjU"
 msgstr "Composition info..."
 
-#: app/product/ProductsList.tsx:70
+#: app/product/ProductsList.tsx:102
 msgctxt "product-page"
 msgid "j8boVU"
 msgstr "You might also like"
 
-#: app/product/Reviews.tsx:47
+#: app/product/Reviews.tsx:49
+msgctxt "reviews"
+msgid "P55kMi"
+msgstr "Review added successfully"
+
+#: app/product/Reviews.tsx:52
+msgctxt "reviews"
+msgid "MOVUjY"
+msgstr "Failed to add review"
+
+#: app/product/Reviews.tsx:85
+msgctxt "reviews"
+msgid "xAmL3L"
+msgstr "Please login to leave a review"
+
+#: app/product/Reviews.tsx:116
 msgctxt "reviews"
 msgid "dUxyza"
 msgstr "Reviews"
+
+#: app/product/Reviews.tsx:119
+#: app/product/Reviews.tsx:168
+msgctxt "reviews"
+msgid "tr+EKe"
+msgstr "Write a review"
+
+#: app/product/Reviews.tsx:122
+msgctxt "reviews"
+msgid "078WAr"
+msgstr "See all"
+
+#: app/product/Reviews.tsx:170
+msgctxt "reviews"
+msgid "vlKhIl"
+msgstr "Your name"
+
+#: app/product/Reviews.tsx:176
+msgctxt "reviews"
+msgid "g4KKU9"
+msgstr "Your rating"
+
+#: app/product/Reviews.tsx:193
+msgctxt "reviews"
+msgid "jcvT/G"
+msgstr "Share your impressions about the product..."
+
+#: app/product/Reviews.tsx:200
+msgctxt "reviews"
+msgid "82Y7Sa"
+msgstr "Sending..."
+
+#: app/product/Reviews.tsx:200
+msgctxt "reviews"
+msgid "rJrHB6"
+msgstr "Submit review"
+
+#: app/product/Reviews.tsx:241
+msgctxt "reviews"
+msgid "kPKIxP"
+msgstr "All reviews"
 
 #: app/profile/coffee/page.tsx:39
 msgctxt "profile"
@@ -640,104 +847,110 @@ msgctxt "profile"
 msgid "VdXF7G"
 msgstr "Open countries map"
 
-#: app/profile/friends/page.tsx:65
-msgctxt "profile"
-msgid "3s0ZWy"
-msgstr "Invite friends and get bonuses!"
-
-#: app/profile/friends/page.tsx:66
-msgctxt "profile"
-msgid "CsMutJ"
-msgstr "Get +50 miles and coffee after your friend makes their first purchase for an amount of 150 UAH or more."
-
-#: app/profile/friends/page.tsx:71
-msgctxt "profile"
-msgid "hYOE+U"
-msgstr "Invite"
-
-#: app/profile/friends/page.tsx:89
+#: app/profile/friends/page.tsx:67
+#: app/profile/friends/page.tsx:108
 msgctxt "profile"
 msgid "smWqVf"
 msgstr "Waiting for the first purchase"
 
-#: app/profile/friends/page.tsx:102
+#: app/profile/friends/page.tsx:74
+msgctxt "profile"
+msgid "+r+pGM"
+msgstr "Bonus awarded"
+
+#: app/profile/friends/page.tsx:85
+msgctxt "profile"
+msgid "3s0ZWy"
+msgstr "Invite friends and get bonuses!"
+
+#: app/profile/friends/page.tsx:86
+msgctxt "profile"
+msgid "CsMutJ"
+msgstr "Get +50 miles and coffee after your friend makes their first purchase for an amount of 150 UAH or more."
+
+#: app/profile/friends/page.tsx:90
+msgctxt "profile"
+msgid "hYOE+U"
+msgstr "Invite"
+
+#: app/profile/friends/page.tsx:120
 msgctxt "profile"
 msgid "G8P44K"
 msgstr "Invitation link"
 
-#: app/profile/friends/page.tsx:108
+#: app/profile/friends/page.tsx:125
 msgctxt "profile"
 msgid "p556q3"
 msgstr "Copied"
 
-#: app/profile/friends/page.tsx:108
+#: app/profile/friends/page.tsx:125
 msgctxt "profile"
 msgid "4l6vz1"
 msgstr "Copy"
 
-#: app/profile/orders/page.tsx:72
+#: app/profile/orders/page.tsx:73
 msgctxt "profile"
 msgid "1Ia8qN"
 msgstr "Processing"
 
-#: app/profile/orders/page.tsx:72
+#: app/profile/orders/page.tsx:73
 msgctxt "profile"
 msgid "D3vrid"
 msgstr "Packing"
 
-#: app/profile/orders/page.tsx:72
+#: app/profile/orders/page.tsx:73
 msgctxt "profile"
 msgid "OtIOMb"
 msgstr "Shipped"
 
-#: app/profile/orders/page.tsx:72
+#: app/profile/orders/page.tsx:73
 msgctxt "profile"
 msgid "DMqnF4"
 msgstr "Delivered"
 
-#: app/profile/orders/page.tsx:90
-#: app/profile/orders/page.tsx:99
-#: app/profile/orders/page.tsx:107
+#: app/profile/orders/page.tsx:91
+#: app/profile/orders/page.tsx:100
+#: app/profile/orders/page.tsx:108
 msgctxt "profile"
 msgid "cA7xQl"
 msgstr "My orders"
 
-#: app/profile/orders/page.tsx:91
+#: app/profile/orders/page.tsx:92
 msgctxt "profile"
 msgid "+n4XJX"
 msgstr "Loading orders..."
 
-#: app/profile/orders/page.tsx:100
+#: app/profile/orders/page.tsx:101
 msgctxt "profile"
 msgid "hpuvXH"
 msgstr "Failed to load orders. Please try again later."
 
-#: app/profile/orders/page.tsx:109
+#: app/profile/orders/page.tsx:110
 msgctxt "profile"
 msgid "LqemZR"
 msgstr "You have no placed orders yet."
 
-#: app/profile/orders/page.tsx:121
+#: app/profile/orders/page.tsx:122
 msgctxt "profile"
 msgid "h31Xz8"
 msgstr "Order №"
 
-#: app/profile/orders/page.tsx:122
+#: app/profile/orders/page.tsx:123
 msgctxt "profile"
 msgid "5FA3Q8"
 msgstr "Order date:"
 
-#: app/profile/orders/page.tsx:164
+#: app/profile/orders/page.tsx:175
 msgctxt "profile"
 msgid "eB9VBm"
 msgstr "Article:"
 
-#: app/profile/orders/page.tsx:168
+#: app/profile/orders/page.tsx:179
 msgctxt "profile"
 msgid "oPsj1A"
 msgstr "UAH"
 
-#: app/profile/orders/page.tsx:169
+#: app/profile/orders/page.tsx:180
 msgctxt "profile"
 msgid "sY9sjp"
 msgstr "pcs"
@@ -1010,8 +1223,8 @@ msgstr "Item added to favorites"
 
 #: components/ProductCard/ProductCard.tsx:47
 msgctxt "product"
-msgid "LMtDXI"
-msgstr "Failed to add item to favorites"
+msgid "nYXC78"
+msgstr "Log in to add this item to your favourites"
 
 #: components/ProductCard/ProductCard.tsx:55
 msgctxt "product"
@@ -1023,27 +1236,27 @@ msgctxt "product"
 msgid "ZP9LRA"
 msgstr "Failed to remove item from favorites"
 
-#: components/ProductCard/ProductCard.tsx:91
+#: components/ProductCard/ProductCard.tsx:89
 msgctxt "product"
 msgid "aEiFnS"
 msgstr "in stock"
 
-#: components/ProductCard/ProductCard.tsx:98
+#: components/ProductCard/ProductCard.tsx:96
 msgctxt "product"
 msgid "oPsj1A"
 msgstr "UAH"
 
-#: components/ProductCard/ProductCard.tsx:103
+#: components/ProductCard/ProductCard.tsx:101
 msgctxt "product"
 msgid "eG1C0k"
 msgstr "Remove from favorites"
 
-#: components/ProductCard/ProductCard.tsx:111
+#: components/ProductCard/ProductCard.tsx:109
 msgctxt "product"
 msgid "ADKef8"
 msgstr "Add to cart"
 
-#: components/ProductCard/ProductCard.tsx:115
+#: components/ProductCard/ProductCard.tsx:113
 msgctxt "product"
 msgid "KoSVL4"
 msgstr "Item added to cart"
@@ -1113,27 +1326,27 @@ msgctxt "profile"
 msgid "jvo0vs"
 msgstr "Save"
 
-#: components/TopBar/TopBar.tsx:51
+#: components/TopBar/TopBar.tsx:58
 msgctxt "navigation"
 msgid "Dxd1uB"
 msgstr "Shop"
 
-#: components/TopBar/TopBar.tsx:56
+#: components/TopBar/TopBar.tsx:63
 msgctxt "navigation"
 msgid "GOdq5V"
 msgstr "Catalog"
 
-#: components/TopBar/TopBar.tsx:60
+#: components/TopBar/TopBar.tsx:67
 msgctxt "navigation"
 msgid "18aFPn"
 msgstr "Basket"
 
-#: components/TopBar/TopBar.tsx:63
+#: components/TopBar/TopBar.tsx:70
 msgctxt "navigation"
 msgid "itPgxd"
 msgstr "Profile"
 
-#: components/TopBar/TopBar.tsx:69
+#: components/TopBar/TopBar.tsx:76
 msgctxt "navigation"
 msgid "brizuL"
 msgstr "Change locale"

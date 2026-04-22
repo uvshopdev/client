@@ -115,6 +115,7 @@ export const Sub = styled.div`
 export const Actions = styled.div`
 	display: flex;
 	gap: 10px;
+	flex-shrink: 0;
 `;
 
 export const FavoriteButton = styled.button<{ $favorite?: boolean }>`
@@ -140,12 +141,6 @@ export const FavoriteButton = styled.button<{ $favorite?: boolean }>`
 
 	&:hover {
 		background: ${({ $favorite }) => ($favorite ? "#fbd4d1" : "#dbdbdb")};
-	}
-
-	@media (max-width: 640px) {
-		width: 38px;
-		height: 38px;
-		border-radius: 10px;
 	}
 `;
 

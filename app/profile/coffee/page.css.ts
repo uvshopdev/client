@@ -12,6 +12,10 @@ export const Card = styled.div`
   border-radius: 20px;
   padding: 40px;
   border: 1px solid #EAEAEA;
+
+  @media (max-width: 640px) {
+    padding: 24px;
+  }
 `;
 
 export const HeaderInfo = styled.div`
@@ -29,6 +33,11 @@ export const HeaderInfo = styled.div`
     color: #666;
     margin: 0;
   }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 12px;
+  }
 `;
 
 export const CounterBadge = styled.div`
@@ -36,14 +45,27 @@ export const CounterBadge = styled.div`
   color: white;
   padding: 5px 20px;
   border-radius: 20px;
+
+  @media (max-width: 640px) {
+    align-self: flex-start;
+  }
 `;
 
-// === СЕКЦИЯ ЗИГЗАГА ===
 export const TimelineContainer = styled.div`
   position: relative;
   width: 100%;
   height: 250px; 
   margin-top: 40px;
+
+  @media (max-width: 990px) {
+    height: 210px;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 640px) {
+    height: 180px;
+    margin-top: 20px;
+  }
 `;
 
 export const TimelineLine = styled.svg`
@@ -113,6 +135,34 @@ export const NodeWrapper = styled.div<{ $top: string; $left: string; $closed?: b
   button:disabled {
     cursor: not-allowed;
   }
+
+  @media (max-width: 990px) {
+    padding: 12px;
+    
+    img { 
+        width: 45px;
+        height: 45px;
+    }
+
+    .collect {
+        padding: 4px 16px;
+        font-size: 11px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    padding: 8px;
+    
+    img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .collect {
+        padding: 4px 12px;
+        font-size: 10px;
+    }
+  }
 `;
 
 export const ClaimButton = styled.button`
@@ -133,6 +183,16 @@ export const FreeCoffeeGrid = styled.div`
   gap: 40px;
   margin-top: 40px;
   flex-wrap: wrap;
+
+  @media (max-width: 990px) {
+    justify-content: center;
+    gap: 30px;
+  }
+
+  @media (max-width: 640px) {
+    justify-content: center;
+    gap: 20px;
+  }
 `;
 
 export const FreeCoffeeItem = styled.div`
@@ -156,6 +216,11 @@ export const ShowQrButton = styled.button`
 
   &:hover {
     opacity: 0.9;
+  }
+
+  @media (max-width: 990px) {
+    font-size: 12px;
+    padding: 6px 14px;
   }
 `;
 
@@ -221,7 +286,6 @@ export const ActionButton = styled.button`
   cursor: pointer;
   transition: opacity 0.2s;
 
-  /* Точные настройки шрифта */
   font-family: 'Montserrat Alternates', sans-serif;
   font-size: 14px;
   font-weight: 500;

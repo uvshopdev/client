@@ -40,6 +40,7 @@ import {
     Title,
     TotalRow,
 } from "./page.css";
+import { toast } from "sonner";
 
 const formatPrice = (price: number): string => {
     return price % 1 === 0 ? price.toString() : price.toFixed(2);
@@ -71,6 +72,7 @@ export default function BasketPage() {
     const redeemedMilesValue = Math.min(milesToRedeem, maxMilesToRedeem);
     const total = Math.max(0, subtotalAfterPromo - redeemedMilesValue);
     const orderMilesReward = Math.floor(total / 100);
+    const isBasketEmpty = Object.keys(positions).length === 0;
 
     const newCountries = useMemo(() => {
         if (!isSuccess) {
@@ -258,7 +260,17 @@ export default function BasketPage() {
                     <span>{t("Total:")}</span>
                     <span>{formatPrice(total)} {t("UAH")}</span>
                 </TotalRow>
-                <CheckoutButton onClick={() => router.push(`/basket/placeorder?miles=${milesToRedeem}`)}>
+                <CheckoutButton 
+                    disabled={isBasketEmpty}
+                    style={{ opacity: isBasketEmpty ? 0.5 : 1, cursor: isBasketEmpty ? "not-allowed" : "pointer" }}
+                    onClick={() => {
+                        if (isBasketEmpty) {
+                            toast.error(t("Cart is empty"));
+                            return;
+                        }
+                        router.push(`/basket/placeorder?miles=${milesToRedeem}`);
+                    }}
+                >
                     {t("Checkout")}
                 </CheckoutButton>
             </SummaryBlock>

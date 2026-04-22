@@ -131,12 +131,17 @@ const CategoryPage = ({ params }: { params: Promise<{ category_id: number }> }) 
 
     useEffect(() => { setMounted(true); }, []);
 
-    const { data: favorites, isSuccess: isSuccessFavorites } = useQuery({
+    const { data: favorites = [] } = useQuery({
         queryKey: ["favorites_ids"],
         queryFn: async () => {
-            const data = await getFavorites();
-            return data.map(({ product }) => product.id);
+            try {
+                const data = await getFavorites();
+                return data.map(({ product }) => product.id);
+            } catch (error) {
+                return [];
+            }
         },
+        retry: false,
         placeholderData: [],
     });
 
@@ -151,10 +156,10 @@ const CategoryPage = ({ params }: { params: Promise<{ category_id: number }> }) 
         let result = [...products];
 
         if (filterAvailability === "in_stock") {
-			result = result; 
-		} else if (filterAvailability === "out_of_stock") {
-			result = []; 
-		}
+            result = result; 
+        } else if (filterAvailability === "out_of_stock") {
+            result = []; 
+        }
 
         if (filterCountry) {
             result = result.filter(p => String(p.country?.id) === filterCountry);
@@ -198,7 +203,7 @@ const CategoryPage = ({ params }: { params: Promise<{ category_id: number }> }) 
                 )}
 
                 <Products>
-                    {isSuccessProducts && isSuccessFavorites &&
+                    {isSuccessProducts &&
                         filteredAndSortedProducts.map((product) => (
                             <ProductCard 
                                 key={product.id} 
