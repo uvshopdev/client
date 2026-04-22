@@ -99,6 +99,7 @@ export default function CheckoutPage() {
     const [step, setStep] = useState(0);
     const [showModal, setShowModal] = useState(false);
     const [milesToRedeem, setMilesToRedeem] = useState(0);
+    const [isSimulating, setIsSimulating] = useState(false);
     const { info, setInfo, positions, reset } = useBasket();
 
     const steps = [
@@ -126,7 +127,6 @@ export default function CheckoutPage() {
             if (!info.email && profile.email) setInfo("email", profile.email);
             if (!info.phone_number && profile.phone_number) setInfo("phone_number", profile.phone_number);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [profile?.full_name, profile?.email, profile?.phone_number]);
 
     const { data: milesEntries } = useQuery({
@@ -164,7 +164,6 @@ export default function CheckoutPage() {
     });
 
     const next = () => {
-        // Валідація 1 кроку: Особисті дані
         if (step === 0) {
             if (!info.name?.trim()) return toast.error(t("Please enter your full name"));
             
@@ -178,13 +177,11 @@ export default function CheckoutPage() {
             }
         }
 
-        // Валідація 2 кроку: Доставка і Оплата
         if (step === 1 && (!info.delivery_method || !info.payment_method)) {
             toast.error(t("Select delivery and payment methods"));
             return;
         }
 
-        // Валідація 3 кроку: Адреса
         if (step === 2) {
             if (!info.postal_code?.trim()) return toast.error(t("Please enter your postal code"));
             if (!info.address?.trim()) return toast.error(t("Please enter your delivery address"));
@@ -218,18 +215,27 @@ export default function CheckoutPage() {
             return;
         }
 
-        submitOrder({
-            recipient: info.name,
-            address: info.address,
-            phone_number: info.phone_number,
-            email: info.email ?? "",
-            payment_method: info.payment_method,
-            delivery_method: info.delivery_method,
-            miles_to_redeem: redeemedMilesValue,
-            postal_code: info.postal_code,
-            message: info.message,
-            positions: positionsPayload,
-        });
+        if (profile) {
+            submitOrder({
+                recipient: info.name,
+                address: info.address,
+                phone_number: info.phone_number,
+                email: info.email ?? "",
+                payment_method: info.payment_method,
+                delivery_method: info.delivery_method,
+                miles_to_redeem: redeemedMilesValue,
+                postal_code: info.postal_code,
+                message: info.message,
+                positions: positionsPayload,
+            });
+        } else {
+            setIsSimulating(true);
+            setTimeout(() => {
+                setIsSimulating(false);
+                setShowModal(true);
+                reset();
+            }, 800);
+        }
     };
 
     const renderForm = () => {
@@ -378,8 +384,8 @@ export default function CheckoutPage() {
                         <ArrowRight />
                     </IconButton>
                 ) : (
-                    <SubmitButton onClick={handleSubmitOrder} type="button" disabled={isPending}>
-                        {isPending ? t("Processing...") : t("Order")}
+                    <SubmitButton onClick={handleSubmitOrder} type="button" disabled={isPending || isSimulating}>
+                        {isPending || isSimulating ? t("Processing...") : t("Order")}
                     </SubmitButton>
                 )}
             </Controls>
@@ -389,7 +395,7 @@ export default function CheckoutPage() {
                     <ModalContent onClick={(e) => e.stopPropagation()}>
                         <ModalTitle>{t("Thank you for your purchase! Your order has been successfully placed!")}</ModalTitle>
                         <ModalButtons>
-                            <ModalBtnOutline onClick={() => setShowModal(false)}>{t("Cancel")}</ModalBtnOutline>
+                            <ModalBtnOutline onClick={() => router.push("/basket")}>{t("Cancel")}</ModalBtnOutline>
                             <ModalBtnSolid onClick={() => router.push("/")}>{t("To main page")}</ModalBtnSolid>
                         </ModalButtons>
                     </ModalContent>

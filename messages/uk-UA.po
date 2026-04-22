@@ -349,22 +349,22 @@ msgctxt "basket"
 msgid "OC+dc2"
 msgstr "Попередній перегляд віртуальної печатки:"
 
-#: app/basket/placeorder/page.tsx:105
+#: app/basket/placeorder/page.tsx:106
 msgctxt "checkout"
 msgid "1umnAX"
 msgstr "Персональна інформація"
 
-#: app/basket/placeorder/page.tsx:106
+#: app/basket/placeorder/page.tsx:107
 msgctxt "checkout"
 msgid "hWtRS2"
 msgstr "Доставка та оплата"
 
-#: app/basket/placeorder/page.tsx:107
+#: app/basket/placeorder/page.tsx:108
 msgctxt "checkout"
 msgid "T6Y0Vc"
 msgstr "Адреса доставки"
 
-#: app/basket/placeorder/page.tsx:108
+#: app/basket/placeorder/page.tsx:109
 msgctxt "checkout"
 msgid "4fUKUt"
 msgstr "Додатково"
@@ -374,157 +374,157 @@ msgctxt "checkout"
 msgid "MavFes"
 msgstr "Не вдалося оформити замовлення"
 
-#: app/basket/placeorder/page.tsx:169
+#: app/basket/placeorder/page.tsx:168
 msgctxt "checkout"
 msgid "+vL1KE"
 msgstr "Будь ласка, введіть ваше повне ім'я"
 
-#: app/basket/placeorder/page.tsx:173
+#: app/basket/placeorder/page.tsx:172
 msgctxt "checkout"
 msgid "oLpv29"
 msgstr "Будь ласка, введіть дійсну адресу електронної пошти"
 
-#: app/basket/placeorder/page.tsx:177
+#: app/basket/placeorder/page.tsx:176
 msgctxt "checkout"
 msgid "FPcbu0"
 msgstr "Будь ласка, введіть дійсний номер телефону"
 
-#: app/basket/placeorder/page.tsx:183
+#: app/basket/placeorder/page.tsx:181
 msgctxt "checkout"
 msgid "liNqP5"
 msgstr "Оберіть спосіб доставки та оплати"
 
-#: app/basket/placeorder/page.tsx:189
+#: app/basket/placeorder/page.tsx:186
 msgctxt "checkout"
 msgid "gI54Fe"
 msgstr "Будь ласка, введіть поштовий індекс"
 
-#: app/basket/placeorder/page.tsx:190
+#: app/basket/placeorder/page.tsx:187
 msgctxt "checkout"
 msgid "VqUqOr"
 msgstr "Будь ласка, введіть адресу доставки"
 
-#: app/basket/placeorder/page.tsx:202
+#: app/basket/placeorder/page.tsx:199
 msgctxt "checkout"
 msgid "gZz74a"
 msgstr "Будь ласка, заповніть усі обов'язкові поля"
 
-#: app/basket/placeorder/page.tsx:207
+#: app/basket/placeorder/page.tsx:204
 msgctxt "checkout"
 msgid "Z5bf/3"
 msgstr "Доступно лише {maxMiles} миль для списання"
 
-#: app/basket/placeorder/page.tsx:217
+#: app/basket/placeorder/page.tsx:214
 msgctxt "checkout"
 msgid "SbbhyC"
 msgstr "Кошик порожній"
 
-#: app/basket/placeorder/page.tsx:241
+#: app/basket/placeorder/page.tsx:247
 msgctxt "checkout"
 msgid "TemVby"
 msgstr "Ім'я та прізвище"
 
-#: app/basket/placeorder/page.tsx:245
+#: app/basket/placeorder/page.tsx:251
 msgctxt "checkout"
 msgid "rKrp2B"
 msgstr "Ім'я Прізвище"
 
-#: app/basket/placeorder/page.tsx:261
+#: app/basket/placeorder/page.tsx:267
 msgctxt "checkout"
 msgid "jdJhOL"
 msgstr "Номер телефону"
 
-#: app/basket/placeorder/page.tsx:276
+#: app/basket/placeorder/page.tsx:282
 msgctxt "checkout"
 msgid "PS08kI"
 msgstr "Спосіб доставки"
 
-#: app/basket/placeorder/page.tsx:280
+#: app/basket/placeorder/page.tsx:286
 msgctxt "checkout"
 msgid "wEZZ4Y"
 msgstr "Оберіть спосіб доставки"
 
-#: app/basket/placeorder/page.tsx:282
+#: app/basket/placeorder/page.tsx:288
 msgctxt "checkout"
 msgid "wmjH9T"
 msgstr "Нова Пошта"
 
-#: app/basket/placeorder/page.tsx:283
+#: app/basket/placeorder/page.tsx:289
 msgctxt "checkout"
 msgid "l6jPLg"
 msgstr "Укрпошта"
 
-#: app/basket/placeorder/page.tsx:288
+#: app/basket/placeorder/page.tsx:294
 msgctxt "checkout"
 msgid "BVTni9"
 msgstr "Спосіб оплати"
 
-#: app/basket/placeorder/page.tsx:292
+#: app/basket/placeorder/page.tsx:298
 msgctxt "checkout"
 msgid "CMqDWH"
 msgstr "Оберіть спосіб оплати"
 
-#: app/basket/placeorder/page.tsx:294
+#: app/basket/placeorder/page.tsx:300
 msgctxt "checkout"
 msgid "Dwg5oZ"
 msgstr "Карткою онлайн"
 
-#: app/basket/placeorder/page.tsx:295
+#: app/basket/placeorder/page.tsx:301
 msgctxt "checkout"
 msgid "zHC0Ab"
 msgstr "При отриманні"
 
-#: app/basket/placeorder/page.tsx:305
+#: app/basket/placeorder/page.tsx:311
 msgctxt "checkout"
 msgid "3EnruA"
 msgstr "Поштовий індекс"
 
-#: app/basket/placeorder/page.tsx:315
+#: app/basket/placeorder/page.tsx:321
 msgctxt "checkout"
 msgid "v3tQCl"
 msgstr "Адреса доставки"
 
-#: app/basket/placeorder/page.tsx:319
+#: app/basket/placeorder/page.tsx:325
 msgctxt "checkout"
 msgid "r++Z2O"
 msgstr "№248, б-р Чоколівський, 37"
 
-#: app/basket/placeorder/page.tsx:330
+#: app/basket/placeorder/page.tsx:336
 msgctxt "checkout"
 msgid "Ms9Rg6"
 msgstr "Додаткові нотатки щодо замовлення"
 
-#: app/basket/placeorder/page.tsx:332
+#: app/basket/placeorder/page.tsx:338
 msgctxt "checkout"
 msgid "nfwiHT"
 msgstr "Ваші нотатки"
 
-#: app/basket/placeorder/page.tsx:346
+#: app/basket/placeorder/page.tsx:352
 msgctxt "checkout"
 msgid "wlgbLy"
 msgstr "Оформлення замовлення"
 
-#: app/basket/placeorder/page.tsx:382
+#: app/basket/placeorder/page.tsx:388
 msgctxt "checkout"
 msgid "6OWS4p"
 msgstr "Оформлюємо..."
 
-#: app/basket/placeorder/page.tsx:382
+#: app/basket/placeorder/page.tsx:388
 msgctxt "checkout"
 msgid "XPruqs"
 msgstr "Замовити"
 
-#: app/basket/placeorder/page.tsx:390
+#: app/basket/placeorder/page.tsx:396
 msgctxt "checkout"
 msgid "ZtRzog"
 msgstr "Дякуємо за покупку! Ваше замовлення успішно оформлено!"
 
-#: app/basket/placeorder/page.tsx:392
+#: app/basket/placeorder/page.tsx:398
 msgctxt "checkout"
 msgid "47FYwb"
 msgstr "Відмінити"
 
-#: app/basket/placeorder/page.tsx:393
+#: app/basket/placeorder/page.tsx:399
 msgctxt "checkout"
 msgid "BhEJib"
 msgstr "На головну"

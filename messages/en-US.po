@@ -349,22 +349,22 @@ msgctxt "basket"
 msgid "OC+dc2"
 msgstr "Virtual stamp preview:"
 
-#: app/basket/placeorder/page.tsx:105
+#: app/basket/placeorder/page.tsx:106
 msgctxt "checkout"
 msgid "1umnAX"
 msgstr "Personal Information"
 
-#: app/basket/placeorder/page.tsx:106
+#: app/basket/placeorder/page.tsx:107
 msgctxt "checkout"
 msgid "hWtRS2"
 msgstr "Delivery and Payment"
 
-#: app/basket/placeorder/page.tsx:107
+#: app/basket/placeorder/page.tsx:108
 msgctxt "checkout"
 msgid "T6Y0Vc"
 msgstr "Delivery Address"
 
-#: app/basket/placeorder/page.tsx:108
+#: app/basket/placeorder/page.tsx:109
 msgctxt "checkout"
 msgid "4fUKUt"
 msgstr "Additional"
@@ -374,157 +374,157 @@ msgctxt "checkout"
 msgid "MavFes"
 msgstr "Failed to place order"
 
-#: app/basket/placeorder/page.tsx:169
+#: app/basket/placeorder/page.tsx:168
 msgctxt "checkout"
 msgid "+vL1KE"
 msgstr "Please enter your full name"
 
-#: app/basket/placeorder/page.tsx:173
+#: app/basket/placeorder/page.tsx:172
 msgctxt "checkout"
 msgid "oLpv29"
 msgstr "Please enter a valid email address"
 
-#: app/basket/placeorder/page.tsx:177
+#: app/basket/placeorder/page.tsx:176
 msgctxt "checkout"
 msgid "FPcbu0"
 msgstr "Please enter a valid phone number"
 
-#: app/basket/placeorder/page.tsx:183
+#: app/basket/placeorder/page.tsx:181
 msgctxt "checkout"
 msgid "liNqP5"
 msgstr "Select delivery and payment methods"
 
-#: app/basket/placeorder/page.tsx:189
+#: app/basket/placeorder/page.tsx:186
 msgctxt "checkout"
 msgid "gI54Fe"
 msgstr "Please enter your postal code"
 
-#: app/basket/placeorder/page.tsx:190
+#: app/basket/placeorder/page.tsx:187
 msgctxt "checkout"
 msgid "VqUqOr"
 msgstr "Please enter your delivery address"
 
-#: app/basket/placeorder/page.tsx:202
+#: app/basket/placeorder/page.tsx:199
 msgctxt "checkout"
 msgid "gZz74a"
 msgstr "Please fill in all required fields"
 
-#: app/basket/placeorder/page.tsx:207
+#: app/basket/placeorder/page.tsx:204
 msgctxt "checkout"
 msgid "Z5bf/3"
 msgstr "Only {maxMiles} miles available for redemption"
 
-#: app/basket/placeorder/page.tsx:217
+#: app/basket/placeorder/page.tsx:214
 msgctxt "checkout"
 msgid "SbbhyC"
 msgstr "Cart is empty"
 
-#: app/basket/placeorder/page.tsx:241
+#: app/basket/placeorder/page.tsx:247
 msgctxt "checkout"
 msgid "TemVby"
 msgstr "Full Name"
 
-#: app/basket/placeorder/page.tsx:245
+#: app/basket/placeorder/page.tsx:251
 msgctxt "checkout"
 msgid "rKrp2B"
 msgstr "First Last Name"
 
-#: app/basket/placeorder/page.tsx:261
+#: app/basket/placeorder/page.tsx:267
 msgctxt "checkout"
 msgid "jdJhOL"
 msgstr "Phone number"
 
-#: app/basket/placeorder/page.tsx:276
+#: app/basket/placeorder/page.tsx:282
 msgctxt "checkout"
 msgid "PS08kI"
 msgstr "Delivery method"
 
-#: app/basket/placeorder/page.tsx:280
+#: app/basket/placeorder/page.tsx:286
 msgctxt "checkout"
 msgid "wEZZ4Y"
 msgstr "Choose delivery method"
 
-#: app/basket/placeorder/page.tsx:282
+#: app/basket/placeorder/page.tsx:288
 msgctxt "checkout"
 msgid "wmjH9T"
 msgstr "Nova Poshta"
 
-#: app/basket/placeorder/page.tsx:283
+#: app/basket/placeorder/page.tsx:289
 msgctxt "checkout"
 msgid "l6jPLg"
 msgstr "Ukrposhta"
 
-#: app/basket/placeorder/page.tsx:288
+#: app/basket/placeorder/page.tsx:294
 msgctxt "checkout"
 msgid "BVTni9"
 msgstr "Payment method"
 
-#: app/basket/placeorder/page.tsx:292
+#: app/basket/placeorder/page.tsx:298
 msgctxt "checkout"
 msgid "CMqDWH"
 msgstr "Choose payment method"
 
-#: app/basket/placeorder/page.tsx:294
+#: app/basket/placeorder/page.tsx:300
 msgctxt "checkout"
 msgid "Dwg5oZ"
 msgstr "Card online"
 
-#: app/basket/placeorder/page.tsx:295
+#: app/basket/placeorder/page.tsx:301
 msgctxt "checkout"
 msgid "zHC0Ab"
 msgstr "Cash on delivery"
 
-#: app/basket/placeorder/page.tsx:305
+#: app/basket/placeorder/page.tsx:311
 msgctxt "checkout"
 msgid "3EnruA"
 msgstr "Postal code"
 
-#: app/basket/placeorder/page.tsx:315
+#: app/basket/placeorder/page.tsx:321
 msgctxt "checkout"
 msgid "v3tQCl"
 msgstr "Delivery address"
 
-#: app/basket/placeorder/page.tsx:319
+#: app/basket/placeorder/page.tsx:325
 msgctxt "checkout"
 msgid "r++Z2O"
 msgstr "Address placeholder"
 
-#: app/basket/placeorder/page.tsx:330
+#: app/basket/placeorder/page.tsx:336
 msgctxt "checkout"
 msgid "Ms9Rg6"
 msgstr "Order notes"
 
-#: app/basket/placeorder/page.tsx:332
+#: app/basket/placeorder/page.tsx:338
 msgctxt "checkout"
 msgid "nfwiHT"
 msgstr "Your notes"
 
-#: app/basket/placeorder/page.tsx:346
+#: app/basket/placeorder/page.tsx:352
 msgctxt "checkout"
 msgid "wlgbLy"
 msgstr "Checkout title"
 
-#: app/basket/placeorder/page.tsx:382
+#: app/basket/placeorder/page.tsx:388
 msgctxt "checkout"
 msgid "6OWS4p"
 msgstr "Processing..."
 
-#: app/basket/placeorder/page.tsx:382
+#: app/basket/placeorder/page.tsx:388
 msgctxt "checkout"
 msgid "XPruqs"
 msgstr "Order"
 
-#: app/basket/placeorder/page.tsx:390
+#: app/basket/placeorder/page.tsx:396
 msgctxt "checkout"
 msgid "ZtRzog"
 msgstr "Thank you for your purchase! Your order has been successfully placed!"
 
-#: app/basket/placeorder/page.tsx:392
+#: app/basket/placeorder/page.tsx:398
 msgctxt "checkout"
 msgid "47FYwb"
 msgstr "Cancel"
 
-#: app/basket/placeorder/page.tsx:393
+#: app/basket/placeorder/page.tsx:399
 msgctxt "checkout"
 msgid "BhEJib"
 msgstr "To main page"
