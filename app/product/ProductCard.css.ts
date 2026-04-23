@@ -57,6 +57,10 @@ export const MainImage = styled.div`
   align-items: center;
   background: #ffffff;
 
+  & img {
+    object-fit: contain;
+  }
+
   @media (max-width: 990px) {
     max-height: 450px;
     padding: 30px;

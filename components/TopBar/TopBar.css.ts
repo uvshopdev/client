@@ -28,7 +28,6 @@ export const Bar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  }
 `;
 
 export const Left = styled.div`
@@ -38,7 +37,7 @@ export const Left = styled.div`
 
   & button {
     background: ${({ theme }) => theme.colors.primary};
-    color: #ffffff;
+    color: #fff;
     border: none;
     
     display: flex;
@@ -50,6 +49,7 @@ export const Left = styled.div`
     border-radius: 10px;
     cursor: pointer;
     transition: opacity 0.2s;
+
 
     &:hover {
       opacity: 0.9;

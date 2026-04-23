@@ -4,126 +4,125 @@ import { useQuery } from "@tanstack/react-query";
 import { X } from "lucide-react";
 import { useExtracted } from "next-intl";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { getReferrals } from "@/lib/referrals";
 import { getProfile } from "@/lib/user";
 import {
-    Content,
-    CopyButton,
-    Header,
-    HeaderInfo,
-    InviteButton,
-    Item,
-    Items,
-    LinkContainer,
-    LinkInput,
-    ModalBox,
-    ModalClose,
-    ModalOverlay,
-    ModalTitle,
+	Content,
+	CopyButton,
+	Header,
+	HeaderInfo,
+	InviteButton,
+	Item,
+	Items,
+	LinkContainer,
+	LinkInput,
+	ModalBox,
+	ModalClose,
+	ModalOverlay,
+	ModalTitle,
 } from "./page.css";
 
 const FriendsPage = () => {
-    const t = useExtracted("profile");
+	const t = useExtracted("profile");
 
-    const { data: apiReferrals, isSuccess } = useQuery({
-        queryKey: ["friends"],
-        queryFn: async () => await getReferrals(),
-    });
-    const { data: profile } = useQuery({
-        queryKey: ["profile"],
-        queryFn: async () => await getProfile(),
-    });
+	const { data: apiReferrals, isSuccess } = useQuery({
+		queryKey: ["friends"],
+		queryFn: async () => await getReferrals(),
+	});
+	const { data: profile } = useQuery({
+		queryKey: ["profile"],
+		queryFn: async () => await getProfile(),
+	});
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isCopied, setIsCopied] = useState(false);
-    const [origin, setOrigin] = useState("");
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isCopied, setIsCopied] = useState(false);
+	const [origin, setOrigin] = useState("");
 
-    useEffect(() => {
-        setOrigin(window.location.origin);
-    }, []);
+	useEffect(() => {
+		setOrigin(window.location.origin);
+	}, []);
 
-    useEffect(() => {
-        if (isModalOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "unset";
-        }
+	useEffect(() => {
+		if (isModalOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "unset";
+		}
 
-        return () => {
-            document.body.style.overflow = "unset";
-        };
-    }, [isModalOpen]);
+		return () => {
+			document.body.style.overflow = "unset";
+		};
+	}, [isModalOpen]);
 
-    const referralLink = profile?.id ? `${origin}/auth?state=%2Fprofile&inviter=${profile.id}` : "";
+	const referralLink = profile?.id ? `${origin}/auth?state=%2Fprofile&inviter=${profile.id}` : "";
 
-    const handleCopy = () => {
-        navigator.clipboard.writeText(referralLink);
-        setIsCopied(true);
-        setTimeout(() => setIsCopied(false), 2000);
-    };
+	const handleCopy = () => {
+		navigator.clipboard.writeText(referralLink);
+		setIsCopied(true);
+		setTimeout(() => setIsCopied(false), 2000);
+	};
 
-    const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (e.target === e.currentTarget) {
-            setIsModalOpen(false);
-        }
-    };
+	const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+		if (e.target === e.currentTarget) {
+			setIsModalOpen(false);
+		}
+	};
 
-    return (
-        <Content>
-            <Header>
-                <HeaderInfo>
-                    <div className="info">{t("Invite friends and get bonuses!")}</div>
-                    <div>{t("Get +50 miles and coffee after your friend makes their first purchase for an amount of 150 UAH or more.")}</div>
-                </HeaderInfo>
+	return (
+		<Content>
+			<Header>
+				<HeaderInfo>
+					<div className="info">{t("Invite friends and get bonuses!")}</div>
+					<div>{t("Get +50 miles and coffee after your friend makes their first purchase for an amount of 150 UAH or more.")}</div>
+				</HeaderInfo>
 
-                <InviteButton onClick={() => setIsModalOpen(true)} type="button">
-                    {t("Invite")}
-                </InviteButton>
-            </Header>
+				<InviteButton onClick={() => setIsModalOpen(true)} type="button">
+					{t("Invite")}
+				</InviteButton>
+			</Header>
 
-            <Items>
-                {isSuccess && apiReferrals?.map((r) => (
-                    <Item key={r.id}>
-                        <div className="image">
-                            <Image
-                                src={r.picture ? `${process.env.NEXT_PUBLIC_FILES_URL}/${r.picture}` : "/logo.png"}
-                                width={34}
-                                height={34}
-                                alt={r.full_name || ""}
-                                unoptimized={true}
-                                style={{ objectFit: 'cover' }}
-                            />
-                        </div>
-                        <div>{r.full_name}</div>
-                        <div className="status">
-                            {t("Waiting for the first purchase")}
-                        </div>
-                    </Item>
-                ))}
-            </Items>
+			<Items>
+				{isSuccess &&
+					apiReferrals?.map((r) => (
+						<Item key={r.id}>
+							<div className="image">
+								<Image
+									src={r.picture ? `${process.env.NEXT_PUBLIC_FILES_URL}/${r.picture}` : "/logo.webp"}
+									width={34}
+									height={34}
+									alt={r.full_name || ""}
+									unoptimized={true}
+									style={{ objectFit: "cover" }}
+								/>
+							</div>
+							<div>{r.full_name}</div>
+							<div className="status">{t("Waiting for the first purchase")}</div>
+						</Item>
+					))}
+			</Items>
 
-            {isModalOpen && (
-                <ModalOverlay onClick={handleOverlayClick}>
-                    <ModalBox onClick={(e) => e.stopPropagation()}>
-                        <ModalClose onClick={() => setIsModalOpen(false)} type="button">
-                            <X size={28} />
-                        </ModalClose>
+			{isModalOpen && (
+				<ModalOverlay onClick={handleOverlayClick}>
+					<ModalBox onClick={(e) => e.stopPropagation()}>
+						<ModalClose onClick={() => setIsModalOpen(false)} type="button">
+							<X size={28} />
+						</ModalClose>
 
-                        <ModalTitle>{t("Invitation link")}</ModalTitle>
+						<ModalTitle>{t("Invitation link")}</ModalTitle>
 
-                        <LinkContainer>
-                            <LinkInput type="text" value={referralLink} readOnly />
-                            <CopyButton onClick={handleCopy} type="button">
-                                {isCopied ? t("Copied") : t("Copy")}
-                            </CopyButton>
-                        </LinkContainer>
-                    </ModalBox>
-                </ModalOverlay>
-            )}
-        </Content>
-    );
+						<LinkContainer>
+							<LinkInput type="text" value={referralLink} readOnly />
+							<CopyButton onClick={handleCopy} type="button">
+								{isCopied ? t("Copied") : t("Copy")}
+							</CopyButton>
+						</LinkContainer>
+					</ModalBox>
+				</ModalOverlay>
+			)}
+		</Content>
+	);
 };
 
 export default FriendsPage;

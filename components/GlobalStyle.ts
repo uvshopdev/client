@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
 	body {
 		width: 100%;
 		min-height: 100dvh;
+		color: ${({ theme }) => theme.colors.primary}
 	}
 
 	input,button {

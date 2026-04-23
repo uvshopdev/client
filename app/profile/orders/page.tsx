@@ -3,8 +3,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import { useExtracted } from "next-intl";
-import { useState } from "react";
 import Link from "next/link";
+import { useState } from "react";
 
 import { getOrders } from "@/lib/orders";
 import {
@@ -60,7 +60,7 @@ const getStatusIndex = (status: string) => {
 
 const getProductImageUrl = (id: number, picture: string | null) => {
 	if (!picture) {
-		return "/logo.png";
+		return "/logo.webp";
 	}
 
 	return `${process.env.NEXT_PUBLIC_FILES_URL}/products/${id}/large/${picture}.webp`;
@@ -86,22 +86,22 @@ export default function OrderHistoryPage() {
 	};
 
 	if (isLoading) {
-        return (
-            <PageWrapper>
-                <PageTitle>{t("My orders")}</PageTitle>
-                <EmptyState>{t("Loading orders...")}</EmptyState>
-            </PageWrapper>
-        );
-    }
+		return (
+			<PageWrapper>
+				<PageTitle>{t("My orders")}</PageTitle>
+				<EmptyState>{t("Loading orders...")}</EmptyState>
+			</PageWrapper>
+		);
+	}
 
-    if (isError) {
-        return (
-            <PageWrapper>
-                <PageTitle>{t("My orders")}</PageTitle>
-                <EmptyState>{t("Failed to load orders. Please try again later.")}</EmptyState>
-            </PageWrapper>
-        );
-    }
+	if (isError) {
+		return (
+			<PageWrapper>
+				<PageTitle>{t("My orders")}</PageTitle>
+				<EmptyState>{t("Failed to load orders. Please try again later.")}</EmptyState>
+			</PageWrapper>
+		);
+	}
 
 	return (
 		<PageWrapper>
@@ -119,8 +119,13 @@ export default function OrderHistoryPage() {
 						<OrderCard key={order.id}>
 							<OrderTop onClick={() => toggleOrder(order.id)}>
 								<OrderHeader>
-									<OrderNumber>{t("Order №")}{order.id}</OrderNumber>
-									<OrderDate>{t("Order date:")} {formatDate(order.inserted_at ?? order.updated_at ?? "")}</OrderDate>
+									<OrderNumber>
+										{t("Order №")}
+										{order.id}
+									</OrderNumber>
+									<OrderDate>
+										{t("Order date:")} {formatDate(order.inserted_at ?? order.updated_at ?? "")}
+									</OrderDate>
 								</OrderHeader>
 
 								<CollapseIcon>
@@ -156,33 +161,39 @@ export default function OrderHistoryPage() {
 								</TimelineWrapper>
 
 								<ProductList>
-                                    {order.positions.map(({ amount, product }) => {
-                                        const href = product.category?.id 
-                                            ? `/product/${product.id}?category_id=${product.category.id}` 
-                                            : `/product/${product.id}`;
+									{order.positions.map(({ amount, product }) => {
+										const href = product.category?.id
+											? `/product/${product.id}?category_id=${product.category.id}`
+											: `/product/${product.id}`;
 
-                                        return (
-                                            <ProductRow 
-                                                key={product.id}
-                                                as={Link} 
-                                                href={href} 
-                                                style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
-                                            >
-                                                <ProductImage src={getProductImageUrl(product.id, product.picture)} alt={product.name} />
+										return (
+											<ProductRow
+												key={product.id}
+												as={Link}
+												href={href}
+												style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
+											>
+												<ProductImage src={getProductImageUrl(product.id, product.picture)} alt={product.name} />
 
-                                                <ProductInfo>
-                                                    <ProductName>{product.name}</ProductName>
-                                                    <ProductMeta>{t("Article:")} {product.article}</ProductMeta>
-                                                </ProductInfo>
+												<ProductInfo>
+													<ProductName>{product.name}</ProductName>
+													<ProductMeta>
+														{t("Article:")} {product.article}
+													</ProductMeta>
+												</ProductInfo>
 
-                                                <ProductPriceBlock>
-                                                    <ProductPrice>{formatter.format(product.price)} {t("UAH")}</ProductPrice>
-                                                    <ProductQty>x{amount} {t("pcs")}</ProductQty>
-                                                </ProductPriceBlock>
-                                            </ProductRow>
-                                        );
-                                    })}
-                                </ProductList>
+												<ProductPriceBlock>
+													<ProductPrice>
+														{formatter.format(product.price)} {t("UAH")}
+													</ProductPrice>
+													<ProductQty>
+														x{amount} {t("pcs")}
+													</ProductQty>
+												</ProductPriceBlock>
+											</ProductRow>
+										);
+									})}
+								</ProductList>
 							</DetailsPanel>
 						</OrderCard>
 					);

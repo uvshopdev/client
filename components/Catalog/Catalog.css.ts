@@ -1,6 +1,8 @@
 import Link from "next/link";
 import styled from "styled-components";
 
+import theme from "../theme";
+
 export const Content = styled.div<{ $active?: boolean }>`
     position: fixed;
     left: 15px;
@@ -31,7 +33,7 @@ export const ContentWrapper = styled.div`
     
     padding: 15px 30px;
     border-radius: 10px;
-    border: 1px solid ${({ theme }) => theme.colors.secondary};
+    border: 1px solid ${theme.colors.secondary};
     background: #ffffff;
 
     overflow: hidden;
@@ -54,7 +56,7 @@ export const Categories = styled.ul`
     grid-auto-rows: 40px;
     
     overflow-y: auto;
-    border: 1px solid ${({ theme }) => theme.colors.secondary};
+    border: 1px solid ${theme.colors.secondary};
     border-radius: 10px;
 
     margin: 0;
@@ -87,7 +89,7 @@ export const Categories = styled.ul`
             background: transparent;
         }
         &::-webkit-scrollbar-thumb {
-            background: ${({ theme }) => theme.colors.secondary};
+            background: ${theme.colors.secondary};
             border-radius: 10px;
         }
     }
@@ -104,7 +106,7 @@ export const Category = styled.li<{ $active?: boolean }>`
         height: 100%;
         border-radius: 0;
 
-        background: ${(params) => (params.$active ? params.theme.colors.primary : "unset")};
+        background: ${(params) => (params.$active ? theme.colors.primary : "unset")};
         border: none;
         color: ${(params) => (params.$active ? "#ffffff" : "unset")};
         white-space: normal;
@@ -113,7 +115,7 @@ export const Category = styled.li<{ $active?: boolean }>`
     }
 
     &:hover button {
-        background: ${(props) => props.theme.colors.primary};
+        background: ${theme.colors.primary};
         color: #ffffff;
     }
 
@@ -123,7 +125,7 @@ export const Category = styled.li<{ $active?: boolean }>`
         
         button {
             border-radius: 20px;
-            border: 1px solid ${({ theme, $active }) => ($active ? theme.colors.primary : theme.colors.secondary)};
+            border: 1px solid ${({ $active }) => ($active ? theme.colors.primary : theme.colors.secondary)};
             padding: 8px 16px;
             
             white-space: nowrap; 
@@ -163,10 +165,10 @@ export const SubCategory = styled(Link)<{ $active?: boolean }>`
     text-align: center;
 
     color: ${(params) => (params.$active ? "#ffffff" : "unset")};
-    background: ${({ $active, theme }) => ($active ? theme.colors.primary : "unset")};
+    background: ${({ $active }) => ($active ? theme.colors.primary : "unset")};
 
     border-radius: 10px;
-    border: 1px solid ${({ $active, theme }) => ($active ? "none" : theme.colors.secondary)};
+    border: 1px solid ${({ $active }) => ($active ? "none" : theme.colors.secondary)};
     transition: 0.2s;
 
     & img {
@@ -178,7 +180,7 @@ export const SubCategory = styled(Link)<{ $active?: boolean }>`
     }
     
     &:hover {
-        background: ${(props) => props.theme.colors.primary};
+        background: ${theme.colors.primary};
         color: #ffffff;
     }
 

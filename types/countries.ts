@@ -6,6 +6,8 @@ export const Country = z.object({
 	picture: z.string(),
 });
 
+export type CountryType = z.infer<typeof Country>;
+
 export const Countries = z.array(Country);
 export const CountriesData = z.object({
 	countries: Countries,

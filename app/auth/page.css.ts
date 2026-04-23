@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import theme from "@/components/theme";
 
 export const Content = styled.div`
@@ -13,7 +14,7 @@ export const Content = styled.div`
     
     background-image: 
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('/auth_background.png');
+        url('/auth_background.webp');
     background-size: cover;
     
     background-position: center bottom; 

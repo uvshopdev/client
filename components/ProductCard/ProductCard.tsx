@@ -5,6 +5,7 @@ import { Heart, ShoppingBasket } from "lucide-react";
 import { useExtracted } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 import { toast } from "sonner";
 
 import { addFavorite, removeFavorite } from "@/lib/favorites";
@@ -67,12 +68,12 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 						<Image
 							src={
 								product.picture
-									? `${process.env.NEXT_PUBLIC_FILES_URL}/products/${product.id}/large/${product.picture}.webp`
-									: "/logo.png"
+									? `${process.env.NEXT_PUBLIC_FILES_URL}/products/${product.id}/large/${product.picture}`
+									: "/logo.webp"
 							}
 							alt={product.name}
 							fill
-							loading="eager"
+							loading="lazy"
 							unoptimized
 						/>
 					</ProductImage>
@@ -93,7 +94,9 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 
 				<Buttons>
 					<div>
-						<ProductPrice>{product.price} {t("UAH")}</ProductPrice>
+						<ProductPrice>
+							{product.price} {t("UAH")}
+						</ProductPrice>
 					</div>
 					<Actions>
 						<FavoriteButton
@@ -123,4 +126,4 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 	);
 };
 
-export default ProductCard;
+export default React.memo(ProductCard);

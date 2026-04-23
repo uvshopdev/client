@@ -2,28 +2,23 @@
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { useCategories, useModals } from "@/store";
+import { useModals } from "@/store";
+import type { CategoryType } from "@/types/categories";
 import { Categories, Category, Content, ContentWrapper, SubCategories, SubCategory } from "./Catalog.css";
 
-const Catalog = () => {
+const Catalog = ({ categories }: { categories: CategoryType[] }) => {
+	const [activePath, setActivePath] = useState("1");
 	const pathname = usePathname();
 	const catalogRef = useRef<HTMLDivElement>(null);
 
-	const { categories, categoriesSet, active, setActive, activeSubCategories } = useCategories();
 	const { catalog, setCatalog } = useModals();
 
 	useEffect(() => {
 		if (!pathname) return;
 		setCatalog(false);
 	}, [pathname, setCatalog]);
-
-	useEffect(() => {
-		const activeCategoryId = Number(pathname.split("/").at(-1));
-		const activeCategory = activeCategoryId ? categoriesSet[activeCategoryId] : null;
-		if (activeCategory) setActive(activeCategory.category_id ?? activeCategory.id);
-	}, [pathname, categoriesSet, setActive]);
 
 	useEffect(() => {
 		if (!catalog) return;
@@ -49,27 +44,29 @@ const Catalog = () => {
 			<ContentWrapper>
 				<Categories>
 					{categories
-						.filter((c) => !c.category_id)
+						.filter((c) => !c.path.includes("."))
 						.map((category) => (
-							<Category key={category.id} $active={active === category.id}>
-								<button type="button" onClick={() => setActive(category.id)}>
+							<Category key={category.id} $active={category.path === activePath}>
+								<button type="button" onClick={() => setActivePath(category.path)}>
 									{category.name}
 								</button>
 							</Category>
 						))}
 				</Categories>
 				<SubCategories>
-					{activeSubCategories.map((category) => (
-						<SubCategory
-							key={category.id}
-							prefetch
-							href={`/${category.id}`}
-							$active={pathname === `/${category.id}`}
-						>
-							<Image src="/map.webp" width={80} height={80} unoptimized alt="" />
-							{category.name}
-						</SubCategory>
-					))}
+					{categories
+						.filter((c) => c.path.startsWith(`${activePath}.`))
+						.map((category) => (
+							<SubCategory
+								key={category.id}
+								prefetch
+								href={`/${category.id}`}
+								$active={pathname.slice(1) === String(category.id)}
+							>
+								<Image src="/map.webp" width={80} height={80} unoptimized alt="" />
+								{category.name}
+							</SubCategory>
+						))}
 				</SubCategories>
 			</ContentWrapper>
 		</Content>

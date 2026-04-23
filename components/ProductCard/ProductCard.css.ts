@@ -134,7 +134,7 @@ export const FavoriteButton = styled.button<{ $favorite?: boolean }>`
 
 	text-decoration: none;
 	transition: all 0.3s ease;
-	& svg {
+	& * {
 		color: ${({ $favorite }) => ($favorite ? "#e53935" : "#bdbdbd")};
 		fill: ${({ $favorite }) => ($favorite ? "#e53935" : "#bdbdbd")};
 	}
@@ -156,6 +156,8 @@ export const CartButton = styled.button`
 	border: none;
 	border-radius: 12px;
 	background: ${({ theme }) => theme.colors.primary};
-	color: #ffffff;
+	& * {
+		color: #ffffff;
+	}
 	cursor: pointer;
 `;

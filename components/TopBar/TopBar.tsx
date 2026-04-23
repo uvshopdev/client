@@ -45,19 +45,19 @@ const TopBar = () => {
 	}, []);
 
 	const handleLogoClick = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-    };
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
+	};
 
 	return (
 		<Content>
 			<Bar>
 				<Left>
 					<Logo href="/" aria-label={t("Shop")} onClick={handleLogoClick}>
-                        <Image src="/logo.png" width={40} height={40} alt="" priority />
-                    </Logo>
+						<Image src="/logo.webp" width={40} height={40} alt="" priority />
+					</Logo>
 					<button type="button" data-catalog-toggle="true" onClick={() => setCatalog(!catalog)}>
 						<LayoutGrid size={20} strokeWidth={1} absoluteStrokeWidth />
 						<span>{t("Catalog")}</span>

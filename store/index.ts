@@ -1,3 +1,3 @@
-export { useCategories, type Category } from "./categories";
-export { useCountries, type Country } from "./countries";
+export { useCategories } from "./categories";
+export { useCountries } from "./countries";
 export { useModals } from "./modals";

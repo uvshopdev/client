@@ -1,16 +1,12 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
-export interface Country {
-	id: number;
-	name: string;
-	picture: string | null;
-}
+import type { CountryType } from "@/types/countries";
 
 interface CountriesStore {
-	countries: Country[];
+	countries: CountryType[];
 
-	setCountries: (country: Country[]) => void;
+	setCountries: (country: CountryType[]) => void;
 }
 
 export const useCountries = create<CountriesStore>()(

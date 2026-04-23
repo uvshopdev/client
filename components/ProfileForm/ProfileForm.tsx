@@ -6,9 +6,9 @@ import { useExtracted } from "next-intl";
 import Image from "next/image";
 import { useRef } from "react";
 
+import { AvatarOverlay, AvatarSection, Form, FormLabel, FormSection, ImageContainer, PhotoFrameOverlay } from "./ProfileForm.css";
 // Обязательно импортируем новые стили ImageContainer и PhotoFrameOverlay
 import { getProfile, updateProfile } from "@/lib/user";
-import { AvatarOverlay, AvatarSection, Form, FormLabel, FormSection, ImageContainer, PhotoFrameOverlay } from "./ProfileForm.css";
 
 const ProfileForm = () => {
 	const t = useExtracted("profile");
@@ -47,7 +47,7 @@ const ProfileForm = () => {
 				{/* 2. Контейнер самой фотки (меньше по размеру и идеально круглый) */}
 				<ImageContainer>
 					<Image
-						src={data?.picture ? `${process.env.NEXT_PUBLIC_FILES_URL}/${data.picture}` : "/logo.png"}
+						src={data?.picture ? `${process.env.NEXT_PUBLIC_FILES_URL}/${data.picture}` : "/logo.webp"}
 						fill
 						style={{ objectFit: "cover" }}
 						alt={t("Avatar")}

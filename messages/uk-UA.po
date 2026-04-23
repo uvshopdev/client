@@ -6,97 +6,6 @@ msgstr ""
 "X-Generator: next-intl\n"
 "X-Crowdin-SourceKey: msgstr\n"
 
-#: app/[category_id]/page.tsx:83
-msgctxt "catalog"
-msgid "Iuupx9"
-msgstr "Скасувати вибір"
-
-#: app/[category_id]/page.tsx:119
-msgctxt "catalog"
-msgid "ED7X19"
-msgstr "Є в наявності"
-
-#: app/[category_id]/page.tsx:120
-msgctxt "catalog"
-msgid "WHgdsk"
-msgstr "Немає в наявності"
-
-#: app/[category_id]/page.tsx:191
-msgctxt "catalog"
-msgid "Uwg9pO"
-msgstr "Категорія не знайдена"
-
-#: app/[category_id]/page.tsx:195
-msgctxt "catalog"
-msgid "9Obw6C"
-msgstr "Фільтр"
-
-#: app/[category_id]/page.tsx:199
-msgctxt "catalog"
-msgid "GbhlqN"
-msgstr "Сортування"
-
-#: app/[category_id]/page.tsx:222
-msgctxt "catalog"
-msgid "Xd4bTS"
-msgstr "Відфільтрувати товари"
-
-#: app/[category_id]/page.tsx:229
-msgctxt "catalog"
-msgid "hOxIeP"
-msgstr "Наявність"
-
-#: app/[category_id]/page.tsx:239
-msgctxt "catalog"
-msgid "vONi+O"
-msgstr "Країна виробник"
-
-#: app/[category_id]/page.tsx:244
-msgctxt "catalog"
-msgid "+kMQfn"
-msgstr "Діапазон цін"
-
-#: app/[category_id]/page.tsx:247
-msgctxt "catalog"
-msgid "dM+p3/"
-msgstr "Від"
-
-#: app/[category_id]/page.tsx:262
-msgctxt "catalog"
-msgid "9j3hXO"
-msgstr "До"
-
-#: app/[category_id]/page.tsx:279
-#: app/[category_id]/page.tsx:341
-msgctxt "catalog"
-msgid "EWw/tK"
-msgstr "Застосувати"
-
-#: app/[category_id]/page.tsx:288
-msgctxt "catalog"
-msgid "YWyEpK"
-msgstr "Відсортувати товари"
-
-#: app/[category_id]/page.tsx:303
-msgctxt "catalog"
-msgid "nrQy8m"
-msgstr "Спочатку найдешевші"
-
-#: app/[category_id]/page.tsx:313
-msgctxt "catalog"
-msgid "v8lup3"
-msgstr "Спочатку найдорожчі"
-
-#: app/[category_id]/page.tsx:326
-msgctxt "catalog"
-msgid "TgnUST"
-msgstr "Від А до Я"
-
-#: app/[category_id]/page.tsx:336
-msgctxt "catalog"
-msgid "8ZCpOJ"
-msgstr "Від Я до А"
-
 #: app/auth/page.tsx:44
 #: app/auth/page.tsx:50
 msgctxt "auth"
@@ -129,42 +38,42 @@ msgctxt "auth"
 msgid "x2R8CB"
 msgstr "Невірний код"
 
-#: app/auth/page.tsx:118
+#: app/auth/page.tsx:114
 msgctxt "auth"
 msgid "i/AQd8"
 msgstr "Введіть дані для входу"
 
-#: app/auth/page.tsx:119
+#: app/auth/page.tsx:115
 msgctxt "auth"
 msgid "rHuIz2"
 msgstr "Увійдіть за допомогою email або облікового запису Google"
 
-#: app/auth/page.tsx:124
+#: app/auth/page.tsx:120
 msgctxt "auth"
 msgid "FJ6r9E"
 msgstr "Продовжити з Google"
 
-#: app/auth/page.tsx:128
+#: app/auth/page.tsx:124
 msgctxt "auth"
 msgid "Ntjkqd"
 msgstr "або"
 
-#: app/auth/page.tsx:133
+#: app/auth/page.tsx:129
 msgctxt "auth"
 msgid "sy+pv5"
 msgstr "Email"
 
-#: app/auth/page.tsx:137
+#: app/auth/page.tsx:131
 msgctxt "auth"
 msgid "9WRlF4"
 msgstr "Надіслати"
 
-#: app/auth/page.tsx:165
+#: app/auth/page.tsx:155
 msgctxt "auth"
 msgid "h2vipu"
 msgstr "Код"
 
-#: app/auth/page.tsx:176
+#: app/auth/page.tsx:161
 msgctxt "auth"
 msgid "odXlk8"
 msgstr "Увійти"
@@ -184,457 +93,377 @@ msgctxt "basket"
 msgid "qVGRIE"
 msgstr "Кількість"
 
-#: app/basket/page.tsx:153
-#: app/basket/page.tsx:249
+#: app/basket/page.tsx:155
 #: app/basket/page.tsx:253
-#: app/basket/page.tsx:257
-#: app/basket/page.tsx:261
+#: app/basket/page.tsx:258
+#: app/basket/page.tsx:263
+#: app/basket/page.tsx:269
 msgctxt "basket"
 msgid "oPsj1A"
 msgstr "грн"
 
-#: app/basket/page.tsx:161
+#: app/basket/page.tsx:164
 msgctxt "basket"
 msgid "iL0n4U"
 msgstr "Зменшити кількість"
 
-#: app/basket/page.tsx:169
+#: app/basket/page.tsx:172
 msgctxt "basket"
 msgid "3ZPs5M"
 msgstr "Збільшити кількість"
 
-#: app/basket/page.tsx:174
+#: app/basket/page.tsx:177
 msgctxt "basket"
 msgid "LKD6fB"
 msgstr "Видалити товар"
 
-#: app/basket/page.tsx:185
+#: app/basket/page.tsx:188
 msgctxt "basket"
 msgid "Kz9Jx1"
 msgstr "Скористатись промокодом"
 
-#: app/basket/page.tsx:189
+#: app/basket/page.tsx:192
 msgctxt "basket"
 msgid "SGdcJD"
 msgstr "Введіть код"
 
-#: app/basket/page.tsx:195
+#: app/basket/page.tsx:198
 msgctxt "basket"
 msgid "7TUyZ1"
 msgstr "Застосовано"
 
-#: app/basket/page.tsx:195
+#: app/basket/page.tsx:198
 msgctxt "basket"
 msgid "2/2yg+"
 msgstr "Додати"
 
-#: app/basket/page.tsx:202
+#: app/basket/page.tsx:205
 msgctxt "basket"
 msgid "rMCKlP"
 msgstr "Списати милі"
 
-#: app/basket/page.tsx:204
+#: app/basket/page.tsx:207
 msgctxt "basket"
 msgid "78Q9zc"
 msgstr "Доступно:"
 
-#: app/basket/page.tsx:214
+#: app/basket/page.tsx:217
 msgctxt "basket"
 msgid "GzO/8N"
 msgstr "Зменшити милі"
 
-#: app/basket/page.tsx:223
+#: app/basket/page.tsx:226
 msgctxt "basket"
 msgid "IQER3s"
 msgstr "Збільшити милі"
 
-#: app/basket/page.tsx:228
+#: app/basket/page.tsx:231
 msgctxt "basket"
 msgid "7F9ktq"
 msgstr "Скинути милі"
 
-#: app/basket/page.tsx:238
+#: app/basket/page.tsx:241
 msgctxt "basket"
 msgid "fiKzU5"
 msgstr "Загальна сума замовлення вказана без урахування доставки"
 
-#: app/basket/page.tsx:246
+#: app/basket/page.tsx:249
 msgctxt "basket"
 msgid "SLMRDd"
 msgstr "Чек замовлення"
 
-#: app/basket/page.tsx:248
+#: app/basket/page.tsx:251
 msgctxt "basket"
 msgid "SRLCr6"
 msgstr "Сума замовлення:"
 
-#: app/basket/page.tsx:252
+#: app/basket/page.tsx:257
 msgctxt "basket"
 msgid "KWRMF1"
 msgstr "Промокод:"
 
-#: app/basket/page.tsx:256
+#: app/basket/page.tsx:261
 msgctxt "basket"
 msgid "FcNH02"
 msgstr "Списання миль:"
 
-#: app/basket/page.tsx:260
-#: app/basket/page.tsx:289
+#: app/basket/page.tsx:267
+#: app/basket/page.tsx:298
 msgctxt "basket"
 msgid "q4EmsW"
 msgstr "Загалом:"
 
-#: app/basket/page.tsx:268
+#: app/basket/page.tsx:277
 msgctxt "basket"
 msgid "SbbhyC"
 msgstr "Кошик порожній"
 
-#: app/basket/page.tsx:274
+#: app/basket/page.tsx:283
 msgctxt "basket"
 msgid "BJ2TKX"
 msgstr "Оформити замовлення"
 
-#: app/basket/page.tsx:279
+#: app/basket/page.tsx:288
 msgctxt "basket"
 msgid "zAWRbe"
 msgstr "Нарахування миль"
 
-#: app/basket/page.tsx:281
+#: app/basket/page.tsx:290
 msgctxt "basket"
 msgid "n/l1Jq"
 msgstr "З чеку замовлення:"
 
-#: app/basket/page.tsx:285
+#: app/basket/page.tsx:294
 msgctxt "basket"
 msgid "6uJl8g"
 msgstr "Відкриття нових країн:"
 
-#: app/basket/page.tsx:290
+#: app/basket/page.tsx:300
 msgctxt "basket"
 msgid "VrD1rq"
 msgstr "миль"
 
-#: app/basket/page.tsx:295
+#: app/basket/page.tsx:306
 msgctxt "basket"
 msgid "Wtm55s"
 msgstr "Нові країни"
 
-#: app/basket/page.tsx:303
+#: app/basket/page.tsx:314
 msgctxt "basket"
 msgid "0f8tYR"
 msgstr "Попередній перегляд країни"
 
-#: app/basket/page.tsx:310
+#: app/basket/page.tsx:321
 msgctxt "basket"
 msgid "8Np1vL"
 msgstr "Доступний попередній перегляд віртуальних печаток"
 
-#: app/basket/page.tsx:315
+#: app/basket/page.tsx:326
 msgctxt "basket"
 msgid "5O+rYU"
 msgstr "Печатки та милі нараховуються лише після фактичного отримання замовлення"
 
-#: app/basket/page.tsx:322
+#: app/basket/page.tsx:333
 msgctxt "basket"
 msgid "K/unOm"
 msgstr "Ваш кошик"
 
-#: app/basket/page.tsx:332
+#: app/basket/page.tsx:343
 msgctxt "basket"
 msgid "sNwsMv"
 msgstr "Закрити модальне вікно"
 
-#: app/basket/page.tsx:336
+#: app/basket/page.tsx:347
 msgctxt "basket"
 msgid "OC+dc2"
 msgstr "Попередній перегляд віртуальної печатки:"
 
-#: app/basket/placeorder/page.tsx:106
+#: app/basket/placeorder/page.tsx:105
 msgctxt "checkout"
 msgid "1umnAX"
 msgstr "Персональна інформація"
 
-#: app/basket/placeorder/page.tsx:107
+#: app/basket/placeorder/page.tsx:105
 msgctxt "checkout"
 msgid "hWtRS2"
 msgstr "Доставка та оплата"
 
-#: app/basket/placeorder/page.tsx:108
+#: app/basket/placeorder/page.tsx:105
 msgctxt "checkout"
 msgid "T6Y0Vc"
 msgstr "Адреса доставки"
 
-#: app/basket/placeorder/page.tsx:109
+#: app/basket/placeorder/page.tsx:105
 msgctxt "checkout"
 msgid "4fUKUt"
 msgstr "Додатково"
 
-#: app/basket/placeorder/page.tsx:162
+#: app/basket/placeorder/page.tsx:157
 msgctxt "checkout"
 msgid "MavFes"
 msgstr "Не вдалося оформити замовлення"
 
-#: app/basket/placeorder/page.tsx:168
+#: app/basket/placeorder/page.tsx:163
 msgctxt "checkout"
 msgid "+vL1KE"
 msgstr "Будь ласка, введіть ваше повне ім'я"
 
-#: app/basket/placeorder/page.tsx:172
+#: app/basket/placeorder/page.tsx:167
 msgctxt "checkout"
 msgid "oLpv29"
 msgstr "Будь ласка, введіть дійсну адресу електронної пошти"
 
-#: app/basket/placeorder/page.tsx:176
+#: app/basket/placeorder/page.tsx:171
 msgctxt "checkout"
 msgid "FPcbu0"
 msgstr "Будь ласка, введіть дійсний номер телефону"
 
-#: app/basket/placeorder/page.tsx:181
+#: app/basket/placeorder/page.tsx:176
 msgctxt "checkout"
 msgid "liNqP5"
 msgstr "Оберіть спосіб доставки та оплати"
 
-#: app/basket/placeorder/page.tsx:186
+#: app/basket/placeorder/page.tsx:181
 msgctxt "checkout"
 msgid "gI54Fe"
 msgstr "Будь ласка, введіть поштовий індекс"
 
-#: app/basket/placeorder/page.tsx:187
+#: app/basket/placeorder/page.tsx:182
 msgctxt "checkout"
 msgid "VqUqOr"
 msgstr "Будь ласка, введіть адресу доставки"
 
-#: app/basket/placeorder/page.tsx:199
+#: app/basket/placeorder/page.tsx:202
 msgctxt "checkout"
 msgid "gZz74a"
 msgstr "Будь ласка, заповніть усі обов'язкові поля"
 
-#: app/basket/placeorder/page.tsx:204
+#: app/basket/placeorder/page.tsx:207
 msgctxt "checkout"
 msgid "Z5bf/3"
 msgstr "Доступно лише {maxMiles} миль для списання"
 
-#: app/basket/placeorder/page.tsx:214
+#: app/basket/placeorder/page.tsx:217
 msgctxt "checkout"
 msgid "SbbhyC"
 msgstr "Кошик порожній"
 
-#: app/basket/placeorder/page.tsx:247
+#: app/basket/placeorder/page.tsx:250
 msgctxt "checkout"
 msgid "TemVby"
 msgstr "Ім'я та прізвище"
 
-#: app/basket/placeorder/page.tsx:251
+#: app/basket/placeorder/page.tsx:254
 msgctxt "checkout"
 msgid "rKrp2B"
 msgstr "Ім'я Прізвище"
 
-#: app/basket/placeorder/page.tsx:267
+#: app/basket/placeorder/page.tsx:270
 msgctxt "checkout"
 msgid "jdJhOL"
 msgstr "Номер телефону"
 
-#: app/basket/placeorder/page.tsx:282
+#: app/basket/placeorder/page.tsx:285
 msgctxt "checkout"
 msgid "PS08kI"
 msgstr "Спосіб доставки"
 
-#: app/basket/placeorder/page.tsx:286
+#: app/basket/placeorder/page.tsx:289
 msgctxt "checkout"
 msgid "wEZZ4Y"
 msgstr "Оберіть спосіб доставки"
 
-#: app/basket/placeorder/page.tsx:288
+#: app/basket/placeorder/page.tsx:291
 msgctxt "checkout"
 msgid "wmjH9T"
 msgstr "Нова Пошта"
 
-#: app/basket/placeorder/page.tsx:289
+#: app/basket/placeorder/page.tsx:292
 msgctxt "checkout"
 msgid "l6jPLg"
 msgstr "Укрпошта"
 
-#: app/basket/placeorder/page.tsx:294
+#: app/basket/placeorder/page.tsx:297
 msgctxt "checkout"
 msgid "BVTni9"
 msgstr "Спосіб оплати"
 
-#: app/basket/placeorder/page.tsx:298
+#: app/basket/placeorder/page.tsx:301
 msgctxt "checkout"
 msgid "CMqDWH"
 msgstr "Оберіть спосіб оплати"
 
-#: app/basket/placeorder/page.tsx:300
+#: app/basket/placeorder/page.tsx:303
 msgctxt "checkout"
 msgid "Dwg5oZ"
 msgstr "Карткою онлайн"
 
-#: app/basket/placeorder/page.tsx:301
+#: app/basket/placeorder/page.tsx:304
 msgctxt "checkout"
 msgid "zHC0Ab"
 msgstr "При отриманні"
 
-#: app/basket/placeorder/page.tsx:311
+#: app/basket/placeorder/page.tsx:314
 msgctxt "checkout"
 msgid "3EnruA"
 msgstr "Поштовий індекс"
 
-#: app/basket/placeorder/page.tsx:321
+#: app/basket/placeorder/page.tsx:324
 msgctxt "checkout"
 msgid "v3tQCl"
 msgstr "Адреса доставки"
 
-#: app/basket/placeorder/page.tsx:325
+#: app/basket/placeorder/page.tsx:328
 msgctxt "checkout"
 msgid "r++Z2O"
 msgstr "№248, б-р Чоколівський, 37"
 
-#: app/basket/placeorder/page.tsx:336
+#: app/basket/placeorder/page.tsx:339
 msgctxt "checkout"
 msgid "Ms9Rg6"
 msgstr "Додаткові нотатки щодо замовлення"
 
-#: app/basket/placeorder/page.tsx:338
+#: app/basket/placeorder/page.tsx:340
 msgctxt "checkout"
 msgid "nfwiHT"
 msgstr "Ваші нотатки"
 
-#: app/basket/placeorder/page.tsx:352
+#: app/basket/placeorder/page.tsx:351
 msgctxt "checkout"
 msgid "wlgbLy"
 msgstr "Оформлення замовлення"
 
-#: app/basket/placeorder/page.tsx:388
+#: app/basket/placeorder/page.tsx:385
 msgctxt "checkout"
 msgid "6OWS4p"
 msgstr "Оформлюємо..."
 
-#: app/basket/placeorder/page.tsx:388
+#: app/basket/placeorder/page.tsx:385
 msgctxt "checkout"
 msgid "XPruqs"
 msgstr "Замовити"
 
-#: app/basket/placeorder/page.tsx:396
+#: app/basket/placeorder/page.tsx:393
 msgctxt "checkout"
 msgid "ZtRzog"
 msgstr "Дякуємо за покупку! Ваше замовлення успішно оформлено!"
 
-#: app/basket/placeorder/page.tsx:398
+#: app/basket/placeorder/page.tsx:395
 msgctxt "checkout"
 msgid "47FYwb"
 msgstr "Відмінити"
 
-#: app/basket/placeorder/page.tsx:399
+#: app/basket/placeorder/page.tsx:396
 msgctxt "checkout"
 msgid "BhEJib"
 msgstr "На головну"
 
-#: app/page.tsx:145
+#: app/page.tsx:146
 msgctxt "home"
 msgid "pq2lMA"
 msgstr "Популярні категорії"
 
-#: app/page.tsx:146
-#: app/page.tsx:178
-#: app/page.tsx:204
+#: app/page.tsx:147
+#: app/page.tsx:179
+#: app/page.tsx:205
 msgctxt "home"
 msgid "pFK6bJ"
 msgstr "Переглянути всі"
 
-#: app/page.tsx:165
+#: app/page.tsx:166
 msgctxt "home"
 msgid "WfqukA"
 msgstr "Країна місяця"
 
-#: app/page.tsx:177
+#: app/page.tsx:178
 msgctxt "home"
 msgid "2zg50f"
 msgstr "Новинки"
 
-#: app/page.tsx:203
+#: app/page.tsx:204
 msgctxt "home"
 msgid "FC/kO5"
 msgstr "Хіти продажів"
-
-#: app/product/[product_id]/page.tsx:92
-msgctxt "reviews"
-msgid "gh7HYI"
-msgstr "Марія Коваль"
-
-#: app/product/[product_id]/page.tsx:92
-msgctxt "reviews"
-msgid "C0bKnY"
-msgstr "Смачний продукт, але хотілося б трохи дешевше. Загалом враження позитивні, буду брати ще, коли будуть знижки."
-
-#: app/product/[product_id]/page.tsx:93
-msgctxt "reviews"
-msgid "uUnOz7"
-msgstr "Олег Петренко"
-
-#: app/product/[product_id]/page.tsx:93
-msgctxt "reviews"
-msgid "YdhmUX"
-msgstr "Нормально, але без вау ефекту. Можливо, просто не мій смак, хоча до якості претензій немає жодних."
-
-#: app/product/[product_id]/page.tsx:94
-msgctxt "reviews"
-msgid "gKtKbw"
-msgstr "Анна Шевченко"
-
-#: app/product/[product_id]/page.tsx:94
-msgctxt "reviews"
-msgid "okiNx1"
-msgstr "Дуже сподобалось, неймовірний баланс смаків! Родина з'їла все за один вечір, текстура просто тане в роті."
-
-#: app/product/[product_id]/page.tsx:95
-msgctxt "reviews"
-msgid "F+tvEM"
-msgstr "Дмитро Лисенко"
-
-#: app/product/[product_id]/page.tsx:95
-msgctxt "reviews"
-msgid "SRtuOo"
-msgstr "Очікував більшого, смак здався занадто нейтральним та невиразним."
-
-#: app/product/[product_id]/page.tsx:96
-msgctxt "reviews"
-msgid "r7KG2Y"
-msgstr "Вікторія Мельник"
-
-#: app/product/[product_id]/page.tsx:96
-msgctxt "reviews"
-msgid "48/KKp"
-msgstr "Якість товару просто супер! Насичений аромат і глибокий смак, відчувається, що використані преміальні інгредієнти. Обов'язково замовлятиму ще!"
-
-#: app/product/[product_id]/page.tsx:97
-msgctxt "reviews"
-msgid "X1g/10"
-msgstr "Ігор Бойко"
-
-#: app/product/[product_id]/page.tsx:97
-msgctxt "reviews"
-msgid "wDFeNv"
-msgstr "Все чудово, продукт повністю відповідає опису. Дуже приємний післясмак і ідеальна консистенція, перевершив мої очікування."
-
-#: app/product/[product_id]/page.tsx:98
-msgctxt "reviews"
-msgid "bCBlN1"
-msgstr "Олена Ткачук"
-
-#: app/product/[product_id]/page.tsx:98
-msgctxt "reviews"
-msgid "YAU9UA"
-msgstr "Хороша якість, цікаве поєднання смаків. Зняла одну зірку, бо для мене виявилося трохи занадто солодким, але це справа смаку."
-
-#: app/product/[product_id]/page.tsx:99
-msgctxt "reviews"
-msgid "jb1Xef"
-msgstr "Максим Павленко"
-
-#: app/product/[product_id]/page.tsx:99
-msgctxt "reviews"
-msgid "+MY8if"
-msgstr "Залишився дуже задоволеним. Брав на свято, і цей продукт став справжнім хітом столу. Дуже вишукано та якісно!"
 
 #: app/product/ProductCard.tsx:33
 msgctxt "product-page"
@@ -661,82 +490,77 @@ msgctxt "product-page"
 msgid "KoSVL4"
 msgstr "Товар додано у кошик"
 
-#: app/product/ProductCard.tsx:67
+#: app/product/ProductCard.tsx:75
 msgctxt "product-page"
 msgid "eG1C0k"
 msgstr "Видалити з вибраного"
 
-#: app/product/ProductCard.tsx:67
-msgctxt "product-page"
-msgid "tWX1j9"
-msgstr "Додати в обране"
-
-#: app/product/ProductCard.tsx:83
+#: app/product/ProductCard.tsx:90
 msgctxt "product-page"
 msgid "tXHpD7"
 msgstr "код:"
 
-#: app/product/ProductCard.tsx:86
+#: app/product/ProductCard.tsx:94
 msgctxt "product-page"
 msgid "aEiFnS"
 msgstr "є в наявності"
 
-#: app/product/ProductCard.tsx:110
+#: app/product/ProductCard.tsx:119
 msgctxt "product-page"
 msgid "oPsj1A"
 msgstr "грн"
 
-#: app/product/ProductCard.tsx:118
+#: app/product/ProductCard.tsx:125
 msgctxt "product-page"
 msgid "iL0n4U"
 msgstr "Зменшити кількість"
 
-#: app/product/ProductCard.tsx:126
+#: app/product/ProductCard.tsx:129
 msgctxt "product-page"
 msgid "3ZPs5M"
 msgstr "Збільшити кількість"
 
-#: app/product/ProductCard.tsx:132
+#: app/product/ProductCard.tsx:134
 msgctxt "product-page"
 msgid "EnCOBJ"
 msgstr "Купити"
 
-#: app/product/ProductCard.tsx:140
+#: app/product/ProductCard.tsx:142
 msgctxt "product-page"
 msgid "BxC/6v"
 msgstr "Характеристики:"
 
-#: app/product/ProductCard.tsx:144
+#: app/product/ProductCard.tsx:146
 msgctxt "product-page"
 msgid "oTjnHy"
 msgstr "категорія:"
 
-#: app/product/ProductCard.tsx:150
+#: app/product/ProductCard.tsx:152
 msgctxt "product-page"
 msgid "NL3hl5"
 msgstr "країна виробник:"
 
-#: app/product/ProductCard.tsx:161
+#: app/product/ProductCard.tsx:163
 msgctxt "product-page"
 msgid "Q8Qw5B"
 msgstr "Опис"
 
-#: app/product/ProductCard.tsx:162
+#: app/product/ProductCard.tsx:164
 msgctxt "product-page"
 msgid "AndYXt"
 msgstr "Детальний опис товару..."
 
-#: app/product/ProductCard.tsx:166
+#: app/product/ProductCard.tsx:168
 msgctxt "product-page"
 msgid "EK6OoQ"
 msgstr "Склад"
 
-#: app/product/ProductCard.tsx:167
+#: app/product/ProductCard.tsx:169
 msgctxt "product-page"
 msgid "LpFLjU"
 msgstr "Інформація про склад..."
 
-#: app/product/ProductsList.tsx:102
+#: app/product/ProductsList.tsx:103
 msgctxt "product-page"
 msgid "j8boVU"
 msgstr "Вам може також сподобатись"
@@ -867,17 +691,17 @@ msgctxt "profile"
 msgid "smWqVf"
 msgstr "Очікує першу покупку"
 
-#: app/profile/friends/page.tsx:114
+#: app/profile/friends/page.tsx:113
 msgctxt "profile"
 msgid "G8P44K"
 msgstr "Запрошувальне посилання"
 
-#: app/profile/friends/page.tsx:119
+#: app/profile/friends/page.tsx:118
 msgctxt "profile"
 msgid "p556q3"
 msgstr "Скопійовано"
 
-#: app/profile/friends/page.tsx:119
+#: app/profile/friends/page.tsx:118
 msgctxt "profile"
 msgid "4l6vz1"
 msgstr "Копіювати"
@@ -924,27 +748,27 @@ msgctxt "profile"
 msgid "LqemZR"
 msgstr "У вас поки немає оформлених замовлень."
 
-#: app/profile/orders/page.tsx:122
+#: app/profile/orders/page.tsx:123
 msgctxt "profile"
 msgid "h31Xz8"
 msgstr "Замовлення №"
 
-#: app/profile/orders/page.tsx:123
+#: app/profile/orders/page.tsx:127
 msgctxt "profile"
 msgid "5FA3Q8"
 msgstr "Дата замовлення:"
 
-#: app/profile/orders/page.tsx:175
+#: app/profile/orders/page.tsx:181
 msgctxt "profile"
 msgid "eB9VBm"
 msgstr "Артикул:"
 
-#: app/profile/orders/page.tsx:179
+#: app/profile/orders/page.tsx:187
 msgctxt "profile"
 msgid "oPsj1A"
 msgstr "грн"
 
-#: app/profile/orders/page.tsx:180
+#: app/profile/orders/page.tsx:190
 msgctxt "profile"
 msgid "sY9sjp"
 msgstr "шт."
@@ -1064,196 +888,251 @@ msgctxt "profile"
 msgid "xfP1jk"
 msgstr "Перелік бонусів для статусу"
 
-#: components/Footer/Footer.tsx:29
+#: components/FilterMenu/FitlerMenu.tsx:116
+msgctxt "catalog"
+msgid "Xd4bTS"
+msgstr ""
+
+#: components/FilterMenu/FitlerMenu.tsx:123
+msgctxt "catalog"
+msgid "hOxIeP"
+msgstr ""
+
+#: components/FilterMenu/FitlerMenu.tsx:128
+msgctxt "catalog"
+msgid "ED7X19"
+msgstr ""
+
+#: components/FilterMenu/FitlerMenu.tsx:129
+msgctxt "catalog"
+msgid "WHgdsk"
+msgstr ""
+
+#: components/FilterMenu/FitlerMenu.tsx:136
+msgctxt "catalog"
+msgid "vONi+O"
+msgstr ""
+
+#: components/FilterMenu/FitlerMenu.tsx:146
+msgctxt "catalog"
+msgid "+kMQfn"
+msgstr ""
+
+#: components/FilterMenu/FitlerMenu.tsx:149
+msgctxt "catalog"
+msgid "dM+p3/"
+msgstr ""
+
+#: components/FilterMenu/FitlerMenu.tsx:154
+msgctxt "catalog"
+msgid "9j3hXO"
+msgstr ""
+
+#: components/Footer/Footer.tsx:31
 msgctxt "footer"
 msgid "JDq6Cc"
 msgstr "\"Мандрівна крамниця\""
 
-#: components/Footer/Footer.tsx:32
+#: components/Footer/Footer.tsx:34
 msgctxt "footer"
 msgid "OYwNXX"
 msgstr "«Мандрівна крамниця» — це простір, де зустрічаються гастрономія, історія та дух подорожей. Ми відроджуємо атмосферу давнього Подолу — місця, де перетиналися міжнародні торгові шляхи, — щоб ви могли відчути себе мандрівником стародавніх часів і отримати неповторний досвід покупок."
 
-#: components/Footer/Footer.tsx:37
+#: components/Footer/Footer.tsx:41
 msgctxt "footer"
 msgid "4S241U"
 msgstr "Контакти"
 
-#: components/Footer/Footer.tsx:50
-#: components/Footer/Footer.tsx:100
+#: components/Footer/Footer.tsx:60
+#: components/Footer/Footer.tsx:111
 msgctxt "footer"
 msgid "LphWYP"
 msgstr "Умови та Політика конфіденційності"
 
-#: components/Footer/Footer.tsx:57
+#: components/Footer/Footer.tsx:71
 msgctxt "footer"
 msgid "F9t/Pc"
 msgstr "Прокласти маршрут"
 
-#: components/Footer/Footer.tsx:62
+#: components/Footer/Footer.tsx:76
 msgctxt "footer"
 msgid "TdTXXf"
 msgstr "Дізнатися більше"
 
-#: components/Footer/Footer.tsx:69
+#: components/Footer/Footer.tsx:83
 msgctxt "footer"
 msgid "lJItSx"
 msgstr "© 2026 \"Мандрівна крамниця\". Всі права захищено"
 
-#: components/Footer/Footer.tsx:105
+#: components/Footer/Footer.tsx:116
 msgctxt "footer"
 msgid "09tPFK"
 msgstr "1. Загальна інформація"
 
-#: components/Footer/Footer.tsx:107
+#: components/Footer/Footer.tsx:118
 msgctxt "footer"
 msgid "P0IPF3"
 msgstr "Ця Політика конфіденційності визначає порядок збору, зберігання, обробки та використання персональних даних користувачів веб-сайту та веб-застосунку \"Мандрівна крамниця\"."
 
-#: components/Footer/Footer.tsx:109
+#: components/Footer/Footer.tsx:123
 msgctxt "footer"
 msgid "kEM/gS"
 msgstr "Ми дотримуємось вимог та принципів GDPR — прозорості, безпеки та мінімізації даних. Користуючись нашим сайтом, створюючи акаунт та реєструючись у програмі лояльності «Hermes», ви підтверджуєте, що ознайомлені з цією Політикою та погоджуєтесь із нею."
 
-#: components/Footer/Footer.tsx:114
+#: components/Footer/Footer.tsx:130
 msgctxt "footer"
 msgid "vUIiDN"
 msgstr "2. Які дані ми збираємо"
 
-#: components/Footer/Footer.tsx:115
+#: components/Footer/Footer.tsx:132
 msgctxt "footer"
 msgid "vbnFP8"
 msgstr "Ми збираємо лише ті дані, які необхідні для роботи сервісу та програми лояльності:"
 
-#: components/Footer/Footer.tsx:117
+#: components/Footer/Footer.tsx:135
 msgctxt "footer"
 msgid "fZeLBC"
 msgstr "Персональна інформація (електронна адреса, дата народження, гендер)"
 
-#: components/Footer/Footer.tsx:118
+#: components/Footer/Footer.tsx:136
 msgctxt "footer"
 msgid "HAlOn1"
 msgstr "Ім’я"
 
-#: components/Footer/Footer.tsx:119
+#: components/Footer/Footer.tsx:137
 msgctxt "footer"
 msgid "ekNWcK"
 msgstr "Номер телефону (для реєстрації та авторизації через SMS)"
 
-#: components/Footer/Footer.tsx:120
+#: components/Footer/Footer.tsx:138
 msgctxt "footer"
 msgid "8XHjsd"
 msgstr "Дані транзакцій і нарахованих миль"
 
-#: components/Footer/Footer.tsx:121
+#: components/Footer/Footer.tsx:139
 msgctxt "footer"
 msgid "iFEl2k"
 msgstr "Дані про статус у програмі лояльності"
 
-#: components/Footer/Footer.tsx:122
+#: components/Footer/Footer.tsx:140
 msgctxt "footer"
 msgid "1UarQp"
 msgstr "Історію покупок"
 
-#: components/Footer/Footer.tsx:127
+#: components/Footer/Footer.tsx:145
 msgctxt "footer"
 msgid "DG50CA"
 msgstr "3. Використання cookies"
 
-#: components/Footer/Footer.tsx:129
+#: components/Footer/Footer.tsx:147
 msgctxt "footer"
 msgid "4+kTCD"
 msgstr "Наш сайт використовує мінімально необхідні cookies, які забезпечують коректну роботу сервісу та авторизації. Ми не використовуємо рекламні чи аналітичні куки, якщо ви окремо не погодитесь на них."
 
-#: components/Footer/Footer.tsx:131
+#: components/Footer/Footer.tsx:152
 msgctxt "footer"
 msgid "6oB/MV"
 msgstr "Необхідні cookies забезпечують роботу сайту та не можуть бути вимкнені. До них належать сесійні куки (зберігають тимчасові технічні дані — ідентифікатор вашої сесії) та кука з рефреш-токеном, що використовується для продовження вашої авторизованої сесії без повторного введення коду з SMS. Ця кука є захищеною та недоступна для сторонніх сайтів."
 
-#: components/Footer/Footer.tsx:136
+#: components/Footer/Footer.tsx:159
 msgctxt "footer"
 msgid "pzGOwm"
 msgstr "4. Як ми використовуємо ваші дані"
 
-#: components/Footer/Footer.tsx:137
+#: components/Footer/Footer.tsx:160
 msgctxt "footer"
 msgid "V7wUm6"
 msgstr "Ваші персональні дані використовуються виключно для:"
 
-#: components/Footer/Footer.tsx:139
+#: components/Footer/Footer.tsx:162
 msgctxt "footer"
 msgid "fXS/P9"
 msgstr "реєстрації та авторизації у програмі лояльності «Hermes»;"
 
-#: components/Footer/Footer.tsx:140
+#: components/Footer/Footer.tsx:163
 msgctxt "footer"
 msgid "FSck1+"
 msgstr "нарахування, зберігання та списання миль;"
 
-#: components/Footer/Footer.tsx:141
+#: components/Footer/Footer.tsx:164
 msgctxt "footer"
 msgid "yGFGA3"
 msgstr "роботи інтерактивної карти країн та ігрових бонусів;"
 
-#: components/Footer/Footer.tsx:142
+#: components/Footer/Footer.tsx:165
 msgctxt "footer"
 msgid "kro8Xk"
 msgstr "оформлення замовлень у веб-магазині;"
 
-#: components/Footer/Footer.tsx:143
+#: components/Footer/Footer.tsx:166
 msgctxt "footer"
 msgid "E0DqTQ"
 msgstr "покращення якості сервісу та обслуговування клієнтів."
 
-#: components/Footer/Footer.tsx:145
+#: components/Footer/Footer.tsx:169
 msgctxt "footer"
 msgid "Dl3T8n"
 msgstr "Ми не передаємо ваші дані третім особам, окрім випадків, коли це необхідно для роботи технологічних сервісів (SMS-відправка, спрощена адмін-панель) і лише за захищеним протоколом."
 
-#: components/ProductCard/ProductCard.tsx:45
+#: components/ProductCard/ProductCard.tsx:46
 msgctxt "product"
 msgid "Of0Qtj"
 msgstr "Товар додано до вподобаних"
 
-#: components/ProductCard/ProductCard.tsx:47
+#: components/ProductCard/ProductCard.tsx:48
 msgctxt "product"
 msgid "nYXC78"
 msgstr "Авторизуйтесь, щоб додати цей товар до вподобаних"
 
-#: components/ProductCard/ProductCard.tsx:55
+#: components/ProductCard/ProductCard.tsx:56
 msgctxt "product"
 msgid "Zj+6lx"
 msgstr "Товар видалено з вподобаного"
 
-#: components/ProductCard/ProductCard.tsx:57
+#: components/ProductCard/ProductCard.tsx:58
 msgctxt "product"
 msgid "ZP9LRA"
 msgstr "Не вдалося видалити товар з вподобаного"
 
-#: components/ProductCard/ProductCard.tsx:89
+#: components/ProductCard/ProductCard.tsx:90
 msgctxt "product"
 msgid "aEiFnS"
 msgstr "в наявності"
 
-#: components/ProductCard/ProductCard.tsx:96
+#: components/ProductCard/ProductCard.tsx:98
 msgctxt "product"
 msgid "oPsj1A"
 msgstr "грн"
 
-#: components/ProductCard/ProductCard.tsx:101
+#: components/ProductCard/ProductCard.tsx:104
 msgctxt "product"
 msgid "eG1C0k"
 msgstr "Видалити з вибраного"
 
-#: components/ProductCard/ProductCard.tsx:109
+#: components/ProductCard/ProductCard.tsx:112
 msgctxt "product"
 msgid "ADKef8"
 msgstr "Додати у кошик"
 
-#: components/ProductCard/ProductCard.tsx:113
+#: components/ProductCard/ProductCard.tsx:116
 msgctxt "product"
 msgid "KoSVL4"
 msgstr "Товар додано у кошик"
+
+#: components/Products/Products.tsx:24
+msgctxt "catalog"
+msgid "Uwg9pO"
+msgstr "Категорія не знайдена"
+
+#: components/Products/Products.tsx:28
+msgctxt "catalog"
+msgid "9Obw6C"
+msgstr "Фільтр"
+
+#: components/Products/Products.tsx:32
+msgctxt "catalog"
+msgid "GbhlqN"
+msgstr "Сортування"
 
 #: components/ProfileBar/ProfileBar.tsx:15
 msgctxt "profile"
@@ -1319,6 +1198,31 @@ msgstr "Номер телефону"
 msgctxt "profile"
 msgid "jvo0vs"
 msgstr "Зберегти"
+
+#: components/SortMenu/SortMenu.tsx:53
+msgctxt "catalog"
+msgid "YWyEpK"
+msgstr ""
+
+#: components/SortMenu/SortMenu.tsx:60
+msgctxt "catalog"
+msgid "nrQy8m"
+msgstr ""
+
+#: components/SortMenu/SortMenu.tsx:64
+msgctxt "catalog"
+msgid "v8lup3"
+msgstr ""
+
+#: components/SortMenu/SortMenu.tsx:68
+msgctxt "catalog"
+msgid "TgnUST"
+msgstr ""
+
+#: components/SortMenu/SortMenu.tsx:72
+msgctxt "catalog"
+msgid "8ZCpOJ"
+msgstr ""
 
 #: components/TopBar/TopBar.tsx:58
 msgctxt "navigation"

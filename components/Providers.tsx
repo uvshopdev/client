@@ -7,7 +7,9 @@ import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client
 import { useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
 
-import { type Category, type Country, useCategories, useCountries } from "@/store";
+import { useCategories, useCountries } from "@/store";
+import type { CategoryType } from "@/types/categories";
+import type { CountryType } from "@/types/countries";
 import GlobalStyle from "./GlobalStyle";
 import theme from "./theme";
 
@@ -32,8 +34,8 @@ export default function Providers({
 	countries,
 }: {
 	children: React.ReactNode;
-	categories: Category[];
-	countries: Country[];
+	categories: CategoryType[];
+	countries: CountryType[];
 }) {
 	const setCategories = useCategories((s) => s.setCategories);
 	const setCountries = useCountries((s) => s.setCountries);
