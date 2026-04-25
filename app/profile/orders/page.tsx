@@ -136,14 +136,7 @@ export default function OrderHistoryPage() {
 												href={href}
 												style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
 											>
-												<ProductImage
-													src={
-														product.picture
-															? `${process.env.NEXT_PUBLIC_FILES_URL}/products/${product.id}/small/${product.picture}`
-															: "/logo.webp"
-													}
-													alt={product.name}
-												/>
+												<ProductImage src={product.picture ? `${product.picture}` : "/logo.webp"} alt={product.name} />
 
 												<ProductInfo>
 													<ProductName>{product.name}</ProductName>

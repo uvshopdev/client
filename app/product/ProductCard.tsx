@@ -66,17 +66,7 @@ export default function ProductCard({ product }: Props) {
 			<S.Container>
 				<S.Left>
 					<S.MainImage>
-						<Image
-							src={
-								product.picture
-									? `${process.env.NEXT_PUBLIC_FILES_URL}/products/${product.id}/large/${product.picture}`
-									: "/logo.webp"
-							}
-							alt={product.name}
-							loading="lazy"
-							unoptimized
-							fill
-						/>
+						<Image src={product.picture ? `${product.picture}` : "/logo.webp"} alt={product.name} loading="lazy" unoptimized fill />
 
 						<S.WishButton
 							onClick={() => (favorites.includes(product.id) ? removeFromFavorite() : addToFavorite())}

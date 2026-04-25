@@ -63,17 +63,7 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 			<Top>
 				<ImageWrap as={Link} href={href} prefetch={false}>
 					<ProductImage>
-						<Image
-							src={
-								product.picture
-									? `${process.env.NEXT_PUBLIC_FILES_URL}/products/${product.id}/large/${product.picture}`
-									: "/logo.webp"
-							}
-							alt={product.name}
-							fill
-							loading="lazy"
-							unoptimized
-						/>
+						<Image src={product.picture ? `${product.picture}` : "/logo.webp"} alt={product.name} fill loading="lazy" unoptimized />
 					</ProductImage>
 				</ImageWrap>
 

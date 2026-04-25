@@ -141,7 +141,7 @@ export default function BasketPage() {
 							<CartItem key={position.product.id}>
 								<ItemInfo as={Link} href={href} style={{ textDecoration: "none" }}>
 									<Image
-										src={`${process.env.NEXT_PUBLIC_FILES_URL}/products/${position.product.id}/small/${position.product.picture}`}
+										src={`${position.product.picture}`}
 										alt={position.product.name}
 										width={50}
 										height={70}
