@@ -45,10 +45,10 @@ export default function Reviews({ reviews, productId }: Props) {
 			setNewText("");
 			setNewRating(5);
 			router.refresh();
-			toast.success("Отзыв успешно добавлен");
+			toast.success(t("Review added successfully"));
 		},
 		onError: () => {
-			toast.error("Не удалось добавить отзыв");
+			toast.error(t("Failed to add review"));
 		},
 	});
 
@@ -83,7 +83,7 @@ export default function Reviews({ reviews, productId }: Props) {
 
 	const handleWriteClick = () => {
 		if (!isAuthenticated) {
-			toast.error("Войдите, чтобы оставить отзыв");
+			toast.error(t("You need to be logged in to write a review"));
 			return;
 		}
 
@@ -109,14 +109,14 @@ export default function Reviews({ reviews, productId }: Props) {
 					<S.ReviewSummary>
 						<S.SummaryRating>{averageRating ? averageRating.toFixed(1) : "0.0"}</S.SummaryRating>
 						<S.SummaryCount>
-							{totalReviews} {totalReviews === 1 ? "review" : "reviews"}
+							{totalReviews} {totalReviews === 1 ? t("review") : t("reviews")}
 						</S.SummaryCount>
 					</S.ReviewSummary>
 				</div>
 				<S.HeaderActions>
 					{isAuthenticated && (
 						<S.WriteBtn type="button" onClick={handleWriteClick}>
-							Написать отзыв
+							{t("Write a review")}
 						</S.WriteBtn>
 					)}
 					<S.SeeAllBtn type="button" onClick={() => setIsAllReviewsOpen(true)}>
@@ -143,7 +143,7 @@ export default function Reviews({ reviews, productId }: Props) {
 						</S.Card>
 					))
 				) : (
-					<S.EmptyState>No reviews yet</S.EmptyState>
+					<S.EmptyState>{t("No reviews yet")}</S.EmptyState>
 				)}
 			</S.PreviewGrid>
 
@@ -175,14 +175,14 @@ export default function Reviews({ reviews, productId }: Props) {
 						<S.CloseButton onClick={() => setIsWriteModalOpen(false)}>&#10005;</S.CloseButton>
 						<S.ModalHeader>
 							<S.ModalReviewHeader>
-								<S.ModalReviewName>Написать отзыв</S.ModalReviewName>
+								<S.ModalReviewName>{t("Write a review")}</S.ModalReviewName>
 							</S.ModalReviewHeader>
 							<S.ModalDate>{profile?.full_name}</S.ModalDate>
 						</S.ModalHeader>
 
 						<S.Form onSubmit={handleSubmit}>
 							<div>
-								<S.FormLabel>Ваша оценка</S.FormLabel>
+								<S.FormLabel>{t("Your rating")}</S.FormLabel>
 								<S.StarSelector onMouseLeave={() => setHoverRating(0)}>
 									{[1, 2, 3, 4, 5].map((n) => (
 										<Star
@@ -199,14 +199,14 @@ export default function Reviews({ reviews, productId }: Props) {
 							</div>
 
 							<S.TextArea
-								placeholder="Поделитесь своими впечатлениями о товаре..."
+								placeholder={t("Share your impressions about the product...")}
 								value={newText}
 								onChange={(event) => setNewText(event.target.value)}
 								required
 							/>
 
 							<S.SubmitBtn type="submit" disabled={!newText.trim() || isPending}>
-								{isPending ? "Отправка..." : "Отправить отзыв"}
+								{isPending ? t("Sending...") : t("Submit review")}
 							</S.SubmitBtn>
 						</S.Form>
 					</S.SingleModalContent>

@@ -498,7 +498,7 @@ msgstr "Видалити з вибраного"
 #: app/product/ProductCard.tsx:83
 msgctxt "product-page"
 msgid "tWX1j9"
-msgstr ""
+msgstr "Додати в обране"
 
 #: app/product/ProductCard.tsx:103
 msgctxt "product-page"
@@ -570,15 +570,71 @@ msgctxt "product-page"
 msgid "j8boVU"
 msgstr "Вам може також сподобатись"
 
+#: app/product/Reviews.tsx:48
+msgctxt "reviews"
+msgid "P55kMi"
+msgstr "Відгук успішно додано"
+
+#: app/product/Reviews.tsx:51
+msgctxt "reviews"
+msgid "MOVUjY"
+msgstr "Не вдалося додати відгук"
+
+#: app/product/Reviews.tsx:86
+msgctxt "reviews"
+msgid "LIMv7A"
+msgstr "Щоб написати відгук, потрібно увійти"
+
 #: app/product/Reviews.tsx:108
 msgctxt "reviews"
 msgid "dUxyza"
 msgstr "Відгуки"
 
+#: app/product/Reviews.tsx:112
+msgctxt "reviews"
+msgid "bJtf06"
+msgstr "відгук"
+
+#: app/product/Reviews.tsx:112
+msgctxt "reviews"
+msgid "T/n/oR"
+msgstr "відгуків"
+
+#: app/product/Reviews.tsx:119
+#: app/product/Reviews.tsx:178
+msgctxt "reviews"
+msgid "tr+EKe"
+msgstr "Написати відгук"
+
 #: app/product/Reviews.tsx:123
 msgctxt "reviews"
 msgid "078WAr"
 msgstr "Переглянути всі"
+
+#: app/product/Reviews.tsx:146
+msgctxt "reviews"
+msgid "JP2Ani"
+msgstr "Відгуків ще немає"
+
+#: app/product/Reviews.tsx:185
+msgctxt "reviews"
+msgid "g4KKU9"
+msgstr "Ваша оцінка"
+
+#: app/product/Reviews.tsx:202
+msgctxt "reviews"
+msgid "jcvT/G"
+msgstr "Поділіться враженнями про товар..."
+
+#: app/product/Reviews.tsx:209
+msgctxt "reviews"
+msgid "82Y7Sa"
+msgstr "Надсилання..."
+
+#: app/product/Reviews.tsx:209
+msgctxt "reviews"
+msgid "rJrHB6"
+msgstr "Надіслати відгук"
 
 #: app/product/Reviews.tsx:222
 msgctxt "reviews"
@@ -838,42 +894,42 @@ msgstr "Перелік бонусів для статусу"
 #: components/FilterMenu/FitlerMenu.tsx:114
 msgctxt "catalog"
 msgid "Xd4bTS"
-msgstr ""
+msgstr "Фільтрувати товари"
 
 #: components/FilterMenu/FitlerMenu.tsx:121
 msgctxt "catalog"
 msgid "hOxIeP"
-msgstr ""
+msgstr "Наявність"
 
 #: components/FilterMenu/FitlerMenu.tsx:126
 msgctxt "catalog"
 msgid "ED7X19"
-msgstr ""
+msgstr "В наявності"
 
 #: components/FilterMenu/FitlerMenu.tsx:127
 msgctxt "catalog"
 msgid "WHgdsk"
-msgstr ""
+msgstr "Немає в наявності"
 
 #: components/FilterMenu/FitlerMenu.tsx:134
 msgctxt "catalog"
 msgid "vONi+O"
-msgstr ""
+msgstr "Країна"
 
 #: components/FilterMenu/FitlerMenu.tsx:144
 msgctxt "catalog"
 msgid "+kMQfn"
-msgstr ""
+msgstr "Діапазон цін"
 
 #: components/FilterMenu/FitlerMenu.tsx:147
 msgctxt "catalog"
 msgid "dM+p3/"
-msgstr ""
+msgstr "Від"
 
 #: components/FilterMenu/FitlerMenu.tsx:152
 msgctxt "catalog"
 msgid "9j3hXO"
-msgstr ""
+msgstr "До"
 
 #: components/Footer/Footer.tsx:31
 msgctxt "footer"
@@ -1149,27 +1205,27 @@ msgstr "Зберегти"
 #: components/SortMenu/SortMenu.tsx:53
 msgctxt "catalog"
 msgid "YWyEpK"
-msgstr ""
+msgstr "Сортувати товари"
 
 #: components/SortMenu/SortMenu.tsx:60
 msgctxt "catalog"
 msgid "nrQy8m"
-msgstr ""
+msgstr "Спочатку дешевші"
 
 #: components/SortMenu/SortMenu.tsx:64
 msgctxt "catalog"
 msgid "v8lup3"
-msgstr ""
+msgstr "Спочатку дорожчі"
 
 #: components/SortMenu/SortMenu.tsx:68
 msgctxt "catalog"
 msgid "TgnUST"
-msgstr ""
+msgstr "Від А до Я"
 
 #: components/SortMenu/SortMenu.tsx:72
 msgctxt "catalog"
 msgid "8ZCpOJ"
-msgstr ""
+msgstr "Від Я до А"
 
 #: components/TopBar/TopBar.tsx:58
 msgctxt "navigation"

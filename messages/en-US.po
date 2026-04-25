@@ -570,15 +570,71 @@ msgctxt "product-page"
 msgid "j8boVU"
 msgstr "You might also like"
 
+#: app/product/Reviews.tsx:48
+msgctxt "reviews"
+msgid "P55kMi"
+msgstr "Review added successfully"
+
+#: app/product/Reviews.tsx:51
+msgctxt "reviews"
+msgid "MOVUjY"
+msgstr "Failed to add review"
+
+#: app/product/Reviews.tsx:86
+msgctxt "reviews"
+msgid "LIMv7A"
+msgstr "You need to be logged in to write a review"
+
 #: app/product/Reviews.tsx:108
 msgctxt "reviews"
 msgid "dUxyza"
 msgstr "Reviews"
 
+#: app/product/Reviews.tsx:112
+msgctxt "reviews"
+msgid "bJtf06"
+msgstr "review"
+
+#: app/product/Reviews.tsx:112
+msgctxt "reviews"
+msgid "T/n/oR"
+msgstr "reviews"
+
+#: app/product/Reviews.tsx:119
+#: app/product/Reviews.tsx:178
+msgctxt "reviews"
+msgid "tr+EKe"
+msgstr "Write a review"
+
 #: app/product/Reviews.tsx:123
 msgctxt "reviews"
 msgid "078WAr"
 msgstr "See all"
+
+#: app/product/Reviews.tsx:146
+msgctxt "reviews"
+msgid "JP2Ani"
+msgstr "No reviews yet"
+
+#: app/product/Reviews.tsx:185
+msgctxt "reviews"
+msgid "g4KKU9"
+msgstr "Your rating"
+
+#: app/product/Reviews.tsx:202
+msgctxt "reviews"
+msgid "jcvT/G"
+msgstr "Share your impressions about the product..."
+
+#: app/product/Reviews.tsx:209
+msgctxt "reviews"
+msgid "82Y7Sa"
+msgstr "Sending..."
+
+#: app/product/Reviews.tsx:209
+msgctxt "reviews"
+msgid "rJrHB6"
+msgstr "Submit review"
 
 #: app/product/Reviews.tsx:222
 msgctxt "reviews"
