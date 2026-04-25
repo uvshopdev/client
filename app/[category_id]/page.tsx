@@ -26,14 +26,8 @@ const page = async ({
     if (min_price && !Number.isNaN(parseFloat(min_price))) productsParams.set("min_price", min_price);
     if (max_price && !Number.isNaN(parseFloat(max_price))) productsParams.set("max_price", max_price);
 
-    if (sort) {
-        const validSorts = ["price:asc", "price:desc", "alphabet:asc", "alphabet:desc"];
-        const selectedSorts = sort.split(",").filter((s) => validSorts.includes(s));
-        
-        if (selectedSorts.length > 0) {
-            productsParams.set("sort", selectedSorts.join(","));
-        }
-    }
+
+	if (sort && ["price:asc", "price:desc", "alphabet:asc", "alphabet:desc"].includes(sort)) productsParams.set("sort", sort);
 
     const products = await getProducts(productsParams);
 

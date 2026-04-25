@@ -1,11 +1,11 @@
 "use client";
 
+import { Eye, EyeOff } from "lucide-react";
 import { useExtracted } from "next-intl";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
-import { Eye, EyeOff } from "lucide-react";
 
 import host from "@/lib";
 import { useUser } from "@/store/user";
@@ -39,10 +39,11 @@ const AuthPage = () => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
+        const fullName = formData.get("full_name")?.toString().trim();
         const submittedEmail = formData.get("email")?.toString().trim();
         const password = formData.get("password")?.toString().trim();
 
-        if (!submittedEmail || !password) {
+        if (!submittedEmail || !password || (!isLogin && !fullName)) {
             toast.error(t("Please fill in all required fields"));
             return;
         }
@@ -112,6 +113,16 @@ const AuthPage = () => {
                 </Divider>
 
                 <FormContent>
+                    {!isLogin &&
+                    <FormLabel>
+                        {t("Full Name")}
+                        <input
+                            type="text"
+                            name="full_name"
+                            required
+                        />
+                    </FormLabel>
+                    }
                     <FormLabel>
                         {t("Email")}
                         <input

@@ -24,8 +24,8 @@ import {
 	ProductPrice,
 	Rating,
 	Stock,
-	Top,
-	Sub
+	Sub,
+	Top
 } from "./ProductCard.css";
 
 interface ProductProps extends ProductType {
@@ -57,7 +57,6 @@ const ProductCard = ({ favorite, ...product }: ProductProps) => {
 
 	const { addPosition } = useBasket();
 
-	console.log(product.rating);
 
 	return (
 		<Content>

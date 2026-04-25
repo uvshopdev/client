@@ -72,32 +72,37 @@ msgctxt "auth"
 msgid "Ntjkqd"
 msgstr "або"
 
-#: app/auth/page.tsx:116
+#: app/auth/page.tsx:117
+msgctxt "auth"
+msgid "TemVby"
+msgstr ""
+
+#: app/auth/page.tsx:128
 msgctxt "auth"
 msgid "sy+pv5"
 msgstr "Email"
 
-#: app/auth/page.tsx:127
+#: app/auth/page.tsx:139
 msgctxt "auth"
 msgid "5sg7KC"
 msgstr "Пароль"
 
-#: app/auth/page.tsx:146
+#: app/auth/page.tsx:158
 msgctxt "auth"
 msgid "odXlk8"
 msgstr "Увійти"
 
-#: app/auth/page.tsx:146
+#: app/auth/page.tsx:158
 msgctxt "auth"
 msgid "deEeEI"
 msgstr "Зареєструватися"
 
-#: app/auth/page.tsx:151
+#: app/auth/page.tsx:163
 msgctxt "auth"
 msgid "2Zni1y"
 msgstr "Немає акаунту? Зареєструватися"
 
-#: app/auth/page.tsx:152
+#: app/auth/page.tsx:164
 msgctxt "auth"
 msgid "AYIKp4"
 msgstr "Вже є акаунт? Увійти"
@@ -1148,32 +1153,32 @@ msgctxt "product"
 msgid "ZP9LRA"
 msgstr "Не вдалося видалити товар з вподобаного"
 
-#: components/ProductCard/ProductCard.tsx:79
+#: components/ProductCard/ProductCard.tsx:78
 msgctxt "product"
 msgid "aEiFnS"
 msgstr "в наявності"
 
-#: components/ProductCard/ProductCard.tsx:97
+#: components/ProductCard/ProductCard.tsx:96
 msgctxt "product"
 msgid "oPsj1A"
 msgstr "грн"
 
-#: components/ProductCard/ProductCard.tsx:101
+#: components/ProductCard/ProductCard.tsx:100
 msgctxt "product"
 msgid "vlScQh"
 msgstr "за"
 
-#: components/ProductCard/ProductCard.tsx:108
+#: components/ProductCard/ProductCard.tsx:107
 msgctxt "product"
 msgid "eG1C0k"
 msgstr "Видалити з вибраного"
 
-#: components/ProductCard/ProductCard.tsx:116
+#: components/ProductCard/ProductCard.tsx:115
 msgctxt "product"
 msgid "ADKef8"
 msgstr "Додати у кошик"
 
-#: components/ProductCard/ProductCard.tsx:117
+#: components/ProductCard/ProductCard.tsx:116
 msgctxt "product"
 msgid "KoSVL4"
 msgstr "Товар додано у кошик"
