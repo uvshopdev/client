@@ -175,7 +175,7 @@ export default function ProductCard({ product }: Props) {
 									<S.AccordionHeader onClick={() => toggle("desc")}>
 										{t("Description")}:{openKeys.includes("desc") ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
 									</S.AccordionHeader>
-									{openKeys.includes("desc") && <S.AccordionContent>{t("Detailed description...")}</S.AccordionContent>}
+									{openKeys.includes("desc") && <S.AccordionContent>{product.description}</S.AccordionContent>}
 								</S.AccordionItem>
 							)}
 							{product.ingredients && (
@@ -183,7 +183,7 @@ export default function ProductCard({ product }: Props) {
 									<S.AccordionHeader onClick={() => toggle("comp")}>
 										{t("Composition")}:{openKeys.includes("comp") ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
 									</S.AccordionHeader>
-									{openKeys.includes("comp") && <S.AccordionContent>{t("Composition info...")}</S.AccordionContent>}
+									{openKeys.includes("comp") && <S.AccordionContent>{product.ingredients}</S.AccordionContent>}
 								</S.AccordionItem>
 							)}
 						</S.Accordion>
