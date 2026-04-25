@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { X } from "lucide-react";
 import { useExtracted } from "next-intl";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { getReferrals } from "@/lib/referrals";
 import { getProfile } from "@/lib/user";
@@ -28,7 +28,7 @@ const FriendsPage = () => {
 	const t = useExtracted("profile");
 
 	const { data: apiReferrals, isSuccess } = useQuery({
-		queryKey: ["friends"],
+		queryKey: ["profile", "friends"],
 		queryFn: async () => await getReferrals(),
 	});
 	const { data: profile } = useQuery({
@@ -56,7 +56,8 @@ const FriendsPage = () => {
 		};
 	}, [isModalOpen]);
 
-	const referralLink = profile?.id ? `${origin}/auth?state=%2Fprofile&inviter=${profile.id}` : "";
+	const referralLink = useMemo(() => (profile ? `${origin}/auth?inviter=${profile.id}` : ""), [profile, origin]);
+	profile?.id ? `${origin}/auth?inviter=${profile.id}` : "";
 
 	const handleCopy = () => {
 		navigator.clipboard.writeText(referralLink);

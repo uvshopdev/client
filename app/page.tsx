@@ -180,12 +180,7 @@ export default function Home() {
 
 					<S.ProductsGrid>
 						{firstProducts.map((product) => (
-							<ProductCard
-								key={product.id}
-								{...product}
-								favorite={favorites.includes(product.id)}
-								categoryId={product.category?.id ?? undefined}
-							/>
+							<ProductCard key={product.id} {...product} favorite={favorites.includes(product.id)} />
 						))}
 					</S.ProductsGrid>
 				</S.SectionTight>
@@ -205,12 +200,7 @@ export default function Home() {
 					</S.Header>
 					<S.ProductsGrid>
 						{secondProducts.map((product) => (
-							<ProductCard
-								key={product.id}
-								{...product}
-								favorite={favorites.includes(product.id)}
-								categoryId={product.category?.id ?? undefined}
-							/>
+							<ProductCard key={product.id} {...product} favorite={favorites.includes(product.id)} />
 						))}
 					</S.ProductsGrid>
 				</S.Section>

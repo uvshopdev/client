@@ -17,7 +17,7 @@ const FavoritesPage = () => {
 	return (
 		<Content>
 			{data.map(({ product }) => (
-				<ProductCard key={product.id} {...product} favorite={true} categoryId={product.category?.id} />
+				<ProductCard key={product.id} {...product} favorite={true} />
 			))}
 		</Content>
 	);

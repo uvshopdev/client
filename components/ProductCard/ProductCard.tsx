@@ -29,13 +29,11 @@ import {
 
 interface ProductProps extends ProductType {
 	favorite: boolean;
-	categoryId?: number;
 }
 
-const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
+const ProductCard = ({ favorite, ...product }: ProductProps) => {
 	const t = useExtracted("product");
 	const query = useQueryClient();
-	const href = categoryId ? `/product/${product.id}?category_id=${categoryId}` : `/product/${product.id}`;
 
 	const { mutate: addToFavorite } = useMutation({
 		mutationKey: ["profile", "favorites"],
@@ -58,16 +56,18 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 
 	const { addPosition } = useBasket();
 
+	console.log(product.rating);
+
 	return (
 		<Content>
 			<Top>
-				<ImageWrap as={Link} href={href} prefetch={false}>
+				<ImageWrap as={Link} href={`/product/${product.id}`} prefetch={false}>
 					<ProductImage>
 						<Image src={product.picture ? `${product.picture}` : "/logo.webp"} alt={product.name} fill loading="lazy" unoptimized />
 					</ProductImage>
 				</ImageWrap>
 
-				<ProductName as={Link} href={href} prefetch={false}>
+				<ProductName as={Link} href={`/product/${product.id}`} prefetch={false}>
 					{product.name}
 				</ProductName>
 			</Top>

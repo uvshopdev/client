@@ -48,7 +48,7 @@ const Products = (params: { products: ProductType[]; category?: CategoryType; co
 
 				<Items>
 					{params.products.map((p) => (
-						<ProductCard key={p.id} {...p} favorite={favorites.includes(p.id)} categoryId={0} />
+						<ProductCard key={p.id} {...p} favorite={favorites.includes(p.id)} />
 					))}
 				</Items>
 			</Content>

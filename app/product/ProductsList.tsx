@@ -102,12 +102,7 @@ const ProductsList = ({ currentProductId }: ProductsListProps) => {
 			<S.ProductsTitle>{t("You might also like")}</S.ProductsTitle>
 			<S.ProductsGrid>
 				{visibleProducts.map((product) => (
-					<ProductCard
-						key={product.id}
-						{...product}
-						favorite={favorites.includes(product.id)}
-						categoryId={product.category?.id ?? undefined}
-					/>
+					<ProductCard key={product.id} {...product} favorite={favorites.includes(product.id)} />
 				))}
 			</S.ProductsGrid>
 		</S.ProductsSection>
