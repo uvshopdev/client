@@ -121,6 +121,11 @@ export default function ProductCard({ product }: Props) {
 								<S.Price>
 									{product.price} {t("UAH")}
 								</S.Price>
+								{product.price_unit && (
+								<S.PriceUnit>
+									{t("per")} {product.price_unit}
+								</S.PriceUnit>
+							)}
 							</S.PriceBlock>
 
 							<S.BuyControls>
@@ -154,6 +159,18 @@ export default function ProductCard({ product }: Props) {
 									<S.CharItem>
 										<S.CharLabel>{t("country of origin:")}</S.CharLabel>
 										<S.CharValue>{product.country.name}</S.CharValue>
+									</S.CharItem>
+								)}
+								{product.weight > 0 && (
+									<S.CharItem>
+										<S.CharLabel>{t("weight:")}</S.CharLabel>
+										<S.CharValue>{product.weight} {t("g")}</S.CharValue>
+									</S.CharItem>
+								)}
+								{product.caloric > 0 && (
+									<S.CharItem>
+										<S.CharLabel>{t("caloric content:")}</S.CharLabel>
+										<S.CharValue>{product.caloric} {t("kcal")}</S.CharValue>
 									</S.CharItem>
 								)}
 							</S.CharacteristicsGrid>

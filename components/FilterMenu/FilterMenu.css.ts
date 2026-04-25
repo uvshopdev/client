@@ -362,3 +362,50 @@ export const CustomSelectItem = styled.div<{ $isCancel?: boolean }>`
         opacity: 0.6;
     }
 `;
+
+export const ButtonsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin-top: 10px;
+`;
+
+export const ApplyButton = styled.button`
+    padding: 14px 32px;
+    background: #3B3028;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 14px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 0.8;
+    }
+`;
+
+export const ClearButton = styled.button`
+    background: transparent;
+    border: none;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #cd2323;
+    cursor: pointer;
+    padding: 8px 0;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: transparent;
+    transition: all 0.2s ease;
+
+    &:hover {
+        color: #a81c1c;
+        text-decoration-color: #a81c1c;
+    }
+`;

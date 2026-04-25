@@ -129,3 +129,34 @@ export const FormLabel = styled.label`
     font-size: 16px;
   }
 `;
+
+export const PasswordInputWrapper = styled.div`
+    position: relative;
+    width: 100%;
+
+    input {
+        padding-right: 44px; /* Місце для іконки ока */
+    }
+`;
+
+export const PasswordToggle = styled.button`
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777 !important;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    width: auto !important; /* Перевизначаємо 100% width з вашого FormSection */
+
+    &:hover {
+        color: #111 !important;
+        opacity: 1 !important;
+    }
+`;

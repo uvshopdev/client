@@ -110,6 +110,7 @@ export const ProductPrice = styled.div`
 export const Sub = styled.div`
 	font-size: 12px;
 	color: #888888;
+	margin-top: 6px;
 `;
 
 export const Actions = styled.div`

@@ -143,40 +143,6 @@ export const FormLabel = styled.label`
     }
 `;
 
-export const InputWithButtonWrapper = styled.div<{ $padRight: number }>`
-    position: relative;
-    width: 100%;
-
-    input {
-        padding-right: ${({ $padRight }) => $padRight}px;
-        text-overflow: ellipsis;
-    }
-`;
-
-export const ActionInsideButton = styled.button`
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    padding: 0;
-    font-size: 14px;
-    font-weight: 600;
-    color: ${theme.colors.primary};
-    cursor: pointer;
-    transition: opacity 0.2s;
-
-    &:disabled {
-        color: #666;
-        cursor: not-allowed;
-    }
-
-    &:not(:disabled):hover {
-        opacity: 0.7;
-    }
-`;
-
 export const Buttons = styled.div`
     width: 100%;
     margin-top: 10px;
@@ -201,5 +167,54 @@ export const Buttons = styled.div`
         &:active {
             transform: scale(0.98);
         }
+    }
+`;
+
+export const PasswordInputWrapper = styled.div`
+    position: relative;
+    width: 100%;
+
+    input {
+        padding-right: 44px;
+    }
+`;
+
+export const PasswordToggle = styled.button`
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: #3B3028;
+    }
+`;
+
+export const ToggleModeText = styled.button`
+    background: transparent;
+    border: none;
+    color: #555;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: -10px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: transparent;
+    transition: all 0.2s ease;
+
+    &:hover {
+        color: #111;
+        text-decoration-color: #111;
     }
 `;

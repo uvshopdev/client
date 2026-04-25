@@ -116,7 +116,6 @@ export const Block = styled.div`
 export const Title = styled.h1`
   font-size: 34px;
   color: #3b3028;
-  font-family: 'Gabriela', serif;
   font-weight: 545;
   line-height: 1.2;
   margin: 0;
@@ -349,4 +348,12 @@ export const AccordionContent = styled.div`
   ${fontBase}
   font-size: 14px;
   line-height: 1.5;
+`;
+
+export const PriceUnit = styled.div`
+  font-size: 15px;
+  font-weight: 400;
+  color: #555;
+  margin-top: 4px;
+  font-family: "Montserrat Alternates", sans-serif;
 `;

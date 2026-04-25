@@ -175,6 +175,8 @@ export const PreviewGrid = styled.div`
 `;
 
 export const EmptyState = styled.div`
+  width: 100%;
+  grid-column: 1 / -1;
   min-height: 160px;
   border: 1px dashed #e9e3d9;
   border-radius: 16px;
@@ -185,6 +187,7 @@ export const EmptyState = styled.div`
   color: #6f6258;
   font-family: "Montserrat Alternates", sans-serif;
   background: #fff;
+  box-sizing: border-box;
 `;
 
 export const Top = styled.div`

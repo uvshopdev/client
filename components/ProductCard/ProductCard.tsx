@@ -25,6 +25,7 @@ import {
 	Rating,
 	Stock,
 	Top,
+	Sub
 } from "./ProductCard.css";
 
 interface ProductProps extends ProductType {
@@ -95,6 +96,11 @@ const ProductCard = ({ favorite, ...product }: ProductProps) => {
 						<ProductPrice>
 							{product.price} {t("UAH")}
 						</ProductPrice>
+						{product.price_unit && (
+                            <Sub>
+                                {t("per")} {product.price_unit}
+                            </Sub>
+                        )}
 					</div>
 					<Actions>
 						<FavoriteButton
