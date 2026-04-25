@@ -32,19 +32,14 @@ const ProfileForm = () => {
 	const onSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget);
-		for (const [key, value] of formData) {
-			console.log(`${key}: ${value}`);
-		}
 		mutation.mutate(formData);
 	};
 
 	return (
 		<Form onSubmit={onSubmit}>
 			<AvatarSection>
-				{/* 1. Декоративная рамка на заднем плане (всю ширину 280x280) */}
 				<PhotoFrameOverlay />
 
-				{/* 2. Контейнер самой фотки (меньше по размеру и идеально круглый) */}
 				<ImageContainer>
 					<Image
 						src={data?.picture ? `${process.env.NEXT_PUBLIC_FILES_URL}/${data.picture}` : "/logo.webp"}

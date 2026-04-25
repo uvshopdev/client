@@ -31,25 +31,26 @@ import {
 const ProfilePage = () => {
 	const t = useExtracted("profile");
 
-	const { data: milesEntries } = useQuery({
+	const { data: miles = [] } = useQuery({
 		queryKey: ["profile", "miles"],
 		queryFn: async () => await getUserMiles(),
+		placeholderData: [],
 	});
 
 	const [isStatusModalOpen, setIsStatusModalOpen] = useState(false);
 	const [selectedStatusIdx, setSelectedStatusIdx] = useState(0);
 
 	useEffect(() => {
-        if (isStatusModalOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "unset";
-        }
+		if (isStatusModalOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "unset";
+		}
 
-        return () => {
-            document.body.style.overflow = "unset";
-        };
-    }, [isStatusModalOpen]);
+		return () => {
+			document.body.style.overflow = "unset";
+		};
+	}, [isStatusModalOpen]);
 
 	const statuses = useMemo(
 		() => [
@@ -89,16 +90,11 @@ const ProfilePage = () => {
 		[t],
 	);
 
-	const milesSummary = useMemo(() => getMilesSummary(milesEntries ?? []), [milesEntries]);
-	const currentMiles = milesSummary.currentMiles;
-	const previousYearMiles = milesSummary.previousYearMiles;
-	const currentYearMiles = milesSummary.currentYearMiles;
+	const milesSummary = useMemo(() => getMilesSummary(miles), [miles]);
 
 	const activeStatusIdx = useMemo(() => {
-		return statuses.reduce((accumulator, status, index) => {
-			return currentMiles >= status.minMiles ? index : accumulator;
-		}, 0);
-	}, [currentMiles, statuses]);
+		return statuses.reduce((accumulator, status, index) => (milesSummary >= status.minMiles ? index : accumulator), 0);
+	}, [milesSummary, statuses]);
 
 	const progressPercentage = useMemo(() => {
 		const totalNodes = statuses.length;
@@ -121,12 +117,11 @@ const ProfilePage = () => {
 					</button>
 					<button type="button">
 						<MapPin size={16} className="icon" />
-						<span>{currentMiles}</span>
+						<span>{milesSummary}</span>
 					</button>
 				</div>
 			</PassportHeader>
 
-			{/* Форма зі своєю рідною рамкою */}
 			<ProfileForm />
 
 			{isStatusModalOpen && (
@@ -164,15 +159,15 @@ const ProfilePage = () => {
 							<InfoCardTitle>{t("Miles history")}</InfoCardTitle>
 							<InfoRow>
 								<span>{t("Current number of active miles")}</span>
-								<span>{currentMiles}</span>
+								<span>{milesSummary}</span>
 							</InfoRow>
 							<InfoRow>
 								<span>{t("Total accumulated for the previous year")}</span>
-								<span>{previousYearMiles}</span>
+								<span>{milesSummary}</span>
 							</InfoRow>
 							<InfoRow>
 								<span>{t("Total accumulated for the current year")}</span>
-								<span>{currentYearMiles}</span>
+								<span>{milesSummary}</span>
 							</InfoRow>
 						</InfoCard>
 

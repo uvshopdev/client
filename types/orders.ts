@@ -4,8 +4,6 @@ import { Product } from "./products";
 
 export const Order = z.object({
 	id: z.number(),
-	inserted_at: z.string().optional(),
-	updated_at: z.string().optional(),
 	recipient: z.string(),
 	email: z.string(),
 	phone_number: z.string(),
@@ -25,6 +23,9 @@ export const Order = z.object({
 			product: Product,
 		}),
 	),
+
+	inserted_at: z.coerce.date(),
+	updated_at: z.coerce.date(),
 });
 
 export const Orders = z.array(Order);

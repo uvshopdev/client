@@ -7,15 +7,18 @@ import { getFavorites } from "@/lib/favorites";
 import { Content } from "./page.css";
 
 const FavoritesPage = () => {
-	const { data, isSuccess } = useQuery({
-		queryKey: ["favorites"],
+	const { data = [] } = useQuery({
+		queryKey: ["profile", "favorites"],
 		queryFn: async () => await getFavorites(),
+		staleTime: 3 * 60 * 1000,
+		placeholderData: [],
 	});
 
 	return (
 		<Content>
-			{isSuccess &&
-				data.map(({ product }) => <ProductCard key={product.id} {...product} favorite={true} categoryId={product.category?.id} />)}
+			{data.map(({ product }) => (
+				<ProductCard key={product.id} {...product} favorite={true} categoryId={product.category?.id} />
+			))}
 		</Content>
 	);
 };

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Heart, ShoppingBasket } from "lucide-react";
+import { Heart, ShoppingBasket, Star } from "lucide-react";
 import { useExtracted } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,21 +38,19 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 	const href = categoryId ? `/product/${product.id}?category_id=${categoryId}` : `/product/${product.id}`;
 
 	const { mutate: addToFavorite } = useMutation({
-		mutationKey: ["favorites"],
+		mutationKey: ["profile", "favorites"],
 		mutationFn: async () => await addFavorite(product.id),
 		onSuccess: async () => {
-			await query.invalidateQueries({ queryKey: ["favorites"] });
-			await query.invalidateQueries({ queryKey: ["favorites_ids"] });
+			await query.invalidateQueries({ queryKey: ["profile", "favorites"] });
 			toast.success(t("Item added to favorites"));
 		},
 		onError: () => toast.error(t("Log in to add this item to your favourites")),
 	});
 	const { mutate: removeFromFavorite } = useMutation({
-		mutationKey: ["favorites"],
+		mutationKey: ["profile", "favorites"],
 		mutationFn: async () => await removeFavorite(product.id),
 		onSuccess: async () => {
-			await query.invalidateQueries({ queryKey: ["favorites"] });
-			await query.invalidateQueries({ queryKey: ["favorites_ids"] });
+			await query.invalidateQueries({ queryKey: ["profile", "favorites"] });
 			toast.success(t("Item removed from favorites"));
 		},
 		onError: () => toast.error(t("Failed to remove item from favorites")),
@@ -90,7 +88,17 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 					<div>{t("in stock")}</div>
 				</Stock>
 
-				<Rating>★★★★★</Rating>
+				<Rating>
+					{[1, 2, 3, 4, 5].map((i) => (
+						<Star
+							key={i}
+							size={15}
+							fill={i <= product.rating ? "#ffdb0d" : "none"}
+							color={i <= product.rating ? "#ffdb0d" : "#D3D3D3"}
+							strokeWidth={1.5}
+						/>
+					))}
+				</Rating>
 
 				<Buttons>
 					<div>
@@ -110,12 +118,7 @@ const ProductCard = ({ favorite, categoryId, ...product }: ProductProps) => {
 
 						<CartButton
 							aria-label={t("Add to cart")}
-							onClick={() => {
-								if (!addPosition(product, 1)) {
-									console.log("A");
-									toast.success(t("Item added to cart"));
-								}
-							}}
+							onClick={() => !addPosition(product, 1) && toast.success(t("Item added to cart"))}
 						>
 							<ShoppingBasket size={26} strokeWidth={1.5} />
 						</CartButton>

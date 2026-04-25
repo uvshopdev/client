@@ -101,8 +101,6 @@ const FilterMenu = ({ active, setActive, countries }: { active: boolean; setActi
 	}, [setActive]);
 
 	const onChangeCountry = (country: string) => {
-		console.log(country);
-
 		const params = new URLSearchParams(searchParams.toString());
 		params.set("country", country);
 

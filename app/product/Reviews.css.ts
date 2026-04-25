@@ -31,6 +31,25 @@ export const Title = styled.h2`
   margin: 0;
 `;
 
+export const ReviewSummary = styled.div`
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 8px;
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #6f6258;
+`;
+
+export const SummaryRating = styled.span`
+  font-size: 18px;
+  font-weight: 700;
+  color: #3b3028;
+`;
+
+export const SummaryCount = styled.span`
+  font-size: 13px;
+`;
+
 export const HeaderActions = styled.div`
   display: flex;
   align-items: center;
@@ -114,20 +133,30 @@ export const Page = styled.div`
   }
 `;
 
-export const Card = styled.div`
+export const Card = styled.button`
   flex: 1;
   background: #fff;
   border: 1px solid #e9e3d9;
   border-radius: 16px;
-  padding: 30px;
+  padding: 24px 26px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   transition: box-shadow 0.2s;
   box-sizing: border-box;
+  text-align: left;
+  width: 100%;
+  appearance: none;
+  font: inherit;
+  align-items: stretch;
 
   &:hover {
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #3b3028;
+    outline-offset: 2px;
   }
 
   @media (max-width: 1024px) {
@@ -135,29 +164,62 @@ export const Card = styled.div`
   }
 `;
 
+export const PreviewGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const EmptyState = styled.div`
+  min-height: 160px;
+  border: 1px dashed #e9e3d9;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  color: #6f6258;
+  font-family: "Montserrat Alternates", sans-serif;
+  background: #fff;
+`;
+
 export const Top = styled.div`
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+  width: 100%;
 `;
 
 export const Row = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
   font-family: "Montserrat Alternates", sans-serif;
   font-size: 16px;
   font-weight: 600;
   color: #3b3028;
-  margin-bottom: 8px;
 `;
 
 export const CardDate = styled.span`
   font-weight: 400;
   color: #777;
+  white-space: nowrap;
+  text-align: right;
 `;
 
 export const RatingRow = styled.div`
   display: flex;
   align-items: center;
   gap: 14px;
+  width: 100%;
+  justify-content: flex-start;
 `;
 
 export const ModalRatingRow = styled(RatingRow)`
@@ -176,17 +238,20 @@ export const Stars = styled.div`
 
 export const Text = styled.div`
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.6;
   font-family: "Montserrat Alternates", sans-serif;
   color: #3b3028;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  margin-right: 4px;
 
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
+  width: 100%;
+  text-align: left;
 `;
 
 export const Controls = styled.div`
@@ -303,28 +368,6 @@ export const ModalHeader = styled.div`
 
 export const WriteModalHeader = styled(ModalHeader)`
   margin-bottom: 40px;
-`;
-
-export const WriteModalTitle = styled(Title)`
-  font-size: 32px;
-  font-weight: 500;
-  margin-bottom: 16px;
-
-  @media (max-width: 640px) {
-    font-size: 26px;
-    line-height: 1.2;
-    margin-right: 30px;
-  }
-`;
-
-export const WriteModalUser = styled.div`
-  color: #777;
-  font-size: 15px;
-  font-family: "Montserrat Alternates", sans-serif;
-
-  strong {
-    color: #3b3028;
-  }
 `;
 
 export const ModalReviewHeader = styled.div`

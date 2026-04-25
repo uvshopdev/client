@@ -82,8 +82,8 @@ export const Stock = styled.div`
 `;
 
 export const Rating = styled.div`
-	letter-spacing: 5px;
-	color: #f5b301;
+	display: flex;
+	gap: 5px;
 `;
 
 export const Bottom = styled.div`

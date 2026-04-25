@@ -59,15 +59,16 @@ export default function BasketPage() {
 		queryFn: async () => await getUserCountries(),
 	});
 
-	const { data: milesEntries } = useQuery({
+	const { data: miles = [] } = useQuery({
 		queryKey: ["profile", "miles"],
 		queryFn: async () => await getUserMiles(),
+		placeholderData: [],
 	});
 
 	const { positions, subtotal, setPositionAmount, removePosition } = useBasket();
 	const promoDiscount = promoApplied ? (subtotal * 0) / 100 : 0;
 	const subtotalAfterPromo = Math.max(0, subtotal - promoDiscount);
-	const availableMiles = useMemo(() => getMilesSummary(milesEntries ?? []).currentMiles, [milesEntries]);
+	const availableMiles = useMemo(() => getMilesSummary(miles), [miles]);
 	const maxMilesToRedeem = Math.min(availableMiles, Math.floor(subtotalAfterPromo));
 	const redeemedMilesValue = Math.min(milesToRedeem, maxMilesToRedeem);
 	const total = Math.max(0, subtotalAfterPromo - redeemedMilesValue);
@@ -354,6 +355,7 @@ export default function BasketPage() {
 							height={130}
 							alt="Stamp"
 							className="stamp-img"
+							unoptimized
 						/>
 					</ModalContent>
 				</ModalOverlay>

@@ -1,270 +1,254 @@
 "use client";
-import { Star, ChevronRight, MessageSquare } from "lucide-react";
-import { useExtracted } from "next-intl";
-import { useState, useEffect } from "react";
-import { toast } from "sonner";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createReview } from "@/lib/reviews";
 
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { ChevronRight, Star } from "lucide-react";
+import { useExtracted } from "next-intl";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+
+import { createReview } from "@/lib/reviews";
+import { getProfile } from "@/lib/user";
+import type { ReviewType } from "@/types/products";
 import * as S from "./Reviews.css";
 
-interface Review {
-    name: string;
-    date: string;
-    rating: number;
-    text: string;
-}
-
-interface User {
-    name: string;
-    isAuth: boolean;
-}
-
 interface Props {
-    productId: number;
-    reviews: Review[];
-    currentUser?: User;
+	reviews: ReviewType[];
+	productId?: number;
+	currentUser?: {
+		name: string;
+		isAuth: boolean;
+	};
 }
 
-export default function Reviews({ reviews, currentUser, productId }: Props) {
-    const t = useExtracted("reviews");
-    const queryClient = useQueryClient();
-    const [index, setIndex] = useState(0);
-    const [activeReview, setActiveReview] = useState<Review | null>(null);
-    const [isAllReviewsOpen, setIsAllReviewsOpen] = useState(false);
-    
-    const [isWriteModalOpen, setIsWriteModalOpen] = useState(false);
-    const [newRating, setNewRating] = useState(5);
-    const [hoverRating, setHoverRating] = useState(0);
-    const [newText, setNewText] = useState("");
+export default function Reviews({ reviews, productId }: Props) {
+	const t = useExtracted("reviews");
+	const router = useRouter();
+	const { data: profile } = useQuery({
+		queryKey: ["profile"],
+		queryFn: async () => await getProfile(),
+		retry: false,
+		staleTime: 5 * 60 * 1000,
+	});
+	const [isWriteModalOpen, setIsWriteModalOpen] = useState(false);
+	const [newRating, setNewRating] = useState(5);
+	const [hoverRating, setHoverRating] = useState(0);
+	const [newText, setNewText] = useState("");
+	const [activeReview, setActiveReview] = useState<ReviewType | null>(null);
+	const [isAllReviewsOpen, setIsAllReviewsOpen] = useState(false);
+	const isAuthenticated = !!profile;
 
-    const { mutate, isPending } = useMutation({
-        mutationFn: createReview,
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ["reviews", productId] });
-            
-            setIsWriteModalOpen(false);
-            setNewText("");
-            setNewRating(5);
-            toast.success(t("Review added successfully"));
-        },
-        onError: () => {
-            toast.error(t("Failed to add review"));
-        }
-    });
+	const { mutate, isPending } = useMutation({
+		mutationFn: createReview,
+		onSuccess: () => {
+			setIsWriteModalOpen(false);
+			setNewText("");
+			setNewRating(5);
+			router.refresh();
+			toast.success("Отзыв успешно добавлен");
+		},
+		onError: () => {
+			toast.error("Не удалось добавить отзыв");
+		},
+	});
 
-    useEffect(() => {
-        if (activeReview || isAllReviewsOpen || isWriteModalOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
-        return () => { document.body.style.overflow = "auto"; };
-    }, [activeReview, isAllReviewsOpen, isWriteModalOpen]);
+	const totalReviews = reviews.length;
+	const averageRating = totalReviews ? reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews : 0;
+	const previewReviews = reviews.slice(0, 3);
 
-    const sortedReviews = [...reviews].sort((a, b) => {
-        const [dayA, monthA, yearA] = a.date.split('.');
-        const [dayB, monthB, yearB] = b.date.split('.');
-        const dateA = new Date(`${yearA}-${monthA}-${dayA}`).getTime();
-        const dateB = new Date(`${yearB}-${monthB}-${dayB}`).getTime();
-        return dateB - dateA;
-    });
+	useEffect(() => {
+		if (activeReview || isAllReviewsOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "auto";
+		}
 
-    const sliderReviews = sortedReviews.slice(0, 9);
-    const pages = [];
-    for (let i = 0; i < sliderReviews.length; i += 3) {
-        pages.push(sliderReviews.slice(i, i + 3));
-    }
+		return () => {
+			document.body.style.overflow = "auto";
+		};
+	}, [activeReview, isAllReviewsOpen]);
 
-    const maxIndex = Math.max(0, pages.length - 1);
-    const prev = () => setIndex((i) => Math.max(0, i - 1));
-    const next = () => setIndex((i) => Math.min(maxIndex, i + 1));
+	const renderStars = (rating: number) =>
+		[1, 2, 3, 4, 5].map((n) => (
+			<Star key={n} size={18} fill={n <= rating ? "#ffdb0d" : "none"} color={n <= rating ? "#ffdb0d" : "#e9e3d9"} strokeWidth={1.5} />
+		));
 
-    const handleWriteClick = () => {
-        if (!currentUser?.isAuth) {
-            toast.error(t("Please login to leave a review"));
-            return;
-        }
-        setIsWriteModalOpen(true);
-    };
+	const getReviewAuthor = (review: ReviewType) => review.user.full_name || "Anonymous";
+	const formatReviewDate = (review: ReviewType) => {
+		const date = review.inserted_at;
+		if (!date) return "";
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!newText.trim() || !currentUser) return;
+		return date.toLocaleDateString("uk-UA");
+	};
 
-        mutate({
-            product_id: productId,
-            rating: newRating,
-            text: newText.trim()
-        });
-    };
+	const handleWriteClick = () => {
+		if (!isAuthenticated) {
+			toast.error("Войдите, чтобы оставить отзыв");
+			return;
+		}
 
-    const renderStars = (rating: number) =>
-    [1, 2, 3, 4, 5].map((n) => (
-        <Star 
-            key={n} 
-            size={18} 
-            fill={n <= rating ? "#ffdb0d" : "none"} 
-            color={n <= rating ? "#ffdb0d" : "#e9e3d9"}
-            strokeWidth={1.5}
-        />
-    ));
+		setIsWriteModalOpen(true);
+	};
 
-    return (
-        <S.Container>
-            <S.HeaderRow>
-                <S.Title>{t("Reviews")}</S.Title>
-                <S.HeaderActions>
-                    <S.WriteBtn onClick={handleWriteClick}>
-                        <MessageSquare size={16} /> {t("Write a review")}
-                    </S.WriteBtn>
-                    <S.SeeAllBtn onClick={() => setIsAllReviewsOpen(true)}>
-                        {t("See all")} <ChevronRight size={16} />
-                    </S.SeeAllBtn>
-                </S.HeaderActions>
-            </S.HeaderRow>
+	const handleSubmit = (event: React.FormEvent) => {
+		event.preventDefault();
+		if (!productId || !newText.trim() || !isAuthenticated) return;
 
-            <S.SliderWrapper>
-                <S.Slider style={{ transform: `translateX(-${index * 100}%)` }}>
-                    {pages.map((page, pageIdx) => (
-                        <S.Page key={`page-${pageIdx}`}>
-                            {page.map((r, i) => (
-                                <S.Card key={`review-${pageIdx}-${i}`} onClick={() => setActiveReview(r)}>
-                                    <S.Top>
-                                        <S.Row>
-                                            <span>{r.name}</span>
-                                            <S.CardDate>{r.date}</S.CardDate>
-                                        </S.Row>
-                                        <S.RatingRow>
-                                            <S.Stars>{renderStars(r.rating)}</S.Stars>
-                                            <S.RatingValue>{r.rating}/5</S.RatingValue>
-                                        </S.RatingRow>
-                                    </S.Top>
-                                    <S.Text>{r.text}</S.Text>
-                                </S.Card>
-                            ))}
-                        </S.Page>
-                    ))}
-                </S.Slider>
-            </S.SliderWrapper>
+		mutate({
+			product_id: productId,
+			rating: newRating,
+			message: newText.trim(),
+		});
+	};
 
-            {pages.length > 1 && (
-                <S.Controls>
-                    <button type="button" onClick={prev} disabled={index === 0} aria-label="Previous"> ‹ </button>
-                    <S.Dots>
-                        {pages.map((_, i) => (
-                            <div key={`dot-${i}`} className={i === index ? "active" : ""} onClick={() => setIndex(i)} />
-                        ))}
-                    </S.Dots>
-                    <button type="button" onClick={next} disabled={index === maxIndex} aria-label="Next"> › </button>
-                </S.Controls>
-            )}
+	return (
+		<S.Container>
+			<S.HeaderRow>
+				<div>
+					<S.Title>{t("Reviews")}</S.Title>
+					<S.ReviewSummary>
+						<S.SummaryRating>{averageRating ? averageRating.toFixed(1) : "0.0"}</S.SummaryRating>
+						<S.SummaryCount>
+							{totalReviews} {totalReviews === 1 ? "review" : "reviews"}
+						</S.SummaryCount>
+					</S.ReviewSummary>
+				</div>
+				<S.HeaderActions>
+					{isAuthenticated && (
+						<S.WriteBtn type="button" onClick={handleWriteClick}>
+							Написать отзыв
+						</S.WriteBtn>
+					)}
+					<S.SeeAllBtn type="button" onClick={() => setIsAllReviewsOpen(true)}>
+						{t("See all")} <ChevronRight size={16} />
+					</S.SeeAllBtn>
+				</S.HeaderActions>
+			</S.HeaderRow>
 
-            {isWriteModalOpen && (
-                <S.ModalOverlay onClick={() => setIsWriteModalOpen(false)}>
-                    <S.SingleModalContent onClick={(e) => e.stopPropagation()}>
-                        <S.CloseButton onClick={() => setIsWriteModalOpen(false)}> &#10005; </S.CloseButton>
-                        <S.WriteModalHeader>
-                            <S.WriteModalTitle>{t("Write a review")}</S.WriteModalTitle>
-                            <S.WriteModalUser>
-                                {t("Your name")}: <strong>{currentUser?.name}</strong>
-                            </S.WriteModalUser>
-                        </S.WriteModalHeader>
+			<S.PreviewGrid>
+				{previewReviews.length > 0 ? (
+					previewReviews.map((review) => (
+						<S.Card key={review.user.id} type="button" onClick={() => setActiveReview(review)}>
+							<S.Top>
+								<S.Row>
+									<span>{getReviewAuthor(review)}</span>
+									<S.CardDate>{formatReviewDate(review)}</S.CardDate>
+								</S.Row>
+								<S.RatingRow>
+									<S.Stars>{renderStars(review.rating)}</S.Stars>
+									<S.RatingValue>{review.rating}/5</S.RatingValue>
+								</S.RatingRow>
+							</S.Top>
+							<S.Text>{review.message}</S.Text>
+						</S.Card>
+					))
+				) : (
+					<S.EmptyState>No reviews yet</S.EmptyState>
+				)}
+			</S.PreviewGrid>
 
-                        <S.Form onSubmit={handleSubmit}>
-                            <div>
-                                <S.FormLabel>{t("Your rating")}:</S.FormLabel>
-                                <S.StarSelector onMouseLeave={() => setHoverRating(0)}>
-                                    {[1, 2, 3, 4, 5].map((n) => (
-                                        <Star
-                                            key={n}
-                                            size={32}
-                                            fill={n <= (hoverRating || newRating) ? "#ffdb0d" : "none"}
-                                            color={n <= (hoverRating || newRating) ? "#ffdb0d" : "#e9e3d9"}
-                                            strokeWidth={1.5}
-                                            onClick={() => setNewRating(n)}
-                                            onMouseEnter={() => setHoverRating(n)}
-                                        />
-                                    ))}
-                                </S.StarSelector>
-                            </div>
+			{activeReview && (
+				<S.ModalOverlay onClick={() => setActiveReview(null)}>
+					<S.SingleModalContent onClick={(e) => e.stopPropagation()}>
+						<S.CloseButton onClick={() => setActiveReview(null)}>&#10005;</S.CloseButton>
 
-                            <S.TextArea
-                                placeholder={t("Share your impressions about the product...")}
-                                value={newText}
-                                onChange={(e) => setNewText(e.target.value)}
-                                required
-                            />
+						<S.ModalHeader>
+							<S.ModalReviewHeader>
+								<S.ModalReviewName>{getReviewAuthor(activeReview)}</S.ModalReviewName>
+							</S.ModalReviewHeader>
+							<S.ModalDate>{formatReviewDate(activeReview)}</S.ModalDate>
+						</S.ModalHeader>
 
-                            <S.SubmitBtn type="submit" disabled={!newText.trim() || isPending}>
-                                {isPending ? t("Sending...") : t("Submit review")}
-                            </S.SubmitBtn>
-                        </S.Form>
-                    </S.SingleModalContent>
-                </S.ModalOverlay>
-            )}
+						<S.ModalRatingRow>
+							<S.Stars>{renderStars(activeReview.rating)}</S.Stars>
+							<S.RatingValue>{activeReview.rating}/5</S.RatingValue>
+						</S.ModalRatingRow>
 
-            {activeReview && (
-                <S.ModalOverlay onClick={() => setActiveReview(null)}>
-                    <S.SingleModalContent onClick={(e) => e.stopPropagation()}>
-                        <S.CloseButton onClick={() => setActiveReview(null)}>
-                            &#10005;
-                        </S.CloseButton>
+						<S.ModalText>{activeReview.message}</S.ModalText>
+					</S.SingleModalContent>
+				</S.ModalOverlay>
+			)}
 
-                        <S.ModalHeader>
-                            <S.ModalReviewHeader>
-                                <S.ModalReviewName>{activeReview.name}</S.ModalReviewName>
-                            </S.ModalReviewHeader>
-                            <S.ModalDate>
-                                {activeReview.date}
-                            </S.ModalDate>
-                        </S.ModalHeader>
+			{isWriteModalOpen && (
+				<S.ModalOverlay onClick={() => setIsWriteModalOpen(false)}>
+					<S.SingleModalContent onClick={(event) => event.stopPropagation()}>
+						<S.CloseButton onClick={() => setIsWriteModalOpen(false)}>&#10005;</S.CloseButton>
+						<S.ModalHeader>
+							<S.ModalReviewHeader>
+								<S.ModalReviewName>Написать отзыв</S.ModalReviewName>
+							</S.ModalReviewHeader>
+							<S.ModalDate>{profile?.full_name}</S.ModalDate>
+						</S.ModalHeader>
 
-                        <S.ModalRatingRow>
-                            <S.Stars>{renderStars(activeReview.rating)}</S.Stars>
-                            <S.RatingValue>{activeReview.rating}/5</S.RatingValue>
-                        </S.ModalRatingRow>
-                        
-                        <S.ModalText>{activeReview.text}</S.ModalText>
-                    </S.SingleModalContent>
-                </S.ModalOverlay>
-            )}
+						<S.Form onSubmit={handleSubmit}>
+							<div>
+								<S.FormLabel>Ваша оценка</S.FormLabel>
+								<S.StarSelector onMouseLeave={() => setHoverRating(0)}>
+									{[1, 2, 3, 4, 5].map((n) => (
+										<Star
+											key={n}
+											size={32}
+											fill={n <= (hoverRating || newRating) ? "#ffdb0d" : "none"}
+											color={n <= (hoverRating || newRating) ? "#ffdb0d" : "#e9e3d9"}
+											strokeWidth={1.5}
+											onClick={() => setNewRating(n)}
+											onMouseEnter={() => setHoverRating(n)}
+										/>
+									))}
+								</S.StarSelector>
+							</div>
 
-            {isAllReviewsOpen && (
-                <S.ModalOverlay onClick={() => setIsAllReviewsOpen(false)}>
-                    <S.AllModalContent onClick={(e) => e.stopPropagation()}>
-                        <S.CloseButton onClick={() => setIsAllReviewsOpen(false)}>
-                            &#10005;
-                        </S.CloseButton>
-                        
-                        <S.ModalHeader>
-                            <S.Title>{t("All reviews")}</S.Title>
-                        </S.ModalHeader>
+							<S.TextArea
+								placeholder="Поделитесь своими впечатлениями о товаре..."
+								value={newText}
+								onChange={(event) => setNewText(event.target.value)}
+								required
+							/>
 
-                        <S.ModalScrollArea>
-                            {sortedReviews.map((r, i) => (
-                                <S.Card 
-                                    key={`all-rev-${i}`} 
-                                    onClick={() => { setActiveReview(r); setIsAllReviewsOpen(false); }}
-                                    style={{ height: 'auto' }}
-                                >
-                                    <S.Top>
-                                        <S.Row>
-                                            <span>{r.name}</span>
-                                            <S.CardDate>{r.date}</S.CardDate>
-                                        </S.Row>
-                                        <S.RatingRow>
-                                            <S.Stars>{renderStars(r.rating)}</S.Stars>
-                                            <S.RatingValue>{r.rating}/5</S.RatingValue>
-                                        </S.RatingRow>
-                                    </S.Top>
-                                    <S.Text>{r.text}</S.Text>
-                                </S.Card>
-                            ))}
-                        </S.ModalScrollArea>
-                    </S.AllModalContent>
-                </S.ModalOverlay>
-            )}
-        </S.Container>
-    );
+							<S.SubmitBtn type="submit" disabled={!newText.trim() || isPending}>
+								{isPending ? "Отправка..." : "Отправить отзыв"}
+							</S.SubmitBtn>
+						</S.Form>
+					</S.SingleModalContent>
+				</S.ModalOverlay>
+			)}
+
+			{isAllReviewsOpen && (
+				<S.ModalOverlay onClick={() => setIsAllReviewsOpen(false)}>
+					<S.AllModalContent onClick={(e) => e.stopPropagation()}>
+						<S.CloseButton onClick={() => setIsAllReviewsOpen(false)}>&#10005;</S.CloseButton>
+
+						<S.ModalHeader>
+							<S.Title>{t("All reviews")}</S.Title>
+						</S.ModalHeader>
+
+						<S.ModalScrollArea>
+							{reviews.map((review) => (
+								<S.Card
+									key={review.user.id}
+									type="button"
+									onClick={() => {
+										setActiveReview(review);
+										setIsAllReviewsOpen(false);
+									}}
+								>
+									<S.Top>
+										<S.Row>
+											<span>{getReviewAuthor(review)}</span>
+											<S.CardDate>{formatReviewDate(review)}</S.CardDate>
+										</S.Row>
+										<S.RatingRow>
+											<S.Stars>{renderStars(review.rating)}</S.Stars>
+											<S.RatingValue>{review.rating}/5</S.RatingValue>
+										</S.RatingRow>
+									</S.Top>
+									<S.Text>{review.message}</S.Text>
+								</S.Card>
+							))}
+						</S.ModalScrollArea>
+					</S.AllModalContent>
+				</S.ModalOverlay>
+			)}
+		</S.Container>
+	);
 }

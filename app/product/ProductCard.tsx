@@ -1,13 +1,13 @@
 "use client";
 
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ChevronDown, ChevronUp, Heart, Star } from "lucide-react";
 import { useExtracted } from "next-intl";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
 
-import { addFavorite, removeFavorite } from "@/lib/favorites";
+import { addFavorite, getFavorites, removeFavorite } from "@/lib/favorites";
 import { useBasket } from "@/store/basket";
 import type { ProductType } from "@/types/products";
 import * as S from "./ProductCard.css";
@@ -24,12 +24,21 @@ export default function ProductCard({ product }: Props) {
 	const query = useQueryClient();
 	const { addPosition } = useBasket();
 
+	const { data: favorites = [] } = useQuery({
+		queryKey: ["profile", "favorites", "set"],
+		queryFn: async () => {
+			const data = await getFavorites();
+			return data.map(({ product }) => product.id);
+		},
+		placeholderData: [],
+		staleTime: 3 * 60 * 1000,
+	});
+
 	const { mutate: addToFavorite } = useMutation({
 		mutationKey: ["favorites"],
 		mutationFn: async () => await addFavorite(product.id),
 		onSuccess: async () => {
-			await query.invalidateQueries({ queryKey: ["favorites"] });
-			await query.invalidateQueries({ queryKey: ["favorites_ids"] });
+			await query.invalidateQueries({ queryKey: ["profile", "favorites"] });
 			toast.success(t("Item added to favorites"));
 		},
 		onError: () => toast.error(t("Failed to add item to favorites")),
@@ -39,14 +48,11 @@ export default function ProductCard({ product }: Props) {
 		mutationKey: ["favorites"],
 		mutationFn: async () => await removeFavorite(product.id),
 		onSuccess: async () => {
-			await query.invalidateQueries({ queryKey: ["favorites"] });
-			await query.invalidateQueries({ queryKey: ["favorites_ids"] });
+			await query.invalidateQueries({ queryKey: ["profile", "favorites"] });
 			toast.success(t("Item removed from favorites"));
 		},
 		onError: () => toast.error(t("Failed to remove item from favorites")),
 	});
-
-	const rating = 5;
 
 	const toggle = (key: string) => setOpenKeys(openKeys.includes(key) ? openKeys.filter((k) => k !== key) : [...openKeys, key]);
 
@@ -72,8 +78,15 @@ export default function ProductCard({ product }: Props) {
 							fill
 						/>
 
-						<S.WishButton onClick={() => removeFromFavorite()} aria-label={t("Remove from favorites")}>
-							<Heart fill={"#E93A36"} color={"#E93A36"} strokeWidth={1.5} />
+						<S.WishButton
+							onClick={() => (favorites.includes(product.id) ? removeFromFavorite() : addToFavorite())}
+							aria-label={favorites.includes(product.id) ? t("Remove from favorites") : t("Add to favorites")}
+						>
+							<Heart
+								fill={favorites.includes(product.id) ? "#E93A36" : "none"}
+								color={favorites.includes(product.id) ? "#E93A36" : "#BDBDBD"}
+								strokeWidth={1.5}
+							/>
 						</S.WishButton>
 					</S.MainImage>
 				</S.Left>
@@ -102,13 +115,13 @@ export default function ProductCard({ product }: Props) {
 									<Star
 										key={i}
 										size={18}
-										fill={i <= rating ? "#ffdb0d" : "none"}
-										color={i <= rating ? "#ffdb0d" : "#D3D3D3"}
+										fill={i <= product.rating ? "#ffdb0d" : "none"}
+										color={i <= product.rating ? "#ffdb0d" : "#D3D3D3"}
 										strokeWidth={1.5}
 									/>
 								))}
 							</S.Stars>
-							<span>{rating}/5</span>
+							<span>{product.rating}/5</span>
 						</S.RatingRow>
 					</S.Block>
 
@@ -157,25 +170,22 @@ export default function ProductCard({ product }: Props) {
 						</S.Characteristics>
 
 						<S.Accordion>
-							{[
-								{
-									key: "desc",
-									title: t("Description"),
-									content: t("Detailed description..."),
-								},
-								{
-									key: "comp",
-									title: t("Composition"),
-									content: t("Composition info..."),
-								},
-							].map(({ key, title, content }) => (
-								<S.AccordionItem key={key}>
-									<S.AccordionHeader onClick={() => toggle(key)}>
-										{title}:{openKeys.includes(key) ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+							{product.description && (
+								<S.AccordionItem>
+									<S.AccordionHeader onClick={() => toggle("desc")}>
+										{t("Description")}:{openKeys.includes("desc") ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
 									</S.AccordionHeader>
-									{openKeys.includes(key) && <S.AccordionContent>{content}</S.AccordionContent>}
+									{openKeys.includes("desc") && <S.AccordionContent>{t("Detailed description...")}</S.AccordionContent>}
 								</S.AccordionItem>
-							))}
+							)}
+							{product.ingredients && (
+								<S.AccordionItem>
+									<S.AccordionHeader onClick={() => toggle("comp")}>
+										{t("Composition")}:{openKeys.includes("comp") ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+									</S.AccordionHeader>
+									{openKeys.includes("comp") && <S.AccordionContent>{t("Composition info...")}</S.AccordionContent>}
+								</S.AccordionItem>
+							)}
 						</S.Accordion>
 					</S.InfoBlock>
 				</S.Right>

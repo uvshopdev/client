@@ -33,14 +33,13 @@ const ProductsList = ({ currentProductId }: ProductsListProps) => {
 	const [visibleCardsCount, setVisibleCardsCount] = useState(5);
 
 	const { data: favorites } = useQuery({
-		queryKey: ["favorites_ids"],
+		queryKey: ["profile", "favorites", "set"],
 		queryFn: async () => {
 			const data = await getFavorites();
 			return data.map(({ product }) => product.id);
 		},
-		placeholderData: [],
+		initialData: [],
 	});
-	const favoriteIds = favorites ?? [];
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -106,7 +105,7 @@ const ProductsList = ({ currentProductId }: ProductsListProps) => {
 					<ProductCard
 						key={product.id}
 						{...product}
-						favorite={favoriteIds.includes(product.id)}
+						favorite={favorites.includes(product.id)}
 						categoryId={product.category?.id ?? undefined}
 					/>
 				))}

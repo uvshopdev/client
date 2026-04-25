@@ -1,9 +1,11 @@
 "use client";
 
+import { useQuery } from "@tanstack/react-query";
 import { ArrowDownWideNarrow, Settings2 } from "lucide-react";
 import { useExtracted } from "next-intl";
 import { useState } from "react";
 
+import { getFavorites } from "@/lib/favorites";
 import type { CategoryType } from "@/types/categories";
 import type { CountryType } from "@/types/countries";
 import type { ProductType } from "@/types/products";
@@ -16,6 +18,16 @@ const Products = (params: { products: ProductType[]; category?: CategoryType; co
 	const t = useExtracted("catalog");
 	const [sortActive, setSortActive] = useState(false);
 	const [filterActive, setFilterActive] = useState(false);
+
+	const { data: favorites = [] } = useQuery({
+		queryKey: ["profile", "favorites", "set"],
+		queryFn: async () => {
+			const data = await getFavorites();
+			return data.map(({ product }) => product.id);
+		},
+		placeholderData: [],
+		staleTime: 3 * 60 * 1000,
+	});
 
 	return (
 		<>
@@ -36,7 +48,7 @@ const Products = (params: { products: ProductType[]; category?: CategoryType; co
 
 				<Items>
 					{params.products.map((p) => (
-						<ProductCard key={p.id} {...p} favorite={false} categoryId={0} />
+						<ProductCard key={p.id} {...p} favorite={favorites.includes(p.id)} categoryId={0} />
 					))}
 				</Items>
 			</Content>

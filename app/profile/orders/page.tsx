@@ -38,32 +38,15 @@ import {
 
 const formatter = new Intl.NumberFormat("uk-UA", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 
-const formatDate = (value: string) => {
-	const date = new Date(value);
-	if (Number.isNaN(date.getTime())) {
-		return "-";
-	}
-
-	return date.toLocaleDateString("uk-UA");
-};
-
 const getStatusIndex = (status: string) => {
 	const normalized = status.trim().toLowerCase();
 
-	if (["обробка", "processing", "pending"].includes(normalized)) return 0;
-	if (["комплектація", "packing", "preparing"].includes(normalized)) return 1;
-	if (["відправлено", "shipped", "in_transit"].includes(normalized)) return 2;
-	if (["доставлено", "delivered", "done", "completed"].includes(normalized)) return 3;
+	if (["pending"].includes(normalized)) return 0;
+	if (["confirmed"].includes(normalized)) return 1;
+	if (["processing"].includes(normalized)) return 2;
+	if (["shipped", "delivered"].includes(normalized)) return 3;
 
 	return 0;
-};
-
-const getProductImageUrl = (id: number, picture: string | null) => {
-	if (!picture) {
-		return "/logo.webp";
-	}
-
-	return `${process.env.NEXT_PUBLIC_FILES_URL}/products/${id}/large/${picture}.webp`;
 };
 
 export default function OrderHistoryPage() {
@@ -72,44 +55,24 @@ export default function OrderHistoryPage() {
 
 	const statusSteps = [t("Processing"), t("Packing"), t("Shipped"), t("Delivered")];
 
-	const {
-		data = [],
-		isLoading,
-		isError,
-	} = useQuery({
+	const { data: orders = [] } = useQuery({
 		queryKey: ["orders"],
 		queryFn: async () => await getOrders(),
+		select: (d) => d.map((o) => ({ ...o, inserted_at: new Date(o.inserted_at) })),
+		placeholderData: [],
 	});
 
 	const toggleOrder = (id: number) => {
 		setOpenOrderIds((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]));
 	};
 
-	if (isLoading) {
-		return (
-			<PageWrapper>
-				<PageTitle>{t("My orders")}</PageTitle>
-				<EmptyState>{t("Loading orders...")}</EmptyState>
-			</PageWrapper>
-		);
-	}
-
-	if (isError) {
-		return (
-			<PageWrapper>
-				<PageTitle>{t("My orders")}</PageTitle>
-				<EmptyState>{t("Failed to load orders. Please try again later.")}</EmptyState>
-			</PageWrapper>
-		);
-	}
-
 	return (
 		<PageWrapper>
 			<PageTitle>{t("My orders")}</PageTitle>
 			<Content>
-				{data.length === 0 && <EmptyState>{t("You have no placed orders yet.")}</EmptyState>}
+				{orders.length === 0 && <EmptyState>{t("You have no placed orders yet.")}</EmptyState>}
 
-				{data.map((order) => {
+				{orders.map((order) => {
 					const isOpen = openOrderIds.includes(order.id);
 					const activeStepIndex = getStatusIndex(order.status);
 
@@ -124,7 +87,7 @@ export default function OrderHistoryPage() {
 										{order.id}
 									</OrderNumber>
 									<OrderDate>
-										{t("Order date:")} {formatDate(order.inserted_at ?? order.updated_at ?? "")}
+										{t("Order date:")} {order.inserted_at.toLocaleDateString("uk-UA")}
 									</OrderDate>
 								</OrderHeader>
 
@@ -173,7 +136,14 @@ export default function OrderHistoryPage() {
 												href={href}
 												style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
 											>
-												<ProductImage src={getProductImageUrl(product.id, product.picture)} alt={product.name} />
+												<ProductImage
+													src={
+														product.picture
+															? `${process.env.NEXT_PUBLIC_FILES_URL}/products/${product.id}/small/${product.picture}`
+															: "/logo.webp"
+													}
+													alt={product.name}
+												/>
 
 												<ProductInfo>
 													<ProductName>{product.name}</ProductName>

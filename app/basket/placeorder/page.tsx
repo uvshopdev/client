@@ -106,14 +106,7 @@ export default function CheckoutPage() {
 
 	const { data: profile } = useQuery({
 		queryKey: ["profile"],
-		queryFn: async () => {
-			try {
-				return await getProfile();
-			} catch {
-				return null;
-			}
-		},
-		retry: false,
+		queryFn: async () => await getProfile(),
 	});
 
 	useEffect(() => {
@@ -124,12 +117,13 @@ export default function CheckoutPage() {
 		}
 	}, [info, profile, setInfo]);
 
-	const { data: milesEntries } = useQuery({
+	const { data: miles = [] } = useQuery({
 		queryKey: ["profile", "miles"],
 		queryFn: async () => await getUserMiles(),
+		placeholderData: [],
 	});
 
-	const availableMiles = useMemo(() => getMilesSummary(milesEntries ?? []).currentMiles, [milesEntries]);
+	const availableMiles = useMemo(() => getMilesSummary(miles), [miles]);
 	const subtotal = useMemo(() => Object.values(positions).reduce((sum, { amount, product }) => sum + product.price * amount, 0), [positions]);
 	const maxMilesToRedeem = Math.min(availableMiles, Math.floor(subtotal));
 
@@ -288,8 +282,8 @@ export default function CheckoutPage() {
 								onChange={(val) => setInfo("delivery_method", val)}
 								placeholder={t("Choose delivery method")}
 								options={[
-									{ value: "nova", label: t("Nova Poshta") },
-									{ value: "ukr", label: t("Ukrposhta") },
+									{ value: "novapost", label: t("Nova Poshta") },
+									{ value: "ukrpost", label: t("Ukrposhta") },
 								]}
 							/>
 						</FormGroup>
@@ -300,8 +294,8 @@ export default function CheckoutPage() {
 								onChange={(val) => setInfo("payment_method", val)}
 								placeholder={t("Choose payment method")}
 								options={[
-									{ value: "card", label: t("Card online") },
-									{ value: "cash", label: t("Cash on delivery") },
+									{ value: "online", label: t("Card online") },
+									{ value: "onsite", label: t("Cash on delivery") },
 								]}
 							/>
 						</FormGroup>
