@@ -3,7 +3,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ArrowLeft, ArrowRight, Check, ChevronDown } from "lucide-react";
 import { useExtracted } from "next-intl";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 
@@ -94,11 +94,9 @@ const CustomDropdown = ({
 export default function CheckoutPage() {
 	const t = useExtracted("checkout");
 	const router = useRouter();
-	const searchParams = useSearchParams();
 	const queryClient = useQueryClient();
 	const [step, setStep] = useState(0);
 	const [showModal, setShowModal] = useState(false);
-	const [milesToRedeem, setMilesToRedeem] = useState(0);
 	const [isSimulating, setIsSimulating] = useState(false);
 	const { info, setInfo, positions, reset } = useBasket();
 
@@ -126,19 +124,7 @@ export default function CheckoutPage() {
 	const availableMiles = useMemo(() => getMilesSummary(miles), [miles]);
 	const subtotal = useMemo(() => Object.values(positions).reduce((sum, { amount, product }) => sum + product.price * amount, 0), [positions]);
 	const maxMilesToRedeem = Math.min(availableMiles, Math.floor(subtotal));
-
-	const selectedMilesFromBasket = useMemo(() => {
-		const rawMiles = searchParams.get("miles");
-		if (!rawMiles) return 0;
-		const parsedMiles = Number(rawMiles);
-		return !Number.isFinite(parsedMiles) || parsedMiles <= 0 ? 0 : Math.floor(parsedMiles);
-	}, [searchParams]);
-
-	const redeemedMilesValue = Math.min(milesToRedeem, maxMilesToRedeem);
-
-	useEffect(() => {
-		setMilesToRedeem(Math.min(selectedMilesFromBasket, maxMilesToRedeem));
-	}, [maxMilesToRedeem, selectedMilesFromBasket]);
+	const redeemedBonusPointsValue = Math.min(info.bonus_points_to_redeem, maxMilesToRedeem);
 
 	const { mutate: submitOrder, isPending } = useMutation({
 		mutationFn: createOrder,
@@ -197,7 +183,7 @@ export default function CheckoutPage() {
 			return;
 		}
 
-		if (milesToRedeem > maxMilesToRedeem) {
+		if (info.bonus_points_to_redeem > maxMilesToRedeem) {
 			toast.error(t("Only {maxMiles} miles available for redemption", { maxMiles: String(maxMilesToRedeem) }));
 			return;
 		}
@@ -220,7 +206,7 @@ export default function CheckoutPage() {
 				email: info.email ?? "",
 				payment_method: info.payment_method,
 				delivery_method: info.delivery_method,
-				miles_to_redeem: redeemedMilesValue,
+				bonus_points_to_redeem: redeemedBonusPointsValue,
 				postal_code: info.postal_code,
 				message: info.message,
 				positions: positionsPayload,

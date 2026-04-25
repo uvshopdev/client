@@ -6,7 +6,7 @@ import { useExtracted } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { toast } from "sonner";
 
 import { getUserCountries } from "@/lib/countries";
@@ -42,14 +42,10 @@ import {
 	TotalRow,
 } from "./page.css";
 
-const formatPrice = (price: number): string => {
-	return price % 1 === 0 ? price.toString() : price.toFixed(2);
-};
-
 export default function BasketPage() {
 	const t = useExtracted("basket");
 	const router = useRouter();
-	const [milesToRedeem, setMilesToRedeem] = useState<number>(0);
+
 	const [promoApplied, setPromoApplied] = useState<boolean>(false);
 	const [promoInput, setPromoInput] = useState<string>("");
 	const [previewCountry, setPreviewCountry] = useState<{ name: string; picture: string } | null>(null);
@@ -65,14 +61,12 @@ export default function BasketPage() {
 		placeholderData: [],
 	});
 
-	const { positions, subtotal, setPositionAmount, removePosition } = useBasket();
+	const { positions, subtotal, setPositionAmount, removePosition, info, setInfo } = useBasket();
 	const promoDiscount = promoApplied ? (subtotal * 0) / 100 : 0;
 	const subtotalAfterPromo = Math.max(0, subtotal - promoDiscount);
 	const availableMiles = useMemo(() => getMilesSummary(miles), [miles]);
 	const maxMilesToRedeem = Math.min(availableMiles, Math.floor(subtotalAfterPromo));
-	const redeemedMilesValue = Math.min(milesToRedeem, maxMilesToRedeem);
-	const total = Math.max(0, subtotalAfterPromo - redeemedMilesValue);
-	const orderMilesReward = Math.floor(total / 100);
+	const orderMilesReward = Math.floor(subtotal / 100);
 	const isBasketEmpty = Object.keys(positions).length === 0;
 
 	const newCountries = useMemo(() => {
@@ -101,18 +95,12 @@ export default function BasketPage() {
 
 	const newCountriesReward = newCountries.length * 20;
 
-	const handleMilesChange = (delta: number) => {
-		setMilesToRedeem((prev) => {
-			const newMiles = prev + delta;
-			if (newMiles < 0) return 0;
-			if (newMiles > maxMilesToRedeem) return maxMilesToRedeem;
-			return newMiles;
-		});
-	};
-
-	useEffect(() => {
-		setMilesToRedeem((prev) => Math.min(prev, maxMilesToRedeem));
-	}, [maxMilesToRedeem]);
+	const handleMilesChange = useCallback(
+		(delta: number) => {
+			setInfo("bonus_points_to_redeem", Math.min(info.bonus_points_to_redeem + delta, maxMilesToRedeem));
+		},
+		[info.bonus_points_to_redeem, maxMilesToRedeem, setInfo],
+	);
 
 	const handleApplyPromo = () => {
 		if (promoInput.trim().length > 0) setPromoApplied(true);
@@ -153,7 +141,7 @@ export default function BasketPage() {
 
 								<ItemPrice>
 									<strong>
-										{formatPrice(position.product.price)} {t("UAH")}
+										{position.product.price} {t("UAH")}
 									</strong>
 								</ItemPrice>
 
@@ -214,22 +202,22 @@ export default function BasketPage() {
 								<button
 									type="button"
 									onClick={() => handleMilesChange(-1)}
-									disabled={milesToRedeem <= 0}
+									disabled={info.bonus_points_to_redeem <= 0}
 									aria-label={t("Decrease miles")}
 								>
 									<Minus size={16} />
 								</button>
-								<span>{milesToRedeem}</span>
+								<span>{info.bonus_points_to_redeem}</span>
 								<button
 									type="button"
 									onClick={() => handleMilesChange(1)}
-									disabled={milesToRedeem >= maxMilesToRedeem}
+									disabled={info.bonus_points_to_redeem >= maxMilesToRedeem}
 									aria-label={t("Increase miles")}
 								>
 									<Plus size={16} />
 								</button>
 							</QuantityBox>
-							<RemoveButton onClick={() => setMilesToRedeem(0)} aria-label={t("Reset miles")}>
+							<RemoveButton onClick={() => setInfo("bonus_points_to_redeem", 0)} aria-label={t("Reset miles")}>
 								<X size={16} color="white" />
 							</RemoveButton>
 						</ItemActions>
@@ -251,23 +239,23 @@ export default function BasketPage() {
 				<SummaryRow>
 					<span>{t("Order amount:")}</span>
 					<span>
-						{formatPrice(subtotal)} {t("UAH")}
+						{subtotal.toFixed(2)} {t("UAH")}
 					</span>
 				</SummaryRow>
 				<SummaryRow>
 					<span>{t("Promo code:")}</span>
-					<span>{promoApplied ? `-${formatPrice(promoDiscount)} ${t("UAH")}` : "-"}</span>
+					<span>{promoApplied ? `-${promoDiscount} ${t("UAH")}` : "-"}</span>
 				</SummaryRow>
 				<SummaryRow>
 					<span>{t("Miles redemption:")}</span>
 					<span>
-						-{formatPrice(redeemedMilesValue)} {t("UAH")}
+						-{info.bonus_points_to_redeem} {t("UAH")}
 					</span>
 				</SummaryRow>
 				<TotalRow>
 					<span>{t("Total:")}</span>
 					<span>
-						{formatPrice(total)} {t("UAH")}
+						{(subtotal - info.bonus_points_to_redeem).toFixed(2)} {t("UAH")}
 					</span>
 				</TotalRow>
 				<CheckoutButton
@@ -278,7 +266,7 @@ export default function BasketPage() {
 							toast.error(t("Cart is empty"));
 							return;
 						}
-						router.push(`/basket/placeorder?miles=${milesToRedeem}`);
+						router.push(`/basket/placeorder?miles=${info.bonus_points_to_redeem}`);
 					}}
 				>
 					{t("Checkout")}

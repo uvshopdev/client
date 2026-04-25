@@ -445,7 +445,7 @@ msgstr "Popular categories"
 
 #: app/page.tsx:146
 #: app/page.tsx:178
-#: app/page.tsx:204
+#: app/page.tsx:199
 msgctxt "home"
 msgid "pFK6bJ"
 msgstr "View all"
@@ -460,7 +460,7 @@ msgctxt "home"
 msgid "2zg50f"
 msgstr "New arrivals"
 
-#: app/page.tsx:203
+#: app/page.tsx:198
 msgctxt "home"
 msgid "FC/kO5"
 msgstr "Best sellers"
@@ -676,37 +676,37 @@ msgctxt "profile"
 msgid "VdXF7G"
 msgstr "Open countries map"
 
-#: app/profile/friends/page.tsx:77
+#: app/profile/friends/page.tsx:78
 msgctxt "profile"
 msgid "3s0ZWy"
 msgstr "Invite friends and get bonuses!"
 
-#: app/profile/friends/page.tsx:78
+#: app/profile/friends/page.tsx:79
 msgctxt "profile"
 msgid "CsMutJ"
 msgstr "Get +50 miles and coffee after your friend makes their first purchase for an amount of 150 UAH or more."
 
-#: app/profile/friends/page.tsx:82
+#: app/profile/friends/page.tsx:83
 msgctxt "profile"
 msgid "hYOE+U"
 msgstr "Invite"
 
-#: app/profile/friends/page.tsx:101
+#: app/profile/friends/page.tsx:102
 msgctxt "profile"
 msgid "smWqVf"
 msgstr "Waiting for the first purchase"
 
-#: app/profile/friends/page.tsx:113
+#: app/profile/friends/page.tsx:114
 msgctxt "profile"
 msgid "G8P44K"
 msgstr "Invitation link"
 
-#: app/profile/friends/page.tsx:118
+#: app/profile/friends/page.tsx:119
 msgctxt "profile"
 msgid "p556q3"
 msgstr "Copied"
 
-#: app/profile/friends/page.tsx:118
+#: app/profile/friends/page.tsx:119
 msgctxt "profile"
 msgid "4l6vz1"
 msgstr "Copy"
@@ -751,17 +751,17 @@ msgctxt "profile"
 msgid "5FA3Q8"
 msgstr "Order date:"
 
-#: app/profile/orders/page.tsx:151
+#: app/profile/orders/page.tsx:144
 msgctxt "profile"
 msgid "eB9VBm"
 msgstr "Article:"
 
-#: app/profile/orders/page.tsx:157
+#: app/profile/orders/page.tsx:150
 msgctxt "profile"
 msgid "oPsj1A"
 msgstr "UAH"
 
-#: app/profile/orders/page.tsx:160
+#: app/profile/orders/page.tsx:153
 msgctxt "profile"
 msgid "sY9sjp"
 msgstr "pcs"
@@ -1067,22 +1067,22 @@ msgctxt "footer"
 msgid "Dl3T8n"
 msgstr "We do not transfer your data to third parties, except when necessary for the operation of technological services (SMS sending, simplified admin panel) and only via a secure protocol."
 
-#: components/ProductCard/ProductCard.tsx:45
+#: components/ProductCard/ProductCard.tsx:43
 msgctxt "product"
 msgid "Of0Qtj"
 msgstr "Item added to favorites"
 
-#: components/ProductCard/ProductCard.tsx:47
+#: components/ProductCard/ProductCard.tsx:45
 msgctxt "product"
 msgid "nYXC78"
 msgstr "Log in to add this item to your favourites"
 
-#: components/ProductCard/ProductCard.tsx:54
+#: components/ProductCard/ProductCard.tsx:52
 msgctxt "product"
 msgid "Zj+6lx"
 msgstr "Item removed from favorites"
 
-#: components/ProductCard/ProductCard.tsx:56
+#: components/ProductCard/ProductCard.tsx:54
 msgctxt "product"
 msgid "ZP9LRA"
 msgstr "Failed to remove item from favorites"

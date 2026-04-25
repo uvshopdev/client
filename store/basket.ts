@@ -20,6 +20,7 @@ interface BasketStore {
 		address: string;
 		postal_code: string;
 		message: string;
+		bonus_points_to_redeem: number;
 	};
 
 	addPosition: (product: ProductType, amount: number) => boolean;
@@ -47,6 +48,7 @@ export const useBasket = create<BasketStore>()(
 					address: "",
 					postal_code: "",
 					message: "",
+					bonus_points_to_redeem: 0,
 				},
 
 				addPosition: (product, amount) => {
@@ -105,6 +107,7 @@ export const useBasket = create<BasketStore>()(
 							address: "",
 							postal_code: "",
 							message: "",
+							bonus_points_to_redeem: 0,
 						},
 					}),
 			}),

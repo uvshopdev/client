@@ -445,7 +445,7 @@ msgstr "Популярні категорії"
 
 #: app/page.tsx:146
 #: app/page.tsx:178
-#: app/page.tsx:204
+#: app/page.tsx:199
 msgctxt "home"
 msgid "pFK6bJ"
 msgstr "Переглянути всі"
@@ -460,7 +460,7 @@ msgctxt "home"
 msgid "2zg50f"
 msgstr "Новинки"
 
-#: app/page.tsx:203
+#: app/page.tsx:198
 msgctxt "home"
 msgid "FC/kO5"
 msgstr "Хіти продажів"
@@ -676,37 +676,37 @@ msgctxt "profile"
 msgid "VdXF7G"
 msgstr "Мапа відкритих країн"
 
-#: app/profile/friends/page.tsx:77
+#: app/profile/friends/page.tsx:78
 msgctxt "profile"
 msgid "3s0ZWy"
 msgstr "Запросіть друзів та отримайте бонуси!"
 
-#: app/profile/friends/page.tsx:78
+#: app/profile/friends/page.tsx:79
 msgctxt "profile"
 msgid "CsMutJ"
 msgstr "Отримайте +50 миль і каву після того, як ваш друг зробить першу покупку на суму від 150 грн."
 
-#: app/profile/friends/page.tsx:82
+#: app/profile/friends/page.tsx:83
 msgctxt "profile"
 msgid "hYOE+U"
 msgstr "Запросити"
 
-#: app/profile/friends/page.tsx:101
+#: app/profile/friends/page.tsx:102
 msgctxt "profile"
 msgid "smWqVf"
 msgstr "Очікує першу покупку"
 
-#: app/profile/friends/page.tsx:113
+#: app/profile/friends/page.tsx:114
 msgctxt "profile"
 msgid "G8P44K"
 msgstr "Запрошувальне посилання"
 
-#: app/profile/friends/page.tsx:118
+#: app/profile/friends/page.tsx:119
 msgctxt "profile"
 msgid "p556q3"
 msgstr "Скопійовано"
 
-#: app/profile/friends/page.tsx:118
+#: app/profile/friends/page.tsx:119
 msgctxt "profile"
 msgid "4l6vz1"
 msgstr "Копіювати"
@@ -751,17 +751,17 @@ msgctxt "profile"
 msgid "5FA3Q8"
 msgstr "Дата замовлення:"
 
-#: app/profile/orders/page.tsx:151
+#: app/profile/orders/page.tsx:144
 msgctxt "profile"
 msgid "eB9VBm"
 msgstr "Артикул:"
 
-#: app/profile/orders/page.tsx:157
+#: app/profile/orders/page.tsx:150
 msgctxt "profile"
 msgid "oPsj1A"
 msgstr "грн"
 
-#: app/profile/orders/page.tsx:160
+#: app/profile/orders/page.tsx:153
 msgctxt "profile"
 msgid "sY9sjp"
 msgstr "шт."
@@ -1067,22 +1067,22 @@ msgctxt "footer"
 msgid "Dl3T8n"
 msgstr "Ми не передаємо ваші дані третім особам, окрім випадків, коли це необхідно для роботи технологічних сервісів (SMS-відправка, спрощена адмін-панель) і лише за захищеним протоколом."
 
-#: components/ProductCard/ProductCard.tsx:45
+#: components/ProductCard/ProductCard.tsx:43
 msgctxt "product"
 msgid "Of0Qtj"
 msgstr "Товар додано до вподобаних"
 
-#: components/ProductCard/ProductCard.tsx:47
+#: components/ProductCard/ProductCard.tsx:45
 msgctxt "product"
 msgid "nYXC78"
 msgstr "Авторизуйтесь, щоб додати цей товар до вподобаних"
 
-#: components/ProductCard/ProductCard.tsx:54
+#: components/ProductCard/ProductCard.tsx:52
 msgctxt "product"
 msgid "Zj+6lx"
 msgstr "Товар видалено з вподобаного"
 
-#: components/ProductCard/ProductCard.tsx:56
+#: components/ProductCard/ProductCard.tsx:54
 msgctxt "product"
 msgid "ZP9LRA"
 msgstr "Не вдалося видалити товар з вподобаного"
