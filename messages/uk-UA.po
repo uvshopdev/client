@@ -1021,7 +1021,7 @@ msgstr "Дізнатися більше"
 #: components/Footer/Footer.tsx:83
 msgctxt "footer"
 msgid "lJItSx"
-msgstr "© 2026 \"Мандрівна крамниця\". Всі права захищено"
+msgstr "© 2026 Мандрівна крамниця. Всі права захищено"
 
 #: components/Footer/Footer.tsx:120
 msgctxt "footer"
