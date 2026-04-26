@@ -54,7 +54,7 @@ export const ContentGrid = styled.div`
   gap: 30px;
   align-items: flex-start;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
     flex-direction: column;
   }
 `;
@@ -87,15 +87,20 @@ export const RightColumn = styled.div`
 
 export const TableHeader = styled.div`
   display: grid;
-  grid-template-columns: 3fr 1fr 1.5fr;
-  gap: 20px;
+  grid-template-columns: 1fr 100px 200px; 
+  gap: 30px;
   padding-bottom: 15px;
   border-bottom: 1px solid #eaeaea;
   font-weight: 500;
   color: #999;
   font-size: 13px;
 
-  @media (max-width: 640px) {
+  span {
+    display: block;
+    text-align: left;
+  }
+
+  @media (max-width: 700px) {
     display: none;
   }
 `;
@@ -107,13 +112,13 @@ export const ItemsList = styled.div`
 
 export const CartItem = styled.div`
   display: grid;
-  grid-template-columns: 3fr 1fr 1.5fr;
+  grid-template-columns: 1fr 100px 200px;
   align-items: center;
-  gap: 20px;
+  gap: 30px; 
   padding: 25px 0;
   border-bottom: 1px solid #eaeaea;
 
-  @media (max-width: 640px) {
+  @media (max-width: 700px) {
     grid-template-columns: 1fr auto;
     row-gap: 20px;
     column-gap: 15px;
@@ -127,7 +132,7 @@ export const ItemInfo = styled.div`
   font-weight: 600;
   font-size: 15px;
   color: #222;
-  min-width: 0;
+  min-width: 0; 
 
   p {
     margin: 0;
@@ -135,7 +140,7 @@ export const ItemInfo = styled.div`
     word-break: break-word;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 700px) {
     grid-column: 1 / -1;
   }
 `;
@@ -156,7 +161,7 @@ export const ItemPrice = styled.div`
     margin-top: 4px;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 700px) {
     flex-direction: row;
     align-items: baseline;
     gap: 8px;
@@ -170,11 +175,11 @@ export const ItemPrice = styled.div`
 export const ItemActions = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: flex-start;
   width: 100%;
   gap: 15px;
 
-  @media (max-width: 640px) {
+  @media (max-width: 700px) {
     justify-content: flex-end;
     gap: 20px;
   }
@@ -243,7 +248,7 @@ export const PromoRow = styled.div`
   padding-bottom: 25px;
   color: #222;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
     display: flex;
     justify-content: space-between;
   }
