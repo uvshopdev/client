@@ -31,17 +31,17 @@ const TopBar = () => {
 
 	useEffect(() => {
 		const onClickOutside = (e: MouseEvent) => {
-			if (!ref.current || ref.current.contains(e.target as Node)) return;
+          if (!ref.current || ref.current.contains(e.target as Node)) return;
 
-			const target = e.target as Element | null;
-			if (target?.closest("[data-catalog-toggle='true']")) return;
+          const target = e.target as Element | null;
+          if (target?.closest("[data-locale-toggle='true']")) return;
 
-			setLocaleActive(false);
-		};
+          setLocaleActive(false);
+      };
 
-		document.addEventListener("click", onClickOutside);
+      document.addEventListener("click", onClickOutside);
 
-		return () => document.removeEventListener("click", onClickOutside);
+      return () => document.removeEventListener("click", onClickOutside);
 	}, []);
 
 	const handleLogoClick = () => {
@@ -74,7 +74,7 @@ const TopBar = () => {
 						type="button"
 						className="desktop"
 						aria-label={t("Change locale")}
-						data-catalog-toggle="true"
+						data-locale-toggle="true"
 						onClick={() => setLocaleActive(!localeActive)}
 					>
 						{localesDisplay[selected][0]}

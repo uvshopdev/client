@@ -76,8 +76,13 @@ export const Close = styled.button`
 export const Items = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 45px;
+    grid-auto-rows: minmax(45px, auto);
     gap: 25px 20px;
+
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
 `;
 
 export const Item = styled.button<{ $active?: boolean }>`
@@ -86,11 +91,13 @@ export const Item = styled.button<{ $active?: boolean }>`
     justify-content: flex-start;
     gap: 12px;
 
-    padding: 0 15px;
+    padding: 10px 15px;
     background: transparent;
     font-family: 'Montserrat Alternates', sans-serif;
     font-size: 14px;
-    white-space: nowrap;
+    
+    white-space: normal;
+    text-align: left;
     
     border: ${({ $active }) => ($active ? "2px solid #3B3028" : "2px solid #D3D3D3")};
     border-radius: 12px;
@@ -142,6 +149,12 @@ export const ButtonsContainer = styled.div`
     gap: 20px;
     width: 100%;
     margin-top: 10px;
+
+    @media (max-width: 640px) {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 15px;
+    }
 `;
 
 export const ApplyButton = styled.button`

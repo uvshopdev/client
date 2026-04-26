@@ -371,6 +371,12 @@ export const ButtonsContainer = styled.div`
     gap: 20px;
     width: 100%;
     margin-top: 10px;
+
+    @media (max-width: 640px) {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 15px;
+    }
 `;
 
 export const ApplyButton = styled.button`

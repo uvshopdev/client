@@ -1,6 +1,6 @@
 "use client";
 
-import { CircleHelp, ExternalLink, Mail, MapPin, MessageCircle, Music2, Phone, Send } from "lucide-react";
+import { CircleHelp, ExternalLink, Mail, MapPin, MessageCircle, Music2, Phone, Send, Instagram, Facebook} from "lucide-react";
 import { useExtracted } from "next-intl";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -83,10 +83,10 @@ const Footer = () => {
 					<S.Copyright>{t('© 2026 "Mandrivna Kramnytsya". All rights reserved')}</S.Copyright>
 					<S.Socials>
 						<S.SocialLink href="https://www.instagram.com/?hl=uk" target="_blank" rel="noreferrer" aria-label="Instagram">
-							<Send size={24} />
+							<Instagram size={24} />
 						</S.SocialLink>
 						<S.SocialLink href="https://www.facebook.com/?locale=uk_UA" target="_blank" rel="noreferrer" aria-label="Facebook">
-							<Send size={24} />
+							<Facebook size={24} />
 						</S.SocialLink>
 						<S.SocialLink href="https://www.tiktok.com/?lang=uk-UA" target="_blank" rel="noreferrer" aria-label="TikTok">
 							<Music2 size={24} />

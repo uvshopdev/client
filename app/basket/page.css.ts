@@ -78,7 +78,11 @@ export const RightColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  min-width: 320px;
+  min-width: 0;\
+
+  @media (min-width: 901px) {
+    min-width: 320px;
+  }
 `;
 
 export const TableHeader = styled.div`
@@ -89,6 +93,10 @@ export const TableHeader = styled.div`
   font-weight: 500;
   color: #999;
   font-size: 13px;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const ItemsList = styled.div`
@@ -102,6 +110,12 @@ export const CartItem = styled.div`
   align-items: center;
   padding: 25px 0;
   border-bottom: 1px solid #eaeaea;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr auto;
+    row-gap: 20px;
+    column-gap: 15px;
+  }
 `;
 
 export const ItemInfo = styled.div`
@@ -111,6 +125,10 @@ export const ItemInfo = styled.div`
   font-weight: 600;
   font-size: 15px;
   color: #222;
+
+  @media (max-width: 640px) {
+    grid-column: 1 / -1;
+  }
 `;
 
 export const ItemPrice = styled.div`
@@ -128,6 +146,16 @@ export const ItemPrice = styled.div`
     color: #888;
     margin-top: 4px;
   }
+
+  @media (max-width: 640px) {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 8px;
+
+    span {
+      margin-top: 0;
+    }
+  }
 `;
 
 export const ItemActions = styled.div`
@@ -135,6 +163,11 @@ export const ItemActions = styled.div`
   align-items: center;
   justify-content: space-between; 
   width: 100%;
+
+  @media (max-width: 640px) {
+    justify-content: flex-end;
+    gap: 20px;
+  }
 `;
 
 export const QuantityBox = styled.div`
@@ -247,6 +280,10 @@ export const InputGroup = styled.div`
       background-color: #888;
       cursor: default;
     }
+
+    @media (max-width: 400px) {
+      padding: 0 12px;
+    }
   }
 
   @media (max-width: 900px) {
@@ -300,6 +337,15 @@ export const SummaryRow = styled.div`
   border-bottom: 1px solid #f0f0f0;
   font-size: 13px;
   color: #555;
+  gap: 10px;
+
+  span:first-child {
+    word-break: break-word;
+  }
+
+  span:last-child {
+    text-align: right;
+  }
 
   &:last-of-type {
     border-bottom: none;
@@ -314,6 +360,17 @@ export const TotalRow = styled.div`
   font-weight: 700;
   font-size: 15px;
   color: #222;
+  gap: 10px;
+
+  span:first-child {
+    flex: 1;
+    word-break: break-word;
+  }
+
+  span:last-child {
+    flex-shrink: 0;
+    text-align: right;
+  }
 `;
 
 export const CheckoutButton = styled.button`

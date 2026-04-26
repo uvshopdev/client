@@ -6,73 +6,73 @@ msgstr ""
 "X-Generator: next-intl\n"
 "X-Crowdin-SourceKey: msgstr\n"
 
-#: app/auth/page.tsx:46
+#: app/auth/page.tsx:47
 msgctxt "auth"
 msgid "gZz74a"
 msgstr "Please fill in all required fields"
 
-#: app/auth/page.tsx:51
+#: app/auth/page.tsx:52
 msgctxt "auth"
 msgid "SJY9tx"
 msgstr "Password must be at least 6 characters"
 
-#: app/auth/page.tsx:68
-#: app/auth/page.tsx:84
+#: app/auth/page.tsx:69
+#: app/auth/page.tsx:85
 msgctxt "auth"
 msgid "GO+I69"
 msgstr "Successfully logged in"
 
-#: app/auth/page.tsx:68
+#: app/auth/page.tsx:69
 msgctxt "auth"
 msgid "od2TlS"
 msgstr "Successfully registered"
 
-#: app/auth/page.tsx:71
+#: app/auth/page.tsx:72
 msgctxt "auth"
 msgid "/VQx6X"
 msgstr "Registration successful. Please log in."
 
-#: app/auth/page.tsx:76
+#: app/auth/page.tsx:77
 msgctxt "auth"
 msgid "vA7hey"
 msgstr "Invalid email or password"
 
-#: app/auth/page.tsx:76
+#: app/auth/page.tsx:77
 msgctxt "auth"
 msgid "mAlbtv"
 msgstr "Registration failed. Email might be in use."
 
-#: app/auth/page.tsx:101
+#: app/auth/page.tsx:102
 msgctxt "auth"
 msgid "i/AQd8"
 msgstr "Enter login details"
 
-#: app/auth/page.tsx:101
+#: app/auth/page.tsx:102
 msgctxt "auth"
 msgid "0vL5u1"
 msgstr "Create an account"
 
-#: app/auth/page.tsx:102
+#: app/auth/page.tsx:103
 msgctxt "auth"
 msgid "rHuIz2"
 msgstr "Log in using your email or Google account"
 
-#: app/auth/page.tsx:102
+#: app/auth/page.tsx:103
 msgctxt "auth"
 msgid "txSfJa"
 msgstr "Register using your email or Google account"
 
-#: app/auth/page.tsx:107
+#: app/auth/page.tsx:108
 msgctxt "auth"
 msgid "FJ6r9E"
 msgstr "Continue with Google"
 
-#: app/auth/page.tsx:111
+#: app/auth/page.tsx:112
 msgctxt "auth"
 msgid "Ntjkqd"
 msgstr "or"
 
-#: app/auth/page.tsx:117
+#: app/auth/page.tsx:118
 msgctxt "auth"
 msgid "TemVby"
 msgstr "Full Name"
@@ -467,29 +467,29 @@ msgctxt "checkout"
 msgid "BhEJib"
 msgstr "To main page"
 
-#: app/page.tsx:145
+#: app/page.tsx:158
 msgctxt "home"
 msgid "pq2lMA"
 msgstr "Popular categories"
 
-#: app/page.tsx:146
-#: app/page.tsx:178
-#: app/page.tsx:199
+#: app/page.tsx:159
+#: app/page.tsx:191
+#: app/page.tsx:212
 msgctxt "home"
 msgid "pFK6bJ"
 msgstr "View all"
 
-#: app/page.tsx:165
+#: app/page.tsx:178
 msgctxt "home"
 msgid "WfqukA"
 msgstr "Country of the month"
 
-#: app/page.tsx:177
+#: app/page.tsx:190
 msgctxt "home"
 msgid "2zg50f"
 msgstr "New arrivals"
 
-#: app/page.tsx:198
+#: app/page.tsx:211
 msgctxt "home"
 msgid "FC/kO5"
 msgstr "Best sellers"

@@ -8,6 +8,10 @@ export const Content = styled.main`
 	gap: 30px;
 	padding: 28px 40px 14px;
 	flex: 1;
+
+	@media (max-width: 640px) {
+        padding: 24px 20px 14px;
+    }
 `;
 
 export const CatalogHeader = styled.div`

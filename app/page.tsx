@@ -34,17 +34,29 @@ export default function Home() {
 	const [randomProducts, setRandomProducts] = useState<ProductType[]>([]);
 
 	const [visibleCardsCount, setVisibleCardsCount] = useState(5);
+	const [visibleCategoriesCount, setVisibleCategoriesCount] = useState(6);
 
 	useEffect(() => {
 		const handleResize = () => {
 			const width = window.innerWidth;
-			if (width > 1440) {
-				setVisibleCardsCount(5);
-			} else if (width < 1201 && width > 900) {
-				setVisibleCardsCount(3);
-			} else {
-				setVisibleCardsCount(4);
-			}
+			
+			// Логіка для товарів
+            if (width > 1440) {
+                setVisibleCardsCount(5);
+            } else if (width < 1201 && width > 900) {
+                setVisibleCardsCount(3);
+            } else {
+                setVisibleCardsCount(4);
+            }
+
+            // Логіка для категорій
+            if (width > 1200) {
+                setVisibleCategoriesCount(6);
+            } else if (width > 900 && width <= 1200) {
+                setVisibleCategoriesCount(4);
+            } else {
+                setVisibleCategoriesCount(6);
+            }
 		};
 
 		handleResize();
@@ -55,13 +67,13 @@ export default function Home() {
 
 	useEffect(() => {
 		const categoriesList = Object.values(categories);
-		if (categoriesList.length > 0 && randomCategories.length === 0) {
-			setRandomCategories(shuffle(categoriesList).slice(0, 6));
+        if (categoriesList.length > 0 && randomCategories.length === 0) {
+            setRandomCategories(shuffle(categoriesList).slice(0, 6));
 
-			const categoriesWithProducts = categoriesList.filter((c) => !c.path.includes("."));
-			const source = categoriesWithProducts.length > 0 ? categoriesWithProducts : categoriesList;
-			setRandomProductCategories(shuffle(source).slice(0, 4));
-		}
+            const categoriesWithProducts = categoriesList.filter((c) => !c.path.includes("."));
+            const source = categoriesWithProducts.length > 0 ? categoriesWithProducts : categoriesList;
+            setRandomProductCategories(shuffle(source).slice(0, 4));
+        }
 	}, [categories, randomCategories.length]);
 
 	const { data: favorites } = useQuery({
@@ -98,6 +110,7 @@ export default function Home() {
 
 	const firstProducts = randomProducts.slice(0, visibleCardsCount);
 	const secondProducts = randomProducts.slice(visibleCardsCount, visibleCardsCount * 2);
+	const visibleCategories = randomCategories.slice(0, visibleCategoriesCount);
 
 	const handlePrevBanner = () => {
 		setActiveBannerIdx((prev) => (prev === 0 ? banners.length - 1 : prev - 1));
@@ -141,24 +154,24 @@ export default function Home() {
 
 			{/* POPULAR CATEGORIES */}
 			<S.Section>
-				<S.Header>
-					<S.SectionTitle>{t("Popular categories")}</S.SectionTitle>
-					<S.LinkText onClick={() => setCatalog(true)}>{t("View all")} →</S.LinkText>
-				</S.Header>
+                <S.Header>
+                    <S.SectionTitle>{t("Popular categories")}</S.SectionTitle>
+                    <S.LinkText onClick={() => setCatalog(true)}>{t("View all")} →</S.LinkText>
+                </S.Header>
 
-				<S.CategoriesGrid>
-					{randomCategories.map((category) => (
-						<Link key={category.id} href={`/${category.id}`}>
-							<S.CategoryCard>
-								<S.CategoryCircle>
-									<Image src="/map.webp" alt={category.name} fill />
-								</S.CategoryCircle>
-								<S.CategoryName>{category.name}</S.CategoryName>
-							</S.CategoryCard>
-						</Link>
-					))}
-				</S.CategoriesGrid>
-			</S.Section>
+                <S.CategoriesGrid>
+                    {visibleCategories.map((category) => (
+                        <Link key={category.id} href={`/${category.id}`}>
+                            <S.CategoryCard>
+                                <S.CategoryCircle>
+                                    <Image src="/map.webp" alt={category.name} fill />
+                                </S.CategoryCircle>
+                                <S.CategoryName>{category.name}</S.CategoryName>
+                            </S.CategoryCard>
+                        </Link>
+                    ))}
+                </S.CategoriesGrid>
+            </S.Section>
 
 			<S.SectionTight>
 				<S.Header>

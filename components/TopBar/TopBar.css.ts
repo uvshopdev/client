@@ -50,6 +50,9 @@ export const Left = styled.div`
     cursor: pointer;
     transition: opacity 0.2s;
 
+    svg {
+      pointer-events: none;
+    }
 
     &:hover {
       opacity: 0.9;
@@ -101,6 +104,10 @@ export const Right = styled.div`
     color: inherit;
     text-decoration: none;
     transition: background 0.2s, opacity 0.2s;
+
+    svg {
+      pointer-events: none;
+    }
 
     &:hover {
       background: #f3eee9;

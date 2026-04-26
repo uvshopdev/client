@@ -6,73 +6,73 @@ msgstr ""
 "X-Generator: next-intl\n"
 "X-Crowdin-SourceKey: msgstr\n"
 
-#: app/auth/page.tsx:46
+#: app/auth/page.tsx:47
 msgctxt "auth"
 msgid "gZz74a"
 msgstr "Будь ласка, заповніть усі обов'язкові поля"
 
-#: app/auth/page.tsx:51
+#: app/auth/page.tsx:52
 msgctxt "auth"
 msgid "SJY9tx"
 msgstr "Пароль повинен містити не менше 6 символів"
 
-#: app/auth/page.tsx:68
-#: app/auth/page.tsx:84
+#: app/auth/page.tsx:69
+#: app/auth/page.tsx:85
 msgctxt "auth"
 msgid "GO+I69"
 msgstr "Ви успішно увійшли"
 
-#: app/auth/page.tsx:68
+#: app/auth/page.tsx:69
 msgctxt "auth"
 msgid "od2TlS"
 msgstr "Успішно зареєстровано"
 
-#: app/auth/page.tsx:71
+#: app/auth/page.tsx:72
 msgctxt "auth"
 msgid "/VQx6X"
 msgstr "Реєстрація пройшла успішно. Будь ласка, увійдіть у систему."
 
-#: app/auth/page.tsx:76
+#: app/auth/page.tsx:77
 msgctxt "auth"
 msgid "vA7hey"
 msgstr "Неправильна адреса електронної пошти або пароль"
 
-#: app/auth/page.tsx:76
+#: app/auth/page.tsx:77
 msgctxt "auth"
 msgid "mAlbtv"
 msgstr "Не вдалося зареєструватися. Можливо ця адреса електронної пошти вже використовується."
 
-#: app/auth/page.tsx:101
+#: app/auth/page.tsx:102
 msgctxt "auth"
 msgid "i/AQd8"
 msgstr "Введіть дані для входу"
 
-#: app/auth/page.tsx:101
+#: app/auth/page.tsx:102
 msgctxt "auth"
 msgid "0vL5u1"
 msgstr "Створіть акаунт"
 
-#: app/auth/page.tsx:102
+#: app/auth/page.tsx:103
 msgctxt "auth"
 msgid "rHuIz2"
 msgstr "Увійдіть за допомогою email або облікового запису Google"
 
-#: app/auth/page.tsx:102
+#: app/auth/page.tsx:103
 msgctxt "auth"
 msgid "txSfJa"
 msgstr "Зареєструйтеся за допомогою email або облікового запису Google"
 
-#: app/auth/page.tsx:107
+#: app/auth/page.tsx:108
 msgctxt "auth"
 msgid "FJ6r9E"
 msgstr "Продовжити з Google"
 
-#: app/auth/page.tsx:111
+#: app/auth/page.tsx:112
 msgctxt "auth"
 msgid "Ntjkqd"
 msgstr "або"
 
-#: app/auth/page.tsx:117
+#: app/auth/page.tsx:118
 msgctxt "auth"
 msgid "TemVby"
 msgstr "Ім'я та прізвище"
@@ -467,29 +467,29 @@ msgctxt "checkout"
 msgid "BhEJib"
 msgstr "На головну"
 
-#: app/page.tsx:145
+#: app/page.tsx:158
 msgctxt "home"
 msgid "pq2lMA"
 msgstr "Популярні категорії"
 
-#: app/page.tsx:146
-#: app/page.tsx:178
-#: app/page.tsx:199
+#: app/page.tsx:159
+#: app/page.tsx:191
+#: app/page.tsx:212
 msgctxt "home"
 msgid "pFK6bJ"
 msgstr "Переглянути всі"
 
-#: app/page.tsx:165
+#: app/page.tsx:178
 msgctxt "home"
 msgid "WfqukA"
 msgstr "Країна місяця"
 
-#: app/page.tsx:177
+#: app/page.tsx:190
 msgctxt "home"
 msgid "2zg50f"
 msgstr "Новинки"
 
-#: app/page.tsx:198
+#: app/page.tsx:211
 msgctxt "home"
 msgid "FC/kO5"
 msgstr "Хіти продажів"

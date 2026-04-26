@@ -104,6 +104,7 @@ export const WishButton = styled.button`
 export const Right = styled.div`
   display: flex;
   flex-direction: column;
+  min-width: 0;
   ${gap30}
 `;
 
@@ -139,6 +140,10 @@ export const RowBetween = styled.div`
 export const CodeStock = styled.div`
   display: flex;
   gap: 40px;
+  width: 100%;
+
+  overflow-wrap: anywhere;
+  word-break: break-all;
 
   @media (max-width: 640px) {
     gap: 15px;
