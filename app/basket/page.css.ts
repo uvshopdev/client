@@ -88,6 +88,7 @@ export const RightColumn = styled.div`
 export const TableHeader = styled.div`
   display: grid;
   grid-template-columns: 3fr 1fr 1.5fr;
+  gap: 20px;
   padding-bottom: 15px;
   border-bottom: 1px solid #eaeaea;
   font-weight: 500;
@@ -108,6 +109,7 @@ export const CartItem = styled.div`
   display: grid;
   grid-template-columns: 3fr 1fr 1.5fr;
   align-items: center;
+  gap: 20px;
   padding: 25px 0;
   border-bottom: 1px solid #eaeaea;
 
@@ -125,6 +127,13 @@ export const ItemInfo = styled.div`
   font-weight: 600;
   font-size: 15px;
   color: #222;
+  min-width: 0;
+
+  p {
+    margin: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
 
   @media (max-width: 640px) {
     grid-column: 1 / -1;
@@ -163,6 +172,7 @@ export const ItemActions = styled.div`
   align-items: center;
   justify-content: space-between; 
   width: 100%;
+  gap: 15px;
 
   @media (max-width: 640px) {
     justify-content: flex-end;
@@ -207,8 +217,12 @@ export const RemoveButton = styled.button`
   background-color: ${({ theme }) => theme.colors?.primary || "#433327"};
   border: none;
   border-radius: 50%;
-
   transition: all 0.3s ease;
+  
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const PromoSection = styled.div`

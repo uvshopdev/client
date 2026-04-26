@@ -61,6 +61,9 @@ export default function ProductCard({ product }: Props) {
 		toast.success(t("Item added to cart"));
 	};
 
+	const hasDescription = product.description && product.description !== "null";
+    const hasIngredients = product.ingredients && product.ingredients !== "null";
+
 	return (
 		<S.Wrapper>
 			<S.Container>
@@ -177,23 +180,23 @@ export default function ProductCard({ product }: Props) {
 						</S.Characteristics>
 
 						<S.Accordion>
-							{product.description && (
-								<S.AccordionItem>
-									<S.AccordionHeader onClick={() => toggle("desc")}>
-										{t("Description")}:{openKeys.includes("desc") ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
-									</S.AccordionHeader>
-									{openKeys.includes("desc") && <S.AccordionContent>{product.description}</S.AccordionContent>}
-								</S.AccordionItem>
-							)}
-							{product.ingredients && (
-								<S.AccordionItem>
-									<S.AccordionHeader onClick={() => toggle("comp")}>
-										{t("Composition")}:{openKeys.includes("comp") ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
-									</S.AccordionHeader>
-									{openKeys.includes("comp") && <S.AccordionContent>{product.ingredients}</S.AccordionContent>}
-								</S.AccordionItem>
-							)}
-						</S.Accordion>
+                            {hasDescription && (
+                                <S.AccordionItem>
+                                    <S.AccordionHeader onClick={() => toggle("desc")}>
+                                        {t("Description")}:{openKeys.includes("desc") ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+                                    </S.AccordionHeader>
+                                    {openKeys.includes("desc") && <S.AccordionContent>{product.description}</S.AccordionContent>}
+                                </S.AccordionItem>
+                            )}
+                            {hasIngredients && (
+                                <S.AccordionItem>
+                                    <S.AccordionHeader onClick={() => toggle("comp")}>
+                                        {t("Composition")}:{openKeys.includes("comp") ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+                                    </S.AccordionHeader>
+                                    {openKeys.includes("comp") && <S.AccordionContent>{product.ingredients}</S.AccordionContent>}
+                                </S.AccordionItem>
+                            )}
+                        </S.Accordion>
 					</S.InfoBlock>
 				</S.Right>
 			</S.Container>

@@ -519,92 +519,92 @@ msgctxt "product-page"
 msgid "KoSVL4"
 msgstr "Товар додано у кошик"
 
-#: app/product/ProductCard.tsx:73
+#: app/product/ProductCard.tsx:76
 msgctxt "product-page"
 msgid "eG1C0k"
 msgstr "Видалити з вибраного"
 
-#: app/product/ProductCard.tsx:73
+#: app/product/ProductCard.tsx:76
 msgctxt "product-page"
 msgid "tWX1j9"
 msgstr "Додати в обране"
 
-#: app/product/ProductCard.tsx:93
+#: app/product/ProductCard.tsx:96
 msgctxt "product-page"
 msgid "tXHpD7"
 msgstr "код:"
 
-#: app/product/ProductCard.tsx:97
+#: app/product/ProductCard.tsx:100
 msgctxt "product-page"
 msgid "aEiFnS"
 msgstr "є в наявності"
 
-#: app/product/ProductCard.tsx:122
+#: app/product/ProductCard.tsx:125
 msgctxt "product-page"
 msgid "oPsj1A"
 msgstr "грн"
 
-#: app/product/ProductCard.tsx:126
+#: app/product/ProductCard.tsx:129
 msgctxt "product-page"
 msgid "vlScQh"
 msgstr "за"
 
-#: app/product/ProductCard.tsx:133
+#: app/product/ProductCard.tsx:136
 msgctxt "product-page"
 msgid "iL0n4U"
 msgstr "Зменшити кількість"
 
-#: app/product/ProductCard.tsx:137
+#: app/product/ProductCard.tsx:140
 msgctxt "product-page"
 msgid "3ZPs5M"
 msgstr "Збільшити кількість"
 
-#: app/product/ProductCard.tsx:142
+#: app/product/ProductCard.tsx:145
 msgctxt "product-page"
 msgid "EnCOBJ"
 msgstr "Купити"
 
-#: app/product/ProductCard.tsx:150
+#: app/product/ProductCard.tsx:153
 msgctxt "product-page"
 msgid "BxC/6v"
 msgstr "Характеристики:"
 
-#: app/product/ProductCard.tsx:154
+#: app/product/ProductCard.tsx:157
 msgctxt "product-page"
 msgid "oTjnHy"
 msgstr "категорія:"
 
-#: app/product/ProductCard.tsx:160
+#: app/product/ProductCard.tsx:163
 msgctxt "product-page"
 msgid "NL3hl5"
 msgstr "країна виробник:"
 
-#: app/product/ProductCard.tsx:166
+#: app/product/ProductCard.tsx:169
 msgctxt "product-page"
 msgid "owZzQB"
 msgstr "вага:"
 
-#: app/product/ProductCard.tsx:167
+#: app/product/ProductCard.tsx:170
 msgctxt "product-page"
 msgid "GfFCsB"
 msgstr "г"
 
-#: app/product/ProductCard.tsx:172
+#: app/product/ProductCard.tsx:175
 msgctxt "product-page"
 msgid "IosikH"
 msgstr "калорійність:"
 
-#: app/product/ProductCard.tsx:173
+#: app/product/ProductCard.tsx:176
 msgctxt "product-page"
 msgid "ba7WjZ"
 msgstr "ккал"
 
-#: app/product/ProductCard.tsx:183
+#: app/product/ProductCard.tsx:186
 msgctxt "product-page"
 msgid "Q8Qw5B"
 msgstr "Опис"
 
-#: app/product/ProductCard.tsx:191
+#: app/product/ProductCard.tsx:194
 msgctxt "product-page"
 msgid "EK6OoQ"
 msgstr "Склад"
@@ -1003,7 +1003,7 @@ msgid "4S241U"
 msgstr "Контакти"
 
 #: components/Footer/Footer.tsx:60
-#: components/Footer/Footer.tsx:111
+#: components/Footer/Footer.tsx:115
 msgctxt "footer"
 msgid "LphWYP"
 msgstr "Умови та Політика конфіденційності"
@@ -1023,112 +1023,112 @@ msgctxt "footer"
 msgid "lJItSx"
 msgstr "© 2026 \"Мандрівна крамниця\". Всі права захищено"
 
-#: components/Footer/Footer.tsx:116
+#: components/Footer/Footer.tsx:120
 msgctxt "footer"
 msgid "09tPFK"
 msgstr "1. Загальна інформація"
 
-#: components/Footer/Footer.tsx:118
+#: components/Footer/Footer.tsx:122
 msgctxt "footer"
 msgid "P0IPF3"
 msgstr "Ця Політика конфіденційності визначає порядок збору, зберігання, обробки та використання персональних даних користувачів веб-сайту та веб-застосунку \"Мандрівна крамниця\"."
 
-#: components/Footer/Footer.tsx:123
+#: components/Footer/Footer.tsx:127
 msgctxt "footer"
 msgid "kEM/gS"
 msgstr "Ми дотримуємось вимог та принципів GDPR — прозорості, безпеки та мінімізації даних. Користуючись нашим сайтом, створюючи акаунт та реєструючись у програмі лояльності «Hermes», ви підтверджуєте, що ознайомлені з цією Політикою та погоджуєтесь із нею."
 
-#: components/Footer/Footer.tsx:130
+#: components/Footer/Footer.tsx:134
 msgctxt "footer"
 msgid "vUIiDN"
 msgstr "2. Які дані ми збираємо"
 
-#: components/Footer/Footer.tsx:132
+#: components/Footer/Footer.tsx:136
 msgctxt "footer"
 msgid "vbnFP8"
 msgstr "Ми збираємо лише ті дані, які необхідні для роботи сервісу та програми лояльності:"
 
-#: components/Footer/Footer.tsx:135
+#: components/Footer/Footer.tsx:139
 msgctxt "footer"
 msgid "fZeLBC"
 msgstr "Персональна інформація (електронна адреса, дата народження, гендер)"
 
-#: components/Footer/Footer.tsx:136
+#: components/Footer/Footer.tsx:140
 msgctxt "footer"
 msgid "HAlOn1"
 msgstr "Ім’я"
 
-#: components/Footer/Footer.tsx:137
+#: components/Footer/Footer.tsx:141
 msgctxt "footer"
 msgid "ekNWcK"
 msgstr "Номер телефону (для реєстрації та авторизації через SMS)"
 
-#: components/Footer/Footer.tsx:138
+#: components/Footer/Footer.tsx:142
 msgctxt "footer"
 msgid "8XHjsd"
 msgstr "Дані транзакцій і нарахованих миль"
 
-#: components/Footer/Footer.tsx:139
+#: components/Footer/Footer.tsx:143
 msgctxt "footer"
 msgid "iFEl2k"
 msgstr "Дані про статус у програмі лояльності"
 
-#: components/Footer/Footer.tsx:140
+#: components/Footer/Footer.tsx:144
 msgctxt "footer"
 msgid "1UarQp"
 msgstr "Історію покупок"
 
-#: components/Footer/Footer.tsx:145
+#: components/Footer/Footer.tsx:149
 msgctxt "footer"
 msgid "DG50CA"
 msgstr "3. Використання cookies"
 
-#: components/Footer/Footer.tsx:147
+#: components/Footer/Footer.tsx:151
 msgctxt "footer"
 msgid "4+kTCD"
 msgstr "Наш сайт використовує мінімально необхідні cookies, які забезпечують коректну роботу сервісу та авторизації. Ми не використовуємо рекламні чи аналітичні куки, якщо ви окремо не погодитесь на них."
 
-#: components/Footer/Footer.tsx:152
+#: components/Footer/Footer.tsx:156
 msgctxt "footer"
 msgid "6oB/MV"
 msgstr "Необхідні cookies забезпечують роботу сайту та не можуть бути вимкнені. До них належать сесійні куки (зберігають тимчасові технічні дані — ідентифікатор вашої сесії) та кука з рефреш-токеном, що використовується для продовження вашої авторизованої сесії без повторного введення коду з SMS. Ця кука є захищеною та недоступна для сторонніх сайтів."
 
-#: components/Footer/Footer.tsx:159
+#: components/Footer/Footer.tsx:163
 msgctxt "footer"
 msgid "pzGOwm"
 msgstr "4. Як ми використовуємо ваші дані"
 
-#: components/Footer/Footer.tsx:160
+#: components/Footer/Footer.tsx:164
 msgctxt "footer"
 msgid "V7wUm6"
 msgstr "Ваші персональні дані використовуються виключно для:"
 
-#: components/Footer/Footer.tsx:162
+#: components/Footer/Footer.tsx:166
 msgctxt "footer"
 msgid "fXS/P9"
 msgstr "реєстрації та авторизації у програмі лояльності «Hermes»;"
 
-#: components/Footer/Footer.tsx:163
+#: components/Footer/Footer.tsx:167
 msgctxt "footer"
 msgid "FSck1+"
 msgstr "нарахування, зберігання та списання миль;"
 
-#: components/Footer/Footer.tsx:164
+#: components/Footer/Footer.tsx:168
 msgctxt "footer"
 msgid "yGFGA3"
 msgstr "роботи інтерактивної карти країн та ігрових бонусів;"
 
-#: components/Footer/Footer.tsx:165
+#: components/Footer/Footer.tsx:169
 msgctxt "footer"
 msgid "kro8Xk"
 msgstr "оформлення замовлень у веб-магазині;"
 
-#: components/Footer/Footer.tsx:166
+#: components/Footer/Footer.tsx:170
 msgctxt "footer"
 msgid "E0DqTQ"
 msgstr "покращення якості сервісу та обслуговування клієнтів."
 
-#: components/Footer/Footer.tsx:169
+#: components/Footer/Footer.tsx:173
 msgctxt "footer"
 msgid "Dl3T8n"
 msgstr "Ми не передаємо ваші дані третім особам, окрім випадків, коли це необхідно для роботи технологічних сервісів (SMS-відправка, спрощена адмін-панель) і лише за захищеним протоколом."

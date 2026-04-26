@@ -519,92 +519,92 @@ msgctxt "product-page"
 msgid "KoSVL4"
 msgstr "Item added to cart"
 
-#: app/product/ProductCard.tsx:73
+#: app/product/ProductCard.tsx:76
 msgctxt "product-page"
 msgid "eG1C0k"
 msgstr "Remove from favorites"
 
-#: app/product/ProductCard.tsx:73
+#: app/product/ProductCard.tsx:76
 msgctxt "product-page"
 msgid "tWX1j9"
 msgstr "Add to favorites"
 
-#: app/product/ProductCard.tsx:93
+#: app/product/ProductCard.tsx:96
 msgctxt "product-page"
 msgid "tXHpD7"
 msgstr "code:"
 
-#: app/product/ProductCard.tsx:97
+#: app/product/ProductCard.tsx:100
 msgctxt "product-page"
 msgid "aEiFnS"
 msgstr "in stock"
 
-#: app/product/ProductCard.tsx:122
+#: app/product/ProductCard.tsx:125
 msgctxt "product-page"
 msgid "oPsj1A"
 msgstr "UAH"
 
-#: app/product/ProductCard.tsx:126
+#: app/product/ProductCard.tsx:129
 msgctxt "product-page"
 msgid "vlScQh"
 msgstr "per"
 
-#: app/product/ProductCard.tsx:133
+#: app/product/ProductCard.tsx:136
 msgctxt "product-page"
 msgid "iL0n4U"
 msgstr "Decrease quantity"
 
-#: app/product/ProductCard.tsx:137
+#: app/product/ProductCard.tsx:140
 msgctxt "product-page"
 msgid "3ZPs5M"
 msgstr "Increase quantity"
 
-#: app/product/ProductCard.tsx:142
+#: app/product/ProductCard.tsx:145
 msgctxt "product-page"
 msgid "EnCOBJ"
 msgstr "Buy"
 
-#: app/product/ProductCard.tsx:150
+#: app/product/ProductCard.tsx:153
 msgctxt "product-page"
 msgid "BxC/6v"
 msgstr "Characteristics:"
 
-#: app/product/ProductCard.tsx:154
+#: app/product/ProductCard.tsx:157
 msgctxt "product-page"
 msgid "oTjnHy"
 msgstr "category:"
 
-#: app/product/ProductCard.tsx:160
+#: app/product/ProductCard.tsx:163
 msgctxt "product-page"
 msgid "NL3hl5"
 msgstr "country of origin:"
 
-#: app/product/ProductCard.tsx:166
+#: app/product/ProductCard.tsx:169
 msgctxt "product-page"
 msgid "owZzQB"
 msgstr "weight:"
 
-#: app/product/ProductCard.tsx:167
+#: app/product/ProductCard.tsx:170
 msgctxt "product-page"
 msgid "GfFCsB"
 msgstr "g"
 
-#: app/product/ProductCard.tsx:172
+#: app/product/ProductCard.tsx:175
 msgctxt "product-page"
 msgid "IosikH"
 msgstr "caloric content:"
 
-#: app/product/ProductCard.tsx:173
+#: app/product/ProductCard.tsx:176
 msgctxt "product-page"
 msgid "ba7WjZ"
 msgstr "kcal"
 
-#: app/product/ProductCard.tsx:183
+#: app/product/ProductCard.tsx:186
 msgctxt "product-page"
 msgid "Q8Qw5B"
 msgstr "Description"
 
-#: app/product/ProductCard.tsx:191
+#: app/product/ProductCard.tsx:194
 msgctxt "product-page"
 msgid "EK6OoQ"
 msgstr "Composition"
@@ -1003,7 +1003,7 @@ msgid "4S241U"
 msgstr "Contacts"
 
 #: components/Footer/Footer.tsx:60
-#: components/Footer/Footer.tsx:111
+#: components/Footer/Footer.tsx:115
 msgctxt "footer"
 msgid "LphWYP"
 msgstr "Terms and Privacy Policy"
@@ -1023,112 +1023,112 @@ msgctxt "footer"
 msgid "lJItSx"
 msgstr "© 2026 \"Mandrivna Kramnytsya\". All rights reserved"
 
-#: components/Footer/Footer.tsx:116
+#: components/Footer/Footer.tsx:120
 msgctxt "footer"
 msgid "09tPFK"
 msgstr "1. General Information"
 
-#: components/Footer/Footer.tsx:118
+#: components/Footer/Footer.tsx:122
 msgctxt "footer"
 msgid "P0IPF3"
 msgstr "This Privacy Policy determines the procedure for collecting, storing, processing, and using the personal data of users of the \"Mandrivna Kramnytsya\" website and web application."
 
-#: components/Footer/Footer.tsx:123
+#: components/Footer/Footer.tsx:127
 msgctxt "footer"
 msgid "kEM/gS"
 msgstr "We comply with GDPR requirements and principles — transparency, security, and data minimization. By using our site, creating an account, and registering in the Hermes loyalty program, you confirm that you have read and agree to this Policy."
 
-#: components/Footer/Footer.tsx:130
+#: components/Footer/Footer.tsx:134
 msgctxt "footer"
 msgid "vUIiDN"
 msgstr "2. What data we collect"
 
-#: components/Footer/Footer.tsx:132
+#: components/Footer/Footer.tsx:136
 msgctxt "footer"
 msgid "vbnFP8"
 msgstr "We collect only the data necessary for the operation of the service and the loyalty program:"
 
-#: components/Footer/Footer.tsx:135
+#: components/Footer/Footer.tsx:139
 msgctxt "footer"
 msgid "fZeLBC"
 msgstr "Personal information (email address, date of birth, gender)"
 
-#: components/Footer/Footer.tsx:136
+#: components/Footer/Footer.tsx:140
 msgctxt "footer"
 msgid "HAlOn1"
 msgstr "Name"
 
-#: components/Footer/Footer.tsx:137
+#: components/Footer/Footer.tsx:141
 msgctxt "footer"
 msgid "ekNWcK"
 msgstr "Phone number (for registration and authorization via SMS)"
 
-#: components/Footer/Footer.tsx:138
+#: components/Footer/Footer.tsx:142
 msgctxt "footer"
 msgid "8XHjsd"
 msgstr "Transaction and accrued miles data"
 
-#: components/Footer/Footer.tsx:139
+#: components/Footer/Footer.tsx:143
 msgctxt "footer"
 msgid "iFEl2k"
 msgstr "Loyalty program status data"
 
-#: components/Footer/Footer.tsx:140
+#: components/Footer/Footer.tsx:144
 msgctxt "footer"
 msgid "1UarQp"
 msgstr "Purchase history"
 
-#: components/Footer/Footer.tsx:145
+#: components/Footer/Footer.tsx:149
 msgctxt "footer"
 msgid "DG50CA"
 msgstr "3. Use of cookies"
 
-#: components/Footer/Footer.tsx:147
+#: components/Footer/Footer.tsx:151
 msgctxt "footer"
 msgid "4+kTCD"
 msgstr "Our site uses strictly necessary cookies that ensure the proper operation of the service and authorization. We do not use advertising or analytical cookies unless you explicitly agree to them."
 
-#: components/Footer/Footer.tsx:152
+#: components/Footer/Footer.tsx:156
 msgctxt "footer"
 msgid "6oB/MV"
 msgstr "Necessary cookies ensure the operation of the site and cannot be disabled. These include session cookies (store temporary technical data — your session identifier) and a refresh token cookie used to extend your authorized session without re-entering the SMS code. This cookie is secure and inaccessible to third-party sites."
 
-#: components/Footer/Footer.tsx:159
+#: components/Footer/Footer.tsx:163
 msgctxt "footer"
 msgid "pzGOwm"
 msgstr "4. How we use your data"
 
-#: components/Footer/Footer.tsx:160
+#: components/Footer/Footer.tsx:164
 msgctxt "footer"
 msgid "V7wUm6"
 msgstr "Your personal data is used exclusively for:"
 
-#: components/Footer/Footer.tsx:162
+#: components/Footer/Footer.tsx:166
 msgctxt "footer"
 msgid "fXS/P9"
 msgstr "registration and authorization in the Hermes loyalty program;"
 
-#: components/Footer/Footer.tsx:163
+#: components/Footer/Footer.tsx:167
 msgctxt "footer"
 msgid "FSck1+"
 msgstr "accrual, storage, and deduction of miles;"
 
-#: components/Footer/Footer.tsx:164
+#: components/Footer/Footer.tsx:168
 msgctxt "footer"
 msgid "yGFGA3"
 msgstr "operation of the interactive country map and game bonuses;"
 
-#: components/Footer/Footer.tsx:165
+#: components/Footer/Footer.tsx:169
 msgctxt "footer"
 msgid "kro8Xk"
 msgstr "placing orders in the web store;"
 
-#: components/Footer/Footer.tsx:166
+#: components/Footer/Footer.tsx:170
 msgctxt "footer"
 msgid "E0DqTQ"
 msgstr "improving the quality of service and customer support."
 
-#: components/Footer/Footer.tsx:169
+#: components/Footer/Footer.tsx:173
 msgctxt "footer"
 msgid "Dl3T8n"
 msgstr "We do not transfer your data to third parties, except when necessary for the operation of technological services (SMS sending, simplified admin panel) and only via a secure protocol."
