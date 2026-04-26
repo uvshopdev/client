@@ -1020,8 +1020,8 @@ msgstr "Learn more"
 
 #: components/Footer/Footer.tsx:83
 msgctxt "footer"
-msgid "lJItSx"
-msgstr "© 2026 \"Mandrivna Kramnytsya\". All rights reserved"
+msgid "nLTot1"
+msgstr "© 2026 Mandrivna Kramnytsya. All rights reserved"
 
 #: components/Footer/Footer.tsx:120
 msgctxt "footer"

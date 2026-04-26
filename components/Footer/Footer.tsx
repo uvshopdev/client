@@ -80,7 +80,7 @@ const Footer = () => {
 				</S.Top>
 
 				<S.Bottom>
-					<S.Copyright>{t('© 2026 "Mandrivna Kramnytsya". All rights reserved')}</S.Copyright>
+					<S.Copyright>{t('© 2026 Mandrivna Kramnytsya. All rights reserved')}</S.Copyright>
 					<S.Socials>
 						<S.SocialLink href="https://www.instagram.com/?hl=uk" target="_blank" rel="noreferrer" aria-label="Instagram">
 							<svg width={24} height={24} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
