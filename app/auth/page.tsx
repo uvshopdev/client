@@ -119,6 +119,7 @@ const AuthPage = () => {
                         <input
                             type="text"
                             name="full_name"
+                            autoComplete="name"
                             required
                         />
                     </FormLabel>

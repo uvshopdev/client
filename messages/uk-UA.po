@@ -75,7 +75,7 @@ msgstr "або"
 #: app/auth/page.tsx:117
 msgctxt "auth"
 msgid "TemVby"
-msgstr ""
+msgstr "Ім'я та прізвище"
 
 #: app/auth/page.tsx:128
 msgctxt "auth"
